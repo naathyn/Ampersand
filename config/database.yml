@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: development
+  pool: 5
+  username: naathyn
+  password:
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: test
+  pool: 5
+  username: naathyn
+  password:
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: production
+  pool: 5
+  username: naathyn
+  password:
+  timeout: 5000
