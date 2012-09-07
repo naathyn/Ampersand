@@ -1,5 +1,11 @@
-<% provide(:title, 'Home') %>
-   <h1>Social Rails</h1>
-    <p>
-      Under construction... try signing up!
-    </p>
+<div class="center hero-unit">
+  <h1>Social Rails</h1>
+
+  <h2>
+    Under construction... try signing up!
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
