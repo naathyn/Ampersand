@@ -7,7 +7,7 @@ development:
   password:
   timeout: 5000
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: test
@@ -24,3 +24,6 @@ production:
   username: naathyn
   password:
   timeout: 5000
+
+cucumber:
+  <<: *test
