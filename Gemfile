@@ -29,8 +29,6 @@ group :test do
   gem 'guard-spork'
   gem 'spork'
   gem 'rb-inotify'
-  gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
 end
 
 group :production do
