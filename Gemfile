@@ -10,6 +10,7 @@ gem 'bootstrap-will_paginate'
 group :development, :test do
   gem 'pg'
   gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 
 group :assets do
