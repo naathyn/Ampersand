@@ -57,11 +57,7 @@ describe "Authentication" do
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
-<<<<<<< HEAD
-          fill_in "Email",    with: user.email
-=======
           fill_in "Email", with: user.email
->>>>>>> settings
           fill_in "Password", with: user.password
           click_button "Sign in"
         end
@@ -71,8 +67,6 @@ describe "Authentication" do
           it "should render the desired protected page" do
             page.should have_selector('title', text: 'Edit user')
           end
-<<<<<<< HEAD
-=======
 
           describe "when signing in again" do
             before do
@@ -87,17 +81,10 @@ describe "Authentication" do
               page.should have_selector('title', text: user.name)
             end
           end
->>>>>>> settings
         end
       end
 
       describe "in the Users controller" do
-
-        describe "visiting the user index" do
-          before { visit users_path }
-          it { should have_selector('title', text: 'Sign in') }
-        end
-      end
 
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
@@ -176,33 +163,6 @@ describe "Authentication" do
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { response.should redirect_to(root_url) }
-      end
-    end
-
-    describe "as wrong user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
-      before { sign_in user }
-
-      describe "visiting Users#edit page" do
-        before { visit edit_user_path(wrong_user) }
-        it { should_not have_selector('title', text: full_title('Edit user')) }
-      end
-
-      describe "submitting a PUT request to the Users#update action" do
-        before { put user_path(wrong_user) }
-        specify { response.should redirect_to(root_path) }
-      end
-
-    describe "as non-admin user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:non_admin) { FactoryGirl.create(:user) }
-
-      before { sign_in non_admin }
-
-      describe "submitting a DELETE request to the Users#destroy action" do
-        before { delete user_path(user) }
-        specify { response.should redirect_to(root_path) }        
       end
     end
   end

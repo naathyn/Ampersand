@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com", password: "secret", password_confirmation: "secret")
+    @user = User.new(name: "User", email: "user@example.tld", password: "password", password_confirmation: "password")
   end
 
   subject { @user }
@@ -16,20 +16,6 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
-<<<<<<< HEAD
-
-  it { should be_valid }
-  it { should_not be_admin }
-
-  describe "with admin attribute set to 'true'" do
-    before do
-      @user.save!
-      @user.toggle!(:admin)
-    end
-
-    it { should be_admin }
-  end
-=======
   it { should respond_to(:microposts) }
   it { should respond_to(:feed) }
   it { should respond_to(:relationships) }
@@ -42,7 +28,6 @@ describe User do
 
   it { should be_valid }
   it { should_not be_admin }
->>>>>>> settings
 
   describe "accessible attributes" do
     it "should not allow access to admin" do
@@ -78,7 +63,7 @@ describe User do
 
   describe "when email format is invalid" do
     it "should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
+      addresses = %w[user@example,tld user_at_example.tld example.user@tld.]
       addresses.each do |invalid_address|
         @user.email = invalid_address
         @user.should_not be_valid
@@ -88,7 +73,7 @@ describe User do
 
   describe "when email format is valid" do
     it "should be valid" do
-      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      addresses = %w[user@example.COM A_US-EN@a.b.tld first.last@user.ro a+b@co.uk]
       addresses.each do |valid_address|
         @user.email = valid_address
         @user.should be_valid
@@ -107,7 +92,7 @@ describe User do
   end
 
   describe "email address with mixed case" do
-    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
+    let(:mixed_case_email) { "UseR@ExAmPlE.TlD" }
 
     it "should be saved as all lower-case" do
       @user.email = mixed_case_email
@@ -132,7 +117,7 @@ describe User do
   end
 
   describe "with a password that's too short" do
-    before { @user.password = @user.password_confirmation = "a" * 5 }
+    before { @user.password = @user.password_confirmation = "x" * 5 }
     it { should be_invalid }
   end
 

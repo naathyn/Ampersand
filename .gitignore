@@ -1,10 +1,13 @@
 /.bundle
 /log/*.log
 /tmp
+/lib
 doc/
 *.swp
 *~
+*.save
 .project
 .DS_Store
 .idea
-.save
+.gitkeep
+
