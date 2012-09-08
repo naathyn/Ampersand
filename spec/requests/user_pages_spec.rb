@@ -126,8 +126,8 @@ describe "User pages" do
       before do
         fill_in "Name", with: "User"
         fill_in "Email", with: "user@example.tld"
-        fill_in "Password", with: "secret"
-        fill_in "Confirmation", with: "secret"
+        fill_in "Password", with: "password"
+        fill_in "Confirmation", with: "password"
       end
 
       it "should create a user" do
@@ -167,7 +167,7 @@ describe "User pages" do
 
     describe "with valid information" do
       let(:new_name) { "New Name" }
-      let(:new_email) { "new@example.com" }
+      let(:new_email) { "new@example.tld" }
       before do
         fill_in "Name", with: new_name
         fill_in "Email", with: new_email

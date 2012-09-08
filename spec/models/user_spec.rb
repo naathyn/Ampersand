@@ -3,12 +3,8 @@ require 'spec_helper'
 describe User do
 
   before do
-<<<<<<< HEAD
-    @user = User.new(name: "User", email: "user@example.tld", password: "password", password_confirmation: "password")
-=======
     @user = User.new(name: "User", email: "user@example.tld",
-                     password: "secret", password_confirmation: "secret")
->>>>>>> posting
+                     password: "password", password_confirmation: "password")
   end
 
   subject { @user }
@@ -97,7 +93,7 @@ describe User do
   end
 
   describe "email address with mixed case" do
-    let(:mixed_case_email) { "UseR@ExAmPlE.TlD" }
+    let(:mixed_case_email) { "UsER@ExAmPlE.TlD" }
 
     it "should be saved as all lower-case" do
       @user.email = mixed_case_email

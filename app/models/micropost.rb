@@ -1,6 +1,5 @@
 class Micropost < ActiveRecord::Base
   attr_accessible :content
-<<<<<<< HEAD
   belongs_to :user
 
   validates :user_id, presence: true
@@ -14,13 +13,4 @@ class Micropost < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
           user_id: user.id)
   end
-=======
-
-  belongs_to :user
-
-  validates :content, presence: true, length: { maximum: 200 }
-  validates :user_id, presence: true
-
-  default_scope order: 'microposts.created_at DESC'
->>>>>>> posting
 end

@@ -19,31 +19,18 @@
 <% else %>
   <div class="center hero-unit">
     <h1>Social Rails</h1>
-      <h2>What Is It?</h2>
+
     <p>
-    Social Rails is an independent, "online outlet" I am developing
+    is an independent, "online outlet" I am developing
     with many similarites to Twitter.  <h3>Built on Linux with 100% 
     free software</h3>  Read more in the <%= link_to "About", about_path %>, section or sign up and try it out!
     </p>
 
     <%= link_to "Sign up now!", signup_path,
                                 class: "btn btn-large btn-primary" %>
-  </div>
-
-      <h3>What's Been Said</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>  
-<% else %>
-  <div class="center hero-unit">
-    <h1>Social Rails</h1>
-
-    <h2>
-      Under construction... try signing up!
-    </h2>
-
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 
   </div>
+
+
   <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>
