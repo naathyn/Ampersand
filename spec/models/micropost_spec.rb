@@ -19,13 +19,18 @@ describe Micropost do
       expect do
         Micropost.new(user_id: user.id)
       end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+<<<<<<< HEAD
     end
+=======
+    end    
+>>>>>>> posting
   end
 
   describe "when user_id is not present" do
     before { @micropost.user_id = nil }
     it { should_not be_valid }
   end
+<<<<<<< HEAD
 
   describe "when user_id is not present" do
     before { @micropost.user_id = nil }
@@ -41,4 +46,6 @@ describe Micropost do
     before { @micropost.content = "a" * 201 }
     it { should_not be_valid }
   end
+=======
+>>>>>>> posting
 end

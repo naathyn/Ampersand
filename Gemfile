@@ -9,8 +9,6 @@ gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem 'pg'
-  gem 'rspec-rails'
-  gem 'guard-rspec'
 end
 
 group :assets do
@@ -21,14 +19,17 @@ end
 
 gem 'jquery-rails'
 
-gem 'annotate', group: :development
+group :test, :development do
+  gem 'rb-inotify'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'spork'
+end
 
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'guard-spork'
-  gem 'spork'
-  gem 'rb-inotify'
 end
 
 group :production do
