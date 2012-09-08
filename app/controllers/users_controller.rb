@@ -3,17 +3,14 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
-  before_filter :signed_in_user,
-                only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: :destroy
 
   def index
     @users = User.paginate(page: params[:page])
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) 
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
@@ -24,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome and thanks for signing up!"
       redirect_to @user
     else
       render 'new'
