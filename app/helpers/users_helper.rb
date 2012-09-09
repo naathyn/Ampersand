@@ -1,6 +1,6 @@
 module UsersHelper
 
-  def gravatar_for(user, options = { size: 55 })
+  def gravatar_for(user, options = { size: 60 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     size = options[:size]
     gravatar =
