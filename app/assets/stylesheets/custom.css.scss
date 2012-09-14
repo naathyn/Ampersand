@@ -3,11 +3,10 @@
 /* variables */
 
 $grayMediumLight: #eaeaea;
-$grayDarker:  #333333;
 
 @mixin box_sizing {
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -70,14 +69,14 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: $grayDarker;
+  color: $gray;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: $gray;
+    color: $blue;
     text-decoration: none;
   }
 }
@@ -91,12 +90,12 @@ footer {
   color: $grayLight;
   a {
     color: $gray;
-    &:hover { 
+    &:hover {
       color: $grayDarker;
     }
-  }  
-  small { 
-    float: left; 
+  }
+  small {
+    float: left;
   }
   ul {
     float: right;
@@ -135,6 +134,7 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
+	border: 1px solid #ccc;
 }
 
 .stats {
@@ -163,32 +163,18 @@ aside {
   margin-top: 10px;
   .gravatar {
     margin: 1px 1px;
-  }
-}
-
- /* user index */
-
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
+		border: 1px solid #ccc;
   }
 }
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, select, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  padding: 10px;
-  height: auto;
-  margin-bottom: 15px;
+  padding: 15px;
+  height: auto !important;
+  margin-bottom: 10px;
   @include box_sizing;
 }
 
@@ -205,7 +191,22 @@ input, textarea, select, .uneditable-input {
   @extend .error;
  }
 
-/* user posts */
+ /* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+/* microposts */
 
 .microposts {
   list-style: none;
@@ -213,7 +214,7 @@ input, textarea, select, .uneditable-input {
   
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    /*border-top: 1px solid #e8e8e8;*/
   }
 }
 

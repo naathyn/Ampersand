@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails'
+gem 'will_paginate'
 gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
 gem 'bcrypt-ruby'
 gem 'faker'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'pg'
@@ -16,8 +17,6 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
 end
-
-gem 'jquery-rails'
 
 group :test, :development do
   gem 'rb-inotify'
