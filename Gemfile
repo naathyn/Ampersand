@@ -1,16 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'will_paginate'
-gem 'bootstrap-sass'
-gem 'bootstrap-will_paginate'
-gem 'bcrypt-ruby'
-gem 'faker'
+gem 'mysql'
 gem 'jquery-rails'
-
-group :development, :test do
-  gem 'pg'
-end
+gem 'bcrypt-ruby'
+gem 'bootstrap-sass'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'faker'
 
 group :assets do
   gem 'sass-rails'
@@ -18,19 +15,19 @@ group :assets do
   gem 'uglifier'
 end
 
-group :test, :development do
-  gem 'rb-inotify'
-  gem 'rspec-rails'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'spork'
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'guard-rspec'
+	gem 'guard-spork'
+	gem	'spork'
+	gem 'rb-inotify'
 end
 
 group :test do
-  gem 'capybara'
-  gem 'factory_girl_rails'
+	gem 'capybara'
+	gem 'factory_girl_rails'
 end
 
 group :production do
-  gem 'pg'
+	gem 'pg'
 end

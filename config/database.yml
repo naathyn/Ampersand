@@ -1,26 +1,24 @@
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: development
+  adapter: mysql
+  encoding: utf8
+  database: amp_dev
   pool: 5
-  username: naathyn
-  password:
+  username: root
+  password: 
   timeout: 5000
 
 test: &test
-  adapter: postgresql
-  encoding: unicode
-  database: test
+  adapter: mysql
+  encoding: utf8
+  database: amp_test
   pool: 5
-  username: naathyn
-  password:
+  username: root
+  password: 
   timeout: 5000
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: production
+  database: ampersand
   pool: 5
-  username: naathyn
-  password: 
   timeout: 5000
