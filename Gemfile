@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'mysql'
-gem 'jquery-rails'
-gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
+gem 'bcrypt-ruby'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'jquery-rails'
+gem 'mysql'
 
 group :assets do
   gem 'sass-rails'
