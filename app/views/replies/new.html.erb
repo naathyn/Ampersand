@@ -1,0 +1,7 @@
+<%= form_for(@reply) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, rows: "1", placeholder: "Send a reply..." %>
+  </div>
+  <%= f.submit "Reply", class: "btn btn-small" %>
+<% end %>

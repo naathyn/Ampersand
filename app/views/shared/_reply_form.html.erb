@@ -1,0 +1,19 @@
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Reply</a>
+
+	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="content" aria-hidden="true">
+			<div class="modal-header">
+  			<div class="row"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    			<aside class="span4">
+    				<section>
+    				<%= render 'shared/user_info' %>
+      			</section>
+    			<section>
+    			<%= render 'shared/stats' %>
+    		</section>
+			</div>
+		</div>
+  	<div class="modal-body">
+		<%= render 'shared/reply' %>
+    </div>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
