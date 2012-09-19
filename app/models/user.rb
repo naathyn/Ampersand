@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_many :microposts, dependent: :destroy
-	has_many :replies, foreign_key: "to_id", class_name: "Reply", dependent: :destroy
+	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 	VALID_USERNAME_REGEX = /^[a-z\d_]{5,12}$/i
 	VALID_EMAIL_REGEX = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/i
 
-  validates :name, presence: true,  format: { with: VALID_USERNAME_REGEX }
+  validates :name, presence: true,  format: { with: VALID_USERNAME_REGEX }, uniqueness: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
