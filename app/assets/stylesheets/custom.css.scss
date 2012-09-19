@@ -4,12 +4,12 @@ html {
   overflow-y: scroll;
 }
 
-section {
-  overflow: auto;
-}
-
 body { 
 	padding-top: 60px; 
+}
+
+section {
+  overflow: auto;
 }
 
 @import "bootstrap-responsive";
