@@ -2,7 +2,7 @@ Socialrails::Application.configure do
 
 	config.force_ssl = true
   config.cache_classes = true
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   config.serve_static_assets = false
   config.assets.compress = true

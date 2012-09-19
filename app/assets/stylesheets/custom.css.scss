@@ -1,11 +1,5 @@
 @import "bootstrap";
 
-/* variables */
-
-$grayMediumLight: #eaeaea;
-
-/* global */
-
 html {
   overflow-y: scroll;
 }
@@ -43,8 +37,6 @@ textarea {
   }
 }
 
-/* typography */
-
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -70,9 +62,6 @@ p {
   line-height: 1.7em;
 }
 
-
-/* header */
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -89,12 +78,10 @@ p {
   }
 }
 
-/* footer */
-
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
+  border-top: 1px solid #eaeaea;
   color: $grayLight;
   a {
     color: $gray;
@@ -114,8 +101,6 @@ footer {
     }
   }
 }
-
-/* sidebar */
 
 aside {
   section {
@@ -175,8 +160,6 @@ aside {
   }
 }
 
-/* forms */
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -199,8 +182,6 @@ input, textarea, select, .uneditable-input {
   @extend .error;
  }
 
- /* users index */
-
 .users {
   list-style: none;
   margin: 0;
@@ -214,15 +195,12 @@ input, textarea, select, .uneditable-input {
   }
 }
 
-/* microposts */
-
 .microposts {
   list-style: none;
   margin: 10px 0 0 0;
   
   li {
     padding: 10px 0;
-    /*border-top: 1px solid #e8e8e8;*/
   }
 }
 
@@ -240,8 +218,6 @@ aside {
     margin-bottom: 5px;
   }
 }
-
-/* debug symbols */
 
 .debug_dump {
   clear: both;
