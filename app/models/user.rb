@@ -48,10 +48,10 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_romania(romania_name)
-    all = where(name: User.romania_to_name(romania_name))
-    return nil if all.empty?
-    all.first
-end
+		all = where(name: User.romania_to_name(romania_name))
+	return nil if all.empty?
+		all.first
+	end
 
   private
 

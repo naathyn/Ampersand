@@ -23,6 +23,6 @@ class Micropost < ActiveRecord::Base
     if match = TO_ID_REGEX.match(content)
       user = User.find_by_romania(match[1])
       self.to=user if user
-    end
+		end
 	end
 end

@@ -16,24 +16,16 @@
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
     		<div class="container">
-    		<%= render 'layouts/navigation' %>
-				</div>
-			</nav>
-		</header>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            	<div class="span12">
-								<%= render 'layouts/messages' %>
-      					<%= yield %>
-							</div>
+    			<%= render 'layouts/navigation' %>
 						</div>
-						<footer class="footer">
-      			<%= render 'layouts/footer' %>
-					</footer>
-    		</div>
+							</nav>
+								</header>
+    						<div class="container">
+							<%= render 'layouts/messages' %>
+    				<%= yield %>
+					<footer class="footer">
+    		<%= render 'layouts/footer' %>
 			</div>
-		</div>
+		</footer>
 	</body>
 </html>

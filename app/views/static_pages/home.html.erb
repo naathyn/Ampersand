@@ -3,37 +3,40 @@
     <aside class="span4">
       <section>
         <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section>
-        <%= render 'shared/micropost_form' %>
-      </section>
-    </aside>
-    <div class="span8">
-      <h3>Your Social Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>
-<% else %>
-  <div class="center hero-unit">
+      		</section>
+      			<section>
+        			<%= render 'shared/stats' %>
+      					</section>
+      					<section>
+									<%= render 'shared/micropost_form' %>
+								</section>
+							</aside>
+						<div class="span8">
+					<h3>Social Feed</h3>
+				<%= render 'shared/feed' %>
+			</div>
+		</div>
+	<% else %>
+	<div class="center hero-unit">
     <h1>Ampersand</h1>
-
-    <p>
-    An independent online outlet with many similarites to Twitter.
-    </p>
-      <h3>Built on Linux with 100% free software</h3>
-    <span class="label label-important">Important Updates</span>
-		<p>
-		Read more on the <%= link_to "Updates", updates_path %> page.
-    </p>
+    	<p>
+    		An independent online outlet with many similarites to Twitter.
+    	</p>
+      	<h3>Built on Linux with 100% free software</h3>
+    	<span class="label label-important">Important Updates</span>
+			<p>
+				Read more on the <%= link_to "Updates", updates_path %> page.
+    	</p>
 
     <%= link_to "Sign up now!", signup_path,
                                 class: "btn btn-large btn-primary" %>
 
   </div>
-
-
-  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>
+<center>
+<h4>Developing:</h4>
+<p>Integrated, Ajax-style, User @replies...</p>
+				<div class="progress progress-striped active" style="width: 30%;">
+    			<div class="bar" style="width: 45%;"><b>40%</b></div>
+    	</div>
+</center>
