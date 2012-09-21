@@ -1,5 +1,5 @@
 <% if signed_in? %>
-		<div class="row">
+		<div class="row-fluid">
     	<aside class="span4">
       		<section>
         		<%= render 'shared/user_info' %>
@@ -21,8 +21,9 @@
 		<div class="center hero-unit">
     	<h1>Ampersand</h1>
     	<h3>
-    		An independent online outlet with many similarites to Twitter.
-    	</h3>
+    		Simple.  Modern.  Interactive.
+			</h3>
+			<h5>In development</h5>
 
     <%= link_to "Sign up now!", signup_path,
                                 class: "btn btn-large btn-primary" %>
