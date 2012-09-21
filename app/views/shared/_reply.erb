@@ -1,7 +1,2 @@
-<%= form_for(@micropost) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :content, rows: "3", placeholder: "Send them a reply..." %>
-  </div>
-  <%= f.submit "Reply", class: "btn btn-primary" %>
-<% end %>
+    <!-- expanding textarea, but limited between 50 and 200px -->  
+    <textarea name="textarea2" rows="2" cols="40" class="expand50-200"></textarea>  

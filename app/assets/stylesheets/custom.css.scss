@@ -76,6 +76,7 @@ p {
 	text-transform: uppercase;
 	letter-spacing: -1px;
   padding-top: 9px;
+	padding-right: 45px;
   font-weight: bold;
   line-height: 1;
   &:hover {
@@ -83,11 +84,6 @@ p {
     color: $blue;
 		text-decoration: none;
   }
-}
-
-#drop {
-	float: right;
-	margin-top: 3px;
 }
 
 footer {
