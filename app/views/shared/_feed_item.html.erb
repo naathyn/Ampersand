@@ -1,10 +1,10 @@
-<div class="well">
-	<li id="<%= feed_item.id %>">
+<div class="well">	
+<li id="<%= feed_item.id %>">
 		<%= link_to gravatar_for(feed_item.user), feed_item.user %>
 			<span class="user">
 				<%= link_to feed_item.user.realname, feed_item.user %>
 					<span class="username"> @<%=feed_item.user.name %>
-						<span class="timestamp">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+						<span class="timestamp"><%= time_ago_in_words(feed_item.created_at) %> ago
 						</span></span></span>
 						<span class="content">
 						<%= feed_item.content %>
@@ -18,23 +18,23 @@
 
 			<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="float:right;">
 
-       <input type="hidden" name="micropost[content]" id="micropost_content" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
+					<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
+
+       	<input type="hidden" name="micropost[content]" id="micropost_content" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
   			<input class="btn btn-small" name="commit" value="Repost" type="submit">
 
 			</form>
-
-		<hr />
 
 			<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="width:100%;margin-bottom:0;padding-bottom:0;">
 
 				<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
 
-					<textarea id="micropost_content" name="micropost[content]">@<%= feed_item.user.name %> </textarea>
+					<textarea id="micropost_content" name="micropost[content]" placeholder="To send <%= feed_item.user.name %> a message type something like: @<%= feed_item.user.name %> Hey, I just joined!  Reply back and I'll follow you!">@<%= feed_item.user.name %> </textarea>
 
 		</span>
 
 			<input class="btn btn-small btn-primary" name="commit" value="Reply" type="submit" />
-			</form>
+		</form>
 		<% end %>
-	</div>
-</li>
+	</li>
+</div>
