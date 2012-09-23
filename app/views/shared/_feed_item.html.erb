@@ -12,23 +12,25 @@
 		title: feed_item.content,
 	class: "btn btn-small", style: "float:right;" %>
 <% end %>
-	<% if current_user != (feed_item.user) %>
-		<form action="/microposts" class="repost" id="micropost_content" method="post" style="float:right;">
-<input name="authenticity_token" 
-                   type="hidden" 
-                   value="$<%= csrf_meta_tags %>
-				<input type="hidden" name="micropost_content" id="micropost[content]" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
-			<input class="btn btn-small" name="commit" value="Repost" type="submit" />
+	<% if current_user != feed_item.user %>
+		<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="float:right;">
+				<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
+					<input type="hidden" name="micropost_content" id="micropost[content]" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
+				<input class="btn btn-small" name="commit" value="Repost" type="submit">
 			</form>
+
 		<hr />
-			<form action="/microposts" class="repost" id="micropost_content" method="post" style="width:100%;margin-bottom:0;padding-bottom:0;">
-				<textarea placeholder="To send <%= feed_item.user.name %> a message, type: @<%= feed_item.user.name %> Hey!  I just joined... message me back or something... I'm gonna follow you!" rows="2">@<%= feed_item.user.name %> </textarea>
-<input name="authenticity_token" 
-                   type="hidden" 
-                   value="$<%= csrf_meta_tags %>
-	<input class="btn btn-small btn-primary" name="commit" value="Reply" type="submit" />
-			</form>
-		<% end %>
-	</span>
-	</li>
-</div>
+
+			<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="width:100%;margin-bottom:0;padding-bottom:0;">
+
+				<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
+
+					<textarea id="micropost_content" name="micropost[content]">@<%= feed_item.user.name %> </textarea>
+
+<input type="hidden" name="micropost_content" id="micropost[content]">
+			<input class="btn btn-small btn-primary" name="commit" value="Reply" type="submit">
+				</form>
+			<% end %>
+		</span>
+	</div>
+</li>
