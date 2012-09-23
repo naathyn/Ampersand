@@ -7,10 +7,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def help
+  def about
   end
 
-  def about
+  def updates
   end
 
   def contact

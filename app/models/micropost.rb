@@ -2,14 +2,13 @@ class Micropost < ActiveRecord::Base
   attr_accessible :content, :to
   belongs_to :user
 	belongs_to :to, class_name: "User"
+	
+	validates :user_id, presence: true
+	validates :content, presence: true, length: { maximum: 300 }
 
-  validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 300 }
-
-	default_scope order: 'microposts.created_at DESC'
 	before_save :send_reply_to
 
-	private
+	default_scope order: 'microposts.created_at DESC'
 
   def self.from_users_followed_by_including_replies(user)
     followed_user_ids = "SELECT followed_id FROM relationships

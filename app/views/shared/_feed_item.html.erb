@@ -14,13 +14,19 @@
 <% end %>
 	<% if current_user != (feed_item.user) %>
 		<form action="/microposts" class="repost" id="micropost_content" method="post" style="float:right;">
-			<input class="btn btn-small" name="commit" value="Repost" type="submit">
+<input name="authenticity_token" 
+                   type="hidden" 
+                   value="$<%= csrf_meta_tags %>
 				<input type="hidden" name="micropost_content" id="micropost[content]" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
+			<input class="btn btn-small" name="commit" value="Repost" type="submit" />
 			</form>
 		<hr />
 			<form action="/microposts" class="repost" id="micropost_content" method="post" style="width:100%;margin-bottom:0;padding-bottom:0;">
 				<textarea placeholder="To send <%= feed_item.user.name %> a message, type: @<%= feed_item.user.name %> Hey!  I just joined... message me back or something... I'm gonna follow you!" rows="2">@<%= feed_item.user.name %> </textarea>
-	<input class="btn btn-small btn-primary" name="commit" value="Reply" type="submit">
+<input name="authenticity_token" 
+                   type="hidden" 
+                   value="$<%= csrf_meta_tags %>
+	<input class="btn btn-small btn-primary" name="commit" value="Reply" type="submit" />
 			</form>
 		<% end %>
 	</span>

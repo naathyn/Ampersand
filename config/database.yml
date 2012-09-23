@@ -7,15 +7,6 @@ development:
   password: 12081
   timeout: 5000
 
-test: &test
-  adapter: mysql
-  encoding: utf8
-  database: amp_test
-  pool: 5
-  username: root
-  password: 12081
-  timeout: 5000
-
 production:
   adapter: postgresql
   encoding: unicode

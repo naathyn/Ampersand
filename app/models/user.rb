@@ -10,18 +10,22 @@ attr_accessible :realname, :email, :name, :password, :password_confirmation
                                    dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
-	before_save { |user| user.name = name.downcase }
   before_save { |user| user.email = email.downcase }
+	before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
 
-	VALID_REALNAME_REGEX = /([a-zA-Z]{2,18}\s*)+[a-zA-Z]{3,20}/i
-	VALID_USERNAME_REGEX = /^[a-z\d_]{5,12}$/i
-	VALID_EMAIL_REGEX = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/i
+	VALID_REALNAME = /([a-zA-Z]{2,18}\s*)+[a-zA-Z]{3,20}/i
+	validates :realname, presence: true, format: { with: VALID_REALNAME },
+										uniqueness: { case_sensitive: false }
 
-	validates :realname, presence: true, format: { with: VALID_REALNAME_REGEX }, uniqueness: { case_sensitive: false }
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+	VALID_EMAIL = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/i
+  validates :email, presence: true, format: { with: VALID_EMAIL },
                     uniqueness: { case_sensitive: false }
-  validates :name, presence: true,  format: { with: VALID_USERNAME_REGEX }, uniqueness: true
+
+	VALID_USERNAME = /^[a-z\d_]{5,12}$/i
+  validates :name, presence: true, format: { with: VALID_USERNAME }, 
+										uniqueness: { case_sensitive: false }
+
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
