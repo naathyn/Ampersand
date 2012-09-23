@@ -69,11 +69,6 @@ p {
   line-height: 1.7em;
 }
 
-textarea.ninja {
-left: 0;
-top: 0;
-} 
-
 #logo {
 	float: left;
   font-size: 1.7em;
@@ -132,7 +127,7 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
-	border: 1px solid #ccc;
+	border-radius: 5px 5px 5px 5px;
 }
 
 .stats {
@@ -144,6 +139,7 @@ aside {
     color: gray;
     &:first-child {
       padding-left: 0;
+			padding-right: 10px;
       border: 0;
     }
     &:hover {
@@ -161,7 +157,7 @@ aside {
   margin-top: 10px;
   .gravatar {
     margin: 1px 1px;
-		border: 1px solid #ccc;
+		border-radius: 5px 5px 5px 5px;
   }
 }
 
@@ -202,10 +198,21 @@ input, textarea, select, .uneditable-input {
 
 .microposts {
   list-style: none;
-  margin: 10px 0 0 0;
-  
+  margin: 0px 0 0 0;
+	.username {
+	color: $grayLight;
+	font-weight: normal
+}
+.user {
+	font-weight: bold;
+}
+	.gravatar {
+		height: 48px;
+		width: 48px;
+		border-radius: 5px 5px 5px 5px;
+	}
   li {
-    padding: 10px 0;
+    padding: 0px 0;
   }
 }
 
@@ -215,6 +222,7 @@ input, textarea, select, .uneditable-input {
 
 .timestamp {
   color: $grayLight;
+	float: right;
 }
 
 aside {

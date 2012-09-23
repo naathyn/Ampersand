@@ -1,11 +1,12 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.realname) %>
 <div class="row-fluid">
   <aside class="span4">
     <section>
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.realname %>
       </h1>
+			<small>@<%= @user.name %></p></small>
     </section>
     <section>
       <%= render 'shared/stats' %>
@@ -14,7 +15,7 @@
   <div class="span8">
     <%= render 'follow_form' if signed_in? %>
     <% if @user.microposts.any? %>
-      <h3>Recently Added (<%= @user.microposts.count %>)</h3>
+      <h2>@<%= @user.name %></h2> <h4>Displaying the <%= pluralize(current_user.microposts.count, "most recent discussion") %>.</h4>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
