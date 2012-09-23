@@ -1,10 +1,12 @@
-<form class="navbar-form pull-right" accept-charset="UTF-8" action="/sessions" method="post">
-<input name="authenticity_token" 
-                   type="hidden" 
-                   value=$<%= csrf_meta_tags %>
-	<input class="span2" id="session_name" type="text" name="session[name]" placeholder="Username">
+<form class="navbar-form pull-right" action="/sessions" method="post">
+
+	<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
+
+		<input class="span2" id="session_name" type="text" name="session[name]" placeholder="Username">
+
 		<input class="span2" id="session_password" type="password" name="session[password]" placeholder="Password">
 
-		<input class="btn btn-default" name="commit" value="Sign in" type="submit">
+		<input class="btn btn-default" name="commit" value="Sign in" type="submit" />
+
 	</form>
 </div>

@@ -3,21 +3,18 @@
 		<%= link_to gravatar_for(feed_item.user), feed_item.user %>
 			<span class="user">
 				<%= link_to feed_item.user.realname, feed_item.user %>
-					<span class="username"> @<%=feed_item.user.name %><span class="timestamp">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
-					</span></span></span>
-						<span class="content"><%= feed_item.content %>
-		<% if current_user?(feed_item.user) %>
-	<%= link_to "Delete", feed_item, method: :delete,
+					<span class="username"> @<%=feed_item.user.name %>
+						<span class="timestamp">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+						</span></span></span>
+						<span class="content">
+						<%= feed_item.content %>
+					<% if current_user?(feed_item.user) %>
+				<%= link_to "Delete", feed_item, method: :delete,
   		data: { confirm: "Are you sure you want to delete this?" }, 
 		title: feed_item.content,
 	class: "btn btn-small", style: "float:right;" %>
 <% end %>
-	<% if current_user != feed_item.user %>
-		<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="float:right;">
-				<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
-					<input type="hidden" name="micropost_content" id="micropost[content]" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
-				<input class="btn btn-small" name="commit" value="Repost" type="submit">
-			</form>
+					<% if current_user != feed_item.user %>
 
 		<hr />
 
@@ -27,10 +24,10 @@
 
 					<textarea id="micropost_content" name="micropost[content]">@<%= feed_item.user.name %> </textarea>
 
-<input type="hidden" name="micropost_content" id="micropost[content]">
-			<input class="btn btn-small btn-primary" name="commit" value="Reply" type="submit">
-				</form>
-			<% end %>
 		</span>
+
+			<input class="btn btn-small btn-primary" name="commit" value="Reply" type="submit" />
+			</form>
+		<% end %>
 	</div>
 </li>
