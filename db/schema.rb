@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919012401) do
+ActiveRecord::Schema.define(:version => 20120923040152) do
+
+  create_table "hash_tags", :force => true do |t|
+    t.integer  "micropost_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "hash_tags", ["micropost_id", "tag_id"], :name => "index_hash_tags_on_micropost_id_and_tag_id"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -43,6 +52,14 @@ ActiveRecord::Schema.define(:version => 20120919012401) do
   end
 
   add_index "replies", ["user_id", "to_id"], :name => "index_replies_on_user_id_and_to_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "word"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["word"], :name => "index_tags_on_word"
 
   create_table "users", :force => true do |t|
     t.string   "name"

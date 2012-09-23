@@ -10,6 +10,7 @@ development:
 production:
   adapter: postgresql
   encoding: unicode
-  database: ampersand
   pool: 5
+  username: naathyn
+  password: 12081
   timeout: 5000
