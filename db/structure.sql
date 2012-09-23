@@ -27,19 +27,8 @@ CREATE TABLE `relationships` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_relationships_on_follower_id_and_followed_id` (`follower_id`,`followed_id`),
-  KEY `index_relationships_on_followed_id` (`followed_id`),
-  KEY `index_relationships_on_follower_id` (`follower_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `replies` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `to_id` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_replies_on_user_id_and_to_id` (`user_id`,`to_id`)
+  KEY `index_relationships_on_follower_id` (`follower_id`),
+  KEY `index_relationships_on_followed_id` (`followed_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `schema_migrations` (
@@ -58,15 +47,18 @@ CREATE TABLE `tags` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `realname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_digest` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `remember_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `admin` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `index_users_on_realname` (`realname`),
   UNIQUE KEY `index_users_on_email` (`email`),
+  UNIQUE KEY `index_users_on_name` (`name`),
   KEY `index_users_on_remember_token` (`remember_token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
