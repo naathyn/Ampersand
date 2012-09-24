@@ -14,7 +14,6 @@ module Socialrails
 		config.time_zone = 'Central Time (US & Canada)'
     config.encoding = "utf-8"
     config.filter_parameters += [:password]
-		config.active_record.schema_format = :sql
     config.active_record.whitelist_attributes = true
     config.assets.enabled = true
     config.assets.version = '1.0'
