@@ -17,7 +17,7 @@ CREATE TABLE `microposts` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_microposts_on_user_id_and_created_at` (`user_id`,`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `relationships` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -29,7 +29,7 @@ CREATE TABLE `relationships` (
   UNIQUE KEY `index_relationships_on_follower_id_and_followed_id` (`follower_id`,`followed_id`),
   KEY `index_relationships_on_follower_id` (`follower_id`),
   KEY `index_relationships_on_followed_id` (`followed_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_name` (`name`),
   KEY `index_users_on_remember_token` (`remember_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20120907034207');
 
