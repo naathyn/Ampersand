@@ -3,8 +3,8 @@
 		<%= link_to gravatar_for(feed_item.user), feed_item.user %>
 			<span class="user">
 				<%= link_to feed_item.user.realname, feed_item.user %>
-					<span class="username"> @<%=feed_item.user.name %>
-						<span class="timestamp"><%= time_ago_in_words(feed_item.created_at) %> ago
+					<span class="username"> <small>@<%=feed_item.user.name %></small>
+						<span class="timestamp"><small><%= time_ago_in_words(feed_item.created_at) %> ago </small>
 						</span></span></span>
 						<span class="content">
 						<%= feed_item.content %>
