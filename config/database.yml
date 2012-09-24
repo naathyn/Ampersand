@@ -10,6 +10,3 @@ development:
 production:
   adapter: postgresql
   encoding: unicode
-  database: ampersand
-  pool: 5
-  timeout: 5000
