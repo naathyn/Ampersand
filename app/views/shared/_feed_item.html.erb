@@ -1,5 +1,5 @@
-<div class="well">
-	<li id="<%= feed_item.id %>">
+<div class="well">	
+<li id="<%= feed_item.id %>">
 		<span class="user">
 			<%= link_to gravatar_for(feed_item.user), feed_item.user %>
 				<%= link_to feed_item.user.realname, feed_item.user %>
@@ -16,13 +16,14 @@
 		<% end %>
 	</span>
 </li>
-		<% if current_user != feed_item.user %>
-	<div class="well-footer"><a data-toggle="collapse" data-target="#expand">expand</a>
-<div id="expand" class="show collapse">
-<form action="/microposts" class="new_micropost" id="new_micropost" style="padding-top:10px;margin-left: 58px;margin-right:48px;" method="post">
+
+		<% if current_user!= feed_item.user %>
+
+	<div class="well-footer"><a data-toggle="collapse" data-target="#well-footer<%= feed_item.id %>">expand</a>
+<div id="well-footer<%= feed_item.id %>" class="show collapse">
+<form action="/microposts" class="new_micropost" id="new_micropost" method="post">
 <textarea id="micropost_content" name="micropost[content]">@<%= feed_item.user.name %> </textarea>
 <input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
-<input class="btn btn-small" name="commit" value="Reply" type="submit"></div></div>
-	
+<input class="btn btn-small" name="commit" value="Reply" type="submit"></form></div></div>
 	<% end %>
 </div>
