@@ -35,6 +35,7 @@
     				<%= yield %>
 					<footer class="footer">
     		<%= render 'layouts/footer' %>
+				<%= debug(params) if Rails.env.development? %>
 			</footer>
 		<%= javascript_include_tag "application" %>
 	</body>

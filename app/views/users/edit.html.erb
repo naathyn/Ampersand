@@ -6,8 +6,14 @@
   <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.label :realname, "Full Name" %>
+      <%= f.text_field :realname %>
+
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+
+      <%= f.label :bio, "About Me" %>
+      <%= f.text_area :bio, rows: "2", placeholder: "In a short 200 words, please :)" %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>

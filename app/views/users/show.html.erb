@@ -1,25 +1,14 @@
 <% provide(:title, @user.realname) %>
-<div class="row-fluid">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.realname %>
-      </h1>
-			<small>@<%= @user.name %></small>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-  <div class="span8">
-    <%= render 'follow_form' if signed_in? %>
-    <% if @user.microposts %>
-      <h2>@<%= @user.name %></h2> <h4>Displaying <%= pluralize(@user.microposts.count, "recent discussion") %>.</h4>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
-  </div>
-</div>
+						<div class="profile">
+			<div class="profile-header">	
+			<div class="row-fluid">
+				<%= render 'shared/profile_stats' if signed_in? %>
+				</div></div></div>
+    			<%= render 'follow_form' if signed_in? %>
+						<% if @user.microposts %>
+      		<h4>Private feed under construction</h4>
+      	<ol class="microposts">
+    	<%= render @microposts %>
+		</ol>
+	<%= will_paginate @microposts %>
+<% end %>

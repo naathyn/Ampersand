@@ -1,0 +1,24 @@
+<% @user ||= current_user %>
+        					<%= gravatar_for @user, size: 128, style: "float:left;" %>
+							<div class="profile-inner">
+								<h1 class="fullname">
+        			<%= @user.realname %>
+      				</h1>
+						<h2 class="name"><span class="name">
+					<small>@</small><%= @user.name %></span></h2>
+      	<p class="bio"><%= @user.bio %></p>
+    	<p class="location">
+	<%= @user.location %></p>	</div>
+
+<div class="actions"><% if current_user?(@user) %>
+			<%= link_to "Edit your profile", edit_user_path(current_user), class: "btn" %><% end %> 
+<ul class="stats">
+  	<li><a href="<%= user_path(@user) %>">
+  		<b id="@user"><%= @user.microposts.count %></b> shares
+				</a></li>
+        	<li><a href="<%= following_user_path(@user) %>">
+						<b id="following"><%= @user.followed_users.count %></b> following
+							</a></li>
+              	<li><a href="<%= followers_user_path(@user) %>">
+									<b id="followers"><%= @user.followers.count %></b> followers</a></li>
+</ul></div>

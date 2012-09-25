@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base 
-attr_accessible :realname, :email, :name, :password, :password_confirmation
+attr_accessible :realname, :email, :name, :location, :bio, :password, :password_confirmation
   has_secure_password
   has_many :microposts, dependent: :destroy
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
@@ -25,6 +25,9 @@ attr_accessible :realname, :email, :name, :password, :password_confirmation
 	VALID_USERNAME = /^[a-z\d_]{5,12}$/i
   validates :name, presence: true, format: { with: VALID_USERNAME }, 
 										uniqueness: { case_sensitive: false }
+
+	validates :location, length: { maximum: 20 }
+	validates :bio, length: { maximum: 200 }
 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
