@@ -14,7 +14,6 @@
 			title: feed_item.content,
 			class: "btn btn-small", style: "float:right;" %>
 		<% end %>
-	</span>
 </li>
 		<% if current_user!= feed_item.user %>
 
@@ -29,7 +28,7 @@
 <input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
 <input type="hidden" name="micropost[content]" id="micropost_content" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
 <input class="btn-link" name="commit" value="repost" type="submit" style="padding:0;margin:0;">
-</form></div>
+</form></div></span>
 
 <div id="well-footer<%= feed_item.id %>" class="show collapse">
 <form action="/microposts" class="new_micropost" id="new_micropost" method="post">
