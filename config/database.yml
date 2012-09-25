@@ -4,7 +4,7 @@ development:
   database: amp_dev
   pool: 5
   username: root
-  password: 12081
+  password: 
   timeout: 5000
 
 production:
