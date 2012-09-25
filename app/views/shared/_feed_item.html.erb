@@ -32,7 +32,7 @@
 
 <div id="well-footer<%= feed_item.id %>" class="show collapse">
 <form action="/microposts" class="new_micropost" id="new_micropost" method="post">
-<textarea id="micropost_content" name="micropost[content]">@<%= feed_item.user.name %> </textarea>
+<textarea id="micropost_content" name="micropost[content]" placeholder="To send <%= feed_item.user.name %> a message type something like @<%= feed_item.user.name %> Hey, I just joined!  Reply back and I'll follow you!">@<%= feed_item.user.name %> </textarea>
 <input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
 <input class="btn btn-small" name="commit" value="Reply" type="submit"></form></div>
 
