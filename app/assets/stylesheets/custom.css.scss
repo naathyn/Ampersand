@@ -209,7 +209,7 @@ input, textarea, select, .uneditable-input {
 }
 
 .well {
-	line-height: 10px;
+	line-height: 14px;
 	background-color: rgb(255, 255, 255);
 	border: 1px solid rgb(240, 240, 240);
 	border-radius: 0px 0px 0px 0px;
@@ -219,11 +219,13 @@ input, textarea, select, .uneditable-input {
 }
 
 .well-footer {
-	a {
-		font-size: 12px;
-		color: $grayLight;
-    &:hover {
-    	color: $blueDark;
+a {
+	padding: 10px;
+	font-size: 12px;
+	color: $grayLight;
+  &:hover {
+  	color: $blueDark;
+		cursor: pointer;
 		}
 	}
 	form {
@@ -231,6 +233,17 @@ input, textarea, select, .uneditable-input {
 		margin-left:58px;
 		margin-right:48px;
 		}
+
+	.btn-link {
+		float: left;
+		padding: 0;
+  	border: 0;
+		font-size: 12px;
+		color: $grayLight;
+    &:hover {
+    	color: $blueDark
+		}
+	}
 }
 
 .well-header {
@@ -281,6 +294,7 @@ input, textarea, select, .uneditable-input {
 .content {
   display: block;
 	word-wrap: break-word;
+	margin-left:58px;
 }
 
 aside {
