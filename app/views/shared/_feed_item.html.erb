@@ -9,10 +9,11 @@
 						<span class="content">
 					<%= feed_item.content %>
 				<% if current_user?(feed_item.user) %>
+			<div class="well-footer">
 			<%= link_to "Delete", feed_item, method: :delete,
   		data: { confirm: "Are you sure you want to delete this?" }, 
 			title: feed_item.content,
-			class: "btn btn-small", style: "float:right;" %>
+			class: "btn btn-link", style: "float:none;padding:0;margin:-58px;" %>
 		<% end %>
 </li>
 		<% if current_user!= feed_item.user %>
@@ -26,7 +27,7 @@
 <form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="margin:-5px;padding:0;display:inline;">
 <a data-toggle="collapse" data-target="#well-footer<%= feed_item.id %>">expand</a></form>
 <input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
-<input type="hidden" name="micropost[content]" id="micropost_content" value="@<%= feed_item.user.name %> <%= feed_item.content %>">
+<input type="hidden" name="micropost[content]" id="micropost_content" value="<%= feed_item.content %> | originally posted by @<%= feed_item.user.name %> about <%= time_ago_in_words(feed_item.created_at) %> ago |">
 <input class="btn-link" name="commit" value="repost" type="submit" style="padding:0;margin:0;">
 </form></div></span>
 
@@ -34,7 +35,7 @@
 <form action="/microposts" class="new_micropost" id="new_micropost" method="post">
 <textarea id="micropost_content" name="micropost[content]" placeholder="To send <%= feed_item.user.name %> a message type something like @<%= feed_item.user.name %> Hey, I just joined!  Reply back and I'll follow you!">@<%= feed_item.user.name %> </textarea>
 <input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
-<input class="btn btn-small" name="commit" value="Reply" type="submit"></form></div>
+<input class="btn-small btn-primary" name="commit" value="Reply" type="submit"></form></div>
 
 </div>
 	<% end %>
