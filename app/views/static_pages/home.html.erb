@@ -1,24 +1,24 @@
 <% if signed_in? %>
+<div class="row-fluid">
+     <aside class="span4">
+       <section>
+         <%= render 'shared/user_info' %>
+       </section>
+       <section>
+         <%= render 'shared/stats' %>
+       </section>
+       <section>
+				<%= render 'shared/micropost_form' %>
+			</section>
+			</aside>
+				<div class="span8">
+					<div class="well-header"><%= link_to current_user.realname, current_user %></div>
+					<%= render 'shared/feed' %>
+						<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
+							</div>
+					</div>
+				<% else %>
 		<div class="row-fluid">
-    	<aside class="span4">
-      		<section>
-        		<%= render 'shared/user_info' %>
-      				</section>
-      					<section>
-        					<%= render 'shared/stats' %>
-      							</section>
-      							<section>
-										<%= render 'shared/micropost_form' %>
-									</section>
-								</aside>
-						<div class="span8">
-					<div class="well-header">&roups :: !nbox :: gl#bals</div>
-				<%= render 'shared/feed' %>
-				<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
-			</div>
-		</div>
-	<% else %>
-	<div class="row-fluid">
 		<div class="center hero-unit">
     	<h1>Ampersand</h1>
     	<h3>

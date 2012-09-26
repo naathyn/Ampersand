@@ -6,6 +6,8 @@ html {
 
 body { 
 	padding-top: 60px;
+	font-size: 14px;
+	line-height: 18px;
 }
 
 body, label, input, textarea, select, button {
@@ -300,10 +302,13 @@ aside {
 .stats {
   overflow: auto;
   a {
+		font-size: 12px;
     float: left;
     padding: 0 10px;
     border-left: 1px solid $grayLighter;
     color: gray;
+		line-height: 16px;
+		text-transform: uppercase;
     &:first-child {
       padding-left: 0;
 			padding-right: 10px;
@@ -316,6 +321,8 @@ aside {
   }
   strong {
     display: block;
+		color: rgb(51, 51, 51);
+		font-size: 14px;
   }
 }
 
