@@ -212,12 +212,6 @@ small {
 					font-size: 14px;
 					}
 			}
-			ul {
-				list-style: none outside none;
-			ol {
-				padding: 0px;
-		}
-			}
 			li {
 				display: inline;
 				line-height: 16px;
@@ -228,15 +222,11 @@ small {
 					border-color: rgb(232, 232, 232);
 					first-child {
 						border-top: 0px none;
-				
 				}
 			}
 		}
 	}
 }
-
-
-
 
 #logo {
 	float: left;
@@ -300,7 +290,7 @@ aside {
 }
 
 .stats {
-  overflow: auto;
+  overflow: auto;	
   a {
 		font-size: 12px;
     float: left;
@@ -396,18 +386,6 @@ a {
 	form {
 		padding-top:10px;
 		margin-right:48px;
-		}
-
-	.btn-link {
-		margin-left:58px;
-		float: left;
-		padding: 0;
-  	border: 0;
-		font-size: 12px;
-		color: $grayLight;
-    &:hover {
-    	color: $blueDark
-		}
 	}
 }
 

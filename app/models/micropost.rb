@@ -23,7 +23,7 @@ class Micropost < ActiveRecord::Base
   def send_reply_to
     if match = TO_ID_REGEX.match(content)
       user = User.find_by_romania(match[1])
-      self.to=user if user
+      self.to ||= user if user
 		end
 	end
 end

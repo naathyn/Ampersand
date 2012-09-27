@@ -4,10 +4,10 @@ gem 'rails'
 gem 'thin'
 gem 'mysql'
 gem 'bootstrap-sass'
-gem 'bcrypt-ruby'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
+gem 'bcrypt-ruby'
 
 group :assets do
   gem 'sass-rails'

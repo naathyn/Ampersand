@@ -1,9 +1,11 @@
 <% if signed_in? %>
 <div class="row-fluid">
      <aside class="span4">
-       <section>
-         <%= render 'shared/user_info' %>
-       </section>
+			<a href="<%= user_path(current_user) %>" style="text-decoration:none;color:#454545;">
+       	<section style="cursor:pointer;">
+        	<%= render 'shared/user_info' %>
+       	</section>
+			</a>
        <section>
          <%= render 'shared/stats' %>
        </section>
