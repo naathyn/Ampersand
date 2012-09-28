@@ -2,17 +2,19 @@
 <div class="profile">
 	<div class="profile-header">
 		<div class="row-fluid">
-			<%= render 'shared/profile_stats' if signed_in? %>
+		<% if signed_in? %>
+			<%= render 'shared/profile_stats' %>
 				</div></div></div>
-    			<%= render 'follow_form' if signed_in? %>
-						<% if @user.microposts.any? && current_user?(@user) %>
+    			<%= render 'follow_form' %>
+						<% if @user.atreply.any? && current_user?(@user) %>
 				<div class="well-header"><%= pluralize(@user.atreply.count, "@reply") %> for you</div>
       	<ol class="microposts">
     	<%= render @microposts %>
 		</ol>
-	<%= will_paginate @microposts %>
-	<div class="well-bottom" style="padding-bottom:10px;"></div>
+		<%= will_paginate @microposts %>
+			<div class="well-bottom" style="padding-bottom:10px;"></div>
+				<% end %>
+			<% if @profile_items.any? %>
+		<%= render 'shared/profile' %>
 	<% end %>
-<% if @profile_items.any? %>
-<%= render 'shared/profile' if signed_in? %>
 <% end %>
