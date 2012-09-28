@@ -7,6 +7,7 @@
 				</div></div></div>
     			<%= render 'follow_form' %>
 						<% if @user.atreply.any? && current_user?(@user) %>
+							
 				<div class="well-header"><%= pluralize(@user.atreply.count, "@reply") %> for you</div>
       	<ol class="microposts">
     	<%= render @microposts %>

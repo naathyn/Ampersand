@@ -6,7 +6,7 @@
 			</section>
 			</aside>
 				<div class="span9" style="float:right;min-width:400px;">
-					<div class="well-header">Displaying <%= Message.all.count %> private messages.</div>
+					<div class="well-header">Displaying <%= @inbox_items.count %> private messages.</div>
 					<%= render 'shared/inbox' %>
 					<div class="well-bottom" style="text-align:right;"><%= link_to "Return to Feed", root_path %></div>
 				</div>
