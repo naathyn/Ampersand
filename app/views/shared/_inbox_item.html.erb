@@ -3,7 +3,7 @@
 		<span class="user">
 			<%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
 				<%= link_to inbox_item.user.realname, inbox_item.user %>
-					<span class="username"> <small>@<%= inbox_item.user.name %></small>
+					<span class="username"> <small>!<%= inbox_item.user.name %></small>
 						<span class="timestamp"><small><%= time_ago_in_words(inbox_item.created_at) %> ago </small>
 					</span></span></span>
 				<span class="content">
