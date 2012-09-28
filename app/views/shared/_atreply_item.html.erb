@@ -1,0 +1,22 @@
+<div class="well">
+<li id="<%= atreply_item.id %>">
+		<span class="user">
+			<%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
+				<%= link_to atreply_item.user.realname, atreply_item.user %>
+					<span class="username"> <small>@<%= atreply_item.user.name %></small>
+						<span class="timestamp"><small><%= time_ago_in_words(atreply_item.created_at) %> ago </small>
+						</span></span></span>
+						<span class="content">
+					<%= atreply_item.content %></span></li>
+
+	<div class="well-footer">
+
+<a data-toggle="collapse" data-target="#well-footer<%= atreply_item.id %>" style="float:none;padding:0;">Reply</a>
+
+<div id="well-footer<%= atreply_item.id %>" class="show collapse">
+<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="padding-bottom:0;padding-top:10px;padding-right:58px;margin:0;">
+<textarea id="micropost_content" name="micropost[content]" placeholder="Tip:  <%= atreply_item.user.realname %> sent you a message.  Be sure to reply back by typing @<%= atreply_item.user.name %> followed by your message."></textarea>
+<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
+<input class="btn-small btn-primary" name="commit" value="Reply" type="submit" style="margin:0;"></form></div></div>
+
+</div>
