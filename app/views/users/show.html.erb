@@ -6,9 +6,13 @@
 				</div></div></div>
     			<%= render 'follow_form' if signed_in? %>
 						<% if @user.microposts.any? && current_user?(@user) %>
-      		<h4>Private feed under construction</h4>
+				<div class="well-header"><%= pluralize(@user.atreply.count, "@reply") %> for you</div>
       	<ol class="microposts">
     	<%= render @microposts %>
 		</ol>
 	<%= will_paginate @microposts %>
+	<div class="well-bottom" style="padding-bottom:10px;"></div>
+	<% end %>
+<% if @profile_items.any? %>
+<%= render 'shared/profile' if signed_in? %>
 <% end %>

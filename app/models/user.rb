@@ -45,7 +45,7 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
   end
 
   def feed
-    Micropost.from_users_followed_by_including_replies(self)
+    Micropost.from_users_followed_by(self)
   end
 
   def inbox
