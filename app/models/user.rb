@@ -52,6 +52,10 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
     Message.from_users_followed_by_including_convos(self)
   end
 
+  def share!(feed_item)
+    microposts.create!(micropost: feed_item.id)
+  end
+
   def following?(other_user)
     relationships.find_by_followed_id(other_user.id)
   end
