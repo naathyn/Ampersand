@@ -17,7 +17,7 @@ Socialrails::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
-  match '/connect', to: 'static_pages#connect', as: '/'
+  match '/connect', to: 'static_pages#connect'
   match '/updates', to: 'static_pages#updates'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
