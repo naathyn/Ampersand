@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926184440) do
+ActiveRecord::Schema.define(:version => 20120928012912) do
 
   create_table "hash_tags", :force => true do |t|
     t.integer  "micropost_id"
@@ -23,16 +23,16 @@ ActiveRecord::Schema.define(:version => 20120926184440) do
   add_index "hash_tags", ["micropost_id", "tag_id"], :name => "index_hash_tags_on_micropost_id_and_tag_id"
 
   create_table "messages", :force => true do |t|
-    t.string   "content"
+    t.string   "convo"
     t.integer  "user_id"
     t.integer  "to_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "micropost_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "messages", ["micropost_id"], :name => "index_messages_on_micropost_id"
+  add_index "messages", ["to_id"], :name => "index_messages_on_to_id"
   add_index "messages", ["user_id", "created_at"], :name => "index_messages_on_user_id_and_created_at"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -43,16 +43,6 @@ ActiveRecord::Schema.define(:version => 20120926184440) do
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
-
-  create_table "profiles", :force => true do |t|
-    t.string   "location"
-    t.string   "bio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "profiles", ["bio"], :name => "index_profiles_on_bio"
-  add_index "profiles", ["location"], :name => "index_profiles_on_location"
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"

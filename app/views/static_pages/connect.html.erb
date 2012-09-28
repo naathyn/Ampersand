@@ -1,0 +1,24 @@
+<% if signed_in? %>
+<div class="row-fluid">
+     <aside class="span4">
+			<a href="<%= user_path(current_user) %>" style="text-decoration:none;color:#454545;">
+       	<section style="cursor:pointer;">
+        	<%= render 'shared/user_info' %>
+       	</section>
+			</a>
+       <section>
+         <%= render 'shared/stats' %>
+       </section>
+       <section>
+				<%= render 'shared/message_form' %>
+			</section>
+			</aside>
+				<div class="span8">
+					<div class="well-header"><%= link_to current_user.realname, current_user %></div>
+					<%= render 'shared/inbox' %>
+						<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
+							</div>
+					</div>
+				<% else %>
+<%= redirect_to root_url %>
+<% end %>

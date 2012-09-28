@@ -1,14 +1,15 @@
 class MessagesController < ApplicationController
+  before_filter :signed_in_user
   before_filter :correct_user, only: :destroy
 
   def create
-    @message = current_user.messages.build(params[:content])
+    @message = current_user.messages.build(params[:message])
     if @message.save
-      flash[:success] = "Your post has been submitted!"
+      flash[:success] = "Your message has been sent!"
       redirect_to root_url
     else
-      @feed_items = []
-      render 'static_pages/home'
+      @inbox_items = []
+      render 'static_pages/connect'
     end
   end
 
@@ -20,7 +21,7 @@ class MessagesController < ApplicationController
   private
 
     def correct_user
-      @message = feed_item.find_by_id(params[:id])
+      @message = current_user.messages.find_by_id(params[:id])
       redirect_to root_url if @message.nil?
     end
 end

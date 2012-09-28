@@ -1,14 +1,18 @@
 class User < ActiveRecord::Base 
 attr_accessible :realname, :email, :name, :location, :bio, :password, :password_confirmation
   has_secure_password
+
   has_many :microposts, dependent: :destroy
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
+	has_many :messages, dependent: :destroy
+	has_many :convos, foreign_key: "to_id", class_name: "Message", dependent: :destroy
+
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
-                                   class_name: "Relationship",
-                                   dependent: :destroy
-  has_many :followers, through: :reverse_relationships, source: :follower
+  																	class_name: "Relationship",
+																		dependent: :destroy
+  has_many :followers, through: :reverse_relationships
 
   before_save { |user| user.email = email.downcase }
 	before_save { |user| user.name = name.downcase }
@@ -36,6 +40,10 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
     Micropost.from_users_followed_by_including_replies(self)
   end
 
+  def inbox
+    Message.from_users_followed_by_including_convos(self)
+  end
+
   def following?(other_user)
     relationships.find_by_followed_id(other_user.id)
   end
@@ -48,17 +56,17 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
     relationships.find_by_followed_id(other_user.id).destroy
   end
 
-  def romania
+  def regex
    name.gsub(/ /,"_")
   end
 
-  def self.romania_to_name(ro)
-   ro.gsub(/_/," ")
+  def self.regex_to_name(reg)
+   reg.gsub(/_/," ")
   end
 
-  def self.find_by_romania(romania_name)
-		all = where(name: User.romania_to_name(romania_name))
-	return nil if all.empty?
+  def self.find_by_regex(regex_name)
+		all = where(name: User.regex_to_name(regex_name))
+		return nil if all.empty?
 		all.first
 	end
 

@@ -7,6 +7,13 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def connect
+    if signed_in?
+      @message = current_user.messages.build
+      @inbox_items = current_user.inbox.paginate(page: params[:page])
+    end
+  end
+
   def updates
   end
 
