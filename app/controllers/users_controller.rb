@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    @microposts = @user.atreply.paginate(page: params[:page])
+		@profile_item = @user.profile.paginate(page: params[:page])
   end
 
   def new
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome, and thanks for joining!"
+      flash[:success] = "Welcome, and thanks for joining!  It is recommended to check the Updates page frequently as this site is still in development.  There you can find all the where's and why's as well as nifty tips and trick."
       redirect_to @user
     else
       render 'new'

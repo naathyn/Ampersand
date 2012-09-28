@@ -36,6 +36,14 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+	def profile
+		Micropost.from_users(self)
+	end
+
+  def atreply
+    Micropost.from_users_including_replies(self)
+  end
+
   def feed
     Micropost.from_users_followed_by_including_replies(self)
   end

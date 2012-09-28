@@ -1,7 +1,7 @@
 <%= form_for(@message) do |f| %>
   <%= render 'shared/messages_error', object: f.object %>
   <div class="field">
-    <%= f.text_area :convo, rows: "5", placeholder: "Send a private message like this, !username their private message..." %>
+    <%= f.text_area :convo, rows: "5", placeholder: "Tip:  Send a private message by typing !username before their message..." %>
   </div>
   <%= f.submit "Send", class: "btn-small btn-primary" %>
 <% end %>

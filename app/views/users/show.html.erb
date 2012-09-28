@@ -1,11 +1,11 @@
 <% provide(:title, @user.realname) %>
 <div class="profile">
-	<div class="profile-header">	
+	<div class="profile-header">
 		<div class="row-fluid">
 			<%= render 'shared/profile_stats' if signed_in? %>
 				</div></div></div>
     			<%= render 'follow_form' if signed_in? %>
-						<% if @user.microposts %>
+						<% if @user.microposts.any? && current_user?(@user) %>
       		<h4>Private feed under construction</h4>
       	<ol class="microposts">
     	<%= render @microposts %>

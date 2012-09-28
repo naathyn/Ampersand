@@ -11,6 +11,25 @@ class Micropost < ActiveRecord::Base
 
 private
 
+  def self.from_users(user)
+    followed_user_ids = "SELECT followed_id FROM relationships
+                         WHERE follower_id = :user_id"
+    where("user_id = :user_id", user_id: user.id)
+  end
+
+  def self.from_users_including_replies(user)
+    followed_user_ids = "SELECT followed_id FROM relationships
+                         WHERE follower_id = :user_id"
+    where("to_id = :user_id", user_id: user.id)
+  end
+
+  def self.from_users_followed_by(user)
+    followed_user_ids = "SELECT followed_id FROM relationships
+                         WHERE follower_id = :user_id"
+    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
+          user_id: user.id)
+  end
+
   def self.from_users_followed_by_including_replies(user)
     followed_user_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"
@@ -22,7 +41,7 @@ private
   def send_reply
     if match = REPLY_REGEX.match(content)
       user = User.find_by_regex(match[1])
-      self.to ||= user if user.following?(user)
+      self.to ||= user
 		end
 	end
 end
