@@ -19,6 +19,8 @@
 
       <%= f.label :bio, "About Me" %>
       <%= f.text_area :bio, rows: "2", placeholder: "In a short 200 words, please :)" %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
@@ -30,11 +32,9 @@
 
     <% end %>
 
-  <% unless User.find_by_id(3) %>
   	<%= link_to "Delete account", @user, method: :delete,
 																	class: "btn-small btn-danger",
                                   data: { confirm: "Are you sure you want to delete your account?  We hate to see you go." } %>
-		<% end %>
 
 	</div>
 </div>
