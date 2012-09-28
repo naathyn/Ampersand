@@ -9,7 +9,7 @@ Socialrails::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :messages, only: [:create, :destroy]
+  resources :messages, only: [:create]
 
   root to: 'static_pages#home'
 
@@ -17,7 +17,7 @@ Socialrails::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
-  match '/connect', to: 'static_pages#connect'
+  match '/connect', to: 'static_pages#connect', as: '/'
   match '/updates', to: 'static_pages#updates'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'

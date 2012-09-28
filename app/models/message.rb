@@ -6,7 +6,8 @@ class Message < ActiveRecord::Base
 	default_scope order: 'messages.created_at DESC'
 
 	validates :user_id, presence: true
-  validates :convo, presence: true
+  VALID_MESSAGE = /\A!/i
+  validates :convo, presence: true, format: { with: VALID_MESSAGE }
 
 	before_save :send_message
 

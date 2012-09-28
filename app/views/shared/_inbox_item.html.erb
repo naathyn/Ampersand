@@ -8,25 +8,12 @@
 						</span></span></span>
 						<span class="content">
 					<%= inbox_item.convo %></span></li>
-				<% if current_user?(inbox_item.user) %>
-			<div class="well-footer">
-			<%= link_to "delete", inbox_item, method: :delete,
-  		data: { confirm: "Are you sure you want to delete this?" }, 
-			style: "float:none;padding:0;margin:0;",
-			title: inbox_item.convo %>
-			</div>
-		<% end %>
-		<% if current_user!=inbox_item.user %>
-
-	<div class="well-footer">
-
-<a data-toggle="collapse" data-target="#well-footer<%= inbox_item.id %>" style="float:none;padding:0;">reply</a>
+<% if current_user!=(inbox_item.user) %>
+<div class="well-footer">
+<a data-toggle="collapse" data-target="#well-footer<%= inbox_item.id %>" style="float:none;padding:0;">Reply</a>
 
 <div id="well-footer<%= inbox_item.id %>" class="show collapse">
 <form action="/messages" class="new_message" id="new_message" method="post" style="padding-bottom:0;padding-top:10px;padding-right:58px;margin:0;">
-<textarea id="message_convo" name="message[convo]"></textarea>
+<textarea id="message_convo" name="message[convo]" placeholder="<%= inbox_item.user.realname %> sent you a private message.  Reply back by typing something like !<%= inbox_item.user.name %> I got your private message!"></textarea>
 <input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
-<input class="btn-small btn-primary" name="commit" value="Reply" type="submit" style="margin:0;"></form></div></div>
-
-	<% end %>
-</div>
+<input class="btn-small btn-primary" name="commit" value="Reply" type="submit" style="margin:0;"></form></div></div><% end %></div>

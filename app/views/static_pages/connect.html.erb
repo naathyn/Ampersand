@@ -1,24 +1,16 @@
 <% if signed_in? %>
 <div class="row-fluid">
-     <aside class="span4">
-			<a href="<%= user_path(current_user) %>" style="text-decoration:none;color:#454545;">
-       	<section style="cursor:pointer;">
-        	<%= render 'shared/user_info' %>
-       	</section>
-			</a>
-       <section>
-         <%= render 'shared/stats' %>
-       </section>
+     <aside class="span3" style="float:left;position:fixed;width:228px;">
        <section>
 				<%= render 'shared/message_form' %>
 			</section>
 			</aside>
-				<div class="span8">
-					<div class="well-header"><%= link_to current_user.realname, current_user %></div>
+				<div class="span9" style="float:right;min-width:400px;">
+					<div class="well-header">Displaying <%= Message.all.count %> private messages.</div>
 					<%= render 'shared/inbox' %>
-						<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
-							</div>
-					</div>
-				<% else %>
-<%= redirect_to root_url %>
+					<div class="well-bottom" style="text-align:right;"><%= link_to "Return to Feed", root_path %></div>
+				</div>
+			</div>
+		<% else %>
+	<%= redirect_to root_url %>
 <% end %>
