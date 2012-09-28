@@ -4,8 +4,8 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
 
   has_many :microposts, dependent: :destroy
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
-	has_many :messages, dependent: :destroy
-	has_many :convos, foreign_key: "to_id", class_name: "Message", dependent: :destroy
+	has_many :messages
+	has_many :convos, foreign_key: "to_id", class_name: "Message"
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -50,10 +50,6 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
 
   def inbox
     Message.from_users_followed_by_including_convos(self)
-  end
-
-  def share!(feed_item)
-    microposts.create!(micropost: feed_item.id)
   end
 
   def following?(other_user)
