@@ -33,9 +33,15 @@
     							<div class="container-fluid">
 								<%= render 'layouts/messages' %>
     					<%= yield %>
+						<% if signed_in? %>
+					<%= javascript_include_tag "application" %>
+					</body>
+						</html>
+						<% else %>
 						<footer class="footer">
-    			<%= render 'layouts/footer' %>
+  				<%= render 'layouts/footer' %>
 				</footer>
 			<%= javascript_include_tag "application" %>
 		</body>
 	</html>
+<% end %>
