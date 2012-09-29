@@ -1,13 +1,14 @@
 class Micropost < ActiveRecord::Base
   attr_accessible :content, :to
+
   belongs_to :user
 	belongs_to :to, class_name: "User"
-
-	default_scope order: 'microposts.created_at DESC'
-	before_save :send_reply
 	
 	validates :user_id, presence: true
 	validates :content, presence: true, length: { maximum: 500 }
+
+	default_scope order: 'microposts.created_at DESC'
+	before_save :send_reply
 
 private
 

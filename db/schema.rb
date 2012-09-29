@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928012912) do
+ActiveRecord::Schema.define(:version => 20120929024243) do
 
   create_table "hash_tags", :force => true do |t|
     t.integer  "micropost_id"

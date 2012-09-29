@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base 
 attr_accessible :realname, :email, :name, :location, :bio, :password, :password_confirmation
-  has_secure_password
+	has_secure_password
 
   has_many :microposts, dependent: :destroy
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
+
 	has_many :messages
 	has_many :convos, foreign_key: "to_id", class_name: "Message"
 
@@ -12,8 +13,8 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
   has_many :reverse_relationships, foreign_key: "followed_id",
   																	class_name: "Relationship",
 																		dependent: :destroy
-  has_many :followers, through: :reverse_relationships
-
+  has_many :followers, through: :reverse_relationships  
+  
   before_save { |user| user.email = email.downcase }
 	before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
@@ -30,7 +31,7 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
   validates :name, presence: true, format: { with: VALID_USERNAME }, 
 										uniqueness: { case_sensitive: false }
 
-	validates :location, length: { maximum: 20 }
+	validates :location, length: { maximum: 50 }
 	validates :bio, length: { maximum: 200 }
 
   validates :password, length: { minimum: 6 }
