@@ -14,23 +14,25 @@
 			</section>
 			</aside>
 				<div class="span8">
-					<div class="well-header"><%= link_to "@you", user_path(@user), style: "padding-right:15px;" %><%= link_to "!nbox", connect_path %></div>
-					<%= render 'shared/feed' %>
-						<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
-							</div>
-					</div>
-				<% else %>
-		<div class="row-fluid">
-		<div class="center hero-unit">
-    	<h1>Ampersand</h1>
-    	<h3>
-    		Simple.  Modern.  Interactive.
-			</h3>
-			<h5>In development</h5>
+					<div class="well-header">
+						<%= link_to "@you", user_path(@user), style: "padding-right:15px;" %>
+							<%= link_to "!nbox", connect_path %></div>
+								<%= render 'shared/feed' %>
+									<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
+								</div>
+						</div>
+					<% else %>
+				<div class="row-fluid">
+			<div class="center hero-unit">
+    <h1>Ampersand</h1>
+    <h3>
+    	Simple.  Modern.  Interactive.
+		</h3>
+		<h5>In development</h5>
 
     <%= link_to "Sign up now!", signup_path,
                                 class: "btn btn-large btn-primary" %>
-</div>
+	</div>
 	<div class="row-fluid">
 				<div class="span6">
 			<h2>A Note To Guests</h2>
@@ -42,10 +44,10 @@
 			</div>
 		<div class="span6">
 			<h2>Developments</h2>
-					<p>
+				<p>
 					This is a fairly active era in regards to the development of this app.  Each major development and a brief description can be found in the updates section.  If you are keeping up with with he development process, or if you are a mere 'passer-byer' and are confused with something, chances are it is temporary and/or in development.  All major developments are documented on the Updates page as well as future plans.
-					</p>
-					<p><a class="btn" href="updates">View details &raquo;</a></p>
-			</div>
+				</p>
+			<p><a class="btn" href="updates">View details &raquo;</a></p>
 		</div>
+	</div>
 <% end %>

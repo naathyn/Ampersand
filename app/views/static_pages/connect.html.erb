@@ -1,16 +1,14 @@
 <% if signed_in? %>
-<div class="row-fluid">
-     <aside class="span3">
-       <section>
+	<div class="row-fluid">
+  	<aside class="span3">
+    	<section>
 				<%= render 'shared/message_form' %>
 			</section>
-			</aside>
-				<div class="span9">
-					<div class="well-header">Displaying <%= @inbox_items.count %> private messages.</div>
-					<%= render 'shared/inbox' %>
-					<div class="well-bottom" style="text-align:right;"><%= link_to "Return to Feed", root_path %></div>
-				</div>
+		</aside>
+			<div class="span9">
+				<%= render 'shared/inbox' %>
 			</div>
+		</div>
 		<% else %>
 	<%= yield %>
 <% end %>
