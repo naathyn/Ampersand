@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'thin'
 gem 'mysql'
 gem 'bootstrap-sass'
 gem 'will_paginate'

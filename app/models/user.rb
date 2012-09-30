@@ -5,7 +5,7 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
   has_many :microposts, dependent: :destroy
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
-	has_many :messages
+	has_many :messages, dependent: :destroy
 	has_many :convos, foreign_key: "to_id", class_name: "Message"
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -31,7 +31,7 @@ attr_accessible :realname, :email, :name, :location, :bio, :password, :password_
   validates :name, presence: true, format: { with: VALID_USERNAME }, 
 										uniqueness: { case_sensitive: false }
 
-	validates :location, length: { maximum: 20 }
+	validates :location, length: { maximum: 25 }
 	validates :bio, length: { maximum: 200 }
 
   validates :password, length: { minimum: 6 }

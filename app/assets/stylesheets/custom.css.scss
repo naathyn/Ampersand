@@ -136,7 +136,9 @@ small {
 	line-height: 16px;
 	border-radius: 6px 6px 6px 6px;
 	background-clip: padding-box;
-	.profile-header {
+}
+
+.profile-header {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
@@ -144,44 +146,49 @@ small {
   background-color: rgb(249, 249, 249);
   padding: 12px;
   line-height: 16px;
-	.profile-inner {
+}
+
+.profile-inner {
 	line-height: 16px;
 	float: left;
 	width: 50%;
 	margin: 0 0 0 12px;
-		h2 {
-			text-align:left;
-			letter-spacing: 0;
-			font-size: 18px;
-			font-weight: normal;
-			line-height: 24px;
-			color: rgb(119, 119, 119);
-			margin-bottom: 5px;
-			.name {
-				direction: ltr;
-				.fullname {
-					letter-spacing: 0;
-					text-align: left;
-    			font-size: 30px;
-    			line-height: 1;
-    			margin-bottom: 2px;
-    			font-weight: bold;
-    			color: rgb(51, 51, 51);
-					.bio {
-						font: italic 13px/18px Georgia,"Times New Roman",serif;
-						color: rgb(119, 119, 119);
-						word-wrap: break-word;
-						.location {
-							font-size: 12px;
-							line-height: 18px;
-							color: rgb(119, 119, 119);
-							}
-						}
-					}
-				}
-			}
-		}
+	h2 {
+		text-align:left;
+		letter-spacing: 0;
+		font-size: 18px;
+		font-weight: normal;
+		line-height: 24px;
+		color: rgb(119, 119, 119);
+		margin-bottom: 5px;
 	}
+}
+
+.name {
+	direction: ltr;
+	.fullname {
+		letter-spacing: 0;
+		text-align: left;
+    font-size: 30px;
+    line-height: 1;
+    margin-bottom: 2px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+		}
+}
+
+.bio {
+	max-width: 340px;
+	font: italic 13px/18px Georgia,"Times New Roman",serif;
+	color: rgb(119, 119, 119);
+	word-wrap: break-word;
+	padding-bottom:7px;
+}
+
+.location {
+	font-size: 12px;
+	line-height: 18px;
+	color: rgb(119, 119, 119);
 }
 
 .actions {
