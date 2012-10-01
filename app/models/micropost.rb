@@ -42,7 +42,7 @@ private
   def send_reply
     if match = REPLY_REGEX.match(content)
       user = User.find_by_regex(match[1])
-      self.to ||= user
+      self.to ||= user if user
 		end
 	end
 end

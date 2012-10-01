@@ -1,16 +1,16 @@
 <% provide(:title, @title) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <%= gravatar_for @user %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile page", @user %></span>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
+	<div class="row-fluid">
+  	<aside class="span4">
+			<a href="<%= user_path(current_user) %>" style="text-decoration:none;color:#454545;">
+       	<section style="cursor:pointer;">
+        	<%= render 'shared/user_info' %>
+       	</section>
+			</a>
+    	<section>
+      	<%= render 'shared/stats' %>
+      		<% if @users.any? %>
+        		<div class="user_avatars">
+          		<% @users.each do |user| %>
             <%= link_to gravatar_for(user, size: 42), user %>
           <% end %>
         </div>
@@ -18,8 +18,8 @@
     </section>
   </aside>
   <div class="span8">
+	<% if @users.any? %>
     <h3><%= @title %></h3>
-    <% if @users.any? %>
       <ul class="users">
         <%= render @users %>
       </ul>
