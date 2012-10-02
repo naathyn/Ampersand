@@ -1,5 +1,5 @@
 <% provide(:title, 'Members') %>
-<h1 style="padding-bottom:10px;">Members</h1>
+<h2 style="padding-bottom:10px;"><%= pluralize(@users.count, "member") %> and growing</h2>
 
 <%= will_paginate %>
 
