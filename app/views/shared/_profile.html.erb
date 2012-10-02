@@ -1,8 +1,8 @@
-<% if @profile_items.any? %>
-	<div class="well-header" style="margin-top:10px;"><%= pluralize(@user.profile.count, "share") %> by <%= @user.name %></div>
+<div class="well-header" style="margin-top:10px;"><%= pluralize(@user.profile.count, "share") %> by <%= @user.name %></div>
+	<% if @profile_items.any? %>
 		<ol class="microposts">
 			<%= render partial: 'shared/profile_item', collection: @profile_items %>
 			</ol>
-		<%= will_paginate @profile_items %>
-	<div class="well-bottom" style="margin-bottom:15px;"></div>
+		<div class="well-bottom" style="margin-bottom:15px;"></div>
+	<%= will_paginate @profile_items %>
 <% end %>

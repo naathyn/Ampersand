@@ -1,0 +1,27 @@
+<%= link_to gravatar_for(feed_item.user), feed_item.user %>
+	<h4>
+		<%= link_to feed_item.user.realname, feed_item.user %>
+	</h4>
+	<small>
+	@<%=feed_item.user.name %>
+</small>
+<div class="stats">
+  <a href="<%= user_path(feed_item.user) %>">
+    <strong id="microposts" class="stat">
+      <%= feed_item.user.microposts.count %>
+		</strong>
+    shares
+  </a>
+  <a href="<%= following_user_path(feed_item.user) %>">
+    <strong id="following" class="stat">
+      <%= feed_item.user.followed_users.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_user_path(feed_item.user) %>">
+    <strong id="followers" class="stat">
+      <%= feed_item.user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>

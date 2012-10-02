@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-
   before_filter :signed_in_user,
-                only: [:index, :show, :edit, :update, :destroy, :following, :followers]
+  					only: [:index, :show, :edit, :update, :destroy, :following, :followers]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
 
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome, and thanks for joining!  It is recommended to check the Updates page frequently as this site is still in development.  There you can find all the where's and why's as well as nifty tips and trick."
+      flash[:success] = "Welcome, and thanks for joining!  Why don't you edit your profile and tell us a little about yourself?  Whenever you're ready, hit Home to check out your feed.  Post some content and follow members to fill it up!"
       redirect_to @user
     else
       render 'new'

@@ -7,18 +7,15 @@
 						<span class="timestamp"><small><%= time_ago_in_words(profile_item.created_at) %> ago </small>
 						</span></span></span>
 						<span class="content">
-					<%= profile_item.content %></span></li>
+					<%= profile_item.content %></span>
+					<div class="well-footer">
 				<% if current_user?(profile_item.user) %>
-			<div class="well-footer">
 			<%= link_to "Delete", profile_item, method: :delete,
   		data: { confirm: "Are you sure you want to delete this?" }, 
 			style: "float:none;padding:0;margin:0;",
 			title: profile_item.content %>
-			</div>
-		<% end %>
+		<% end %></div>
 		<% if current_user!=(profile_item.user) %>
-
-	<div class="well-footer">
 
 		<a data-toggle="collapse" data-target="#well-footer<%= profile_item.id %>" style="float:none;padding:0;">Reply</a>
 
@@ -29,4 +26,5 @@
 		<input class="btn-small btn-primary" name="commit" value="Reply" type="submit" style="margin:0;"></form></div></div>
 
 	<% end %>
+</li>
 </div>
