@@ -1,4 +1,3 @@
-<%= yield flash.now[:info] = "As of now, the new feed hover/expand only works properly in this feed." %>
 <% if @feed_items.any? %>
   <ol class="microposts">
     <%= render partial: 'shared/feed_item', collection: @feed_items %>
