@@ -1,6 +1,7 @@
-<%= gravatar_for current_user, size: 65 %>
+<% @user ||= current_user %>
+<%= gravatar_for @user, size: 65 %>
 	<h4>
-		<%= current_user.realname %>
+		<%= @user.realname %>
 	</h4>
 	<small>
 	view my profile page
