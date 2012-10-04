@@ -19,7 +19,9 @@
 
 			<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="padding-bottom:0;padding-top:10px;margin:0;width:65%;">
 
-				<textarea id="micropost_content" name="micropost[content]" placeholder="Tip:  <%= atreply_item.user.realname %> sent you a message.  Be sure to reply back by typing @<%= atreply_item.user.name %> followed by your message."></textarea>
+<a rel="tooltip" title="Your reply is ready to go!  Just include your message after @<%= atreply_item.user.name %>" style="padding:0;margin:0;">
+
+				<textarea id="micropost_content" name="micropost[content]" placeholder="Tip:  <%= atreply_item.user.realname %> sent you a message.  Be sure to reply back by typing @<%= atreply_item.user.name %> followed by your message.">@<%= atreply_item.user.name %> </textarea></a>
 
 				<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
 				<input class="btn-small btn-primary" name="commit" value="Reply" type="submit" style="margin:0;"></form>

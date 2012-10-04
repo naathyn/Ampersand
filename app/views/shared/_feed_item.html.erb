@@ -27,8 +27,8 @@
 		<% if current_user!=(feed_item.user) %>
 
 	<form action="/microposts" class="new_micropost" id="new_micropost" method="post">
-
-  	<textarea id="micropost_content" name="micropost[content]" placeholder="Reply to <%= feed_item.user.realname %>'s share by typing something like @<%= feed_item.user.name %> Hey, follow me!"></textarea>
+<a rel="tooltip" title="Your reply is ready to go!  Just include your message after @<%= feed_item.user.name %>" style="padding:0;margin:0;">
+  	<textarea id="micropost_content" name="micropost[content]" placeholder="Reply to <%= feed_item.user.realname %>'s share by typing something like @<%= feed_item.user.name %> Hey, follow me!">@<%= feed_item.user.name %> </textarea></a>
 
 			<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
 
