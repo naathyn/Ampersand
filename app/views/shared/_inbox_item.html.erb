@@ -21,7 +21,7 @@
 
 			<form action="/messages" class="new_message" id="new_message" method="post" style="padding-bottom:0;padding-top:10px;padding-right:58px;margin:0;">
 
-<a rel="tooltip" title="Your reply is ready to go!  Just include your private message after !<%= inbox_item.user.name %>" style="padding:0;margin:0;">
+<a rel="tooltip" title="Your reply is ready to go!  Just include your private message after !<%= inbox_item.user.name %>" style="padding:0;margin:0;" >
 
 				<textarea id="message_convo" name="message[convo]" placeholder="Tip:  <%= inbox_item.user.realname %> sent you a private message.  Reply back by typing something like !<%= inbox_item.user.name %> I got your private message!">!<%= inbox_item.user.name %> </textarea></a>
 
