@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
+	has_many :opinions, foreign_key: "fan_id", dependent: :destroy
+	has_many :fans, through: :opinions
+
 	has_many :messages, dependent: :destroy
 	has_many :convos, foreign_key: "to_id", class_name: "Message"
 
@@ -46,12 +49,24 @@ class User < ActiveRecord::Base
     Micropost.from_users_including_replies(self)
   end
 
-  def feed
-    Micropost.from_users_followed_by(self)
-  end
-
   def inbox
     Message.from_users_followed_by_including_convos(self)
+  end
+
+  def feed
+    Micropost.from_users_followed_by_including_replies(self)
+  end
+
+  def liked?(feed_item)
+    opinions.find_by_like_id(feed_item.id)
+  end
+
+  def like!(feed_item)
+    opinions.create!(like_id: feed_item.id)
+  end
+
+  def unlike!(feed_item)
+    opinions.find_by_like_id(feed_item.id).destroy
   end
 
   def following?(other_user)

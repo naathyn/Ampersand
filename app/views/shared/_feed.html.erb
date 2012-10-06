@@ -1,9 +1,9 @@
-<% if @feed_items.any? %>
+<% if @microposts.any? %>
   <ol class="microposts">
-    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+    <%= render partial: 'shared/feed_item', collection: @microposts %>
   		</ol>
 				<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
-  		<%= will_paginate @feed_items %>
+  		<%= will_paginate @microposts %>
 		<% else %>
 	<%= yield flash.now[:info] = "Your feed looks kinda dull.  How about following a few members or sharing some content to fill it up!" %>
 <% end %>

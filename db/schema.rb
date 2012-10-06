@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120929024243) do
+ActiveRecord::Schema.define(:version => 20121004221251) do
 
   create_table "hash_tags", :force => true do |t|
     t.integer  "micropost_id"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(:version => 20120929024243) do
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "opinions", :force => true do |t|
+    t.integer  "fan_id"
+    t.integer  "like_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "opinions", ["fan_id", "like_id"], :name => "index_opinions_on_fan_id_and_like_id", :unique => true
+  add_index "opinions", ["fan_id"], :name => "index_opinions_on_fan_id"
+  add_index "opinions", ["like_id"], :name => "index_opinions_on_like_id"
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"

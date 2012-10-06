@@ -1,5 +1,23 @@
+<% @micropost.id ||= feed_item.id %>
 <div class="well">
-	<li id="<%= feed_item.id %>" style="padding:0;">
+	<li id="like_form" style="padding:0;">
+
+		<div id="like_form<%= feed_item.id %>" style="display:inline;">
+  <% if current_user.liked?(feed_item) %>
+<%= form_for(current_user.opinions.find_by_like_id(feed_item),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Unlike", class: "btn btn-small btn-default" %>
+<% end %>
+  <% else %>
+		<%= form_for(current_user.opinions.build(like_id: feed_item.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :like_id %></div>
+  <%= f.submit "Like", class: "btn btn-small btn-primary" %>
+	<% end %>
+  <% end %>
+	</div>
+
 		<span class="user">
 			<%= link_to gravatar_for(feed_item.user), feed_item.user %>
 				<%= link_to feed_item.user.realname, feed_item.user %>
@@ -16,6 +34,7 @@
 				<a data-toggle="collapse" data-target="#comment<%= feed_item.id %>" style="float:none;padding:0;margin:0;">Expand</a>
 
 			<div id="comment<%= feed_item.id %>" class="show collapse">
+
 
 			<% if current_user?(feed_item.user) %>
 			<%= link_to "Delete", feed_item, method: :delete,
