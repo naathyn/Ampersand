@@ -5,27 +5,24 @@ html {
 }
 
 body { 
+	font-family: Helvetica,Arial,freesans,clean,sans-serif;
 	padding-top: 60px;
 	font-size: 14px;
 	line-height: 18px;
 }
 
-body, label, input, textarea, select, button {
-	font-family: Helvetica,arial,freesans,clean,sans-serif;
-}
-
 @import "bootstrap-responsive";
 
 @mixin box_sizing {
+	box-sizing: border-box;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;
   -moz-box-sizing: border-box;
+	-moz-border-radius: 0 0 5px 5px;
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   -webkit-border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05) inset;
 }
 
 @mixin shadows {
@@ -56,20 +53,14 @@ textarea {
   resize: vertical;
 }
 
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-
-ul, ol {
-	padding: 0;
-	margin: 0;
-}
-
-ul {
-	list-style: none;
+input, textarea, select, .uneditable-input {
+	font-family: Helvetica,Arial,freesans,clean,sans-serif;
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 10px;
+  height: auto !important;
+  margin-bottom: 10px;
+	@include box_sizing;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -115,124 +106,24 @@ p {
 	margin: 0
 }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0
+ul, ol {
+	padding: 0;
+	margin: 0;
 }
 
-td,th {
-	padding: 0
+ul {
+	list-style: none;
 }
 
 small {
 	font-size: 12px
 }
 
-.profile {
-	text-shadow: 0px 1px 0px rgb(255, 255, 255);
-	position: relative;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	margin-bottom: 10px;
-	line-height: 16px;
-	border-radius: 6px 6px 6px 6px;
-	background-clip: padding-box;
-}
-
-.profile-header {
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background-color: rgb(249, 249, 249);
-  padding: 12px;
-  line-height: 16px;
-}
-
-.profile-inner {
-	line-height: 16px;
-	float: left;
-	width: 50%;
-	margin: 0 0 0 12px;
-	h2 {
-		text-align:left;
-		letter-spacing: 0;
-		font-size: 18px;
-		font-weight: normal;
-		line-height: 24px;
-		color: rgb(119, 119, 119);
-		margin-bottom: 5px;
-	}
-}
-
-.name {
-	direction: ltr;
-	.fullname {
-		letter-spacing: 0;
-		text-align: left;
-    font-size: 30px;
-    line-height: 1;
-    margin-bottom: 2px;
-    font-weight: bold;
-    color: rgb(51, 51, 51);
-		}
-}
-
-.bio {
-	max-width: 340px;
-	font: italic 13px/18px Georgia,"Times New Roman",serif;
-	color: rgb(119, 119, 119);
-	word-wrap: break-word;
-	padding-bottom:7px;
-}
-
-.location {
-	font-size: 12px;
-	line-height: 18px;
-	color: rgb(119, 119, 119);
-}
-
-.actions {
-	position: relative;
-	float: right;
-	line-height: 16px;
-		.stats {
-		max-height: 300px;
-		overflow: hidden;
-		strong {
-			display: inline;
-			}
-			a {
-				float: none;
-				display: block;
-				border-width: 1px 0px 0px;
-				border-style: solid none none;
-				border-color: rgb(232, 232, 232);
-				color: rgb(153,153,153);
-				font-size: 10px;
-				line-height: 16px;
-				text-transform: uppercase;
-				&:first-child {
-					border-left: 0px none;
-					}
-				strong {
-					color: rgb(51,51,51);
-					font-size: 14px;
-					}
-			}
-			li {
-				display: inline;
-				line-height: 16px;
-				a {
-					padding: 6px 12px 6px 0px;
-					border-width: 1px 0px 0px;
-					border-style: solid none none;
-					border-color: rgb(232, 232, 232);
-					first-child {
-						border-top: 0px none;
-				}
-			}
-		}
-	}
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
 }
 
 #logo {
@@ -288,12 +179,10 @@ aside {
       margin-bottom: 3px;
     }
   }
-}
-
-.gravatar {
-  float: left;
-  margin-right: 10px;
-	border-radius: 5px 5px 5px 5px;
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
 }
 
 .stats {
@@ -323,37 +212,6 @@ aside {
   }
 }
 
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-		border-radius: 5px 5px 5px 5px;
-  }
-}
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  padding: 10px;
-  height: auto !important;
-  margin-bottom: 15px;
-	@include box_sizing;
-}
-
-#error_explanation {
-  color:#f00;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
-  }
-}
-
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
- }
-
 .users {
   list-style: none;
   margin: 0;
@@ -367,39 +225,143 @@ input, textarea, select, .uneditable-input {
   }
 }
 
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+		border-radius: 5px 5px 5px 5px;
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+.profile {
+	text-shadow: 0px 1px 0px rgb(255, 255, 255);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin-bottom: 10px;
+	line-height: 16px;
+	border-radius: 6px 6px 6px 6px;
+	background-clip: padding-box;
+}
+
+.profile-header {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: rgb(249, 249, 249);
+  padding: 12px;
+  line-height: 16px;
+}
+
+.profile-inner {
+	line-height: 16px;
+	float: left;
+	width: 50%;
+	margin: 0 0 0 12px;
+	h2 {
+		text-align:left;
+		letter-spacing: 0;
+		font-size: 18px;
+		font-weight: normal;
+		line-height: 24px;
+		color: rgb(119, 119, 119);
+		margin-bottom: 5px;
+	}
+}
+
+.name {
+	direction: ltr;
+	.fullname {
+		letter-spacing: 0;
+		text-align: left;
+    font-size: 30px;
+    line-height: 1;
+    margin-bottom: 2px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+		}
+}
+
+.bio {
+	max-width: 420px;
+	font: italic 13px/18px Georgia,"Times New Roman",serif;
+	color: rgb(119, 119, 119);
+	word-wrap: break-word;
+	padding-bottom:7px;
+}
+
+.location {
+	font-size: 12px;
+	line-height: 18px;
+	color: rgb(119, 119, 119);
+}
+
+.actions {
+	position: relative;
+	float: right;
+	line-height: 16px;
+}
+
+.actions .stats {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.actions .stats strong {
+  display: inline;
+}
+
+.actions .stats a {
+  float: none;
+  display: block;
+  border-width: 1px 0px 0px;
+  border-style: solid none none;
+  border-color: rgb(232, 232, 232);
+  color: rgb(153,153,153);
+  font-size: 10px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.actions .stats:first-child a {
+  border-left: 0px none;
+}
+
+.actions .stats a strong {
+  color: rgb(51,51,51);
+  font-size: 14px;
+}
+
+.actions .stats li {
+  display: inline;
+  line-height: 16px;
+}
+
+.actions .stats li a {
+  padding: 6px 12px 6px 0px;
+  border-width: 1px 0px 0px;
+  border-style: solid none none;
+  border-color: rgb(232, 232, 232);
+}
+
+.actions .stats li:first-child a {
+  border-top: 0px none;
+}
+
 .well {
 	background-color: rgb(253, 253, 253);
-	line-height: 14px;
+	line-height: 10px;
 	border: 1px solid rgb(240, 240, 240);
 	border-radius: 0px 0px 0px 0px;
 	margin-bottom: 0px;
 	padding: 10px;
 	@include shadows;
-}
-
-.well-footer {
-	margin-left:58px;
-	a {
-		margin:0;
-		padding: 10px;
-		font-size: 12px;
-		color: $grayLight;
-	}
-	form {
-		padding-top:10px;
-		margin-right:48px;
-	}
-}
-
-.active {
-	a {
- 		color: rgb(0, 136, 204);
-	}
-}
-
-.inside {
-	background-color: rgb(243, 243, 243);
-	cursor: pointer;
 }
 
 .well-header {
@@ -412,6 +374,55 @@ input, textarea, select, .uneditable-input {
 	@include shadows-border;
 }
 
+.well-inner .gravatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.well-inner .user {
+	font-weight: bold;
+}
+
+.well-inner .admin a {
+	font-weight: bold;
+	color: $green;
+}
+
+.well-inner .username {
+	color: #ABA;
+	font-weight: normal
+}
+
+.well-inner .timestamp {
+  color: $grayLight;
+  float: right;
+  font-weight: normal;
+}
+
+.well-inner .content {
+	line-height: 21px;
+  display: block;
+	word-wrap: break-word;
+	margin-left:60px;
+	margin-top: 3px;
+}
+
+.well-footer {
+	margin-top: 1px;
+	font-size: 12px;
+	margin-left: 60px;
+}
+
+.btn-link {
+	margin-top: -3px;
+	padding: 0;
+	font-size: 12px;
+		&:hover {
+			text-decoration: underline;
+		}
+}
+
 .well-bottom {
 	border: 1px solid rgb(240, 240, 240);
 	border-radius: 0px 0px 5px 5px;
@@ -420,48 +431,93 @@ input, textarea, select, .uneditable-input {
 	@include shadows-border;
 }
 
-.microposts {
-	list-style: none;
+.well-inner {
+	background-color: rgb(253, 253, 253);
   margin: 0px 0 0 0;
-		.user {
-			font-weight: bold;
-			.timestamp {
-  			color: $grayLight;
-				float: right;
-				font-weight: normal;
-				}
-				.username {
-					color: #ABA;
-					font-weight: normal
-					}
-				.gravatar {
-					height: 48px;
-					width: 48px;
-					border-radius: 5px 5px 5px 5px;
-				}
-		}
-  	li {
-			padding-bottom: 5px;
-		}
+  padding: 11px 10px 5px;
+	cursor: pointer;
 }
 
-.content {
-  display: block;
-	word-wrap: break-word;
-	margin-left:58px;
+.well.hover:hover {
+	background-color: rgb(243, 243, 243);
 }
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
+
+.well-inner:hover .well-footer a {
+	color: $blue;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.share-actions {
+	display: inline-block;
+	height: 0;
+}
+
+.share-actions .btn-link {
+  color: $blue;
+}
+
+.share-actions a {
+  display: inline;
+	color: $grayLight;
+}
+
+.share-actions li {
+	display: inline;
+	opacity: 0;
+}
+
+.well-inner:hover li {
+    opacity: 100;
+}
+
+.shown {
+	color: $grayLight;
+	vertical-align: 6px;
+}
+
+.inline-container {
+	padding: 10px 28px 0 28px;
+}
+
+.inline-container form {
+	margin: 0;
+}
+
+[class^="icon-comment"], [class*=" icon-comment"] {
+	vertical-align: -4px;
+	margin-right: 6px;
+	margin-left: 6px;
+}
+
+[class^="icon-trash"], [class*=" icon-trash"] {
+	vertical-align: 4px;
+	margin-left: 6px;
+	margin-right: 1px;
+}
+
+[class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
+	vertical-align: 2px;
+	margin-left: 6px;
+	margin-right: 1px;
+}
+
+[class^="icon-heart"], [class*=" icon-heart"] {
+	vertical-align: 3px;
+	margin-left: 7px;
+}
+
+#error_explanation {
+  color:#f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
   }
 }
 
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-	@include box_sizing;
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
 }

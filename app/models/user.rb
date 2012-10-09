@@ -53,20 +53,20 @@ class User < ActiveRecord::Base
     Message.from_users_followed_by_including_convos(self)
   end
 
-  def feed
+  def share
     Micropost.from_users_followed_by_including_replies(self)
   end
 
-  def liked?(feed_item)
-    opinions.find_by_like_id(feed_item.id)
+  def liked?(share_item)
+    opinions.find_by_like_id(share_item.id)
   end
 
-  def like!(feed_item)
-    opinions.create!(like_id: feed_item.id)
+  def like!(share_item)
+    opinions.create!(like_id: share_item.id)
   end
 
-  def unlike!(feed_item)
-    opinions.find_by_like_id(feed_item.id).destroy
+  def unlike!(share_item)
+    opinions.find_by_like_id(share_item.id).destroy
   end
 
   def following?(other_user)

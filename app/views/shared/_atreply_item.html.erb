@@ -1,12 +1,10 @@
-<div class="well">
-	<li id="<%= atreply_item.id %>">
+<div id="<%= atreply_item.user.name %>_<%= atreply_item.id %>" class="well well-inner">
 		<span class="user">
 			<%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
-				<%= link_to atreply_item.user.realname, atreply_item.user %>
+				<%= link_to atreply_item.user.realname, atreply_item.user %></span>
 				<a data-toggle="collapse" data-target="#well-footer<%= atreply_item.id %>" style="color:rgb(51,51,51);text-decoration:none;">
-					<span class="username"> <small>@<%= atreply_item.user.name %></small>
-						<span class="timestamp"><small><%= time_ago_in_words(atreply_item.created_at) %> ago </small>
-						</span></span></span>
+					<span class="username"> <small>@<%= atreply_item.user.name %></small></span>
+						<span class="timestamp"><small><%= time_ago_in_words(atreply_item.created_at) %> ago </small></span>
 						<span class="content">
 					<%= atreply_item.content %>
 					</span></a>
@@ -17,6 +15,22 @@
 
 		<div id="well-footer<%= atreply_item.id %>" class="show collapse">
 
+		<div id="like_form<%= atreply_item.id %>">
+  <% if current_user.liked?(atreply_item) %>
+		<%= form_for(current_user.opinions.find_by_like_id(atreply_item),
+    						html: { method: :delete },
+             		remote: true) do |f| %>
+  	<%= f.submit "Unlike", class: "btn-link" %>
+	<% end %>
+  <% else %>
+		<%= form_for(current_user.opinions.build(like_id: atreply_item.id), 
+				remote: true) do |f| %>
+  			<div><%= f.hidden_field :like_id %></div>
+  					<%= f.submit "Like", class: "btn-link" %>
+					<% end %>
+  			<% end %>
+			</div>
+
 			<form action="/microposts" class="new_micropost" id="new_micropost" method="post" style="padding-bottom:0;padding-top:10px;margin:0;width:65%;">
 
 <a rel="tooltip" title="Your reply is ready to go!  Just include your message after @<%= atreply_item.user.name %>" style="padding:0;margin:0;">
@@ -25,7 +39,6 @@
 
 				<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
 				<input class="btn-small btn-primary" name="commit" value="Reply" type="submit" style="margin:0;"></form>
-			</div>
 		</div>
-	</li>
+	</div>
 </div>
