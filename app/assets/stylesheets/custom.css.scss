@@ -61,6 +61,7 @@ input, textarea, select, .uneditable-input {
   height: auto !important;
   margin-bottom: 10px;
 	display: inline-block;
+	resize: none;
 	@include box_sizing;
 }
 
@@ -500,10 +501,9 @@ aside {
 	width: 380px;
 	border-radius: 4px 4px 4px 4px;
 	padding: 9px;
-	resize: none;
 }
 
-.inline-container form.active textarea {
+.inline-container form.active textarea:focus {
 	height: 78px !important;
 	color: rgb(69, 69, 69);
 	font-size: 13px;
