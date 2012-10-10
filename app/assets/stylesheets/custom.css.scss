@@ -15,13 +15,13 @@ body {
 
 @mixin box_sizing {
 	box-sizing: border-box;
-	border-radius: 0 0 5px 5px;
+	border-radius: 0 0 4px 4px;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;
   -moz-box-sizing: border-box;
-	-moz-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 4px 4px;
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   -webkit-box-sizing: border-box;
-  -webkit-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 4px 4px;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
@@ -55,11 +55,12 @@ textarea {
 
 input, textarea, select, .uneditable-input {
 	font-family: Helvetica,Arial,freesans,clean,sans-serif;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204);
   width: 100%;
   padding: 10px;
   height: auto !important;
   margin-bottom: 10px;
+	display: inline-block;
 	@include box_sizing;
 }
 
@@ -384,7 +385,7 @@ aside {
 	font-weight: bold;
 }
 
-.well-inner .admin a {
+.well .admin a {
 	font-weight: bold;
 	color: $green;
 }
@@ -414,13 +415,17 @@ aside {
 	margin-left: 60px;
 }
 
-.btn-link {
+.well-footer .btn-link {
 	margin-top: -3px;
 	padding: 0;
 	font-size: 12px;
 		&:hover {
 			text-decoration: underline;
 		}
+}
+
+.well-footer .collapse {
+	margin-left: -10px;
 }
 
 .well-bottom {
@@ -438,52 +443,137 @@ aside {
 	cursor: pointer;
 }
 
-.well.hover:hover {
-	background-color: rgb(243, 243, 243);
+.well-inner:hover {
+  background-color: rgb(243, 243, 243);
 }
 
-
-.well-inner:hover .well-footer a {
-	color: $blue;
-	&:hover {
-		text-decoration: underline;
-	}
-}
-
-.share-actions {
-	display: inline-block;
-	height: 0;
-}
-
-.share-actions .btn-link {
-  color: $blue;
-}
-
-.share-actions a {
-  display: inline;
-	color: $grayLight;
-}
-
-.share-actions li {
-	display: inline;
-	opacity: 0;
-}
-
-.well-inner:hover li {
+.well-inner:hover .well-footer li {
     opacity: 100;
 }
 
-.shown {
+.well-inner:hover .well-footer a {
+    color: $blue;
+}
+
+.well-footer .shown {
 	color: $grayLight;
 	vertical-align: 6px;
 }
 
-.inline-container {
-	padding: 10px 28px 0 28px;
+.well-footer .share-actions {
+	display: inline-block;
+	height: 0;
+}
+
+.well-footer .share-actions .btn-link {
+  color: $blue;
+}
+
+.well-footer .share-actions a {
+  display: inline;
+}
+
+.well-footer .share-actions li {
+	display: inline;
+	opacity: 0;
+}
+
+.well-footer .inline-share-reply {
+	display: block;
+}
+
+.inline-share-reply .inline-container {
+	padding: 10px 10px 0;
+	float: left;
+	display: block;
 }
 
 .inline-container form {
-	margin: 0;
+	margin: -5px 0 -5px;
+}
+
+.inline-container form textarea {
+	color: rgb(170, 170, 170);
+	font-size: 13px;
+	line-height: 18px;
+	height: 38px !important;
+	width: 380px;
+	border-radius: 4px 4px 4px 4px;
+	padding: 9px;
+	resize: none;
+}
+
+.inline-container form.active textarea {
+	height: 78px !important;
+	color: rgb(69, 69, 69);
+	font-size: 13px;
+	line-height: 18px;
+}
+
+.inline-container form.active input {
+	display: block;
+}
+
+.inline-container form input {
+	display: none;
+}
+
+.share-stats {
+	height: 50px;
+	overflow: hidden;
+	border-top: 1px solid rgb(232, 232, 232);
+}
+
+.share-stats ul {
+	margin-top: 10px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.share-stats li {
+	display: inline;
+}
+
+.share-stats li:first-child a {
+	padding-left: 0;
+	border-left: 0px none;
+}
+
+.share-stats a {
+	float: left;
+	padding: 7px 12px;
+	color: rgb(153, 153, 153);
+	font-size: 10px;
+	line-height: 16px;
+	text-transform: uppercase;
+	width: auto;
+}
+
+.share-stats .gravatar-show {
+ overflow: hidden;
+}
+
+.share-stats .gravatar-show a {
+	padding: 11px 0px;
+	cursor: pointer;
+}
+
+.share-stats .gravatar-show a:first-child {
+	padding-left: 12px;
+	border-left: 1px solid rgb(232, 232, 232);
+}
+
+.gravatar-show .gravatar {
+	float: left;
+	margin-right: 5px;
+	width: 25;
+	height: 25;
+	border-radius: 3px 3px 3px 3px;
+}
+
+.other-info {
+	clear: both;
+	margin-top: 10px;
+	overflow: hidden;
 }
 
 [class^="icon-comment"], [class*=" icon-comment"] {

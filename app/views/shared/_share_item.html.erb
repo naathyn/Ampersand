@@ -49,13 +49,15 @@
 					<% end %>
 
   			<% end %>
-				<div class="inline-reply-share">
+				<div class="inline-share-reply">
 					<div id="<%= share_item.id %>_reply" class="show collapse">
-						<form action="/microposts" class="new_micropost" id="new_micropost" method="post">
-					<div class="inline-container">
-  			<textarea id="micropost_content" name="micropost[content]" placeholder="Reply to <%= share_item.user.realname %>'s share by typing something like @<%= share_item.user.name %> Hey, follow me!" style="margin-top:5px;border-top: 1px solid $grayLight;">@<%= share_item.user.name %> </textarea>
+						<div class="inline-container">
+
+					<form action="/microposts" class="new_micropost" id="new_micropost" method="post">
+	  			<textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= share_item.user.name %>">@<%= share_item.user.name %> </textarea>
 					<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
 				<input class="btn-small btn-primary" name="commit" value="Reply" type="submit"></form>
+
 			</div></div></div>
 				<% else %>
 

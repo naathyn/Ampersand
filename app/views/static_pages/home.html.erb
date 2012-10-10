@@ -1,3 +1,4 @@
+<% provide(:title, @title) %>
 <%= yield flash.now[:info] = "Last updated October 3rd, at 8:15 p.m. CST" %>
 <% if signed_in? %>
 <div class="row-fluid">
