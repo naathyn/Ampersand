@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @atreply_items = @user.atreply.paginate(page: params[:page])
 		@profile_items = @user.profile.paginate(page: params[:page])
+		@micropost = current_user.microposts.build
   end
 
   def new
