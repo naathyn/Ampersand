@@ -5,10 +5,10 @@ html {
 }
 
 body { 
-	font-family: Helvetica,Arial,freesans,clean,sans-serif;
-	padding-top: 60px;
+	font-family: "Helvetica Neue",Arial,sans-serif;
 	font-size: 14px;
 	line-height: 18px;
+	padding-top: 60px;
 }
 
 @import "bootstrap-responsive";
@@ -54,7 +54,7 @@ textarea {
 }
 
 input, textarea, select, .uneditable-input {
-	font-family: Helvetica,Arial,freesans,clean,sans-serif;
+	font-family: "Helvetica Neue",Arial,sans-serif;
   border: 1px solid rgb(204, 204, 204);
   width: 100%;
   padding: 10px;
@@ -131,11 +131,10 @@ small {
 #logo {
 	float: left;
   font-size: 1.8em;
-  color: $gray;;
+  color: $gray;
 	text-transform: uppercase;
 	letter-spacing: -1px;
-  padding-top: 9px;
-	padding-right: 45px;
+	padding: 9px 45px 0 0;
   font-weight: bold;
   line-height: 1;
   &:hover {
@@ -143,6 +142,16 @@ small {
     color: $blue;
 		text-decoration: none;
   }
+}
+
+.login-home form {
+	float: right;
+	display: inline-block;
+	margin-bottom: 0;
+}
+
+.login-home input {
+	display: inline-block;
 }
 
 footer {
@@ -187,7 +196,7 @@ aside {
   }
 }
 
-.stats {
+.stats, .share-stats, .stats-expand {
   overflow: auto;	
   a {
 		font-size: 12px;
@@ -358,12 +367,68 @@ aside {
 
 .well {
 	background-color: rgb(253, 253, 253);
-	line-height: 10px;
 	border: 1px solid rgb(240, 240, 240);
 	border-radius: 0px 0px 0px 0px;
-	margin-bottom: 0px;
-	padding: 10px;
+	margin: 0;
+	padding: 12px 12px;
+	cursor: pointer;
 	@include shadows;
+}
+
+.well-inner {
+	cursor: pointer;
+}
+
+.well-inner .gravatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.well-inner-header {
+	line-height: 11px;
+	margin-bottom: 4px;
+	.user {
+		font-weight: bold;
+	}
+	.admin a {
+		font-weight: bold;
+		color: $green;
+	}
+	.username {
+		color: #ABA;
+		font-weight: normal;
+	}
+	.timestamp {
+		font-size: 107.7%;
+  	color: $grayLight;
+  	float: right;
+  	font-weight: normal;
+	}
+}
+
+.well-inner .content {
+  display: block;
+	margin-left: 60px;
+	word-wrap: break-word;
+	font-size: 107.1%;
+}
+
+.well-footer {
+	font-size: 92.9%;
+	margin-left: 60px;
+	margin-bottom: -9px;
+}
+
+.well-footer .collapse {
+	padding-top: 5px;
+	padding-left: 10px;
+	margin-bottom: -3px;
+	margin-top: -5px;
+}
+
+.well-footer-empty {
+	margin-top: 18px;
 }
 
 .well-header {
@@ -376,59 +441,6 @@ aside {
 	@include shadows-border;
 }
 
-.well-inner .gravatar {
-  height: 50px;
-  width: 50px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-.well-inner .user {
-	font-weight: bold;
-}
-
-.well .admin a {
-	font-weight: bold;
-	color: $green;
-}
-
-.well-inner .username {
-	color: #ABA;
-	font-weight: normal
-}
-
-.well-inner .timestamp {
-  color: $grayLight;
-  float: right;
-  font-weight: normal;
-}
-
-.well-inner .content {
-	line-height: 21px;
-  display: block;
-	word-wrap: break-word;
-	margin-left:60px;
-	margin-top: 3px;
-}
-
-.well-footer {
-	margin-top: 1px;
-	font-size: 12px;
-	margin-left: 60px;
-}
-
-.well-footer .btn-link {
-	margin-top: -3px;
-	padding: 0;
-	font-size: 12px;
-		&:hover {
-			text-decoration: underline;
-		}
-}
-
-.well-footer .collapse {
-	margin-left: -10px;
-}
-
 .well-bottom {
 	border: 1px solid rgb(240, 240, 240);
 	border-radius: 0px 0px 5px 5px;
@@ -437,22 +449,24 @@ aside {
 	@include shadows-border;
 }
 
-.well-inner {
-	background-color: rgb(253, 253, 253);
-  margin: 0px 0 0 0;
-  padding: 11px 10px 5px;
-	cursor: pointer;
+.well:hover {
+  background-color: rgb(245, 245, 245);
 }
 
-.well-inner:hover {
-  background-color: rgb(243, 243, 243);
+.well:hover:active {
+  background-color: rgb(240, 240, 240);
 }
 
-.well-inner:hover .well-footer li {
+.well-footer .share-actions li {
+	display: inline;
+	opacity: 0;
+}
+
+.well:hover .well-footer li {
     opacity: 100;
 }
 
-.well-inner:hover .well-footer a {
+.well:hover .well-footer a {
     color: $blue;
 }
 
@@ -467,30 +481,82 @@ aside {
 }
 
 .well-footer .share-actions .btn-link {
+	font-size: 100%;
   color: $blue;
+	margin-top: -2px;
+	padding: 0;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .well-footer .share-actions a {
   display: inline;
 }
 
-.well-footer .share-actions li {
+.well-footer .share-stats {
+	float: right;
+}
+
+.well-footer .share-stats a {
+	border-left: none;
+	padding-left: 0px;
+	&:first-child {
+		border-left: 1px solid $grayLighter;
+	}
+}
+
+.well-footer .share-stats strong {
+	display: inline-block;
+	margin-top: 1px;
+	font-size: 115.4%;
+}
+
+.well-inner:hover strong {
+ color: $red;
+}
+
+.well-footer .inline-share-stats {
+	display: inline-block;
+}
+
+.well-footer .inline-share-stats a {
+	color: rgb(153, 153, 153);
+	font-size: 10px;
+	text-transform: uppercase;
+	&:first-child {
+		margin-top: 2px;
+		border-left: none;
+		line-height: 4px;
+		margin-right: -3px;
+	}
+}
+
+.well-footer .inline-share-stats li {
 	display: inline;
-	opacity: 0;
+}
+
+.well-footer .inline-share-stats li:first-child a {
+	margin-top: 1px;
 }
 
 .well-footer .inline-share-reply {
 	display: block;
 }
 
-.inline-share-reply .inline-container {
-	padding: 10px 10px 0;
+.well-footer .inline-share-reply .inline-container {
+	padding: 10px 0 3px 0;
 	float: left;
 	display: block;
 }
 
 .inline-container form {
-	margin: -5px 0 -5px;
+	margin: -15px -11px -10px;
+	padding: 5px;
+}
+
+.inline-container form input {
+	display: none;
 }
 
 .inline-container form textarea {
@@ -503,7 +569,7 @@ aside {
 	padding: 9px;
 }
 
-.inline-container form.active textarea:focus {
+.inline-container form.active textarea {
 	height: 78px !important;
 	color: rgb(69, 69, 69);
 	font-size: 13px;
@@ -512,86 +578,25 @@ aside {
 
 .inline-container form.active input {
 	display: block;
-}
-
-.inline-container form input {
-	display: none;
-}
-
-.share-stats {
-	height: 50px;
-	overflow: hidden;
-	border-top: 1px solid rgb(232, 232, 232);
-}
-
-.share-stats ul {
-	margin-top: 10px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.share-stats li {
-	display: inline;
-}
-
-.share-stats li:first-child a {
-	padding-left: 0;
-	border-left: 0px none;
-}
-
-.share-stats a {
-	float: left;
-	padding: 7px 12px;
-	color: rgb(153, 153, 153);
-	font-size: 10px;
-	line-height: 16px;
-	text-transform: uppercase;
-	width: auto;
-}
-
-.share-stats .gravatar-show {
- overflow: hidden;
-}
-
-.share-stats .gravatar-show a {
-	padding: 11px 0px;
-	cursor: pointer;
-}
-
-.share-stats .gravatar-show a:first-child {
-	padding-left: 12px;
-	border-left: 1px solid rgb(232, 232, 232);
-}
-
-.gravatar-show .gravatar {
-	float: left;
-	margin-right: 5px;
-	width: 25;
-	height: 25;
-	border-radius: 3px 3px 3px 3px;
-}
-
-.other-info {
-	clear: both;
-	margin-top: 10px;
-	overflow: hidden;
+	margin-bottom: 8px;
 }
 
 [class^="icon-comment"], [class*=" icon-comment"] {
-	vertical-align: -4px;
-	margin-right: 6px;
-	margin-left: 6px;
+	margin-right: 5px;
+	margin-left: 1px;
 }
 
-[class^="icon-trash"], [class*=" icon-trash"] {
-	vertical-align: 4px;
-	margin-left: 6px;
+[class^="icon-remove"], [class*=" icon-remove"] {
 	margin-right: 1px;
+	vertical-align: 2px;
+	height: 13px;
+	width: 13px;
 }
 
 [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
 	vertical-align: 2px;
-	margin-left: 6px;
 	margin-right: 1px;
+	margin-left: 7px;
 }
 
 [class^="icon-heart"], [class*=" icon-heart"] {

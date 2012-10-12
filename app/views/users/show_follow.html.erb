@@ -20,10 +20,9 @@
   </aside>
   <div class="span8">
 	<% if @users.any? %>
-    <h3><%= @title %></h3>
-      <ul class="users">
-        <%= render @users %>
-      </ul>
+    <ul class="users">
+      <%= render @users %>
+    </ul>
       <%= will_paginate %>
     <% end %>
   </div>

@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
       flash[:success] = "Your post has been submitted!"
       redirect_to root_url
     else
-      @share_item = []
+      @micropost = []
       render 'static_pages/home'
     end
   end

@@ -15,30 +15,26 @@ class Micropost < ActiveRecord::Base
 
 private
 
-  def self.from_users(user)
-    followed_user_ids = "SELECT followed_id FROM relationships
-                         WHERE follower_id = :user_id"
+  def self.from_users_profile(user)
+    "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
     where("user_id = :user_id", user_id: user.id)
   end
 
-  def self.from_users_including_replies(user)
-    followed_user_ids = "SELECT followed_id FROM relationships
-                         WHERE follower_id = :user_id"
-    where("to_id = :user_id", user_id: user.id)
+  def self.from_users_replies(user)
+  	"SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+		where("to_id = :user_id", user_id: user.id)
   end
 
-  def self.from_users_followed_by(user)
+  def self.from_users_shares(user)
     followed_user_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
           user_id: user.id)
   end
 
-  def self.from_users_followed_by_including_replies(user)
-    followed_user_ids = "SELECT followed_id FROM relationships
-                         WHERE follower_id = :user_id"
-    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id OR to_id = :user_id", 
-          user_id: user.id)
+  def self.from_users_replies(user)
+    "SELECT followed_id FROM relationships  WHERE follower_id = :user_id"
+    where("to_id = :user_id", user_id: user.id)
   end
 
 	REPLY_REGEX = /\A@([^\s]*)/

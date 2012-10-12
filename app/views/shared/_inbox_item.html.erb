@@ -1,32 +1,53 @@
 <div id="<%= inbox_item.user.name %>_<%= inbox_item.id %>" class="well well-inner">
-		<span class="user">
-			<%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
-				<%= link_to inbox_item.user.realname, inbox_item.user %></span>
-					<a data-toggle="collapse" data-target="#well-footer<%= inbox_item.id %>" style="color:rgb(51,51,51);text-decoration:none;">
-					<span class="username"> <small>!<%= inbox_item.user.name %></small></span>
-						<span class="timestamp"><small><%= time_ago_in_words(inbox_item.created_at) %> ago </small></span>
-				<span class="content">
-			<%= inbox_item.convo %>
-			</span></a>
 
-		<% if current_user!=(inbox_item.user) %>
+		<div class="well-inner-header">
+			<% if inbox_item.user.admin? %>
+				<span class="admin">
+					<%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
+					<%= link_to inbox_item.user.realname, inbox_item.user %>
+				</span>
+					<% else %>
+				<span class="user">
+					<%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
+					<%= link_to inbox_item.user.realname, inbox_item.user %>
+				</span>
+			<% end %>
 
-			<div class="well-footer">
+				<a data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply" style="color:rgb(51,51,51);text-decoration:none;">
+					<span class="username"> 
+						<small>!<%= inbox_item.user.name %></small>
+					</span>
+					<span class="timestamp">
+						<small><%= time_ago_in_words(inbox_item.created_at) %> ago</small>
+					</span>
+				</div>
 
-				<a data-toggle="collapse" data-target="#well-footer<%= inbox_item.id %>" style="float:none;padding:0;">Reply</a>
+					<span class="content">
+						<%= inbox_item.convo %>
+					</span>
+				</a>
 
-					<div id="well-footer<%= inbox_item.id %>" class="show collapse">
+				<% if current_user!=(inbox_item.user) %>
+				<div class="well-footer">
+					<ul class="share-actions">
 
-			<form action="/messages" class="new_message" id="new_message" method="post" style="padding-bottom:0;padding-top:10px;padding-right:58px;margin:0;">
+					<a class="shown" data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply">
+						<li><i class="icon-comment"></i>Reply</li></a></ul>
+							<div class="inline-share-reply">
+								<div id="<%= inbox_item.id %>_reply" class="show collapse">
+									<div class="inline-container">
+									<%= form_for(@message) do |f| %>
+  									<%= render 'shared/messages_error', object: f.object %>
+										<textarea id="message_convo" name="message[convo]" placeholder="Reply to @<%= inbox_item.user.name %>">@<%= inbox_item.user.name %> </textarea>
+  								<%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
 
-<a rel="tooltip" title="Your reply is ready to go!  Just include your private message after !<%= inbox_item.user.name %>" style="padding:0;margin:0;" >
-
-				<textarea id="message_convo" name="message[convo]" placeholder="Tip:  <%= inbox_item.user.realname %> sent you a private message.  Reply back by typing something like !<%= inbox_item.user.name %> I got your private message!">!<%= inbox_item.user.name %> </textarea></a>
-
-					<input name="authenticity_token" type="hidden" value=$<%= csrf_meta_tags %>
-
-				<input class="btn-small btn-primary" name="commit" value="Reply" type="submit" style="margin:0;"></form>
-			</div>
-		</div>
+			<% else %>
+		<div class="well-footer-empty"> </div>
 	<% end %>
+
 </div>

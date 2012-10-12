@@ -1,14 +1,16 @@
+<% provide(:title, @title) %>
 <% if signed_in? %>
 	<div class="row-fluid">
-  	<aside class="span3">
-    	<section>
+		<div class="span3">
+			<section>
 				<%= render 'shared/message_form' %>
 			</section>
-		</aside>
-			<div class="span9">
-				<%= render 'shared/inbox' %>
-			</div>
 		</div>
-		<% else %>
-	<%= yield %>
+		<div class="span9">
+			<div class="well-header">Displaying <%= pluralize(@inbox_items.count, "private message") %></div>
+			<%= render 'shared/inbox' %>
+		</div>
+			</div>
+			<% else %>
+		<%= yield flash.now[:error] = "Please signin to view your inbox." %>
 <% end %>

@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   def home
     if signed_in?
 			@title = current_user.realname
-      @micropost = current_user.microposts.build
+			@micropost = current_user.microposts.build
       @share_items = current_user.share.paginate(page: params[:page])
 			else
 			@title = "Sign up now!"
@@ -12,8 +12,11 @@ class StaticPagesController < ApplicationController
 
   def connect
     if signed_in?
+			@title = current_user.realname
       @message = current_user.messages.build
       @inbox_items = current_user.inbox.paginate(page: params[:page])
+			else
+			@title = "Please sign in"
     end
   end
 

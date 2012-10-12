@@ -1,6 +1,6 @@
 <% if @share_items.any? %>
-    <%= render partial: 'shared/share_item', collection: @share_items %>
-				<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
+	<%= render partial: 'shared/share_item', collection: @share_items %>
+		<div class="well-bottom" style="text-align:right;"><%= link_to "top", '#' %></div>
   		<%= will_paginate @share_items %>
 		<% else %>
 	<%= yield flash.now[:info] = "Your feed looks kinda dull.  How about following a few members or sharing some content to fill it up!" %>

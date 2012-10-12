@@ -11,13 +11,11 @@ class Message < ActiveRecord::Base
 
 	before_save :send_message
 
-	private
+private
 
-  def self.from_users_followed_by_including_convos(user)
-    followed_user_ids = "SELECT followed_id FROM relationships
-                         WHERE follower_id = :user_id"
-    where("user_id = :user_id OR to_id = :user_id", 
-          user_id: user.id)
+  def self.from_users_inbox(user)
+    "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    where("user_id = :user_id OR to_id = :user_id", user_id: user.id)
   end
 
 	MESSAGE_REGEX = /\A!([^\s]*)/

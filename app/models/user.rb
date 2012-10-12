@@ -42,31 +42,31 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
 	def profile
-		Micropost.from_users(self)
+		Micropost.from_users_profile(self)
 	end
 
   def atreply
-    Micropost.from_users_including_replies(self)
-  end
-
-  def inbox
-    Message.from_users_followed_by_including_convos(self)
+    Micropost.from_users_replies(self)
   end
 
   def share
-    Micropost.from_users_followed_by(self)
+    Micropost.from_users_shares(self)
   end
 
-  def liked?(share_item)
-    opinions.find_by_like_id(share_item.id)
+  def inbox
+    Message.from_users_inbox(self)
   end
 
-  def like!(share_item)
-    opinions.create!(like_id: share_item.id)
+  def liked?(random_share)
+    opinions.find_by_like_id(random_share.id)
   end
 
-  def unlike!(share_item)
-    opinions.find_by_like_id(share_item.id).destroy
+  def like!(random_share)
+    opinions.create!(like_id: random_share.id)
+  end
+
+  def unlike!(random_share)
+    opinions.find_by_like_id(random_share.id).destroy
   end
 
   def following?(other_user)

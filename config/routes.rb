@@ -2,17 +2,16 @@ Socialrails::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :fans
+      get :following, :followers
     end
   end
 
   match '/signup', to: 'users#new'
-  match '/users/:id', to: 'users#show'
 
   resources :relationships, only: [:create, :destroy]
   resources :microposts, only: [:create, :destroy] do
     member do
-      get :likes
+      get :likes, :fans
     end
   end
   resources :opinions, only: [:create, :destroy]

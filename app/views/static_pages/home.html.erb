@@ -1,14 +1,15 @@
 <% provide(:title, @title) %>
-<%= yield flash.now[:info] = "Last updated October 3rd, at 8:15 p.m. CST" %>
-<% if signed_in? %>
-<div class="row-fluid">
-     <aside class="span4">
-			<a href="<%= user_path(current_user) %>" style="text-decoration:none;color:#454545;">
-       	<section style="cursor:pointer;">
-        	<%= render 'shared/user_info' %>
-       	</section>
-			</a>
-       <section>
+	<%= yield flash.now[:info] = "Last updated October 3rd, at 8:15 p.m. CST" %>
+
+		<% if signed_in? %>
+			<div class="row-fluid">
+     		<aside class="span4">
+					<a href="<%= user_path(current_user) %>" style="text-decoration:none;color:#454545;">
+       			<section style="cursor:pointer;">
+        			<%= render 'shared/user_info' %>
+       			</section>
+					</a>
+       	<section>
          <%= render 'shared/stats' %>
        </section>
        <section>
@@ -23,6 +24,7 @@
 								</div>
 						</div>
 					<% else %>
+
 				<div class="row-fluid">
 			<div class="center hero-unit">
     <h1>Ampersand</h1>
