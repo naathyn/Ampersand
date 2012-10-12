@@ -338,6 +338,9 @@ aside {
   font-size: 10px;
   line-height: 16px;
   text-transform: uppercase;
+	&:hover {
+		color: $blue;
+	}
 }
 
 .actions .stats:first-child a {
@@ -572,7 +575,7 @@ aside {
 .inline-container form.active textarea {
 	height: 78px !important;
 	color: rgb(69, 69, 69);
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 18px;
 }
 
