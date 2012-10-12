@@ -62,7 +62,7 @@
 					<div id="<%= share_item.id %>_reply" class="show collapse">
 						<div class="inline-container">
 
-					<%= form_for(share_item) do |f| %>
+					<%= form_for(@micropost) do |f| %>
   					<%= render 'shared/error_messages', object: f.object %>
 							<textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= share_item.user.name %>">@<%= share_item.user.name %> </textarea>
   					<%= f.submit "Reply", class: "btn btn-small btn-primary" %>
