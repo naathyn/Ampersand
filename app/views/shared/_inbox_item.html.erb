@@ -38,7 +38,7 @@
 									<div class="inline-container">
 									<%= form_for(@message) do |f| %>
   									<%= render 'shared/messages_error', object: f.object %>
-										<textarea id="message_convo" name="message[convo]" placeholder="Reply to @<%= inbox_item.user.name %>">@<%= inbox_item.user.name %> </textarea>
+										<textarea id="message_convo" name="message[convo]" placeholder="Reply to !<%= inbox_item.user.name %>">!<%= inbox_item.user.name %> </textarea>
   								<%= f.submit "Reply", class: "btn btn-small btn-primary" %>
 								<% end %>
 							</div>
