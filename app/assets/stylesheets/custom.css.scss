@@ -274,6 +274,11 @@ aside {
 	color: $blue;
 }
 
+.item-anchor, .item-anchor:hover {
+	color:rgb(51,51,51);
+	text-decoration:none;
+}
+
 .side-module-share {
 	line-height: 1;
 	padding: 10px 0 1px 10px;
@@ -726,7 +731,6 @@ aside {
 }
 
 [class^="icon-remove"], [class*=" icon-remove"] {
-	margin-right: 1px;
 	vertical-align: 2px;
 	height: 13px;
 	width: 13px;

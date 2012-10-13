@@ -1,19 +1,19 @@
 <div id="<%= profile_item.user.name %>_<%= profile_item.id %>" class="well well-inner">
 
 	<div class="well-inner-header">
+	<%= link_to gravatar_for(profile_item.user), profile_item.user %>
+
 		<% if profile_item.user.admin? %>
 			<span class="admin">
-				<%= link_to gravatar_for(profile_item.user), profile_item.user %>
 				<%= link_to profile_item.user.realname, profile_item.user %>
 			</span>
 			<% else %>
 			<span class="user">
-				<%= link_to gravatar_for(profile_item.user), profile_item.user %>
 				<%= link_to profile_item.user.realname, profile_item.user %>
 			</span>
 			<% end %>
 
-				<a data-toggle="collapse" data-target="#<%= profile_item.id %>_reply" style="color:rgb(51,51,51);text-decoration:none;">
+				<a data-toggle="collapse" data-target="#<%= profile_item.id %>_reply" class="item-anchor">
 
 					<span class="username"> 
 						<small>@<%= profile_item.user.name %></small>
@@ -21,6 +21,7 @@
 					<span class="timestamp">
 						<small><%= time_ago_in_words(profile_item.created_at) %> ago </small></span>
 				</div>
+
 					<span class="content">
 						<%= profile_item.content %>
 					</span>

@@ -2,6 +2,7 @@
 
 	<div class="well-inner-header">
 		<%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
+
 			<% if atreply_item.user.admin? %>
 				<span class="admin">
 					<%= link_to atreply_item.user.realname, atreply_item.user %>
@@ -12,7 +13,8 @@
 				</span>
 			<% end %>
 
-				<a data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply" style="color:rgb(51,51,51);text-decoration:none;">
+				<a data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply" class="item-anchor">
+
 					<span class="username">
 						<small>@<%= atreply_item.user.name %></small>
 					</span>
