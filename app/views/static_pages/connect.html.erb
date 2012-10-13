@@ -1,16 +1,34 @@
 <% provide(:title, @title) %>
-<% if signed_in? %>
-	<div class="row-fluid">
-		<div class="span3">
-			<section>
-				<%= render 'shared/message_form' %>
-			</section>
-		</div>
-		<div class="span9">
-			<div class="well-header">Displaying <%= pluralize(@inbox_items.count, "private message") %></div>
-			<%= render 'shared/inbox' %>
-		</div>
+
+	<div class=" navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar-inner">
+			<div class="container">
+    		<%= render 'layouts/navigation' %>
 			</div>
+		</div>
+	</div>
+
+	<% if signed_in? %>
+		<aside class="side-module side-menu mini-profile">
+			<a href="<%= user_path(current_user) %>" class="share-anchor">
+      	<section>
+     			<%= render 'shared/user_info' %>
+      	</section>
+			</a>
+      <section>
+      	<%= render 'shared/stats' %>
+      </section>
+			<span>
+				<%= render 'shared/message_form' %>
+			</span>
+		</aside>
+			<div class="share-container">
+				<div class="well-header">
+					Displaying <%= pluralize(@inbox_items.count, "private message") %>
+				</div>
+					<%= render 'shared/inbox' %>
+			</div>
+
 			<% else %>
 		<%= yield flash.now[:error] = "Please signin to view your inbox." %>
 <% end %>

@@ -1,8 +1,17 @@
 <% provide(:title, "Edit user") %>
+
+	<div class=" navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar-inner">
+			<div class="container">
+    	<%= render 'layouts/navigation' %>
+		</div>
+	</div>
+</div>
+
 <% current_user ||= @user %>
 <h1>Update your profile</h1>
 
-<div class="row-fluid">
+<div class="row">
   <div class="span6 offset3">
    <%= gravatar_for @user %>
 			<br /><br /><br /><br /><a type="button" class="btn btn-small" href="http://gravatar.com/emails" alt="Sign in to Gravatar to change your profile picture" type="submit" target="_blank" style="margin-bottom:10px;">Change</a>
@@ -31,10 +40,6 @@
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
 
     <% end %>
-
-  	<%= link_to "Delete account", current_user, method: :destroy,
-																	class: "btn-small btn-danger",
-                                  data: { confirm: "Are you sure you want to delete your account?  We hate to see you go." } %>
 
 	</div>
 </div>

@@ -1,5 +1,16 @@
 <% provide(:title, 'Members') %>
-<h2 style="padding-bottom:10px;"><%= pluralize(@users.count, "member") %> and growing</h2>
+
+	<div class=" navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar-inner">
+			<div class="container">
+    	<%= render 'layouts/navigation_members' %>
+		</div>
+	</div>
+</div>
+
+<h2 style="padding-bottom:10px;">
+	<%= pluralize(@users.count, "member") %> and growing
+</h2>
 
 <%= will_paginate %>
 

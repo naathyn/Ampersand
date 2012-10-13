@@ -8,7 +8,7 @@ class Micropost < ActiveRecord::Base
   has_many :likes, through: :opinions
 
 	validates :user_id, presence: true
-	validates :content, presence: true, length: { maximum: 500 }
+	validates :content, presence: true, length: { maximum: 750 }
 
 	default_scope order: 'microposts.created_at DESC'
 	before_save :send_reply

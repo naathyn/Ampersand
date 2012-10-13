@@ -1,8 +1,16 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
 
+	<div class=" navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar-inner">
+			<div class="container">
+    	<%= render 'layouts/navigation_root' %>
+		</div>
+	</div>
+</div>
+
 <div class="row-fluid">
-  <div class="span6 offset3">
+  <div class="span5 offset3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 

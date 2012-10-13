@@ -1,57 +1,49 @@
 <% provide(:title, @title) %>
-	<%= yield flash.now[:info] = "Last updated October 12th, at 3:15 a.m. CST" %>
+
+	<%= yield flash.now[:info] = "Last updated October 13th, at 5:15 a.m. CST" %>
+
+    <div class=" navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+				<div class="container">
+    			<%= render 'layouts/navigation_root' %>
+					</div>
+				</div>
+			</div>
 
 		<% if signed_in? %>
-			<div class="row-fluid">
-     		<aside class="span4">
-					<a href="<%= user_path(current_user) %>" style="text-decoration:none;color:#454545;">
-       			<section style="cursor:pointer;">
+			<aside class="side-module side-menu mini-profile">
+					<a href="<%= user_path(current_user) %>" class="share-anchor">
+       			<section>
         			<%= render 'shared/user_info' %>
        			</section>
 					</a>
        	<section>
          <%= render 'shared/stats' %>
        </section>
-       <section>
+       <span>
 				<%= render 'shared/micropost_form' %>
-			</section>
+			</span>
 			</aside>
-				<div class="span8">
+				<div class="share-container">
 					<div class="well-header">
 						<%= link_to "@you", user_path(@user), style: "padding-right:15px;" %>
-							<%= link_to "!nbox", connect_path %></div>
-								<%= render 'shared/share' %>
+							<%= link_to "!nbox", connect_path %>
 								</div>
-						</div>
-					<% else %>
+									<%= render 'shared/share' %>
+								</div>
+							<% else %>
 
-				<div class="row-fluid">
-			<div class="center hero-unit">
-    <h1>Ampersand</h1>
-    <h3 style="padding-bottom:5px;">
-    	Simple.  Modern.  Interactive.
-		</h3>
-		<center style="padding-bottom:5px;"><iframe width="560" height="315" src="https://www.youtube.com/embed/XKwHgbiyne4?rel=0" frameborder="0" allowfullscreen></iframe></center>
+						<div class="center hero-unit">
+    			<h1>Ampersand</h1>
+    		<h3>
+    			Simple.  Modern.  Interactive.
+				</h3>
+			<h5>In development</h5>
 
     <%= link_to "Sign up now!", signup_path,
                                 class: "btn btn-large btn-primary" %>
-		<h5>In development</h5>
-	</div>
-	<div class="row-fluid">
-				<div class="span6">
-			<h2 style="padding-bottom:5px;">Alpha #1 Ready For Testing</h2>
-		<p>
-		I am hoping to push Ampersand to much larger audiences in the near future.  In order to make that possible, I am going to need guests to join and start using Ampersand so I can ensure it will be ready for a larger Audience.
-		</p>
-		<p>
-		Having that said, feel free to join -- I encourage it!  But for those who just want to log in to see what it's all about, you can log in with  [ <b>username: thatguy</b> ] [ <b>password: ladygaga!</b> ].
-			</div>
-		<div class="span6">
-			<h2 style="padding-bottom:5px;">Developments</h2>
-				<p style="padding-bottom:5px;">
-					This is a fairly active era in regards to the development of this app.  Each major development and a brief description can be found in the Updates section.  All major developments are documented on the Updates page as well as future plans.
-				</p>
-			<p><a class="btn" href="updates">View details &raquo;</a></p>
-		</div>
+		<center>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/XKwHgbiyne4?rel=0" frameborder="0" allowfullscreen></iframe>
+		</center>
 	</div>
 <% end %>

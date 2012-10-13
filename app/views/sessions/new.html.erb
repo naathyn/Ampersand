@@ -1,8 +1,17 @@
 <% provide(:title, "Sign in") %>
+
+	<div class=" navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar-inner">
+			<div class="container">
+    	<%= render 'layouts/navigation_root' %>
+		</div>
+	</div>
+</div>
+
 <h1>Sign in</h1>
 
 <div class="row-fluid">
-  <div class="span6 offset3">
+  <div class="span5 offset3">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label :name, "Username" %>

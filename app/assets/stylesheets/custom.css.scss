@@ -1,17 +1,20 @@
 @import "bootstrap";
 
 html {
-  overflow-y: scroll;
+	overflow-y: scroll;
+}
+
+html, body {
+	height: 100%
 }
 
 body { 
 	font-family: "Helvetica Neue",Arial,sans-serif;
 	font-size: 14px;
 	line-height: 18px;
-	padding-top: 60px;
+	padding-top: 54px;
+	background-color: rgb(249, 249, 249);
 }
-
-@import "bootstrap-responsive";
 
 @mixin box_sizing {
 	box-sizing: border-box;
@@ -35,14 +38,6 @@ body {
 	background-color: rgb(240, 240, 240);
 	background-image: -moz-linear-gradient(center top , white, rgb(245, 245, 245));
 	background-repeat: repeat-x;
-	border-bottom: 0;
-}
-
-@mixin transition {
--moz-transition-property: all;
--moz-transition-duration: 0.2s;
--moz-transition-timing-function: linear;
--moz-transition-delay: 0s;
 }
 
 section {
@@ -121,43 +116,11 @@ small {
 	font-size: 12px
 }
 
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-
-#logo {
-	float: left;
-  font-size: 1.8em;
-  color: $gray;
-	text-transform: uppercase;
-	letter-spacing: -1px;
-	padding: 9px 45px 0 0;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-		@include transition;
-    color: $blue;
-		text-decoration: none;
-  }
-}
-
-.login-home form {
-	float: right;
-	display: inline-block;
-	margin-bottom: 0;
-}
-
-.login-home input {
-	display: inline-block;
-}
-
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
+	margin: 30px -20px 0px;
+	width: 105%;
+  padding-top: 10px;
+  border-top: 1px solid rgb(240, 240, 240);
   color: $grayLight;
   a {
     color: $gray;
@@ -172,8 +135,8 @@ footer {
 
 aside {
   section {
+		border-top: 1px solid rgb(232, 232, 232);
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -183,23 +146,190 @@ aside {
       margin-bottom: 3px;
       line-height: 1;
     }
-    h1 {
-      font-size: 1.6em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-    }
-  }
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
   }
 }
 
-.stats, .share-stats, .stats-expand {
+.page-wrapper {
+	border-left: 1px solid rgb(240, 240, 240);
+	border-right: 1px solid rgb(240, 240, 240);
+	position: relative;
+	width: 837px;
+	min-height: 100%;
+	margin: -1em auto;
+	padding: 1.5em 1em;
+	padding-bottom: 0px;
+	background-color: rgb(253, 253, 253);
+}
+
+.navbar .navbar-fixed-top {
+	min-width: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+
+.navbar-inverse {
+	box-shadow: 0 3px 5px rgba(0,0,0,.15);
+	border-bottom: 1px solid gray;
+}
+
+.navbar-inner .container {
+	width: 890px;
+}
+
+.navbar img {
+	border-radius: 10px 10px 10px 10px;
+}
+
+.navbar-inner li:first-child a {
+	margin-right: 0px auto;
+}
+
+.login-home form {
+	margin-top: 1px;
+	margin-right: 1em;
+	float: right;
+	display: inline-block;
+	margin-bottom: 0;
+}
+
+.login-home input {
+	display: inline-block;
+}
+
+.center {
+	text-align: center;
+}
+
+.hero-unit {
+	padding: 30px;
+	margin-bottom: 15px;
+	background-color: rgb(245, 245, 245);
+	border-radius: 10px 10px 10px 10px;
+	h1 {
+		letter-spacing: -2px;	
+		font-size: 75px;
+	}
+	h3 {
+		font-size: 18px;
+		letter-spacing: 3px;
+	}
+	h5 {
+		font-size: 12px;
+		letter-spacing: 1px;
+	}
+	.btn {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	}
+}
+
+.side-module {
+	float: left;
+	width: 278px;
+	border: 1px solid rgb(229, 229, 229);
+	border-radius: 6px 6px 6px 6px;
+	@include shadows-border;
+}
+
+.side-menu {
+	line-height: 16px;
+}
+
+.side-menu .stats {
+	background: none;
+}
+
+.side-content {
+	padding: 12px 0px 0 12px;
+}
+
+.profile-name {
+	font-size: 14px;
+}
+
+.share-anchor {
+	min-height: 32px;
+	display: block;
+	text-decoration: none;
+	color: #454545;
+	cursor: pointer;
+}
+
+.profile-anchor {
+	color: $grayLight;
+	padding-top: 1px;
+	font-size: 11px;
+	margin-left: 1px;
+}
+
+.share-anchor:hover {
+	text-decoration: none;
+	color: #454545;
+}
+
+.share-anchor:hover .profile-anchor {
+	color: $blue;
+}
+
+.side-module-share {
+	line-height: 1;
+	padding: 10px 0 1px 10px;
+	background-color: rgb(246, 246, 246);
+	border-top: 1px solid rgb(230, 230, 230);
+	height: auto;
+}
+
+.side-module-share form {
+	line-height: 18px;
+	margin-bottom: 0;
+}
+
+.side-module-share form.active textarea {
+	height: 78px !important;
+	color: rgb(69, 69, 69);
+	font-size: 14px;
+}
+
+.side-module-share form input {
+	display: none;
+}
+
+.side-module-share form.active input {
+	display: block;
+	margin-bottom: 7px;
+	margin-top: -1px;
+}
+
+.side-module-share textarea {
+	color: rgb(170, 170, 170);
+	font-size: 13px;
+	height: 34px !important;
+	width: 258px;
+	border-radius: 4px 4px 4px 4px;
+	padding: 6px 8px 0;
+}
+
+.mini-profile {
+	font-size: 12px;
+	margin-bottom: 10px;
+	line-height: 16px;
+}
+
+.share-container {
+	width: 542px;
+	margin-left: 295px;
+	height: 100%;
+}
+
+.stats, .share-stats {
+	padding-left: 12px;
+	background: none;
   overflow: auto;	
   a {
-		font-size: 12px;
+		font-size: 11px;
     float: left;
     padding: 0 10px;
     border-left: 1px solid $grayLighter;
@@ -254,10 +384,11 @@ aside {
 .profile {
 	text-shadow: 0px 1px 0px rgb(255, 255, 255);
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	line-height: 16px;
 	border-radius: 6px 6px 6px 6px;
 	background-clip: padding-box;
+	box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
 }
 
 .profile-header {
@@ -265,9 +396,10 @@ aside {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: rgb(249, 249, 249);
+  background-color: rgb(246, 246, 246);
   padding: 12px;
   line-height: 16px;
+	background-image: -moz-linear-gradient(center top , white, rgb(249, 249, 249));
 }
 
 .profile-inner {
@@ -322,6 +454,7 @@ aside {
 .actions .stats {
   max-height: 300px;
   overflow: hidden;
+	background: none;
 }
 
 .actions .stats strong {
@@ -411,6 +544,7 @@ aside {
 }
 
 .well-inner .content {
+	line-height: 19px;
   display: block;
 	margin-left: 60px;
 	word-wrap: break-word;
@@ -431,7 +565,7 @@ aside {
 }
 
 .well-footer-empty {
-	margin-top: 18px;
+	margin-top: 15px;
 }
 
 .well-header {
@@ -442,6 +576,7 @@ aside {
 	border-radius: 5px 5px 0px 0px;
 	padding: 8px;
 	@include shadows-border;
+	border-bottom: 0;
 }
 
 .well-bottom {
@@ -450,6 +585,7 @@ aside {
 	border-top: 0px;
 	padding: 10px;
 	@include shadows-border;
+	border-bottom: 0;
 }
 
 .well:hover {
@@ -567,7 +703,7 @@ aside {
 	font-size: 13px;
 	line-height: 18px;
 	height: 38px !important;
-	width: 380px;
+	width: 350px;
 	border-radius: 4px 4px 4px 4px;
 	padding: 9px;
 }

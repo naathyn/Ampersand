@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title><%= full_title(yield(:title)) %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A Social Platform in development">
     <meta name="author" content="Nathan Couch">
     	<%= stylesheet_link_tag "application", media: "all" %>
@@ -12,30 +11,15 @@
 			<%= yield(:head) %>
 		</head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-    		<div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" id="drop">
-						<% if signed_in? %>
-							<%= gravatar_for current_user, size: 30 %>
-								<% else %>
-            		<span class="icon-bar"></span>
-            	<span class="icon-bar"></span>
-           	<span class="icon-bar"></span>
-          </a>
-						<% end %>
-						<%= link_to "&", root_path,  id: "logo" %>
-    				<%= render 'layouts/navigation' %>
-						</div>
-							</div>
-								</div>
-									</div>
-    						<div class="container-fluid">
-							<%= render 'layouts/messages' %>
-    				<%= yield %>
+		<div class="container page-wrapper">
+			<%= render 'layouts/messages' %>
+    	<%= yield %>
+				<div class="container-fluid">
 					<footer class="footer">
-  			<%= render 'layouts/footer' %>
-			</footer>
+						<%= render 'layouts/footer' %>
+					</footer>
+				</div>
+			</div>
 		<%= javascript_include_tag "application" %>
 	</body>
 </html>
