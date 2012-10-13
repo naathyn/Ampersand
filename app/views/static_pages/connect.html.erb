@@ -3,7 +3,11 @@
 	<div class=" navbar navbar-inverse navbar-fixed-top">
   	<div class="navbar-inner">
 			<div class="container">
-    		<%= render 'layouts/navigation' %>
+			<% if signed_in? %>
+    		<%= render 'layouts/navigation_edit' %>
+			<% else %>
+				<%= render 'layouts/navigation_root' %>
+			<% end %>
 			</div>
 		</div>
 	</div>
@@ -26,6 +30,6 @@
 				<%= render 'shared/inbox' %>
 			</div>
 
-			<% else %>
-		<%= yield flash.now[:error] = "Please signin to view your inbox." %>
+		<% else %>
+	<%= yield flash.now[:error] = "Please signin to view your inbox." %>
 <% end %>

@@ -11,10 +11,8 @@
 	<div class="profile">
 		<div class="profile-header">
 			<div class="row-fluid">
-				<% if signed_in? %>
-					<%= render 'shared/profile_stats' %>
-				</div></div></div>
-			<%= render 'shared/atreply' %>
-		<%= render 'follow_form' if signed_in? %>
-	<%= render 'shared/profile' %>
-<% end %>
+				<%= render 'shared/profile_stats' %>
+			</div></div></div>
+		<%= render 'shared/atreply' %>
+	<%= render 'follow_form' %>
+<%= render 'shared/profile' %>

@@ -171,8 +171,7 @@ aside {
 }
 
 .navbar-inverse {
-	box-shadow: 0 3px 5px rgba(0,0,0,.15);
-	border-bottom: 1px solid gray;
+	box-shadow: 0 3px 6px rgba(0,0,0,.15);
 }
 
 .navbar-inner .container {
@@ -184,7 +183,7 @@ aside {
 }
 
 .navbar-inner li:first-child a {
-	margin-right: 0px auto;
+	margin: 0px auto;
 }
 
 .login-home form {

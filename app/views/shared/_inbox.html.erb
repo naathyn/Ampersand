@@ -1,9 +1,11 @@
 <% if @inbox_items.any? %>
 	<div class="well-header">
 		Displaying <%= pluralize(@inbox_items.count, "private message") %>
-	</div>
-	<%= render partial: 'shared/inbox_item', collection: @inbox_items %>
-		<div class="well-bottom" style="text-align:right;"><%= link_to "Return to Feed", root_path %></div>
+		</div>
+			<%= render partial: 'shared/inbox_item', collection: @inbox_items %>
+				<div class="well-bottom" style="text-align:right;">
+					<%= link_to "Return to Feed", root_path %>
+				</div>
   		<%= will_paginate @inbox_items %>
 		<% else %>
 	<%= yield flash.now[:info] = "Your inbox seems to be empty.  Send one of your followers a private message!" %>
