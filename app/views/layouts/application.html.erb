@@ -13,12 +13,14 @@
   <body>
 		<div class="container page-wrapper">
 			<%= render 'layouts/messages' %>
-    	<%= yield %>
-				<div class="container-fluid">
-					<footer class="footer">
-						<%= render 'layouts/footer' %>
-					</footer>
-				</div>
+    		<%= yield %>
+					<% unless signed_in? %>
+					<div class="container-fluid">
+						<footer class="footer">
+							<%= render 'layouts/footer' %>
+						</footer>
+					</div>
+				<% end %>
 			</div>
 		<%= javascript_include_tag "application" %>
 	</body>
