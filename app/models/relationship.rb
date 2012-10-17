@@ -1,4 +1,5 @@
 class Relationship < ActiveRecord::Base
+  has_paper_trail :on => [:create]
   attr_accessible :followed_id
 
   belongs_to :follower, class_name: "User"

@@ -1,4 +1,5 @@
 class Micropost < ActiveRecord::Base
+  has_paper_trail
   attr_accessible :content, :to
 
   belongs_to :user

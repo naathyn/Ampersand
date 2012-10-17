@@ -1,7 +1,7 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: amp_dev
+  database: ampersand
   pool: 5
   username: root
   password: 12081

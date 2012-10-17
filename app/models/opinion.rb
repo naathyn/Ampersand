@@ -1,4 +1,6 @@
 class Opinion < ActiveRecord::Base
+  has_paper_trail
+
 	attr_accessible :fan_id, :like_id
 
 	belongs_to :fan, class_name: "User"

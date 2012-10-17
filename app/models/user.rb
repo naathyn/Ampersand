@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base 
+  has_paper_trail :only => [:realname, :email, :name, :location]
   attr_accessible :realname, :email, :name, :location, :bio, :password, :password_confirmation
 	
 	has_secure_password
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, format: { with: VALID_USERNAME }, 
 										uniqueness: { case_sensitive: false }
 
-	validates :location, length: { maximum: 25 }
+	validates :location, length: { maximum: 32 }
 	validates :bio, length: { maximum: 200 }
 
   validates :password, length: { minimum: 6 }

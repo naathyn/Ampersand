@@ -3,24 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title><%= full_title(yield(:title)) %></title>
-    <meta name="description" content="A Social Platform in development">
-    <meta name="author" content="Nathan Couch">
-    	<%= stylesheet_link_tag "application", media: "all" %>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "A Social Platform in development" %>">
+    <meta name="author" content="<%= content_for?(:author) ? yield(:author) : "Nathan Couch" %>">
+    	<%= stylesheet_link_tag "application", :media => "all" %>
     	<%= csrf_meta_tags %>
     	<%= render 'layouts/shim' %>
 			<%= yield(:head) %>
 		</head>
   <body>
-		<div class="container page-wrapper">
-			<%= render 'layouts/messages' %>
-    		<%= yield %>
-					<% unless signed_in? %>
-					<div class="container-fluid">
-						<footer class="footer">
-							<%= render 'layouts/footer' %>
-						</footer>
-					</div>
-				<% end %>
+		<div class="container page-wrapper" id="main" role="main">
+      <div class="content">
+			  <%= render 'layouts/messages' %>
+    		  <%= yield %>
+					  <% unless signed_in? %>
+					  <div class="container-fluid">
+						  <footer class="footer">
+							  <%= render 'layouts/footer' %>
+						  </footer>
+					  </div>
+				  <% end %>
+        </div>
 			</div>
 		<%= javascript_include_tag "application" %>
 	</body>
