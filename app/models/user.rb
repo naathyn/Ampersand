@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
   																	class_name: "Relationship",
 																		dependent: :destroy
   has_many :followers, through: :reverse_relationships
-
-  has_paper_trail :on => [:new]
   
   before_save { |user| user.email = email.downcase }
 	before_save { |user| user.name = name.downcase }

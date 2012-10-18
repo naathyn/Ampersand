@@ -7,8 +7,6 @@ class Micropost < ActiveRecord::Base
 	has_many :opinions, foreign_key: "like_id", dependent: :destroy
   has_many :likes, through: :opinions
 
-  has_paper_trail
-
 	validates :user_id, presence: true
 	validates :content, presence: true, length: { minimum: 4 }
 
