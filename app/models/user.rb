@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base 
-  has_paper_trail :on => [:new]
   attr_accessible :realname, :email, :name, :location, :bio, :password, :password_confirmation
 	
 	has_secure_password
@@ -11,14 +10,16 @@ class User < ActiveRecord::Base
 	has_many :fans, through: :opinions
 
 	has_many :messages, dependent: :destroy
-	has_many :convos, foreign_key: "to_id", class_name: "Message"
+	has_many :convos, foreign_key: "to_id", class_name: "Message", dependent :destroy
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
   																	class_name: "Relationship",
 																		dependent: :destroy
-  has_many :followers, through: :reverse_relationships  
+  has_many :followers, through: :reverse_relationships
+
+  has_paper_trail :on => [:new]
   
   before_save { |user| user.email = email.downcase }
 	before_save { |user| user.name = name.downcase }
@@ -36,8 +37,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, format: { with: VALID_USERNAME }, 
 										uniqueness: { case_sensitive: false }
 
-	validates :location, length: { maximum: 32 }
-	validates :bio, length: { maximum: 200 }
+	validates :location, length: { maximum: 33 }
+	validates :bio, length: { maximum: 201 }
 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
@@ -96,9 +97,9 @@ class User < ActiveRecord::Base
 		all.first
 	end
 
-  private
+private
 
-    def create_remember_token
-      self.remember_token = SecureRandom.urlsafe_base64
-    	end
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
+  end
 end

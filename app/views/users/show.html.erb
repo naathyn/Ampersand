@@ -1,4 +1,6 @@
-<% provide(:title, @user.realname) %>
+<% content_for :head do %>
+  <% provide(:title, @user.realname) %>
+<% end %>
 
 	<div class=" navbar navbar-inverse navbar-fixed-top">
   	<div class="navbar-inner">

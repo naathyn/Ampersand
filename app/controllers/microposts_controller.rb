@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Your share has been posted!"
+      flash.now[:success] = "Your share has been posted!"
       redirect_to root_url
     else
       @share_items = []
@@ -18,10 +18,10 @@ class MicropostsController < ApplicationController
     redirect_to root_url
   end
 
-  private
+private
 
-    def correct_user
-      @micropost = current_user.microposts.find_by_id(params[:id])
-      redirect_to root_url if @micropost.nil?
-    end
+  def correct_user
+    @micropost = current_user.microposts.find_by_id(params[:id])
+    redirect_to root_url if @micropost.nil?
+  end
 end
