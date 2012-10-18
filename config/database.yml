@@ -6,3 +6,7 @@ development: &test
   username: root
   password: 12081
   timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
