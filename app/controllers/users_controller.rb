@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    @chart = create_chart
   end
 
   def show
@@ -63,14 +64,25 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  private
+private
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+
+  def create_chart
+    users_by_day = User.group("DATE(created_at)").count
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('date')
+    data_table.new_column('number')
+    users_by_day.each do |day|
+      data_table.add_row([ Date.parse(day[0].to_s), day[1]])
     end
+    @chart = GoogleVisualr::Interactive::AnnotatedTimeLine.new(data_table)
+  end
 end

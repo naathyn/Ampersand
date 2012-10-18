@@ -4,17 +4,19 @@ gem 'rails'
 gem 'mysql'
 gem 'thin'
 gem 'bcrypt-ruby'
-gem 'paper_trail'
-gem 'will_paginate'
-gem 'bootstrap-sass'
-gem 'bootstrap-will_paginate'
-gem 'jquery-rails'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
 end
+
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem "google_visualr"
+gem "jquery-datatables-rails"
 
 group :production do
   gem 'pg'

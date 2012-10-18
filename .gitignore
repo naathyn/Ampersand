@@ -1,10 +1,12 @@
 /.bundle
+/vendor/bundle/
+
 /log/*
 /tmp/*
 /doc/*
+
 **.swp
 *~
 .save
 .project
-.DS_Store
 .idea
