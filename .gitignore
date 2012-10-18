@@ -2,7 +2,6 @@
 /log/*
 /tmp/*
 /doc/*
-/db/*
 **.swp
 *~
 .save

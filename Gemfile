@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'thin'
+gem 'pg'
 gem 'bcrypt-ruby'
 gem 'jquery-rails'
 gem 'will_paginate'
@@ -14,6 +15,3 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
 end
-
-gem 'mysql', :group => :development
-gem 'pg', :group => :production
