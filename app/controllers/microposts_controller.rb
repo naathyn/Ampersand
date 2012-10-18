@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash.now[:success] = "Your share has been posted!"
+      flash[:success] = "Your share has been posted!"
       redirect_to root_url
     else
       @share_items = []
