@@ -1,14 +1,10 @@
 Socialrails::Application.routes.draw do
 
-  root :to => 'static_pages#home'
-
   resources :users do
     member do
       get :following, :followers
     end
   end
-
-  match '/signup' => 'users#new'
 
   resources :relationships, :only => [:create, :destroy]
   resources :microposts, :only => [:create, :destroy] do
@@ -20,6 +16,9 @@ Socialrails::Application.routes.draw do
   resources :messages, :only => [:create]
   resources :sessions, :only => [:new, :create, :destroy]
 
+  root :to => 'static_pages#home'
+
+  match '/signup' => 'users#new'
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
 

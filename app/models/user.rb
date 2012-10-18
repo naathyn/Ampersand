@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base 
-  has_paper_trail :only => [:realname, :email, :name, :location]
+  has_paper_trail :on => [:new]
   attr_accessible :realname, :email, :name, :location, :bio, :password, :password_confirmation
 	
 	has_secure_password

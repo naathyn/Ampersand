@@ -1,5 +1,5 @@
 class Opinion < ActiveRecord::Base
-  has_paper_trail
+  has_paper_trail :on => [:create]
 
 	attr_accessible :fan_id, :like_id
 
