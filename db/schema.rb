@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20121018024357) do
 
-  create_table "hash_tags", :force => true do |t|
-    t.integer  "micropost_id"
-    t.integer  "tag_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "hash_tags", ["micropost_id", "tag_id"], :name => "index_hash_tags_on_micropost_id_and_tag_id"
-
   create_table "messages", :force => true do |t|
     t.string   "convo"
     t.integer  "user_id"
@@ -65,14 +56,6 @@ ActiveRecord::Schema.define(:version => 20121018024357) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
-
-  create_table "tags", :force => true do |t|
-    t.string   "word"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "tags", ["word"], :name => "index_tags_on_word"
 
   create_table "users", :force => true do |t|
     t.string   "realname"
