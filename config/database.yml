@@ -1,4 +1,4 @@
-development: &test
+development:
   adapter: mysql
   encoding: utf8
   database: ampersand
