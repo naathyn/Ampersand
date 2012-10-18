@@ -9,8 +9,8 @@ gem 'bootstrap-will_paginate'
 gem 'paper_trail'
 
 group :development, :test do
-  gem 'thin'
   gem 'mysql'
+  gem 'thin'
 end
 
 group :assets do
