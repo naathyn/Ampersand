@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	has_many :fans, through: :opinions
 
 	has_many :messages, dependent: :destroy
-	has_many :convos, foreign_key: "to_id", class_name: "Message", dependent :destroy
+	has_many :convos, foreign_key: "to_id", class_name: "Message", dependent: :destroy
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
