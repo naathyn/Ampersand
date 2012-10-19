@@ -14,8 +14,42 @@
 	<%= pluralize(@users.count, "member") %> and growing
 </h2>
 
+  <% if current_user.admin? %>
+  <div class="container-fluid">
+  <div class="row-fluid">
+  <table class="datatable table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Gravatar</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Joined</th>
+      </tr>
+    </thead>
+    	<tbody>
+      	<% @users.each do |user| %>
+        	<tr>
+         	  <td><%= user.id %></td>
+         	  <td><%= link_to gravatar_for(user), user %></td>
+            <td><%= link_to user.realname, user %></td>
+            <td><%= user.email %></td>
+            <td>@<%= user.name %></td>
+            <td><%= user.created_at.to_date %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% else %>
+
 <%= will_paginate %>
   <ul class="users">
     <%= render @users %>
   </ul>
 <%= will_paginate %>
+
+<% end %>
