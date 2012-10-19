@@ -15,8 +15,6 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem "google_visualr"
-gem "jquery-datatables-rails"
 
 group :production do
   gem 'pg'

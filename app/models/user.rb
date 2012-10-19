@@ -57,18 +57,6 @@ class User < ActiveRecord::Base
     Message.from_users_inbox(self)
   end
 
-  def liked?(random_share)
-    opinions.find_by_like_id(random_share.id)
-  end
-
-  def like!(random_share)
-    opinions.create!(like_id: random_share.id)
-  end
-
-  def unlike!(random_share)
-    opinions.find_by_like_id(random_share.id).destroy
-  end
-
   def following?(other_user)
     relationships.find_by_followed_id(other_user.id)
   end
@@ -79,6 +67,18 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
+  end
+
+  def liked?(random_share)
+    opinions.find_by_like_id(random_share.id)
+  end
+
+  def like!(random_share)
+    opinions.create!(like_id: random_share.id)
+  end
+
+  def unlike!(random_share)
+    opinions.find_by_like_id(random_share.id).destroy
   end
 
   def regex
