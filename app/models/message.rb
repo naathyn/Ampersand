@@ -22,7 +22,7 @@ private
   def send_message
     if match = MESSAGE_REGEX.match(convo)
       user = User.find_by_regex(match[1])
-      self.to ||= user if user
+      self.to ||= user
 		end
 	end
 end
