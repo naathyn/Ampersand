@@ -2,11 +2,7 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <% unless signed_in? %>
-		<%= yield flash.now[:notice] = "Apologies to members who lost their account.  The database took a major hit and despite all efforts, I was unable to recover your accounts.  The site is now stable and you are encouraged to sign back up." %>
-  <% end %>
-
-	<%= yield flash.now[:info] = "Last updated October 18th, at 4:15 a.m. CST" %>
+	<%= yield flash.now[:info] = "Last updated October 22nd, at 7:00 a.m. CST" %>
 
     <div class=" navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
