@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: amp3rsand
   pool: 5
   username: naathyn

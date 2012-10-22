@@ -1,7 +1,15 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
-    <div class="alert alert-error">
-      The form contains an error.  Hit back on your browser, check the syntax of your private message and try again.
+    <div class="container-fluid" id="alert-inline">
+      <div class="alert alert-error" id="inline">
+        The form contains <%= pluralize(object.errors.count, "error") %>.
+      </div>
     </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+     <li>* Messages must be sent such as <b>!</b>username </li>
+    <% end %>
+    </ul>
   </div>
 <% end %>

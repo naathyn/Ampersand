@@ -8,7 +8,7 @@ class Micropost < ActiveRecord::Base
   has_many :likes, through: :opinions
 
 	validates :user_id, presence: true
-	validates :content, presence: true, length: { minimum: 3 }
+	validates :content, presence: true, length: { maximum: 255 }
 
 	default_scope order: 'microposts.created_at DESC'
 	before_save :send_reply
@@ -41,7 +41,7 @@ private
   def send_reply
     if match = REPLY_REGEX.match(content)
       user = User.find_by_regex(match[1])
-      self.to ||= user if user
+      self.to ||= user
 		end
 	end
 end

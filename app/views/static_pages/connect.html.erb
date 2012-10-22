@@ -5,16 +5,11 @@
 	<div class=" navbar navbar-inverse navbar-fixed-top">
   	<div class="navbar-inner">
 			<div class="container">
-			<% if signed_in? %>
     		<%= render 'layouts/navigation_edit' %>
-			<% else %>
-				<%= render 'layouts/navigation_root' %>
-			<% end %>
 			</div>
 		</div>
 	</div>
 
-	<% if signed_in? %>
 		<aside class="side-module side-menu mini-profile">
 			<a href="<%= user_path(current_user) %>" class="share-anchor">
       	<section>
@@ -31,7 +26,3 @@
 			<div class="share-container">
 				<%= render 'shared/inbox' %>
 			</div>
-
-		<% else %>
-	<%= yield flash.now[:error] = "Please signin to view your inbox." %>
-<% end %>

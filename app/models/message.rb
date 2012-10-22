@@ -1,14 +1,16 @@
 class Message < ActiveRecord::Base
 	attr_accessible :convo, :to
+
 	belongs_to :user
   belongs_to :to, class_name: "User"
 
-	default_scope order: 'messages.created_at DESC'
-
 	validates :user_id, presence: true
-  VALID_MESSAGE = /\A!/i
-  validates :convo, presence: true, format: { with: VALID_MESSAGE }
 
+  VALID_MESSAGE = /\A!/i
+  validates :convo, presence: true, length: { maximum: 255 },
+  format: { with: VALID_MESSAGE }
+
+  default_scope order: 'messages.created_at DESC'
 	before_save :send_message
 
 private
