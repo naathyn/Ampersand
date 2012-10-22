@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 	before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
 
-	VALID_REALNAME = /([a-zA-Z]{2,18}\s*)+[a-zA-Z]{3,20}/i
+	VALID_REALNAME = /([a-zA-Z]{2,18}\s*)+[a-zA-Z]{2,20}/i
 	validates :realname, presence: true, format: { with: VALID_REALNAME },
 										uniqueness: { case_sensitive: false }
 

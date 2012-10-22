@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'mysql'
+gem 'pg'
 gem 'thin'
 gem 'bcrypt-ruby'
 

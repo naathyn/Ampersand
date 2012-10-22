@@ -33,7 +33,13 @@
         	<tr>
          	  <td><%= user.id %></td>
          	  <td><%= link_to gravatar_for(user), user %></td>
-            <td><%= link_to user.realname, user %></td>
+            <td>
+            <%= link_to user.realname, user %>
+              <br />
+            <%= link_to "remove", user, method: :delete,
+            data: { confirm: 
+            "Are you sure you want to delete this member?" } %>
+            </td>
             <td><%= user.email %></td>
             <td>@<%= user.name %></td>
             <td><%= user.created_at.to_date %></td>
