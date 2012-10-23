@@ -30,8 +30,9 @@
 
 				<div class="well-footer">
 					<ul class="inline-share-stats share-stats">
-    			  <li>
-          	  <strong><%= atreply_item.likes.count %></strong><a><i class="icon-heart"></i></a>
+    			  <li id="like_count<%= atreply_item.id %>">
+          	  <strong><%= atreply_item.likes.count %></strong>
+              <a><i class="icon-heart"></i></a>
     				</li>
 					</ul>
 

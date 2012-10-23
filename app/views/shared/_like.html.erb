@@ -5,4 +5,9 @@
 <li><i class="icon-thumbs-up"></i>
   <%= f.submit "Like", class: "btn-link" %></li>
 <% end %>
+  <ul class="ajax-share-stats">
+    <li>
+      <strong><%= @micropost.likes.count %></strong>
+    <a class="ajax-anchor"><i class="icon-heart"></i></a>
+  </li>
 </ul>

@@ -629,11 +629,11 @@ aside {
 
 .well-header {
 	color: #555;
-	text-align: right;
-	font-weight: bold;
+  text-align: right;
+  font-weight: bold;
 	border: 1px solid rgb(240, 240, 240);
 	border-radius: 5px 5px 0px 0px;
-	padding: 8px;
+  padding: 8px;
 	@include shadows-border;
 	border-bottom: 0;
 }
@@ -657,7 +657,7 @@ aside {
 
 .well-footer .share-actions li {
 	display: inline;
-	opacity: 0;
+	opacity: 100;
 }
 
 .well:hover .well-footer li {
@@ -673,12 +673,16 @@ aside {
 	vertical-align: 6px;
 }
 
-.well-footer .share-actions {
+.share-actions {
 	display: inline-block;
 	height: 0;
 }
 
-.well-footer .share-actions .btn-link {
+.share-actions a {
+  display: inline;
+}
+
+.share-actions .btn-link {
 	font-size: 100%;
   color: $blue;
 	margin-top: -2px;
@@ -688,15 +692,15 @@ aside {
 	}
 }
 
-.well-footer .share-actions a {
-  display: inline;
+.show-hide {
+  display: none;
 }
 
-.well-footer .share-stats {
+.share-stats {
 	float: right;
 }
 
-.well-footer .share-stats a {
+.share-stats a {
 	border-left: none;
 	padding-left: 0px;
 	&:first-child {
@@ -704,7 +708,7 @@ aside {
 	}
 }
 
-.well-footer .share-stats strong {
+.share-stats strong {
 	display: inline-block;
 	margin-top: 1px;
 	font-size: 115.4%;
@@ -714,11 +718,11 @@ aside {
  color: $red;
 }
 
-.well-footer .inline-share-stats {
+.inline-share-stats {
 	display: inline-block;
 }
 
-.well-footer .inline-share-stats a {
+.inline-share-stats a {
 	color: rgb(153, 153, 153);
 	font-size: 10px;
 	text-transform: uppercase;
@@ -730,17 +734,30 @@ aside {
 	}
 }
 
-.well-footer .inline-share-stats li {
+.inline-share-stats li {
 	display: inline;
 }
 
-.well-footer .inline-share-stats li:first-child a {
+.inline-share-stats li:first-child a {
 	margin-top: 1px;
 }
 
 .well-footer .inline-share-reply {
 	display: block;
 }
+
+.ajax-share-stats {
+  position: absolute;
+  margin-top: -49px;
+  margin-left: 686px;
+  float: right;
+}
+
+.ajax-share-stats strong {
+  display: inline;
+  font-size: 15px;
+  margin-left: -24px;
+ }
 
 .well-footer .inline-share-reply .inline-container {
 	padding: 10px 0 3px 0;
