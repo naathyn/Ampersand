@@ -23,5 +23,5 @@ Socialrails::Application.routes.draw do
   match '/updates' => 'static_pages#updates'
   match '/about' => 'static_pages#about'
   match '/contact' => 'static_pages#contact'
-  match '/connect' => 'static_pages#connect', :as => :inboxk
+  match '/connect' => 'static_pages#connect', :as => :inbox
 end
