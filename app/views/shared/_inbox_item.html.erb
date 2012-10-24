@@ -7,11 +7,7 @@
 				<span class="admin">
 					<%= link_to inbox_item.user.realname, inbox_item.user %>
 				</span>
-			<% elsif inbox_item.user(6) %>
-			  <span class="may">
-				  <%= link_to inbox_item.user.realname, inbox_item.user %>
-			  </span>
-      <% elsif !inbox_item.user.admin && !inbox_item.user(6) %>
+			<% else %>
 				<span class="user">
 					<%= link_to inbox_item.user.realname, inbox_item.user %>
 				</span>
