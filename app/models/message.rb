@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-	attr_accessible :convo, :to
+	attr_accessible :convo, :to, :read
 
 	belongs_to :user
   belongs_to :to, class_name: "User"
