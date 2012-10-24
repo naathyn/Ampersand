@@ -1,2 +1,2 @@
-$("#like_form<%= @micropost.id %>").html("<%= escape_javascript(render('shared/like')) %>")
+$("#like_form<%= @micropost.id %>").html("<%= escape_javascript(render('scripts/like')) %>")
 $("#like_count<%= @micropost.id %>").html('<strong><%= @micropost.likes.count %></strong>')

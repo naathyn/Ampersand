@@ -4,40 +4,47 @@
 
 	<%= yield flash.now[:info] = "Last updated October 24nd, at 11:30 a.m. CST" %>
 
-    <div class=" navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-				<div class="container">
-    			<%= render 'layouts/navigation_root' %>
-					</div>
+  <div class=" navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+	    <div class="container">
+    	  <%= render 'layouts/navigation_root' %>
+			    </div>
 				</div>
 			</div>
 
-		<% if signed_in? %>
-			<aside class="side-module side-menu mini-profile">
-					<a href="<%= user_path(current_user) %>" class="share-anchor">
-       			<section>
-        			<%= render 'shared/user_info' %>
-       			</section>
-					</a>
-       	<section>
-         <%= render 'shared/stats' %>
-       </section>
-       <span>
-				<%= render 'shared/micropost_form' %>
-			</span>
-			</aside>
-				<div class="share-container">
-					<div class="well-header"> 
-            <a href="<%= user_path(current_user) %>" alt="Profile"><i class="icon-user" style="padding-left:8px;"> </i></a>
-            <a href="<%= inbox_path %>" alt="Inbox"><i class="icon-envelope"> </i></a>
-          </div>
-				    <%= render 'shared/share' %>
-						  </div>
-						<% else %>
+    <% if signed_in? %>
 
-						<div class="center hero-unit">
-    			<h1>Ampersand</h1>
-    		<h3>
+			<aside class="side-module side-menu mini-profile">
+			  <a href="<%= user_path(current_user) %>" class="share-anchor">
+       	  <section>
+        	  <%= render 'shared/user_info' %>
+       		</section>
+				</a>
+       	<section>
+          <%= render 'shared/stats' %>
+        </section>
+          <span>
+				  <%= render 'shared/share_form' %>
+			  </span>
+			</aside>
+
+			<div class="share-container">
+			  <div class="well-header"> 
+          <a href="<%= user_path(current_user) %>" alt="Profile">
+            <i class="icon-user" style="padding-left:8px;"> </i>
+          </a>
+          <a href="<%= inbox_path %>" alt="Inbox">
+            <i class="icon-envelope"></i>
+          </a>
+        </div>
+				<%= render 'feeds/user_shares' %>
+			</div>
+
+    <% else %> <!-- if user is signed in -->
+
+			<div class="center hero-unit">
+    	  <h1>Ampersand</h1>
+    		  <h3>
     			Simple.  Modern.  Interactive.
 				</h3>
 			<h5>Alpha Release #2</h5>
