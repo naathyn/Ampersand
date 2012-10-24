@@ -1,0 +1,85 @@
+<div id="<%= atreply_item.user.name %>_<%= atreply_item.id %>" class="well well-inner">
+
+	<div class="well-inner-header">
+
+		<%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
+			<% if atreply_item.user.admin? %>
+				<span class="admin">
+					<%= link_to atreply_item.user.realname, atreply_item.user %>
+				</span>
+			<% else %>
+				<span class="user">
+					<%= link_to atreply_item.user.realname, atreply_item.user %>
+				</span>
+			<% end %>
+
+				<a data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply" class="item-anchor">
+
+					<span class="username">
+						<small>@<%= atreply_item.user.name %></small>
+					</span>
+					<span class="timestamp">
+						<small><%= time_ago_in_words(atreply_item.created_at) %> ago </small>
+					</span>
+				</div> <!-- well-inner-header -->
+
+					<span class="content">
+						<%= atreply_item.content %>
+					</span>
+				</a> <!-- item-anchor -->
+
+				<div class="well-footer">
+
+					<ul class="inline-share-stats share-stats">
+    			  <li id="like_count<%= atreply_item.id %>">
+          	  <strong><%= atreply_item.likes.count %></strong>
+              <a><li><i class="icon-heart"></i></li></a>
+            </li>
+					</ul>
+
+					<ul class="share-actions">
+						<a class="shown" data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply"> <!-- toggles line 71 -->
+							<li><i class="icon-comment"></i>Reply</li>
+            </a>
+          </ul>
+
+				<% if current_user.liked?(atreply_item) %>
+
+				  <ul class="share-actions" id="like_form<%= atreply_item.id %>">
+					  <%= form_for(current_user.opinions.find_by_like_id(atreply_item),
+    								    html: { method: :delete },
+             				    remote: true) do |f| %>
+					    <li><i class="icon-heart"></i>
+  				    <%= f.submit "Unlike", class: "btn-link" %></li>
+					  <% end %>
+          </ul>
+
+        <% else %>
+
+		      <ul class="share-actions" id="like_form<%= atreply_item.id %>">
+		        <%= form_for(current_user.opinions.build(like_id: atreply_item.id), 
+								        remote: true) do |f| %>
+  		        <div><%= f.hidden_field :like_id %></div>
+		          <li><i class="icon-thumbs-up"></i>
+  		        <%= f.submit "Like", class: "btn-link" %></li>
+		        <% end %>
+          </ul>
+
+	      <% end %> <!-- if user liked -->
+
+          <div class="inline-share-reply">
+			      <div id="<%= atreply_item.id %>_reply" class="show collapse">
+				      <div class="inline-container">
+
+					      <%= form_for(@micropost) do |f| %>
+        					<%= render 'shared/error_messages', object: f.object %>
+							      <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= atreply_item.user.name %>">@<%= atreply_item.user.name %> </textarea>
+        					<%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+					      <% end %>
+
+				      </div>
+            </div>
+          </div> <!-- inline-share-reply -->
+
+	</div> <!-- well-footer -->
+</div>
