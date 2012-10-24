@@ -1,13 +1,6 @@
-<ul id="like_form<%= @micropost.id %>">
 <%= form_for(current_user.opinions.build(like_id: @micropost.id),
              remote: true) do |f| %>
   <div><%= f.hidden_field :like_id %></div>
-<li><i class="icon-thumbs-up"></i>
+  <li><i class="icon-thumbs-up"></i>
   <%= f.submit "Like", class: "btn-link" %></li>
 <% end %>
-  <ul class="ajax-share-stats">
-    <li>
-      <strong><%= @micropost.likes.count %></strong>
-    <a class="ajax-anchor"><i class="icon-heart"></i></a>
-  </li>
-</ul>

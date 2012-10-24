@@ -1,13 +1,13 @@
 <div id="<%= inbox_item.user.name %>_<%= inbox_item.id %>" class="well well-inner">
 
 	<div class="well-inner-header">
-		<%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
 
+		<%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
 			<% if inbox_item.user.admin? %>
 				<span class="admin">
 					<%= link_to inbox_item.user.realname, inbox_item.user %>
 				</span>
-					<% else %>
+			<% else %>
 				<span class="user">
 					<%= link_to inbox_item.user.realname, inbox_item.user %>
 				</span>
@@ -20,34 +20,41 @@
 					<span class="timestamp">
 						<small><%= time_ago_in_words(inbox_item.created_at) %> ago</small>
 					</span>
-				</div>
+				</div> <!-- well-inner-header -->
 
 					<span class="content">
 						<%= inbox_item.convo %>
 					</span>
-				</a>
+				</a> <!-- item-anchor -->
 
-				<% if current_user!=(inbox_item.user) %>
+			<% if current_user!=(inbox_item.user) %>
+
 				<div class="well-footer">
+
 					<ul class="share-actions">
+					  <a class="shown" data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply"> <!-- toggles line 41 -->
+						  <li><i class="icon-comment"></i>Reply</li>
+            </a>
+          </ul>
 
-					<a class="shown" data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply">
-						<li><i class="icon-comment"></i>Reply</li></a></ul>
-							<div class="inline-share-reply">
-								<div id="<%= inbox_item.id %>_reply" class="show collapse">
-									<div class="inline-container">
-									<%= form_for(@message) do |f| %>
-  									<%= render 'shared/messages_error', object: f.object %>
-										<textarea id="message_convo" name="message[convo]" placeholder="Reply to !<%= inbox_item.user.name %>">!<%= inbox_item.user.name %> </textarea>
-  								<%= f.submit "Reply", class: "btn btn-small btn-primary" %>
-								<% end %>
-							</div>
-						</div>
-					</div>
-				</div>
+					  <div class="inline-share-reply">
+						  <div id="<%= inbox_item.id %>_reply" class="show collapse">
+							  <div class="inline-container">
 
-			<% else %>
-		<div class="well-footer-empty"> </div>
-	<% end %>
+								  <%= form_for(@message) do |f| %>
+  								  <%= render 'shared/messages_error', object: f.object %>
+										  <textarea id="message_convo" name="message[convo]" placeholder="Reply to !<%= inbox_item.user.name %>">!<%= inbox_item.user.name %> </textarea>
+  								    <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+								    <% end %>
+							    </div>
+						    </div>
+					    </div> <!-- inline-share-reply -->
+				    </div> <!-- well-footer -->
+
+			<% else %> <!-- if user isn't inbox_item user -->
+
+		    <div class="well-footer-empty"> </div> <!-- lousy work-around - will adjust soon -->
+
+	   <% end %>
 
 </div>

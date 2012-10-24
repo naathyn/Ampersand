@@ -492,7 +492,7 @@ aside {
 
 .bio {
 	max-width: 420px;
-	font: italic 13px/18px Georgia,"Times New Roman",serif;
+	font: italic 14px/18px Georgia,"Times New Roman",serif;
 	color: rgb(119, 119, 119);
 	word-wrap: break-word;
 	padding-bottom:7px;
@@ -634,6 +634,7 @@ aside {
 	border: 1px solid rgb(240, 240, 240);
 	border-radius: 5px 5px 0px 0px;
   padding: 8px;
+  min-height: 17px;
 	@include shadows-border;
 	border-bottom: 0;
 }
@@ -643,6 +644,7 @@ aside {
 	border-radius: 0px 0px 5px 5px;
 	border-top: 0px;
 	padding: 10px;
+  min-height: 7px;
 	@include shadows-border;
 	border-bottom: 0;
 }
@@ -657,7 +659,7 @@ aside {
 
 .well-footer .share-actions li {
 	display: inline;
-	opacity: 100;
+	opacity: 0;
 }
 
 .well:hover .well-footer li {
@@ -690,10 +692,6 @@ aside {
 	&:hover {
 		text-decoration: underline;
 	}
-}
-
-.show-hide {
-  display: none;
 }
 
 .share-stats {
@@ -745,19 +743,6 @@ aside {
 .well-footer .inline-share-reply {
 	display: block;
 }
-
-.ajax-share-stats {
-  position: absolute;
-  margin-top: -49px;
-  margin-left: 686px;
-  float: right;
-}
-
-.ajax-share-stats strong {
-  display: inline;
-  font-size: 15px;
-  margin-left: -24px;
- }
 
 .well-footer .inline-share-reply .inline-container {
 	padding: 10px 0 3px 0;

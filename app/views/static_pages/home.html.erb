@@ -27,7 +27,10 @@
 			</span>
 			</aside>
 				<div class="share-container">
-					<div class="well-header"> </div>
+					<div class="well-header"> 
+            <a href="<%= user_path(current_user) %>" alt="Profile"><i class="icon-user" style="padding-left:8px;"> </i></a>
+            <a href="<%= inbox_path %>" alt="Inbox"><i class="icon-envelope"> </i></a>
+          </div>
 				    <%= render 'shared/share' %>
 						  </div>
 						<% else %>
