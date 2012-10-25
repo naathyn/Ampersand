@@ -32,9 +32,16 @@
 				<div class="well-footer">
 
 					<ul class="share-actions">
-					  <a class="shown" data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply"> <!-- toggles line 41 -->
+					  <a class="shown" data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply"> <!-- toggles line 48 -->
 						  <li><i class="icon-comment"></i>Reply</li>
             </a>
+          </ul>
+
+					<ul class="share-actions" id="mark_read<%= inbox_item.id %>" style="display:none;"> <!-- a work in progress -->
+            <%= form_for(:toggle_read) do |f| %>
+              <%= f.check_box inbox_item.toggle!(:read) %>
+              <%= f.submit "Mark Read", class: "btn btn-link" %>
+            <% end %>
           </ul>
 
 					  <div class="inline-share-reply">
