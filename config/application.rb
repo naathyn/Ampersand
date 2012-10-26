@@ -14,7 +14,7 @@ module Socialrails
   class Application < Rails::Application
 		config.time_zone = 'Central Time (US & Canada)'
     config.encoding = "utf-8"
-    config.filter_parameters += [:password, :password_confirmation]
+    config.filter_parameters += [:password]
     config.active_support.escape_html_entities_in_json = true
     config.active_record.whitelist_attributes = true
     config.assets.enabled = true

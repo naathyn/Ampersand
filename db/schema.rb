@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024092304) do
+ActiveRecord::Schema.define(:version => 20121026032146) do
 
   create_table "messages", :force => true do |t|
     t.string   "convo"
     t.integer  "user_id"
     t.integer  "to_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "read",       :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "read_id"
   end
 
   add_index "messages", ["to_id"], :name => "index_messages_on_to_id"

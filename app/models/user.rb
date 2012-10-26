@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base 
   attr_accessible :realname, :email, :name, :location, :bio, :password, :password_confirmation
-	
+
 	has_secure_password
 
   has_many :microposts, dependent: :destroy
@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
 	has_many :opinions, foreign_key: "fan_id", dependent: :destroy
 	has_many :fans, through: :opinions
 
-	has_many :messages, dependent: :destroy
-	has_many :convos, foreign_key: "to_id", class_name: "Message", dependent: :destroy
+	has_many :messages
+	has_many :convos, foreign_key: "to_id", class_name: "Message"
+  has_many :read_messages, foreign_key: "read_id", class_name: "Message"
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -35,8 +36,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, format: { with: VALID_USERNAME }, 
 										uniqueness: { case_sensitive: false }
 
-	validates :location, length: { maximum: 33 }
-	validates :bio, length: { maximum: 201 }
+	validates :location, length: { maximum: 50 }
+	validates :bio, length: { maximum: 255 }
 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
