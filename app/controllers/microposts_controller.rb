@@ -18,6 +18,13 @@ class MicropostsController < ApplicationController
     redirect_to root_url
   end
 
+  def fans
+    @title = "Likes"
+    @micropost = Micropost.find(params[:id])
+    @fan_likes = @micropost.fans.paginate(page: params[:page])
+    render 'fans'
+  end
+
 private
 
   def correct_user

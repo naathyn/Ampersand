@@ -5,15 +5,19 @@ class Micropost < ActiveRecord::Base
 	belongs_to :to, class_name: "User"
 
 	has_many :opinions, foreign_key: "like_id", dependent: :destroy
-  has_many :likes, through: :opinions
-  has_many :who_liked, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
-  has_many :fans, through: :who_liked
+  has_many :fans, through: :opinions, source: :fan
+  has_many :agreeables, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
+  has_many :likes, through: :agreeables
 
 	validates :user_id, presence: true
 	validates :content, presence: true, length: { maximum: 255 }
 
 	default_scope order: 'microposts.created_at DESC'
 	before_save :send_reply
+
+	def fans
+		Micropost.from_fan_likes(self)
+	end
 
 private
 
@@ -30,6 +34,11 @@ private
                          WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
           user_id: user.id)
+  end
+
+  def self.from_fan_likes(micropost)
+    fan_ids = "SELECT fan_id FROM opinions WHERE like_id = :like_id"
+    where("user_id IN (#{fan_ids})", like_id: micropost.id)
   end
 
 	REPLY_REGEX = /\A@([^\s]*)/

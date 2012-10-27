@@ -3,9 +3,4 @@
   <%= link_to user.realname, user %>
 		<br/>
 	<small style="color:rgb(153, 153, 153);">@<%= user.name %></small>
-	<% if current_user.admin? && !current_user?(user) %>
-		<br />
-  <%= link_to "delete", user, method: :delete, style: "font-size:12px;",
-	data: { confirm: "Are you sure you want to delete this member?" } %>
-  <% end %>
 </li>

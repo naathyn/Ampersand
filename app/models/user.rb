@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
 	has_many :opinions, foreign_key: "fan_id", dependent: :destroy
+  has_many :fans, through: :opinions
 
 	has_many :messages
 	has_many :convos, foreign_key: "to_id", class_name: "Message"
