@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 	has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
 	has_many :opinions, foreign_key: "fan_id", dependent: :destroy
-	has_many :fans, through: :opinions
 
 	has_many :messages
 	has_many :convos, foreign_key: "to_id", class_name: "Message"
@@ -24,16 +23,20 @@ class User < ActiveRecord::Base
 	before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
 
-	VALID_REALNAME = /([a-zA-Z]{2,18}\s*)+[a-zA-Z]{2,20}/i
-	validates :realname, presence: true, format: { with: VALID_REALNAME },
+	VALID_REALNAME = /\A([a-zA-Z]{2,20}\s+[a-zA-Z]{2,20})\Z/i
+	validates :realname, presence: true, 
+                    length: { minimum: 2, maximum: 20 },
+                    format: { with: VALID_REALNAME },
 										uniqueness: { case_sensitive: false }
 
-	VALID_EMAIL = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/i
+	VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates :email, presence: true, format: { with: VALID_EMAIL },
                     uniqueness: { case_sensitive: false }
 
-	VALID_USERNAME = /^[a-z\d_]{5,12}$/i
-  validates :name, presence: true, format: { with: VALID_USERNAME }, 
+	VALID_USERNAME = /\A[a-z\d_.]{5,15}\Z/i
+  validates :name, presence: true, 
+                    length: { minimum: 5, maximum: 15 },
+                    format: { with: VALID_USERNAME }, 
 										uniqueness: { case_sensitive: false }
 
 	validates :location, length: { maximum: 50 }
@@ -82,21 +85,20 @@ class User < ActiveRecord::Base
     opinions.find_by_like_id(random_share.id).destroy
   end
 
-  def regex
+  def user_names
    name.gsub(/ /,"_")
   end
 
-  def self.regex_to_name(reg)
-   reg.gsub(/_/," ")
+  def self.regex_to_name(user_names)
+   user_names.gsub(/ /," ")
   end
 
-  def self.find_by_regex(regex_name)
-		all = where(name: User.regex_to_name(regex_name))
-		return nil if all.empty?
-		all.first
+  def self.find_by_regex(user_names)
+		users = where(name: User.regex_to_name(user_names))
+    users.first
 	end
 
-private
+protected
 
   def create_remember_token
     self.remember_token = SecureRandom.uuid

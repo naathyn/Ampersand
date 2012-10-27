@@ -6,6 +6,8 @@ class Micropost < ActiveRecord::Base
 
 	has_many :opinions, foreign_key: "like_id", dependent: :destroy
   has_many :likes, through: :opinions
+  has_many :who_liked, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
+  has_many :fans, through: :who_liked
 
 	validates :user_id, presence: true
 	validates :content, presence: true, length: { maximum: 255 }
@@ -16,13 +18,11 @@ class Micropost < ActiveRecord::Base
 private
 
   def self.from_users_profile(user)
-    "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
     where("user_id = :user_id", user_id: user.id)
   end
 
   def self.from_users_replies(user)
-  	"SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-		where("to_id = :user_id", user_id: user.id)
+  	where("to_id = :user_id", user_id: user.id)
   end
 
   def self.from_users_shares(user)
@@ -32,16 +32,11 @@ private
           user_id: user.id)
   end
 
-  def self.from_users_replies(user)
-    "SELECT followed_id FROM relationships  WHERE follower_id = :user_id"
-    where("to_id = :user_id", user_id: user.id)
-  end
-
 	REPLY_REGEX = /\A@([^\s]*)/
   def send_reply
     if match = REPLY_REGEX.match(content)
       user = User.find_by_regex(match[1])
-      self.to ||= user
+      self.to = user
 		end
 	end
 end
