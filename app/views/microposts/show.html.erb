@@ -1,0 +1,10 @@
+<div class="share-container" style="width:100%;margin:0 auto;">
+<% if @microposts.any? %>
+	<div class="well-header" style="margin-top:10px;">
+		<%= pluralize(@micropost.fans.count, "person") %> likes this
+			</div>
+  		<%= render @microposts, collection: @microposts %>
+		<div class="well-bottom" style="margin-bottom:15px;"> </div>
+  <%= will_paginate @microposts %>
+<% end %>
+</div>

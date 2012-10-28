@@ -5,11 +5,11 @@
 	  <%= link_to gravatar_for(share_item.user), share_item.user %>
 		  <% if share_item.user.admin? %>
 			  <span class="admin">
-				  <%= link_to share_item.user.realname, share_item.user %>
+				  <%= link_to share_item.user.realname, share_item %>
 			  </span>
 		  <% else %>
 			  <span class="user">
-				  <%= link_to share_item.user.realname, share_item.user %>
+				  <%= link_to share_item.user.realname, share_item %>
 			  </span>
 		  <% end %>
 
@@ -47,7 +47,7 @@
 			  <% if current_user.liked?(share_item) %>
 
 			    <ul class="share-actions" id="like_form<%= share_item.id %>">
-				    <%= form_for(current_user.opinions.find_by_like_id(share_item),
+				    <%= form_for(current_user.fans.find_by_like_id(share_item),
     									  html: { method: :delete },
              					  remote: true) do |f| %>
 					    <li><i class="icon-heart"></i>
@@ -58,7 +58,7 @@
   		  <% else %>
 
 		      <ul class="share-actions" id="like_form<%= share_item.id %>">
-		        <%= form_for(current_user.opinions.build(like_id: share_item.id), 
+		        <%= form_for(current_user.fans.build(like_id: share_item.id), 
 								        remote: true) do |f| %>
     		      <div><%= f.hidden_field :like_id %></div>
 				      <li><i class="icon-thumbs-up"></i>

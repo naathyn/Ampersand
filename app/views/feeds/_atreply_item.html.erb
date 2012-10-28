@@ -46,7 +46,7 @@
 				<% if current_user.liked?(atreply_item) %>
 
 				  <ul class="share-actions" id="like_form<%= atreply_item.id %>">
-					  <%= form_for(current_user.opinions.find_by_like_id(atreply_item),
+					  <%= form_for(current_user.fans.find_by_like_id(atreply_item),
     								    html: { method: :delete },
              				    remote: true) do |f| %>
 					    <li><i class="icon-heart"></i>
@@ -57,7 +57,7 @@
         <% else %>
 
 		      <ul class="share-actions" id="like_form<%= atreply_item.id %>">
-		        <%= form_for(current_user.opinions.build(like_id: atreply_item.id), 
+		        <%= form_for(current_user.fans.build(like_id: atreply_item.id), 
 								        remote: true) do |f| %>
   		        <div><%= f.hidden_field :like_id %></div>
 		          <li><i class="icon-thumbs-up"></i>

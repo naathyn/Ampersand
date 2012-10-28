@@ -13,16 +13,14 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def show
+    @micropost = Micropost.find(params[:id])
+    @microposts = @micropost.fans.paginate(page: params[:page])
+  end
+
   def destroy
     @micropost.destroy
     redirect_to root_url
-  end
-
-  def fans
-    @title = "Likes"
-    @micropost = Micropost.find(params[:id])
-    @fan_likes = @micropost.fans.paginate(page: params[:page])
-    render 'fans'
   end
 
 private
