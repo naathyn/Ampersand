@@ -5,15 +5,10 @@ Socialrails::Application.routes.draw do
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :show, :destroy] do
-    member do
-      post :modal
-    end
-  end
+  resources :microposts, :only => [:create, :show, :destroy]
   resources :opinions, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
   resources :messages, :only => [:create]
-  resources :notifications
 
   root :to => 'static_pages#home'
 
