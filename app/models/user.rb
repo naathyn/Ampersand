@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
 	has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
 
-	has_many :messages
-	has_many :convos, foreign_key: "to_id", class_name: "Message"
+	has_many :messages, dependent: :destroy
+	has_many :convos, foreign_key: "to_id", class_name: "Message", dependent: :destroy
   has_many :read_messages, foreign_key: "read_id", class_name: "Message"
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy

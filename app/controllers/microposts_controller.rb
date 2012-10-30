@@ -18,6 +18,7 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find(params[:id])
     @microposts = @micropost.fans.paginate(page: params[:page])
+    @modal = current_user.microposts.build(params[:micropost])
   end
 
   def destroy

@@ -1,5 +1,5 @@
-<%= form_for(@micropost) do |f| %>
+<%= form_for(@modal) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-    <textarea id="micropost_content" name="micropost[content]" placeholder="Coming soon...">Coming soon...</textarea>
+    <textarea id="micropost[content]" name="micropost[content]" placeholder="Reply to @<%= @micropost.user.name %>">@<%= @micropost.user.name %> </textarea>
   <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
 <% end %>
