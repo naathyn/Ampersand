@@ -49,24 +49,28 @@
 
 			  <% if current_user.liked?(share_item) %>
 
-			    <ul class="share-actions" id="like_form<%= share_item.id %>">
-				    <%= form_for(current_user.fans.find_by_like_id(share_item),
-    									  html: { method: :delete },
-             					  remote: true) do |f| %>
-					    <li><i class="icon-heart"></i>
-  					  <%= f.submit "Unlike", class: "btn-link", style: "vertical-align: 4px;" %></li>
-					  <% end %>
+			    <ul class="share-actions">
+				    <li id="like_form<%= share_item.id %>">
+              <%= form_for(current_user.fans.find_by_like_id(share_item),
+    									    html: { method: :delete },
+             					    remote: true) do |f| %>
+					        <i class="icon-heart"></i>
+  					    <%= f.submit "Unlike", class: "btn-link", style: "vertical-align: 4px;" %>
+					    <% end %>
+            </li>
           </ul>
 
   		  <% else %>
 
-		      <ul class="share-actions" id="like_form<%= share_item.id %>">
-		        <%= form_for(current_user.fans.build(like_id: share_item.id), 
-								        remote: true) do |f| %>
-    		      <div><%= f.hidden_field :like_id %></div>
-				      <li><i class="icon-thumbs-up"></i>
-    			    <%= f.submit "Like", class: "btn-link", style: "vertical-align: 5px;" %></li>
-			      <% end %>
+		      <ul class="share-actions">
+            <li id="like_form<%= share_item.id %>">
+		          <%= form_for(current_user.fans.build(like_id: share_item.id), 
+								          remote: true) do |f| %>
+    		          <div><%= f.hidden_field :like_id %></div>
+				          <li><i class="icon-thumbs-up"></i>
+    			      <%= f.submit "Like", class: "btn-link", style: "vertical-align: 5px;" %></li>
+			        <% end %>
+            </li>
           </ul>
 
   		  <% end %> <!-- if user liked -->

@@ -1,4 +1,4 @@
-$(".modal-title").html("<% if @micropost.likes.any? %><%= pluralize(@micropost.fans.count, 'follower') %> of <% if current_user?(@micropost.user) %> yours<% else %><%= @micropost.user.name %><% end %><i class='icon-heart'></i> this.<% else %>Be the first to <i class='icon-heart'></i> this!<% end %>")
+$(".modal-title").html("<% if current_user?(@micropost.user) %> <% if @micropost.likes.any? %> <%= pluralize(@micropost.fans.count, 'follower') %> of yours <i class='icon-heart'></i> this!<% else %> @<%= @micropost.user.name %><% end %> <% else %> <% if !current_user?(@micropost.user) %> <% if @micropost.likes.any? %> <%= pluralize(@micropost.fans.count, 'follower') %> of @<%= @micropost.user.name %> <i class='icon-heart'></i> this.<% else %> Be the first to <i class='icon-heart'></i> this!<% end %><% end %><% end %>")
 $(".modal-body").html("<%= escape_javascript(render('share_content')) %>")
 $("#likes").html("<%= escape_javascript(render('share_render')) %>")
 $(".modal-footer").html("<button class='btn' data-dismiss='modal'>Close</button>")

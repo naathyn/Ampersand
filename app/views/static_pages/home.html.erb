@@ -2,9 +2,10 @@
   <% provide(:title, @title) %>
 <% end %>
 
-	<%= yield flash.now[:info] = "Last updated October 30th, at 10:30 a.m. CST" %>
-    <% if signed_in? %>
-  <%= yield flash.now[:notice] = "The new feed is still undergoing tests and tweaks.  If there are any problems detaching shares, please let me know." %>
+  <% unless signed_in? %>
+	  <%= yield flash.now[:info] = "Currently building as of, Today at 1:00 p.m. CST" %>
+  <% else %>
+    <%= yield flash.now[:notice] = "The new feed is still undergoing tests and tweaks.  If there are any problems whatsoever, please let me know." %>
   <% end %>
 
   <div class=" navbar navbar-inverse navbar-fixed-top">
