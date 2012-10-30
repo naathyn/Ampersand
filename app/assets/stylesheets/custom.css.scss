@@ -366,7 +366,7 @@ aside {
   }
 }
 
-.users {
+.users, .users_modal {
   list-style: none;
   margin: 0;
   li {
@@ -377,6 +377,88 @@ aside {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+.users_modal {
+  margin-top: -15px;
+  li {
+    border-top: 1px solid rgb(220, 220, 220);
+    border-bottom: 1px solid rgb(220, 220, 220);
+    &:first-child {
+      border: 0px;
+    }
+    &:last-child {
+      border-bottom: 0px;
+      margin-bottom: -15px;
+    }
+  }
+}
+
+.username_modal {
+  display: block;
+}
+
+.modal-body .gravatar {
+  size: 50px;
+}
+
+.modal-header button.close {
+  margin-top: -2px;
+}
+
+.modal-header {
+  cursor: default;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: rgb(236, 236, 236);
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(center top , rgb(245, 245, 245) 0px, rgb(236, 236, 236) 100%);
+  border-bottom: 1px solid rgb(221, 221, 221);
+  border-radius: 6px 6px 0px 0px;
+  box-shadow: 0px 1px 0px $white inset;
+}
+
+#likes {
+  background-color: rgb(236, 236, 236);
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+.modal_stats {
+  margin-bottom: -10px;
+}
+
+.modal-header .modal-title {
+  width: 75%;
+  margin: 0px auto;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0px 1px 0px $white;
+}
+
+.modal-footer, #likes {
+  cursor: default;
+}
+
+.modal-content {
+  cursor: pointer;
+  position: relative;
+  background-color: $white;
+  border-radius: 6px 6px 6px 6px;
+  background-clip: padding-box;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px $white inset;
+}
+
+.modal-body {
+  overflow: hidden;
+}
+
+.modal-body:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.modal-body:hover:active {
+  background-color: rgb(242, 242, 242);
 }
 
 .user_avatars {
@@ -574,13 +656,13 @@ aside {
 	cursor: pointer;
 }
 
-.well-inner .gravatar {
+.well-inner .gravatar, .modal_header .gravatar {
   height: 50px;
   width: 50px;
   border-radius: 5px 5px 5px 5px;
 }
 
-.well-inner-header {
+.well-inner-header, .modal_header {
 	line-height: 11px;
 	margin-bottom: 4px;
 	.user {
@@ -589,10 +671,6 @@ aside {
 	.admin a {
 		font-weight: bold;
 		color: $green;
-	}
-	.may a {
-		font-weight: bold;
-		color: #FF4D94;
 	}
 	.username {
 		color: #ABA;
@@ -606,7 +684,7 @@ aside {
 	}
 }
 
-.well-inner .content {
+.well-inner .content, .modal_content .content {
 	line-height: 19px;
   display: block;
 	margin-left: 60px;
@@ -661,22 +739,22 @@ aside {
   background-color: rgb(240, 240, 240);
 }
 
-.well-footer .share-actions li {
+.share-actions li {
 	display: inline;
 	opacity: 0;
 }
 
-.well:hover .well-footer li {
+.well:hover .well-footer li, .modal-body:hover .well-footer li {
     opacity: 100;
 }
 
-.well:hover .well-footer a {
+.well:hover .well-footer a, .modal-body:hover .well-footer a {
     color: $blue;
 }
 
-.well-footer .shown {
+.shown {
 	color: $grayLight;
-	vertical-align: 6px;
+	vertical-align: 5px;
 }
 
 .share-actions {
@@ -713,7 +791,7 @@ aside {
 .share-stats strong {
 	display: inline-block;
 	margin-top: 1px;
-	font-size: 115.4%;
+	font-size: 14px
 }
 
 .well-inner:hover strong {
@@ -744,17 +822,17 @@ aside {
 	margin-top: 1px;
 }
 
-.well-footer .inline-share-reply {
+.inline-share-reply {
 	display: block;
 }
 
-.well-footer .inline-share-reply .inline-container {
+.inline-container, .modal-form {
 	padding: 10px 0 3px 0;
 	float: left;
 	display: block;
 }
 
-.inline-container form {
+.inline-container form, .modal-form form {
 	margin: -15px -11px -10px;
 	padding: 5px;
 }
@@ -763,7 +841,7 @@ aside {
 	display: none;
 }
 
-.inline-container form textarea {
+.inline-container form textarea, .modal-form form textarea {
 	color: rgb(170, 170, 170);
 	font-size: 13px;
 	line-height: 18px;
@@ -785,6 +863,21 @@ aside {
 	margin-bottom: 8px;
 }
 
+.modal-form form textarea {
+	color: rgb(69, 69, 69);
+	font-size: 14px;
+	line-height: 18px;
+	height: 78px !important;
+	width: 350px;
+	border-radius: 4px 4px 4px 4px;
+	padding: 9px;
+}
+
+.modal-form form input {
+	display: block;
+	margin-bottom: 8px;
+}
+
 [class^="icon-comment"], [class*=" icon-comment"] {
 	margin-right: 5px;
 	margin-left: 1px;
@@ -792,19 +885,17 @@ aside {
 
 [class^="icon-remove"], [class*=" icon-remove"] {
 	vertical-align: 2px;
-	height: 13px;
-	width: 13px;
 }
 
 [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
 	vertical-align: 2px;
 	margin-right: 1px;
-	margin-left: 7px;
+	margin-left: 3px;
 }
 
 [class^="icon-heart"], [class*=" icon-heart"] {
-	vertical-align: 3px;
-	margin-left: 7px;
+	vertical-align: 2px;
+	margin-left: 3px;
 }
 
 #error_explanation {
@@ -823,6 +914,11 @@ aside {
 #inline {
   margin-left: -10px;
   margin-bottom: 5px;
+}
+
+#modal_badge a:first-child {
+  margin-right:0;
+  padding-right:0;
 }
 
 .field_with_errors {

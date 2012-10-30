@@ -1,0 +1,10 @@
+
+      <% if @microposts.any? %>
+        <% @microposts.each do |user| %>
+          <%= link_to gravatar_for(@micropost.user), @micropost.user, size: 65 %>
+            <%= link_to @micropost.user.realname, @micropost.user %>
+              <br>
+	              <small style="color:rgb(153, 153, 153);">@<%= @micropost.user.name %></small>
+              <%= will_paginate @microposts %>
+            <% end %>
+          <% end %>

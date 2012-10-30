@@ -1,0 +1,81 @@
+<div class="modal_header">
+  <%= link_to gravatar_for(@micropost.user), @micropost.user %>
+      <span class="user">
+        <%= link_to @micropost.user.realname, @micropost.user %>
+      </span>
+
+    <a data-toggle="collapse" data-target="#<%= @micropost.id %>_reply" class="item-anchor">
+
+      <span class="username">
+        <small>@<%= @micropost.user.name %></small>
+      </span>
+      <span class="timestamp">
+        <small><%= time_ago_in_words(@micropost.created_at) %> ago</small>
+      </span>
+    </div> <!-- modal_header -->
+
+      <div class="modal_content">
+        <span class="content">
+          <%= @micropost.content %>
+        </span>
+      </div> <!-- modal_content -->
+    </a> <!-- item-anchor -->
+
+				<div class="well-footer">
+
+					<ul class="inline-share-stats share-stats modal_stats">
+    				<li id="like_count<%= @micropost.id %>">
+              <strong><%= @micropost.likes.count %></strong>
+                <a><li><i class="icon-heart"></i></li></a>
+    				</li>
+					</ul>
+
+			  <% if current_user != (@micropost.user) %>
+
+			    <ul class="share-actions">
+					  <a class="shown" data-toggle="collapse" data-target="#<%= @micropost.id %>_reply"> <!-- toggles line 64 -->
+					    <li><i class="icon-comment"></i>Reply</li>
+					  </a>
+				  </ul>
+
+			  <% if current_user.liked?(@micropost) %>
+
+			    <ul class="share-actions" id="like_form<%= @micropost.id %>">
+				    <%= form_for(current_user.fans.find_by_like_id(@micropost),
+    									  html: { method: :delete },
+             					  remote: true) do |f| %>
+					    <li><i class="icon-heart"></i>
+  					  <%= f.submit "Unlike", class: "btn-link" %></li>
+					  <% end %>
+          </ul>
+
+  		  <% else %>
+
+		      <ul class="share-actions" id="like_form<%= @micropost.id %>">
+		        <%= form_for(current_user.fans.build(like_id: @micropost.id), 
+								        remote: true) do |f| %>
+    		      <div><%= f.hidden_field :like_id %></div>
+				      <li><i class="icon-thumbs-up"></i>
+    			    <%= f.submit "Like", class: "btn-link", style: "vertical-align: 5px;" %></li>
+			      <% end %>
+          </ul>
+
+  		  <% end %> <!-- if user liked -->
+
+				  <div class="inline-share-reply">
+					  <div id="<%= @micropost.id %>_reply" class="show collapse">
+						  <div class="modal-form">
+                <%= render :partial => 'microposts/form' %>
+					    </div>
+            </div>
+          </div> <!-- inline-share-reply -->
+
+			<% else %> <!-- if user isn't @micropost user -->
+               
+			  <ul class="share-actions">
+          <%= render :partial => 'microposts/delete' %>
+        </ul>
+
+		  <% end %>
+
+</div> <!-- well-footer end -->

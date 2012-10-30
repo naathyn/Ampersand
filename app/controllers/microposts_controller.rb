@@ -2,6 +2,8 @@ class MicropostsController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: :destroy
 
+  respond_to :html, :js
+
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
