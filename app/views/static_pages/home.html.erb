@@ -3,7 +3,8 @@
 <% end %>
 
   <% unless signed_in? %>
-	  <%= yield flash.now[:info] = "Although Ampersand is in active development,  users are now able to sign up." %>
+	  <%= yield flash.now[:info] = "Last update on Halloween, at 1:15 am CST" %>
+	  <%= yield flash.now[:notice] = "Previous issues with registrations have been resolved.  You can now sign up." %>
   <% else %>
     <%= yield flash.now[:notice] = "The new feed is still undergoing tests and tweaks.  If there are any problems whatsoever, please let me know." %>
   <% end %>
