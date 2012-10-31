@@ -5,8 +5,12 @@
 /tmp/*
 /doc/*
 
+.rspec
+Guardfile
+/spec/*
+
 **.swp
 *~
-.save
+*.save
 .project
 .idea

@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   # /\A([a-zA-Z]{2,20}\s+[a-zA-Z]{2,20})\Z/i #
-	VALID_REALNAME = /\A([a-zA-Z]\s+[a-zA-Z])\Z/i
+	VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
 	validates :realname, presence: true, 
                     length: { minimum: 2, maximum: 20 },
                     format: { with: VALID_REALNAME },
@@ -34,8 +34,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL },
                     uniqueness: { case_sensitive: false }
 
-  # /\A[a-z\d_.]{5,15}\Z/i #
-	VALID_USERNAME = /\A[a-z\d_.]\Z/i
+	VALID_USERNAME = /\A[a-z\d_.]{5,15}\Z/i
   validates :name, presence: true, 
                     length: { minimum: 5, maximum: 15 },
                     format: { with: VALID_USERNAME }, 
