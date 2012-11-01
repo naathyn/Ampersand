@@ -705,6 +705,11 @@ aside {
 	margin-top: -5px;
 }
 
+.well-footer form {
+  display: inline-block;
+  margin-bottom: -5px;
+}
+
 .well-footer-empty {
 	margin-top: 15px;
 }
@@ -740,7 +745,7 @@ aside {
 }
 
 .share-actions li {
-	display: inline;
+	display: inline-block;
 	opacity: 0;
 }
 
@@ -759,7 +764,6 @@ aside {
 
 .share-actions {
 	display: inline-block;
-	height: 0;
 }
 
 .share-actions a {

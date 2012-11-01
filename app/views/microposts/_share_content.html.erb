@@ -4,7 +4,9 @@
         <%= link_to @micropost.user.realname, @micropost.user %>
       </span>
 
-    <a data-toggle="collapse" data-target="#modal_reply" class="item-anchor">
+    <% if !current_user?(@micropost.user) %>
+      <a data-toggle="collapse" data-target="#modal_reply" class="item-anchor">
+    <% end %>
 
       <span class="username">
         <small>@<%= @micropost.user.name %></small>
@@ -18,54 +20,44 @@
         <span class="content">
           <%= @micropost.content %>
         </span>
-      </div> <!-- modal_content -->
+      </div>
     </a> <!-- item-anchor -->
 
 				<div class="well-footer">
 
 					<ul class="inline-share-stats share-stats modal_stats">
     				<li id="modal_like_count<%= @micropost.id %>">
+              <a><i class="icon-heart"></i></a>
               <strong><%= @micropost.likes.count %></strong>
-                <a><li><i class="icon-heart"></i></li></a>
     				</li>
 					</ul>
 
-			  <% if !current_user?(@micropost.user) %>
-
 			    <ul class="share-actions">
-					  <a class="shown" data-toggle="collapse" data-target="#modal_reply"> <!-- toggles line 68 -->
-					    <li><i class="icon-comment"></i>Reply</li>
-					  </a>
-				  </ul>
+			  <% if current_user?(@micropost.user) %>
+
+          <%= render :partial => 'microposts/delete' %>
+        <% else %>
+
+            <li>
+					    <a class="shown" data-toggle="collapse" data-target="#modal_reply"> 
+					      <i class="icon-comment"></i>Reply
+					    </a>
+            </li>
 
 			  <% if current_user.liked?(@micropost) %>
-
-			    <ul class="share-actions">
 				    <%= render :partial => 'scripts/modal_unlike' %>
-          </ul>
-
   		  <% else %>
-
-		      <ul class="share-actions">
 		        <%= render :partial => 'scripts/modal_like' %>
-          </ul>
-
   		  <% end %> <!-- if user liked -->
+      <% end %>
+    </ul>
 
-				  <div class="inline-share-reply">
-					  <div class="show collapse" id="modal_reply">
+					<div class="show collapse" id="modal_reply">
+				    <div class="inline-share-reply">
 						  <div class="modal-form">
                 <%= render :partial => 'microposts/form' %>
 					    </div>
             </div>
           </div> <!-- inline-share-reply -->
 
-			<% else %> <!-- if user isn't @micropost user -->
-               
-			  <ul class="share-actions">
-          <%= render :partial => 'microposts/delete' %>
-        </ul>
-
-		  <% end %>
-
-</div> <!-- well-footer end -->
+</div>

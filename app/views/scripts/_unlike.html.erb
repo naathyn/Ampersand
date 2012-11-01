@@ -1,4 +1,4 @@
-<li id="like_form<%= @micropost.id %>">
+<li id="like_form<%= @micropost.id %>_unlike">
   <%= form_for(current_user.fans.find_by_like_id(@micropost),
                html: { method: :delete },
                remote: true) do |f| %>
