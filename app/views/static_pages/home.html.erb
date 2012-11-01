@@ -3,10 +3,10 @@
 <% end %>
 
   <% unless signed_in? %>
-    <%= yield flash.now[:info] = "Last update on Halloween, at 1:15 am CST" %>
+    <%= yield flash.now[:info] = "Last updated November 1st, at 12:10 pm, CST tagged: browser-compatibility, cleanup, feeds, javascript, profiles, stylesheets" %>
     <%= yield flash.now[:notice] = "Previous issues with registrations have been resolved.  You can now sign up." %>
   <% else %>
-    <%= yield flash.now[:notice] = "The current feed is currently being worked on as of Wednesday October 31st, at 11:50 pm CST.  All other feeds will look like junk for the time being.  Bare with me!" %>
+    <%= yield flash.now[:notice] = "While the current feed is nearest completion, all feeds should now be stable.  It would help out greatly if you notify me of any difference you may notice, for better or worse!" %>
   <% end %>
 
   <div class=" navbar navbar-inverse navbar-fixed-top">
