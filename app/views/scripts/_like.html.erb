@@ -1,4 +1,4 @@
-<li id="like_form<%= @micropost.id %>_like">
+<li id="like_form<%= @micropost.id %>">
   <%= form_for(current_user.fans.build(like_id: @micropost.id),
                remote: true) do |f| %>
       <div><%= f.hidden_field :like_id %></div>

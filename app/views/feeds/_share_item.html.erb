@@ -59,29 +59,27 @@
 					    </a>
             </li>
 
+			<li id="like_form<%= share_item.id %>">
 			  <% if current_user.liked?(share_item) %>
 
-				    <li id="like_form<%= share_item.id %>_unlike">
               <%= form_for(current_user.fans.find_by_like_id(share_item),
     									    html: { method: :delete },
              					    remote: true) do |f| %>
 					        <i class="icon-heart"></i>
-  					    <%= f.submit "Unlike", class: "btn-link", style: "vertical-align: 4px;" %>
+  					    <%= f.submit "Unlike", class: "btn-link", style: "vertical-align: 5px;" %>
 					    <% end %>
-            </li>
 
   		  <% else %>
 
-				    <li id="like_form<%= share_item.id %>_like">
 		          <%= form_for(current_user.fans.build(like_id: share_item.id), 
 								          remote: true) do |f| %>
     		            <div><%= f.hidden_field :like_id %></div>
 				          <i class="icon-thumbs-up"></i>
     			      <%= f.submit "Like", class: "btn-link", style: "vertical-align: 5px;" %>
 			        <% end %>
-            </li>
 
   		  <% end %>
+      </li>
 
       <% end %> <!-- if user is share_item user -->
     </ul>

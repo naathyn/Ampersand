@@ -1,9 +1,9 @@
-<li id="like_form<%= @micropost.id %>_unlike">
+<li id="like_form<%= @micropost.id %>">
   <%= form_for(current_user.fans.find_by_like_id(@micropost),
                html: { method: :delete },
                remote: true) do |f| %>
       <i class="icon-heart"></i>
-    <%= f.submit "Unlike", class: "btn-link", style: "vertical-align: 4px;" %>
+    <%= f.submit "Unlike", class: "btn-link", style: "vertical-align: 5px;" %>
   <% end %>
 </li>
 

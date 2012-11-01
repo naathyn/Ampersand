@@ -418,11 +418,6 @@ aside {
   box-shadow: 0px 1px 0px $white inset;
 }
 
-#likes {
-  background-color: rgb(236, 236, 236);
-  border-top: 1px solid rgb(221, 221, 221);
-}
-
 .modal_stats {
   margin-bottom: -10px;
 }
@@ -595,7 +590,6 @@ aside {
 .actions .stats {
   max-height: 300px;
   overflow: hidden;
-	background: none;
 }
 
 .actions .stats strong {
@@ -773,6 +767,7 @@ aside {
 .share-actions .btn-link {
 	font-size: 100%;
   color: $blue;
+  vertical-align: 5px;
 	margin-top: -2px;
 	padding: 0;
 	&:hover {
@@ -893,7 +888,6 @@ aside {
 
 [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
 	vertical-align: 2px;
-	margin-right: 1px;
 	margin-left: 3px;
 }
 
@@ -910,6 +904,11 @@ aside {
   }
 }
 
+#likes {
+  background-color: rgb(236, 236, 236);
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
 #alert-inline {
   padding-right: 10px;
   padding-left: 10px;
@@ -918,11 +917,6 @@ aside {
 #inline {
   margin-left: -10px;
   margin-bottom: 5px;
-}
-
-#modal_badge a:first-child {
-  margin-right:0;
-  padding-right:0;
 }
 
 .field_with_errors {
