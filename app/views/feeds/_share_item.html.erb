@@ -13,15 +13,16 @@
 			  </span>
 		  <% end %>
 
+					<span class="timestamp">
+            <small><%= link_to "#{time_ago_in_words(share_item.created_at)} ago", share_item, { :remote => true, 'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "timestamp" } %></small>
+					</span>
+
       <% if !current_user?(share_item.user) %>
 				<a data-toggle="collapse" data-target="#<%= share_item.id %>_reply" class="item-anchor">
       <% end %>
 
 					<span class="username">
 						<small>@<%= share_item.user.name %></small>
-					</span>
-					<span class="timestamp">
-            <small><%= link_to "#{time_ago_in_words(share_item.created_at)} ago", share_item, { :remote => true, 'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "timestamp" } %></small>
 					</span>
 
 			  </div> <!-- well-inner-header -->
