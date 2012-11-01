@@ -1,7 +1,8 @@
 <% if @share_items.any? %>
-	<%= render partial: 'feeds/share_item', collection: @share_items %>
+	<%= render :partial => 'feeds/share_item', collection: @share_items %>
 		<div class="well-bottom" style="text-align:right;"><a href="#" alt="Top"><i class="icon-arrow-up"></i></a></div>
   		<%= will_paginate @share_items %>
+     <%= render 'microposts/modal' %>
 		<% else %>
 	<%= yield flash.now[:info] = "Your feed looks kinda dull.  How about following a few members or sharing some content to fill it up!" %>
 <% end %>
