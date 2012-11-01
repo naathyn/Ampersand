@@ -1,4 +1,4 @@
 $("#like_form<%= @micropost.id %>").html("<%= escape_javascript(render('scripts/unlike')) %>")
-$("#like_count<%= @micropost.id %>").html("<strong><%= @micropost.likes.count %></strong><a><i class='icon-heart'></i></a>")
+$("#like_count<%= @micropost.id %>").html("<a><i class='icon-heart'></i></a><strong><%= @micropost.likes.count %></strong>")
 $("#modal_like_form<%= @micropost.id %>").html("<%= escape_javascript(render('scripts/modal_unlike')) %>")
-$("#modal_like_count<%= @micropost.id %>").html("<strong><%= @micropost.likes.count %></strong><a><i class='icon-heart'></i></a>")
+$("#modal_like_count<%= @micropost.id %>").html("<a><i class='icon-heart'></i></a><strong><%= @micropost.likes.count %></strong>")

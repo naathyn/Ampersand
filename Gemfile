@@ -2,9 +2,8 @@ source 'https://www.rubygems.org/'
 
 gem 'rails'
 gem 'thin'
-gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
-gem 'faker'
+gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
@@ -12,6 +11,7 @@ gem 'jquery-datatables-rails'
 
 group :development, :test do
   gem 'pg'
+  gem 'faker'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'guard-spork'
@@ -28,7 +28,6 @@ end
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'database_cleaner'
 end
 
 group :production do

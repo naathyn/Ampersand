@@ -734,6 +734,10 @@ aside {
   background-color: rgb(245, 245, 245);
 }
 
+.well:hover .timestamp {
+  color: $blue;
+}
+
 .well:hover:active {
   background-color: rgb(240, 240, 240);
 }
@@ -756,6 +760,10 @@ aside {
 	vertical-align: 5px;
 }
 
+.detach {
+  margin-right: 3px;
+}
+
 .share-actions {
 	display: inline-block;
 }
@@ -768,7 +776,6 @@ aside {
 	font-size: 100%;
   color: $blue;
   vertical-align: 5px;
-	margin-top: -2px;
 	padding: 0;
 	&:hover {
 		text-decoration: underline;
@@ -789,7 +796,6 @@ aside {
 
 .share-stats strong {
 	display: inline-block;
-	margin-top: 1px;
 	font-size: 14px
 }
 
@@ -806,8 +812,8 @@ aside {
 	font-size: 10px;
 	text-transform: uppercase;
 	&:first-child {
-		margin-top: 2px;
-		border-left: none;
+		margin-top: 1px;
+		border-left: 0;
 		line-height: 4px;
 		margin-right: -3px;
 	}
@@ -815,10 +821,6 @@ aside {
 
 .inline-share-stats li {
 	display: inline;
-}
-
-.inline-share-stats li:first-child a {
-	margin-top: 1px;
 }
 
 .inline-share-reply {

@@ -21,8 +21,9 @@
 						<small>@<%= share_item.user.name %></small>
 					</span>
 					<span class="timestamp">
-            <small><%= time_ago_in_words(share_item.created_at) %> ago</small>
+            <small><%= link_to "#{time_ago_in_words(share_item.created_at)} ago", share_item, { :remote => true, 'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "timestamp" } %></small>
 					</span>
+
 			  </div> <!-- well-inner-header -->
 
 					<span class="content">
@@ -39,7 +40,7 @@
     				</li>
 					</ul>
 
-        <%= link_to "Detach", share_item, { :remote => true, 'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "shown", :style => "margin-right:3px;" } %>
+        <%= link_to "Detach", share_item, { :remote => true, 'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "shown detach" } %>
 
 			    <ul class="share-actions">
 			  <% if current_user?(share_item.user) %>
@@ -48,7 +49,7 @@
 			        <i class="icon-remove"></i>
 			        <%= link_to "Delete", share_item, method: :delete, 
 				          data: { confirm: "Are you sure you want to delete this?" }, 
-				          style: "vertical-align:5px;", title: share_item.content %>
+				          class: "btn-link", title: share_item.content %>
 			      </li>
 
 			  <% else %>
@@ -66,7 +67,7 @@
     									    html: { method: :delete },
              					    remote: true) do |f| %>
 					        <i class="icon-heart"></i>
-  					    <%= f.submit "Unlike", class: "btn-link", style: "vertical-align: 5px;" %>
+  					    <%= f.submit "Unlike", class: "btn-link" %>
 					    <% end %>
 
   		  <% else %>
@@ -75,13 +76,11 @@
 								          remote: true) do |f| %>
     		            <div><%= f.hidden_field :like_id %></div>
 				          <i class="icon-thumbs-up"></i>
-    			      <%= f.submit "Like", class: "btn-link", style: "vertical-align: 5px;" %>
+    			      <%= f.submit "Like", class: "btn-link" %>
 			        <% end %>
 
-  		  <% end %>
+      <% end %>
       </li>
-
-      <% end %> <!-- if user is share_item user -->
     </ul>
 
 					<div id="<%= share_item.id %>_reply" class="show collapse">
@@ -97,6 +96,8 @@
 					    </div>
             </div>
           </div> <!-- inline-share-reply -->
+
+      <% end %> <!-- if user is share_item user -->
 
 <!-- well-footer -->	</div>
 <!-- end shares --> </div>
