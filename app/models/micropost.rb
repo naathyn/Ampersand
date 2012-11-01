@@ -2,26 +2,25 @@ class Micropost < ActiveRecord::Base
   attr_accessible :content, :to
 
   belongs_to :user
-	belongs_to :to, class_name: "User"
+  belongs_to :to, class_name: "User"
 
-	has_many :opinions, foreign_key: "like_id", dependent: :destroy
+  has_many :opinions, foreign_key: "like_id", dependent: :destroy
   has_many :likes, through: :opinions
   has_many :fans, through: :opinions
 
-	validates :user_id, presence: true
-	validates :content, presence: true, length: { maximum: 255 }
+  validates :user_id, presence: true
+  validates :content, presence: true, length: { maximum: 255 }
 
-	default_scope order: 'microposts.created_at DESC'
-	before_save :send_reply
+  default_scope order: 'microposts.created_at DESC'
+  before_save :send_reply
 
-private
 
   def self.from_users_profile(user)
     where("user_id = :user_id", user_id: user.id)
   end
 
   def self.from_users_replies(user)
-  	where("to_id = :user_id", user_id: user.id)
+    where("to_id = :user_id", user_id: user.id)
   end
 
   def self.from_users_shares(user)
@@ -31,11 +30,11 @@ private
           user_id: user.id)
   end
 
-	REPLY_REGEX = /\A@([^\s]*)/
+  REPLY_REGEX = /\A@([^\s]*)/
   def send_reply
     if match = REPLY_REGEX.match(content)
       user = User.find_by_regex(match[1])
       self.to = user
-		end
-	end
+    end
+  end
 end

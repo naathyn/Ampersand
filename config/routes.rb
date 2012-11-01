@@ -6,9 +6,9 @@ Socialrails::Application.routes.draw do
   end
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :show, :destroy]
-  resources :messages, :only => [:create]
   resources :opinions, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
+  resources :messages, :only => :create
 
   root :to => 'static_pages#home'
 

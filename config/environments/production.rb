@@ -5,7 +5,7 @@ Socialrails::Application.configure do
   config.serve_static_assets = false
   config.assets.compress = true
   config.assets.compile = false
-	config.force_ssl = true
+  config.force_ssl = true
   config.assets.digest = true
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify

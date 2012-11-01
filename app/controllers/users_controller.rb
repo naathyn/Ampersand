@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user,
-  					only: [:index, :show, :edit, :update, :destroy, :following, :followers]
+  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :following, :followers]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
 
@@ -11,8 +10,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @atreply_items = @user.atreply.paginate(page: params[:page])
-		@profile_items = @user.profile.paginate(page: params[:page])
-	  @micropost = current_user.microposts.build(params[:micropost])
+    @profile_items = @user.profile.paginate(page: params[:page])
+    @micropost = current_user.microposts.build(params[:micropost])
   end
 
   def new
@@ -35,7 +34,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
+      flash[:success] = "Profile updated successfully"
       sign_in @user
       redirect_to @user
     else

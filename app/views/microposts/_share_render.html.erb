@@ -1,12 +1,12 @@
 <% if @micropost.fans.any? %>
   <ul class="users_modal">
-    <% @micropost.fans.each do |user| %>
+    <% @microposts.each do |user| %>
       <li>
         <%= link_to gravatar_for(user, size: 38), user %>
         <span class="user"><%= link_to user.realname, user %></span>
-	      <span class="username_modal"><small>@<%= user.name %></small></span>
+        <span class="username_modal"><small>@<%= user.name %></small></span>
       </li>
     <% end %>
   </ul>
-  <%= will_paginate @microposts %>
+  <%= will_paginate @microposts, collection: @microposts %>
 <% end %>

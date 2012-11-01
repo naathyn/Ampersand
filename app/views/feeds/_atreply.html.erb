@@ -1,8 +1,8 @@
 <% if @atreply_items.any? && current_user?(@user) %>
-	<div class="well-header" style="margin-top:10px;">
-		<%= pluralize(@user.atreply.count, "@reply") %> for you
-			</div>
-  		<%= render partial: 'feeds/atreply_item', collection: @atreply_items %>
-		<div class="well-bottom" style="margin-bottom:15px;"></div>
+  <div class="well-header" style="margin-top:10px;">
+    <%= pluralize(@user.atreply.count, "@reply") %> for you
+      </div>
+      <%= render partial: 'feeds/atreply_item', collection: @atreply_items %>
+    <div class="well-bottom" style="margin-bottom:15px;"></div>
   <%= will_paginate @atreply_items %>
 <% end %>

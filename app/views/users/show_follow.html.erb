@@ -1,40 +1,40 @@
 <% content_for :head do %>
-  <% provide(:title, @title) %>	
+  <% provide(:title, @title) %>
 <% end %>
 
-	<div class=" navbar navbar-inverse navbar-fixed-top">
-  	<div class="navbar-inner">
-			<div class="container">
-    	<%= render 'layouts/navigation_members' %>
-		</div>
-	</div>
+  <div class=" navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+      <%= render 'layouts/navigation_members' %>
+    </div>
+  </div>
 </div>
 
 <% @user ||= current_user %>
-	<div class="row-fluid">
-		<aside class="side-module side-menu mini-profile">
-			<a href="<%= user_path(@user) %>" class="share-anchor">
-				<section>
-					<%= render 'shared/user_info' %>
-				</section>
-			</a>
-    	<section>
-      	<%= render 'shared/stats' %>
-      		<% if @users.any? %>
-        		<div class="side-module-share user_avatars">
-          		<% @users.each do |user| %>
+  <div class="row-fluid">
+    <aside class="side-module side-menu mini-profile">
+      <a href="<%= user_path(@user) %>" class="share-anchor">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+      </a>
+      <section>
+        <%= render 'shared/stats' %>
+          <% if @users.any? %>
+            <div class="side-module-share user_avatars">
+              <% @users.each do |user| %>
             <%= link_to gravatar_for(user, size: 32), user %>
           <% end %>
         </div>
       <% end %>
     </section>
   </aside>
-  	<div class="share-container">
-			<% if @users.any? %>
-    		<ul class="users">
-      		<%= render @users %>
-    		</ul>
-    	<%= will_paginate %>
-  	<% end %>
-	</div>
+    <div class="share-container">
+      <% if @users.any? %>
+        <ul class="users">
+          <%= render @users %>
+        </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
 </div>

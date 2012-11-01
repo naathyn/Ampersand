@@ -1,17 +1,17 @@
 <% content_for :head do %>
-	<% provide(:title, 'Members') %>
+  <% provide(:title, 'Members') %>
 <% end %>
 
-	<div class=" navbar navbar-inverse navbar-fixed-top">
-  	<div class="navbar-inner">
-			<div class="container">
-    	<%= render 'layouts/navigation_members' %>
-		</div>
-	</div>
+  <div class=" navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+      <%= render 'layouts/navigation_members' %>
+    </div>
+  </div>
 </div>
 
 <h2 class="center" style="padding-bottom:10px;">
-	<%= pluralize(@users.count, "member") %> and growing
+  <%= pluralize(@users.count, "member") %> and growing
 </h2>
 
   <% if current_user.admin? %>
@@ -28,14 +28,14 @@
         <th>Joined</th>
       </tr>
     </thead>
-    	<tbody>
-      	<% @users.each do |user| %>
-        	<tr>
-         	  <td><%= user.id %></td>
-         	  <td><%= link_to gravatar_for(user), user %></td>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to gravatar_for(user), user %></td>
             <td>
             <%= link_to user.realname, user %>
-              <br />
+              <br>
             <%= link_to "remove", user, method: :delete,
             data: { confirm: 
             "Are you sure you want to delete this member?" } %>

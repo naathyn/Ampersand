@@ -1,7 +1,7 @@
 <div class="login-home navbar-form">
-	<%= form_for(:session, url: sessions_path) do |f| %>
-  	<%= f.text_field :name, class: "span2", placeholder: "Username" %>
-   		<%= f.password_field :password, class: "span2", placeholder: "Password" %>
-      <%= f.submit "Sign in", class: "btn btn-primary" %>
-    <% end %>
-	</div>
+  <%= form_for(:session, url: sessions_path) do |f| %>
+    <%= f.text_field :name, class: "span2", placeholder: "Username" %>
+      <%= f.password_field :password, class: "span2", placeholder: "Password" %>
+    <%= f.submit "Sign in", class: "btn btn-primary" %>
+  <% end %>
+</div>

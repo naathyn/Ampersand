@@ -1,6 +1,5 @@
 <li>
-  <%= link_to gravatar_for(user), user, size: 65 %>
-  <%= link_to user.realname, user %>
-		<br/>
-	<small style="color:rgb(153, 153, 153);">@<%= user.name %></small>
+  <span class="user"><%= link_to gravatar_for(user), user %></span>
+  <span class="username"><%= link_to user.realname, user %></span>
+  <span class="username_modal"><small>@</small><%= user.name %></span>
 </li>

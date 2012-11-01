@@ -1,60 +1,61 @@
 <div id="<%= inbox_item.user.name %>_<%= inbox_item.id %>" class="well well-inner">
 
-	<div class="well-inner-header">
+  <div class="well-inner-header">
 
-		<%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
-			<% if inbox_item.user.admin? %>
-				<span class="admin">
-					<%= link_to inbox_item.user.realname, inbox_item.user %>
-				</span>
-			<% else %>
-				<span class="user">
-					<%= link_to inbox_item.user.realname, inbox_item.user %>
-				</span>
-			<% end %>
+    <%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
+      <% if inbox_item.user.admin? %>
+        <span class="admin">
+          <%= link_to inbox_item.user.realname, inbox_item.user %>
+        </span>
+      <% else %>
+        <span class="user">
+          <%= link_to inbox_item.user.realname, inbox_item.user %>
+        </span>
+      <% end %>
 
-				<a data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply" class="item-anchor">
-					<span class="username"> 
-						<small>!<%= inbox_item.user.name %></small>
-					</span>
-					<span class="timestamp">
-						<small><%= time_ago_in_words(inbox_item.created_at) %> ago</small>
-					</span>
-				</div> <!-- well-inner-header -->
+      <a data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply" class="item-anchor">
 
-					<span class="content">
-						<%= inbox_item.convo %>
-					</span>
-				</a> <!-- item-anchor -->
+        <span class="timestamp">
+          <small><%= time_ago_in_words(inbox_item.created_at) %> ago</small>
+        </span>
+        <span class="username"> 
+          <small>!<%= inbox_item.user.name %></small>
+        </span>
+      </div> <!-- well-inner-header -->
 
-			<% if current_user!=(inbox_item.user) %>
+          <span class="content">
+            <%= inbox_item.convo %>
+          </span>
+        </a> <!-- item-anchor -->
 
-				<div class="well-footer">
+  <% if current_user!=(inbox_item.user) %>
 
-					<ul class="share-actions">
-					  <a class="shown" data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply"> <!-- toggles line 42 -->
-						  <li><i class="icon-comment"></i>Reply</li>
+        <div class="well-footer">
+
+          <ul class="share-actions">
+            <a class="shown" data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply"> <!-- toggles line 42 -->
+              <li><i class="icon-comment"></i>Reply</li>
             </a>
           </ul>
 
-					  <div class="inline-share-reply">
-						  <div id="<%= inbox_item.id %>_reply" class="show collapse">
-							  <div class="inline-container">
+            <div class="inline-share-reply">
+              <div id="<%= inbox_item.id %>_reply" class="show collapse">
+                <div class="inline-container">
 
-								  <%= form_for(@message) do |f| %>
-  								  <%= render 'shared/message_error', object: f.object %>
-										  <textarea id="message_convo" name="message[convo]" placeholder="Reply to !<%= inbox_item.user.name %>">!<%= inbox_item.user.name %> </textarea>
-  								    <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
-								    <% end %>
-							    </div>
-						    </div>
-					    </div> <!-- inline-share-reply -->
-            </div> <!-- well-footer -->
+                  <%= form_for(@message) do |f| %>
+                    <%= render 'shared/message_error', object: f.object %>
+                      <textarea id="message_convo" name="message[convo]" placeholder="Reply to !<%= inbox_item.user.name %>">!<%= inbox_item.user.name %> </textarea>
+                      <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          <!-- well-footer --> </div>
 
-			<% else %> <!-- if user isn't inbox_item user -->
+    <% else %>
 
-    <div class="well-footer-empty"> </div> <!-- lousy workaround - will fix soon -->
+  <!-- lousy workaround - will fix soon --> <div class="well-footer-empty"> </div>
 
-      <% end %>
+    <% end %>
 
 </div>

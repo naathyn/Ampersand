@@ -2,19 +2,19 @@
   <% provide(:title, @user.realname) %>
 <% end %>
 
-	<div class=" navbar navbar-inverse navbar-fixed-top">
-  	<div class="navbar-inner">
-			<div class="container">
-    	<%= render 'layouts/navigation_members' %>
-		</div>
-	</div>
+  <div class=" navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+      <%= render 'layouts/navigation_members' %>
+    </div>
+  </div>
 </div>
 
-	<div class="profile">
-		<div class="profile-header">
-			<div class="row-fluid">
-				<%= render 'shared/profile_stats' %>
-			</div></div></div>
-		<%= render 'feeds/atreply' %>
-	<%= render 'follow_form' %>
+  <div class="profile">
+    <div class="profile-header">
+      <div class="row-fluid">
+        <%= render 'shared/profile_stats' %>
+      </div></div></div>
+    <%= render 'feeds/atreply' %>
+  <%= render 'follow_form' %>
 <%= render 'feeds/profile' %>

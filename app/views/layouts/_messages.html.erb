@@ -1,6 +1,6 @@
 <% flash.each do |key, value| %>
-<div class="container-fluid" id="alert-notice">
-   <a class="close" data-dismiss="alert">&#215;</a>
-  <%= content_tag :div, value, :id => "flash_#{key}", :class => "alert alert-#{key}" %>
-</div>
+  <div class="container-fluid" id="alert-notice">
+    <a class="close" data-dismiss="alert">&#215;</a>
+    <%= content_tag :div, value, :id => "flash_#{key}", :class => "alert alert-#{key}" %>
+  </div>
 <% end %>

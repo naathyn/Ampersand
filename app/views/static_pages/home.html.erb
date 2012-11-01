@@ -3,38 +3,36 @@
 <% end %>
 
   <% unless signed_in? %>
-	  <%= yield flash.now[:info] = "Last update on Halloween, at 1:15 am CST" %>
-	  <%= yield flash.now[:notice] = "Previous issues with registrations have been resolved.  You can now sign up." %>
+    <%= yield flash.now[:info] = "Last update on Halloween, at 1:15 am CST" %>
+    <%= yield flash.now[:notice] = "Previous issues with registrations have been resolved.  You can now sign up." %>
   <% else %>
     <%= yield flash.now[:notice] = "The current feed is currently being worked on as of Wednesday October 31st, at 11:50 pm CST.  All other feeds will look like junk for the time being.  Bare with me!" %>
   <% end %>
 
   <div class=" navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-	    <div class="container">
-    	  <%= render 'layouts/navigation_root' %>
-			    </div>
-				</div>
-			</div>
+      <div class="container">
+        <%= render 'layouts/navigation_root' %>
+          </div>
+        </div>
+      </div>
 
     <% if signed_in? %>
 
-			<aside class="side-module side-menu mini-profile">
-			  <a href="<%= user_path(current_user) %>" class="share-anchor">
-       	  <section>
-        	  <%= render 'shared/user_info' %>
-       		</section>
-				</a>
-       	<section>
+      <aside class="side-module side-menu mini-profile">
+        <a href="<%= user_path(current_user) %>" class="share-anchor">
+          <section>
+            <%= render 'shared/user_info' %>
+          </section>
+        </a>
+        <section>
           <%= render 'shared/stats' %>
         </section>
-          <span>
-				  <%= render 'shared/share_form' %>
-			  </span>
-			</aside>
+          <%= render 'shared/share_form' %>
+      </aside>
 
-			<div class="share-container">
-			  <div class="well-header"> 
+      <div class="share-container">
+        <div class="well-header">
           <a href="<%= user_path(current_user) %>" alt="Profile">
             <i class="icon-user" style="padding-left:8px;"> </i>
           </a>
@@ -42,24 +40,24 @@
             <i class="icon-envelope"></i>
           </a>
         </div>
-				<%= render 'feeds/user_shares' %>
-			</div>
+          <%= render 'feeds/user_shares' %>
+        </div>
 
-    <% else %> <!-- if signed_in? -->
+    <% else %>
 
-			<div class="center hero-unit">
-    	  <h1>Ampersand</h1>
-    		  <h3>
-    			Simple.  Modern.  Interactive.
-				</h3>
-			<h5>Alpha Release #2</h5>
+      <div class="center hero-unit">
+        <h1>Ampersand</h1>
+          <h3>
+          Simple.  Modern.  Interactive.
+        </h3>
+      <h5>Alpha Release #2</h5>
 
     <%= link_to "Sign up now!", signup_path,
-                                class: "btn btn-large btn-primary" %>
-		<h6 style="font-size:11px;">Alpha Release #1 Video</h6>
+        class: "btn btn-large btn-primary" %>
+    <h6 style="font-size:11px;">Alpha Release #1 Video</h6>
     <center>
-			<iframe width="560" height="315" src="https://www.youtube.com/embed/XKwHgbiyne4?rel=0" frameborder="0" allowfullscreen></iframe>
-		</center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/XKwHgbiyne4?rel=0" frameborder="0" allowfullscreen></iframe>
+    </center>
 
-	</div>
+  </div>
 <% end %>
