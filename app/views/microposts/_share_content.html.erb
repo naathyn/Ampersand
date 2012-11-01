@@ -8,11 +8,11 @@
       <a data-toggle="collapse" data-target="#modal_reply" class="item-anchor">
     <% end %>
 
-      <span class="username">
-        <small>@<%= @micropost.user.name %></small>
-      </span>
       <span class="timestamp">
         <small><%= time_ago_in_words(@micropost.created_at) %> ago</small>
+      </span>
+      <span class="username">
+        <small>@<%= @micropost.user.name %></small>
       </span>
     </div> <!-- modal_header -->
 
