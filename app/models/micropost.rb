@@ -14,6 +14,7 @@ class Micropost < ActiveRecord::Base
   default_scope order: 'microposts.created_at DESC'
   before_save :send_reply
 
+private
 
   def self.from_users_profile(user)
     where("user_id = :user_id", user_id: user.id)

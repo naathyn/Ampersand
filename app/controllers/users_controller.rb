@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @atreply_items = @user.atreply.paginate(page: params[:page])
-    @profile_items = @user.profile.paginate(page: params[:page])
+    @atreply_items = @user.atreply.paginate(page: params[:page], :per_page => 10)
+    @profile_items = @user.profile.paginate(page: params[:page], :per_page => 20)
     @micropost = current_user.microposts.build(params[:micropost])
   end
 
