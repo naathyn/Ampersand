@@ -185,7 +185,7 @@ aside {
   width: 890px;
 }
 
-.navbar img {
+.navbar .gravatar {
   border-radius: 10px 10px 10px 10px;
 }
 
@@ -289,8 +289,8 @@ aside {
 }
 
 .item-anchor, .item-anchor:hover {
-  color:rgb(51,51,51);
-  text-decoration:none;
+  color: rgb(51,51,51);
+  text-decoration: none;
 }
 
 .side-module-share {
@@ -374,19 +374,22 @@ aside {
   }
 }
 
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-    border-radius: 5px 5px 5px 5px;
-  }
+.stats a:hover strong {
+  color: $blue;
 }
 
 .gravatar {
   float: left;
   margin-right: 10px;
   border-radius: 5px 5px 5px 5px;
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
 }
 
 .users, .users_modal {
@@ -563,7 +566,7 @@ aside {
   width: 50%;
   margin: 0 0 0 12px;
   h2 {
-    text-align:left;
+    text-align: left;
     letter-spacing: 0;
     font-size: 18px;
     font-weight: normal;
@@ -577,7 +580,6 @@ aside {
   direction: ltr;
   .fullname {
     letter-spacing: 0;
-    text-align: left;
     font-size: 30px;
     line-height: 1;
     margin-bottom: 2px;
@@ -641,6 +643,10 @@ aside {
   font-size: 14px;
 }
 
+.actions .stats a:hover strong {
+  color: $blue;
+}
+
 .actions .stats li {
   display: inline;
   line-height: 16px;
@@ -698,7 +704,6 @@ aside {
 .well-inner .gravatar, .modal_header .gravatar {
   height: 50px;
   width: 50px;
-  border-radius: 5px 5px 5px 5px;
 }
 
 .well-inner-header, .modal_header {
@@ -727,8 +732,8 @@ aside {
   line-height: 19px;
   display: block;
   margin-left: 60px;
-  word-wrap: break-word;
   font-size: 107.1%;
+  word-wrap: break-word;
 }
 
 .well-footer {

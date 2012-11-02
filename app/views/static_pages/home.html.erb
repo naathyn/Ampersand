@@ -2,12 +2,11 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <% unless signed_in? %>
-    <%= yield flash.now[:info] = "Last updated November 1st, at 12:10 pm, CST tagged: browser-compatibility, cleanup, feeds, javascript, profiles, stylesheets" %>
-    <%= yield flash.now[:notice] = "Previous issues with registrations have been resolved.  You can now sign up." %>
-  <% else %>
-    <%= yield flash.now[:notice] = "While the current feed is nearest completion, all feeds should now be stable.  It would help out greatly if you notify me of any differences you may notice, for better or worse!" %>
-  <% end %>
+  <%= yield flash.now[:info] = "Last updated November 2nd, at 4:15 pm, CST tagged: browser-compatibility, cleanup, profiles, stylesheets" %>
+
+    <% unless signed_in? %>
+      <%= yield flash.now[:notice] = "Previous issues with registrations have been resolved.  You can now sign up." %>
+    <% end %>
 
   <div class=" navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
