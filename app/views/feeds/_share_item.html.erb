@@ -4,32 +4,41 @@
 
     <%= link_to gravatar_for(share_item.user), share_item.user %>
       <% if share_item.user.admin? %>
+
         <span class="admin">
           <%= link_to share_item.user.realname, share_item.user %>
         </span>
+
       <% else %>
+
         <span class="user">
           <%= link_to share_item.user.realname, share_item.user %>
         </span>
+
       <% end %>
 
-          <span class="timestamp">
-            <small><%= link_to "#{time_ago_in_words(share_item.created_at)} ago", share_item, { :remote => true, 'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "timestamp" } %></small>
-          </span>
+        <span class="timestamp">
+          <small>
+            <%= link_to "#{time_ago_in_words(share_item.created_at)} ago", share_item, { :remote => true,
+                'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "timestamp" } %>
+          </small>
+        </span>
 
       <% if !current_user?(share_item.user) %>
         <a data-toggle="collapse" data-target="#<%= share_item.id %>_reply" class="item-anchor">
       <% end %>
 
-          <span class="username">
-            <small>@<%= share_item.user.name %></small>
-          </span>
-        </div> <!-- well-inner-header -->
+        <span class="username">
+          <small>@<%= share_item.user.name %></small>
+        </span>
 
-          <span class="content">
-            <%= share_item.content %>
-          </span>
-        </a> <!-- item-anchor -->
+      </div> <!-- well-inner-header -->
+
+        <span class="content">
+          <%= share_item.content %>
+        </span>
+
+      </a> <!-- item-anchor -->
 
         <div class="well-footer">
 
@@ -40,7 +49,8 @@
             </li>
           </ul>
 
-        <%= link_to "Detach", share_item, { :remote => true, 'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "shown detach" } %>
+        <%= link_to "Detach", share_item, { :remote => true, 'data-toggle' => "modal",
+            'data-target' => "#modal-window", :class => "shown detach" } %>
 
           <ul class="share-actions">
         <% if current_user?(share_item.user) %>
@@ -52,7 +62,7 @@
                   class: "btn-link", title: share_item.content %>
             </li>
 
-        <% else %>
+        <% else %> <!-- if not share user -->
 
             <li>
               <a class="shown" data-toggle="collapse" data-target="#<%= share_item.id %>_reply">
@@ -60,7 +70,7 @@
               </a>
             </li>
 
-      <li id="like_form<%= share_item.id %>">
+          <li id="like_form<%= share_item.id %>">
         <% if current_user.liked?(share_item) %>
 
               <%= form_for(current_user.fans.find_by_like_id(share_item),
@@ -95,9 +105,9 @@
 
               </div>
             </div>
-          </div> <!-- inline-share-reply -->
+          </div>
 
-      <% end %> <!-- if user is share_item user -->
+      <% end %>
 
-<!-- well-footer --> </div>
-<!-- end shares --> </div>
+  </div>
+</div>

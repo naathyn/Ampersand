@@ -4,13 +4,17 @@
 
     <%= link_to gravatar_for(profile_item.user), profile_item.user %>
       <% if profile_item.user.admin? %>
+
         <span class="admin">
           <%= link_to profile_item.user.realname, profile_item.user %>
         </span>
+
       <% else %>
+
         <span class="user">
           <%= link_to profile_item.user.realname, profile_item.user %>
         </span>
+
       <% end %>
 
       <% if !current_user?(profile_item.user) %>
@@ -20,14 +24,17 @@
           <span class="username"> 
             <small>@<%= profile_item.user.name %></small>
           </span>
+
           <span class="timestamp">
             <small><%= time_ago_in_words(profile_item.created_at) %> ago </small>
           </span>
+
         </div> <!-- well-inner-header -->
 
           <span class="content">
             <%= profile_item.content %>
           </span>
+
         </a> <!-- item-anchor -->
 
         <div class="well-footer">
@@ -49,7 +56,7 @@
                   class: "btn-link", title: profile_item.content %>
             </li>
 
-        <% else %>
+        <% else %> <!-- if not profile user -->
 
             <li>
               <a class="shown" data-toggle="collapse" data-target="#<%= profile_item.id %>_reply">
@@ -75,7 +82,7 @@
               <%= f.submit "Like", class: "btn-link" %>
             <% end %>
 
-        <% end %> <!-- if user liked -->
+        <% end %>
       </li>
     </ul>
 
@@ -93,7 +100,7 @@
             </div>
           </div>
 
-  <% end %> <!-- if user is profile user -->
+      <% end %>
 
-  <!-- well-footer --> </div>
+  </div>
 </div>

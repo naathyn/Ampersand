@@ -4,13 +4,17 @@
 
     <%= link_to gravatar_for(inbox_item.user), inbox_item.user %>
       <% if inbox_item.user.admin? %>
+
         <span class="admin">
           <%= link_to inbox_item.user.realname, inbox_item.user %>
         </span>
+
       <% else %>
+
         <span class="user">
           <%= link_to inbox_item.user.realname, inbox_item.user %>
         </span>
+
       <% end %>
 
       <a data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply" class="item-anchor">
@@ -18,17 +22,20 @@
         <span class="timestamp">
           <small><%= time_ago_in_words(inbox_item.created_at) %> ago</small>
         </span>
+
         <span class="username"> 
           <small>!<%= inbox_item.user.name %></small>
         </span>
+
       </div> <!-- well-inner-header -->
 
           <span class="content">
             <%= inbox_item.convo %>
           </span>
+
         </a> <!-- item-anchor -->
 
-  <% if current_user!=(inbox_item.user) %>
+      <% if current_user!=(inbox_item.user) %>
 
         <div class="well-footer">
 

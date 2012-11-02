@@ -4,13 +4,17 @@
 
     <%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
       <% if atreply_item.user.admin? %>
+
         <span class="admin">
           <%= link_to atreply_item.user.realname, atreply_item.user %>
         </span>
+
       <% else %>
+
         <span class="user">
           <%= link_to atreply_item.user.realname, atreply_item.user %>
         </span>
+
       <% end %>
 
       <% if !current_user?(atreply_item.user) %>
@@ -20,14 +24,17 @@
         <span class="timestamp">
           <small><%= time_ago_in_words(atreply_item.created_at) %> ago </small>
         </span>
+
         <span class="username">
           <small>@<%= atreply_item.user.name %></small>
         </span>
+
       </div> <!-- well-inner-header -->
 
         <span class="content">
           <%= atreply_item.content %>
         </span>
+
       </a> <!-- item-anchor -->
 
           <div class="well-footer">
@@ -65,7 +72,7 @@
               <%= f.submit "Like", class: "btn-link" %>
             <% end %>
 
-        <% end %> <!-- if user liked -->
+        <% end %>
       </li>
     </ul>
 
@@ -81,7 +88,7 @@
 
               </div>
             </div>
-          </div> <!-- inline-share-reply -->
+          </div>
 
-  <!-- well-footer --> </div>
+  </div>
 </div>
