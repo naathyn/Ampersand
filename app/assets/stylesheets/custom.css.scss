@@ -23,6 +23,7 @@
   box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);
   background-color: rgb(240, 240, 240);
   background-image: -moz-linear-gradient(center top , white, rgb(245, 245, 245));
+  background-image: -webkit-gradient(linear, center top, center bottom, from(white), to(rgb(245, 245, 245)));
   background-repeat: repeat-x;
 }
 
@@ -406,6 +407,8 @@ aside {
 .users_modal {
   margin-top: -15px;
   li {
+    margin: 0px -14px;
+    padding-left: 14px;
     border-top: 1px solid rgb(220, 220, 220);
     border-bottom: 1px solid rgb(220, 220, 220);
     &:first-child {
@@ -414,6 +417,9 @@ aside {
     &:last-child {
       border-bottom: 0px;
       margin-bottom: -15px;
+    }
+    &:nth-child(even) {
+      background-color: rgb(240, 240, 240);
     }
   }
 }
@@ -459,6 +465,11 @@ aside {
   cursor: default;
 }
 
+#likes {
+  background-color: rgb(236, 236, 236);
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
 .modal-content {
   cursor: pointer;
   position: relative;
@@ -483,14 +494,10 @@ aside {
 /* Users Show Profile */
 
 .photo {
-margin-right: 15px;
-  margin-top: -2px;
-  border: 5px solid white;
+  margin-right: 15px;
+  margin-top: 2px;
   position: relative;
   float: left;
-  -webkit-box-shadow: 3px 2px 3px rgba(0,0,0,0.4);
-  -moz-box-shadow: 3px 2px 3px rgba(0,0,0,0.4);
-  -o-box-shadow: 3px 2px 3px rgba(0,0,0,0.4);
 }
 
 .tapetwo:before, .tapetwo:after, .tapethree:before, .tapethree:after {
@@ -547,6 +554,7 @@ margin-right: 15px;
   padding: 12px;
   line-height: 16px;
   background-image: -moz-linear-gradient(center top , white, rgb(249, 249, 249));
+  background-image: -webkit-gradient(linear, center top, center bottom, from(white), to(rgb(249, 249, 249)));
 }
 
 .profile-inner {
@@ -941,6 +949,11 @@ margin-right: 15px;
   }
 }
 
+#inline {
+  margin-left: -10px;
+  margin-bottom: 5px;
+}
+
 #alert-inline {
   padding-right: 10px;
   padding-left: 10px;
@@ -951,18 +964,7 @@ margin-right: 15px;
   @extend .error;
 }
 
-/* Debug etc */
-
-
-#likes {
-  background-color: rgb(236, 236, 236);
-  border-top: 1px solid rgb(221, 221, 221);
-}
-
-#inline {
-  margin-left: -10px;
-  margin-bottom: 5px;
-}
+/* Debug */
 
 .debug_dump {
   clear: both;
