@@ -1,9 +1,10 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :to
+  attr_accessible :content
 
   belongs_to :user
   belongs_to :to, class_name: "User"
 
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost"
   has_many :opinions, foreign_key: "like_id", dependent: :destroy
   has_many :likes, through: :opinions
   has_many :fans, through: :opinions
@@ -31,11 +32,11 @@ private
           user_id: user.id)
   end
 
-  REPLY_REGEX = /\A@([^\s]*)/
+  @@reply_regex = /\A@([^\s]*)/
   def send_reply
-    if match = REPLY_REGEX.match(content)
-      user = User.find_by_regex(match[1])
-      self.to = user
+    if match = @@reply_regex.match(content)
+      user = User.find_by_name(match[1])
+      self.to = user if user
     end
   end
 end

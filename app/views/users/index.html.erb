@@ -36,9 +36,11 @@
             <td>
             <%= link_to user.realname, user %>
               <br>
-            <%= link_to "remove", user, method: :delete,
-            data: { confirm: 
-            "Are you sure you want to delete this member?" } %>
+            <% if current_user.admin? && !current_user?(user) %>
+              <%= link_to "remove", user, method: :delete,
+              data: { confirm: 
+              "Are you sure you want to delete this member?" } %>
+            <% end %>
             </td>
             <td><%= user.email %></td>
             <td>@<%= user.name %></td>

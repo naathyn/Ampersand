@@ -24,10 +24,8 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   # /\A([a-zA-Z]{2,20}\s+[a-zA-Z]{2,20})\Z/i #
-  VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
   validates :realname, presence: true, 
                     length: { minimum: 2, maximum: 20 },
-                    format: { with: VALID_REALNAME },
                     uniqueness: { case_sensitive: false }
 
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
@@ -84,15 +82,6 @@ class User < ActiveRecord::Base
 
   def unlike!(random_share)
     fans.find_by_like_id(random_share.id).destroy
-  end
-
-  def self.regex_to_name(user_names)
-    user_names.gsub(/ /," ")
-  end
-
-  def self.find_by_regex(user_names)
-    users = where(name: User.regex_to_name(user_names))
-    users.first
   end
 
 protected
