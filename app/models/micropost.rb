@@ -4,7 +4,7 @@ class Micropost < ActiveRecord::Base
   belongs_to :user
   belongs_to :to, class_name: "User"
 
-  has_many :replies, foreign_key: "to_id", class_name: "Micropost"
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
   has_many :opinions, foreign_key: "like_id", dependent: :destroy
   has_many :likes, through: :opinions
   has_many :fans, through: :opinions
@@ -32,11 +32,11 @@ private
           user_id: user.id)
   end
 
-  @@reply_regex = /\A@([^\s]*)/
+  REPLY_REGEX = /\A@([^\s]*)/
   def send_reply
-    if match = @@reply_regex.match(content)
+    if match = REPLY_REGEX.match(content)
       user = User.find_by_name(match[1])
-      self.to = user if user
+      self.to ||= user
     end
   end
 end
