@@ -1,7 +1,7 @@
 <% if @micropost.fans.any? %>
   <ul class="users_modal">
     <% @microposts.each do |user| %>
-      <li id="#{user.id}">
+      <li id="<%= user.name %>_<%= user.id %>">
         <%= link_to gravatar_for(user, size: 38), user %>
         <span class="user"><%= link_to user.realname, user %></span>
         <span class="username_modal"><small>@<%= user.name %></small></span>
