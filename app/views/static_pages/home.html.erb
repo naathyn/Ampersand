@@ -4,10 +4,6 @@
 
   <%= yield flash.now[:info] = "Last updated November 2nd, at 4:15 pm, CST tagged: browser-compatibility, cleanup, profiles, stylesheets" %>
 
-    <% unless signed_in? %>
-      <%= yield flash.now[:notice] = "Previous issues with registrations have been resolved.  You can now sign up." %>
-    <% end %>
-
   <div class=" navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">

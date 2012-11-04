@@ -1,9 +1,11 @@
 class Message < ActiveRecord::Base
-  attr_accessible :to, :read, :convo
+  attr_accessible :read, :convo
 
   belongs_to :user
   belongs_to :to, class_name: "User"
   belongs_to :read, class_name: "User"
+
+  has_many :replies, foreign_key: "to_id", class_name: "Message", dependent: :destroy
 
   validates :user_id, presence: true
 
@@ -23,7 +25,7 @@ private
   MESSAGE_REGEX = /\A!([^\s]*)/
   def send_message
     if match = MESSAGE_REGEX.match(convo)
-      user = User.find_by_regex(match[1])
+      user = User.find_by_name(match[1])
       self.to ||= user
     end
   end

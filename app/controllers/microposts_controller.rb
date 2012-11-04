@@ -23,6 +23,7 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
+    flash[:success] = "Your share has been removed"
     redirect_to root_url
   end
 
