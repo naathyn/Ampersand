@@ -11,10 +11,12 @@ gem 'jquery-datatables-rails'
 
 group :development, :test do
   gem 'pg'
+  gem 'faker'
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'faker'
-  gem 'simplecov', :require => false
+  gem 'guard-spork'
+  gem 'spork'
+  gem 'rb-inotify'
 end
 
 group :assets do
@@ -26,9 +28,6 @@ end
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'guard-spork'
-  gem 'spork'
-  gem 'rb-inotify'
 end
 
 group :production do
