@@ -8,8 +8,8 @@ describe "User pages" do
     
     before do
       sign_in FactoryGirl.create(:user)
-      FactoryGirl.create(:user, realname: "Nathan Couch", email: "nathan3k@gmail.com", name: "naathyn",)
-      FactoryGirl.create(:user, realname: "Alan Couch", email: "hatchiebird@gmail.com", name: "hatchiebird")
+      FactoryGirl.create(:user, name: "naathyn", email: "nathan3k@gmail.com")
+      FactoryGirl.create(:user, name: "hatchiebird", email: "hatchiebird@gmail.com")
       visit users_path
     end
 
