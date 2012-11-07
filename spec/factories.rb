@@ -24,26 +24,16 @@ FactoryGirl.define do
     user.password_confirmation "secret"
   end
 
+  factory :message do |message|
+    message.convo "!audrey_couch hey!"
+    message.user :user
+  end
+
   factory :message_user, class: User do |user|
     user.realname "Audrey Couch"
     user.email "audeyboo10@gmail.com"
     user.name "audrey_couch"
     user.password "secret"
     user.password_confirmation "secret"
-  end
-
-  factory :a_reply_for_you do |micropost|
-    micropost.content "@hatchiebird hey!"
-    micropost.user :user
-  end
-
-  factory :message do |message|
-    message.convo "!audrey_couch hey!"
-    message.user :user
-  end
-
-  factory :a_message_for_me do |message|
-    message.convo "!naathyn what up?"
-    message.user :message_user
   end
 end
