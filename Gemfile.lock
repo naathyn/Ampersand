@@ -88,6 +88,8 @@ GEM
       railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
     json (1.7.5)
+    libnotify (0.8.0)
+      ffi (>= 1.0.11)
     libwebsocket (0.1.5)
       addressable
     listen (0.5.3)
@@ -131,6 +133,9 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (0.9.2.2)
+    rb-fchange (0.0.6)
+      ffi
+    rb-fsevent (0.9.2)
     rb-inotify (0.8.8)
       ffi (>= 0.5.0)
     rdoc (3.12)
@@ -198,9 +203,12 @@ DEPENDENCIES
   guard-spork
   jquery-datatables-rails
   jquery-rails
+  libnotify
   pg
   rails
   rails_autolink
+  rb-fchange
+  rb-fsevent
   rb-inotify
   rspec-rails
   sass-rails
