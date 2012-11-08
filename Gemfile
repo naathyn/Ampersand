@@ -19,8 +19,6 @@ group :development, :test do
   gem 'spork'
   gem 'libnotify'
   gem 'rb-inotify', :require => false
-  gem 'rb-fsevent', :require => false
-  gem 'rb-fchange', :require => false
 end
 
 group :assets do

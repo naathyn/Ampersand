@@ -4,12 +4,11 @@ require 'active_support/core_ext'
 
 notification :libnotify, :timeout => 5, :transient => true, :append => false
 
-guard 'spork', :foreman => true, :cucumber => false, :wait => 45, :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', :cucumber => false, :wait => 45, :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
   watch(%r{^config/initializers/.+\.rb$})
-  watch('Guardfile')
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb')
