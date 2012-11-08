@@ -19,7 +19,7 @@ __Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefor
     $ bundle install
     $ ./populate
 
-`./populate` is a simple, yet handy, little (_hardly-compatible_) shell script I threw together that will:
+`./populate` is a simple, yet handy, *hardly-compatible* shell script I threw together that will:
 
 * Create both development and test databases
 * Migrate and prepare both databases
