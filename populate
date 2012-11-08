@@ -1,20 +1,150 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 clear
 
-echo "Initializing.."
-echo
-echo "Hi, $USER, I am currently resetting the database..."
-rake db:reset
+LOGFILE="log/populate.log"
 
+echo "During this procedure I am going to create, migrate, populate, and prepare your database for testing."
+sleep 3
+echo
+echo "Make sure your database.yml file is setup correctly."
+sleep 3
+echo
+echo "This process will take ~3 minutes."
+sleep 5
+echo
+
+echo "Initializing..."
+sleep 8
+echo
+echo "✔"
+echo
+echo "*** Initialized on $(date +%m-%d-%Y) at $(date +%T) ***" >> $LOGFILE
+sleep 4
 clear
 
-echo "Complete"
+echo "Alright $USER, in the next couple of seconds please close the rails server if opened, as well as any test units as they will be utilized during this setup."
+sleep 10
+clear
+
+echo "Follow the log by running 'tail -f log/populate.log'"
 echo
-echo "Now I am going to populate the sample data..."
+echo "✔ Initialize"
+echo "Creating..."
+echo "Migrate"
+echo "Populate"
+echo "Prepare"
+echo "Servers"
+echo
+rake db:create:all
+echo
+echo "✔ Database created at $(date +%T)" >> $LOGFILE
+clear
+
+echo "Follow the log by running 'tail -f log/populate.log'"
+echo
+echo "✔ Initialize"
+echo "✔ Create"
+echo "Migrating..."
+echo "Populate"
+echo "Prepare"
+echo "Servers"
+echo
+rake db:migrate
+clear
+echo "Migrating test database for good measures..."
+rake db:migrate ENV=test
+echo
+echo "✔ Database migrated at $(date +%T)" >> $LOGFILE
+clear
+
+echo "Follow the log by running 'tail -f log/populate.log'"
+echo
+echo "✔ Initialize"
+echo "✔ Create"
+echo "✔ Migrate"
+echo "Populating..."
+echo "Prepare"
+echo "Servers"
+echo
 rake db:populate
 echo
+echo "✔ Database populated at $(date +%T)" >> $LOGFILE
+clear
 
-echo "All done, $USER, now take a look at http://localhost:3000"
-echo "Completed on $(date +%m-%d-%Y-%T)"
+echo "Follow the log by running 'tail -f log/populate.log'"
+echo
+echo "✔ Initialize"
+echo "✔ Create"
+echo "✔ Migrate"
+echo "✔ Populate"
+echo "Preparing..."
+echo "Servers"
+echo
+rake db:test:prepare
+echo
+echo "✔ Database prepared at $(date +%T)" >> $LOGFILE
+clear
+
+echo "Follow the log by running 'tail -f log/populate.log'"
+echo
+echo "✔ Initialize"
+echo "✔ Create"
+echo "✔ Migrate"
+echo "✔ Populate"
+echo "✔ Prepare"
+echo "Servers..."
+echo
+
+echo "Alright $USER, in the next few seconds I will open another terminal window."
+sleep 6
+echo
+
+echo "This window will have two tabs..."
+sleep 6
+echo
+
+echo "one for guard/spork to run tests..."
+sleep 4
+echo "...and the other being the rails server."
+sleep 4
+echo
+
+echo "Allow ~30 seconds for the rails server to initialize."
+sleep 6
+clear
+
+echo "Follow the log by running 'tail -f log/populate.log'"
+echo
+echo "✔ Initialize"
+echo "✔ Create"
+echo "✔ Migrate"
+echo "✔ Populate"
+echo "✔ Prepare"
+echo "Servers..."
+sleep 3
+bash ./server_guard.sh
+echo
+echo "✔ Guard/Spork and Rails Server initialized at $(date +%T)" >> $LOGFILE
+sleep 30
+clear
+
+echo "✔ Initialize"
+echo "✔ Create"
+echo "✔ Migrate"
+echo "✔ Populate"
+echo "✔ Prepare"
+echo "✔ Servers"
+echo
+
+echo "All done $USER. Open your browser to http://localhost:4200 and log in with the information as defined in population.rake"
+echo
+echo "*** All tasks completed on $(date +%m-%d-%Y) at $(date +%T) ***" >> $LOGFILE
+echo "" >> $LOGFILE
+sleep 5
+echo "Allow ~2 minutes for Spork to run all tests."
+echo
+sleep 3
+
+echo "✔ Completed on $(date +%m-%d-%Y) at $(date +%T)"
 echo

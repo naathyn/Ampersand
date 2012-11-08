@@ -5,9 +5,6 @@
 /tmp/*
 /doc/*
 
-.rspec
-Guardfile
-
 **.swp
 *~
 *.save
