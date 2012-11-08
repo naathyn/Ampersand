@@ -1,4 +1,4 @@
-## Getting Started (General Usage)
+## Getting Started
 
 If you so wish...
 
@@ -10,7 +10,7 @@ If you so wish...
     $ bundle exec guard
     $ rails s
 
-## Getting Started [ Specified Linux Distros ]
+# Specified Linux Distros
 
 __Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefore this bash script really limits compatibility. If you are running a Linux distrobution with the Gnome desktop, it should be fine. Otherwise, I wouldn't waste my time.
 
