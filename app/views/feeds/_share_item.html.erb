@@ -35,7 +35,8 @@
       </div> <!-- well-inner-header -->
 
         <span class="content">
-          <%= share_item.content %>
+          <%= auto_link(share_item.content, :html => { :target => '_blank' }) do |link|
+        truncate(link, :length => 30) end %>
         </span>
 
       </a> <!-- item-anchor -->

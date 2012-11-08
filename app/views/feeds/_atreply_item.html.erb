@@ -32,7 +32,8 @@
       </div> <!-- well-inner-header -->
 
         <span class="content">
-          <%= atreply_item.content %>
+          <%= auto_link(atreply_item.content, :html => { :target => '_blank' }) do |link|
+        truncate(link, :length => 30) end %>
         </span>
 
       </a> <!-- item-anchor -->

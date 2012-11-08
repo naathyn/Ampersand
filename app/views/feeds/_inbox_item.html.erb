@@ -30,7 +30,8 @@
       </div> <!-- well-inner-header -->
 
           <span class="content">
-            <%= inbox_item.convo %>
+          <%= auto_link(inbox_item.convo, :html => { :target => '_blank' }) do |link|
+        truncate(link, :length => 30) end %>
           </span>
 
         </a> <!-- item-anchor -->

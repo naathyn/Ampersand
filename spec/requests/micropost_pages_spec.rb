@@ -29,6 +29,17 @@ describe "Micropost pages" do
         expect { click_button "Share" }.to change(Micropost, :count).by(1)
       end
     end
+
+    describe "when a user shares a link (email or url)" do
+
+      before { fill_in 'micropost_content', with: Faker::Internet.email }
+
+      it "should create a micropost with a clickable link" do
+        expect { click_button "Share" }.to change(Micropost, :count).by(1)
+      end
+
+      its(:html) { should match('...</a>') }
+    end
   end
   
   describe "micropost destruction" do

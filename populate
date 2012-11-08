@@ -1,0 +1,20 @@
+#!/bin/sh
+
+clear
+
+echo "Initializing.."
+echo
+echo "Hi, $USER, I am currently resetting the database..."
+rake db:reset
+
+clear
+
+echo "Complete"
+echo
+echo "Now I am going to populate the sample data..."
+rake db:populate
+echo
+
+echo "All done, $USER, now take a look at http://localhost:3000"
+echo "Completed on $(date +%m-%d-%Y-%T)"
+echo
