@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 LOGFILE="log/populate.log"
 TAIL="Follow the log by hitting 'Ctl+Shift+N' and running 'tail -f $LOGFILE'"
@@ -32,7 +32,7 @@ sleep 3
 
 clear
 
-echo "Alright $USER, in the next couple of seconds please close the rails server if opened, as well as any test units as they will be utilized during this setup."
+echo "Alright $USER, within the next couple of seconds, please exit the rails server if opened, as well as any test units as they will be utilized during this setup."
 sleep 10
 
 clear
@@ -89,7 +89,7 @@ echo "✔ Prepare"
 echo "Servers..."
 echo
 
-echo "Alright $USER, in the next few seconds a new terminal window will open."
+echo "Alright $USER, in a few seconds a new terminal window will open."
 sleep 5
 
 echo
@@ -99,7 +99,7 @@ sleep 4
 
 echo
 
-echo "The first is the new workspace once setup is complete..."
+echo "The first is your new workspace once setup is complete..."
 sleep 4
 
 echo "...the second is for guard/spork to run their tests..."
