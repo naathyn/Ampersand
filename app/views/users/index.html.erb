@@ -38,7 +38,7 @@
               <br>
             <% unless current_user?(user) %>
               <%= link_to "remove", user, method: :delete,
-              data: { confirm: 
+               data: { confirm: 
               "Are you sure you want to delete this member?" } %>
             <% end %>
             </td>

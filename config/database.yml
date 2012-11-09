@@ -15,3 +15,6 @@ test: &test
   username: naathyn
   password: 12081
   timeout: 5000
+
+cucumber:
+  <<: *test
