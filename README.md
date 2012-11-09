@@ -12,14 +12,14 @@ If you so wish...
 
 # Specified Linux Distros
 
-__Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefore `./populate` usage is really limited when it comes to compatibility. If you are running a Linux distrobution with the Gnome desktop, it should be fine. Otherwise, I wouldn't waste my time.
+__Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefore `. populate` usage is really limited when it comes to compatibility. If you are running a Linux distrobution with the Gnome desktop, it should be fine. Otherwise, I wouldn't waste my time.
 
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
     $ bundle install
-    $ ./populate
+    $ . populate
 
-`./populate` is a simple, yet handy, little shell script I threw together that will:
+`. populate` is a simple, yet handy, little shell script I threw together that will:
 
 * Create both development and test databases
 * Migrate and prepare both databases
@@ -29,5 +29,5 @@ __Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefor
 
 The code was really for fun, utilizing bleek time learning shell. But hey, if you can make it work for you, use it!
 
-If you _can_ use it, be sure your `database.yml` file is setup correctly before you issue `./populate`
+If you _can_ use it, be sure your `database.yml` file is setup correctly before you issue `. populate`
 

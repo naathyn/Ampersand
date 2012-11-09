@@ -1,33 +1,33 @@
 #!/usr/bin/env sh
 
+LOGFILE="log/populate.log"
+TAIL="Follow the log by hitting 'Ctl+Shift+N' and running 'tail -f log/populate.log'"
+
 clear
 
-LOGFILE="log/populate.log"
-
-echo "During this procedure I am going to create, migrate, populate, and prepare your database for testing."
+echo "During this setup I am going to create, migrate, populate, and prepare your database for development and testing."
 sleep 3
 echo
 echo "Make sure your database.yml file is setup correctly."
 sleep 3
 echo
-echo "This process will take ~3 minutes."
-sleep 5
+echo "This process will take ~4 minutes."
+sleep 4
 echo
 
 echo "Initializing..."
-sleep 8
+sleep 5
 echo
 echo "✔"
-echo
 echo "*** Initialized on $(date +%m-%d-%Y) at $(date +%T) ***" >> $LOGFILE
-sleep 4
+sleep 3
 clear
 
 echo "Alright $USER, in the next couple of seconds please close the rails server if opened, as well as any test units as they will be utilized during this setup."
 sleep 10
 clear
 
-echo "Follow the log by running 'tail -f log/populate.log'"
+echo $TAIL
 echo
 echo "✔ Initialize"
 echo "Creating..."
@@ -37,11 +37,10 @@ echo "Prepare"
 echo "Servers"
 echo
 rake db:create:all
-echo
 echo "✔ Database created at $(date +%T)" >> $LOGFILE
 clear
 
-echo "Follow the log by running 'tail -f log/populate.log'"
+echo $TAIL
 echo
 echo "✔ Initialize"
 echo "✔ Create"
@@ -51,14 +50,10 @@ echo "Prepare"
 echo "Servers"
 echo
 rake db:migrate
-clear
-echo "Migrating test database for good measures..."
-rake db:migrate ENV=test
-echo
 echo "✔ Database migrated at $(date +%T)" >> $LOGFILE
 clear
 
-echo "Follow the log by running 'tail -f log/populate.log'"
+echo $TAIL
 echo
 echo "✔ Initialize"
 echo "✔ Create"
@@ -68,11 +63,10 @@ echo "Prepare"
 echo "Servers"
 echo
 rake db:populate
-echo
 echo "✔ Database populated at $(date +%T)" >> $LOGFILE
 clear
 
-echo "Follow the log by running 'tail -f log/populate.log'"
+echo $TAIL
 echo
 echo "✔ Initialize"
 echo "✔ Create"
@@ -82,11 +76,10 @@ echo "Preparing..."
 echo "Servers"
 echo
 rake db:test:prepare
-echo
 echo "✔ Database prepared at $(date +%T)" >> $LOGFILE
 clear
 
-echo "Follow the log by running 'tail -f log/populate.log'"
+echo $TAIL
 echo
 echo "✔ Initialize"
 echo "✔ Create"
@@ -96,25 +89,27 @@ echo "✔ Prepare"
 echo "Servers..."
 echo
 
-echo "Alright $USER, in the next few seconds I will open another terminal window."
-sleep 6
+echo "Alright $USER, in the next few seconds a new terminal window will open."
+sleep 5
 echo
-
-echo "This window will have two tabs..."
-sleep 6
-echo
-
-echo "one for guard/spork to run tests..."
-sleep 4
-echo "...and the other being the rails server."
+echo "This window will have three tabs..."
 sleep 4
 echo
-
+echo "the first is the new workspace once setup is complete..."
+sleep 4
+echo "...the second is for guard/spork to run tests..."
+sleep 4
+echo "...and the third is the rails server."
+sleep 3
+echo
 echo "Allow ~30 seconds for the rails server to initialize."
+sleep 4
+echo
+echo "Once the server has started, a browser window will open and you will be taken to the app."
 sleep 6
 clear
 
-echo "Follow the log by running 'tail -f log/populate.log'"
+echo $TAIL
 echo
 echo "✔ Initialize"
 echo "✔ Create"
@@ -122,11 +117,10 @@ echo "✔ Migrate"
 echo "✔ Populate"
 echo "✔ Prepare"
 echo "Servers..."
-sleep 3
-bash ./server_guard.sh
-echo
+sleep 2
+. server_guard.sh
 echo "✔ Guard/Spork and Rails Server initialized at $(date +%T)" >> $LOGFILE
-sleep 30
+sleep 10
 clear
 
 echo "✔ Initialize"
@@ -137,14 +131,21 @@ echo "✔ Prepare"
 echo "✔ Servers"
 echo
 
-echo "All done $USER. Open your browser to http://localhost:4200 and log in with the information as defined in population.rake"
-echo
+echo "All done $USER. You can now look at your browser and log in with the appropriate information as defined in '/lib/tasks/population.rake'"
 echo "*** All tasks completed on $(date +%m-%d-%Y) at $(date +%T) ***" >> $LOGFILE
 echo "" >> $LOGFILE
 sleep 5
+echo
+echo "The current window will soon close in order for you to neatly move your workspace to the newly opened terminal window."
+sleep 4
+echo
 echo "Allow ~2 minutes for Spork to run all tests."
-echo
 sleep 3
-
-echo "✔ Completed on $(date +%m-%d-%Y) at $(date +%T)"
 echo
+echo "✔ Completed on $(date +%m-%d-%Y) at $(date +%T)"
+sleep 5
+echo
+echo "Ceau!"
+sleep 1
+
+exit
