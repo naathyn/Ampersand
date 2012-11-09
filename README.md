@@ -23,7 +23,7 @@ __Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefor
 
 * Create both development and test databases
 * Migrate and prepare both databases
-* Populate the database with sample data as defined in `lib/tasks/population.rake`
+* Populate the database with sample data as defined in `lib/tasks/populate.rake`
 * Initialize Guard/Spork and start the Rails Server
 * Log this data
 
