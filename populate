@@ -6,38 +6,44 @@ TAIL="Follow the log by hitting 'Ctl+Shift+N' and running 'tail -f log/populate.
 clear
 
 echo "During this setup I am going to create, migrate, populate, and prepare your database for development and testing."
-sleep 3
+sleep 4
+
 echo
+
 echo "Make sure your database.yml file is setup correctly."
 sleep 3
+
 echo
+
 echo "This process will take ~4 minutes."
 sleep 4
+
 echo
 
 echo "Initializing..."
-sleep 5
-echo
-echo "✔"
-echo "*** Initialized on $(date +%m-%d-%Y) at $(date +%T) ***" >> $LOGFILE
 sleep 3
+
+echo "*** Initialized on $(date +%m-%d-%Y) at $(date +%T) ***" >> $LOGFILE
+
+echo
+
+echo "✔"
+sleep 3
+
 clear
 
 echo "Alright $USER, in the next couple of seconds please close the rails server if opened, as well as any test units as they will be utilized during this setup."
 sleep 10
+
 clear
 
 echo $TAIL
 echo
 echo "✔ Initialize"
 echo "Creating..."
-echo "Migrate"
-echo "Populate"
-echo "Prepare"
-echo "Servers"
-echo
 rake db:create:all
 echo "✔ Database created at $(date +%T)" >> $LOGFILE
+
 clear
 
 echo $TAIL
@@ -45,12 +51,9 @@ echo
 echo "✔ Initialize"
 echo "✔ Create"
 echo "Migrating..."
-echo "Populate"
-echo "Prepare"
-echo "Servers"
-echo
 rake db:migrate
 echo "✔ Database migrated at $(date +%T)" >> $LOGFILE
+
 clear
 
 echo $TAIL
@@ -59,11 +62,9 @@ echo "✔ Initialize"
 echo "✔ Create"
 echo "✔ Migrate"
 echo "Populating..."
-echo "Prepare"
-echo "Servers"
-echo
 rake db:populate
 echo "✔ Database populated at $(date +%T)" >> $LOGFILE
+
 clear
 
 echo $TAIL
@@ -73,10 +74,9 @@ echo "✔ Create"
 echo "✔ Migrate"
 echo "✔ Populate"
 echo "Preparing..."
-echo "Servers"
-echo
 rake db:test:prepare
 echo "✔ Database prepared at $(date +%T)" >> $LOGFILE
+
 clear
 
 echo $TAIL
@@ -91,22 +91,33 @@ echo
 
 echo "Alright $USER, in the next few seconds a new terminal window will open."
 sleep 5
+
 echo
-echo "This window will have three tabs..."
+
+echo "This window will have three tabs:"
 sleep 4
+
 echo
-echo "the first is the new workspace once setup is complete..."
+
+echo "The first is the new workspace once setup is complete..."
 sleep 4
-echo "...the second is for guard/spork to run tests..."
+
+echo "...the second is for guard/spork to run their tests..."
 sleep 4
+
 echo "...and the third is the rails server."
 sleep 3
+
 echo
+
 echo "Allow ~30 seconds for the rails server to initialize."
 sleep 4
+
 echo
+
 echo "Once the server has started, a browser window will open and you will be taken to the app."
 sleep 6
+
 clear
 
 echo $TAIL
@@ -118,9 +129,11 @@ echo "✔ Populate"
 echo "✔ Prepare"
 echo "Servers..."
 sleep 2
-. server_guard.sh
 echo "✔ Guard/Spork and Rails Server initialized at $(date +%T)" >> $LOGFILE
-sleep 10
+. server_guard.sh
+echo "✔ All servers up and running at $(date +%T)" >> $LOGFILE
+sleep 12
+
 clear
 
 echo "✔ Initialize"
@@ -129,22 +142,31 @@ echo "✔ Migrate"
 echo "✔ Populate"
 echo "✔ Prepare"
 echo "✔ Servers"
-echo
-
-echo "All done $USER. You can now look at your browser and log in with the appropriate information as defined in '/lib/tasks/population.rake'"
 echo "*** All tasks completed on $(date +%m-%d-%Y) at $(date +%T) ***" >> $LOGFILE
 echo "" >> $LOGFILE
-sleep 5
+
 echo
+
+echo "All done $USER. You can now look at your browser and log in with the appropriate information as defined in 'lib/tasks/populate.rake'"
+sleep 5
+
+echo
+
 echo "The current window will soon close in order for you to neatly move your workspace to the newly opened terminal window."
 sleep 4
+
 echo
-echo "Allow ~2 minutes for Spork to run all tests."
+
+echo "Allow Spork ~2 minutes to run all ~250+ tests."
 sleep 3
+
 echo
+
 echo "✔ Completed on $(date +%m-%d-%Y) at $(date +%T)"
 sleep 5
+
 echo
+
 echo "Ceau!"
 sleep 1
 

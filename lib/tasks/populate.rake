@@ -12,7 +12,7 @@ namespace :db do
 end
 
 def make_users
-  admin = User.create!(realname: "Nathan Couch", email: "nathan3k@gmail.com", name: "naathyn", password: "secret", password_confirmation: "secret", location: "Jackson, Tennessee", bio: "I love everything beautiful.")
+  admin = User.create!(realname: "Random Person", email: "starmailserver@gmail.com", name: "thatguy", password: "secret", password_confirmation: "secret", location: "Mamas, Basement", bio: "What is here?  Isn't it just there without the 'T'?")
   admin.toggle!(:admin)
   30.times do |n|
     realname = Faker::Name.name[0..18]
