@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 LOGFILE="log/populate.log"
-TAIL="Follow the log by hitting 'Ctl+Shift+N' and running 'tail -f log/populate.log'"
+TAIL="Follow the log by hitting 'Ctl+Shift+N' and running 'tail -f $LOGFILE'"
 
 clear
 

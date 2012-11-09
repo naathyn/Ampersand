@@ -18,7 +18,8 @@
 
       <div class="modal_content">
         <span class="content">
-          <%= @micropost.content %>
+          <%= auto_link(@micropost.content, :html => { :target => '_blank' }) do |link|
+        truncate(link, :length => 30) end %>
         </span>
       </div>
     </a> <!-- item-anchor -->
