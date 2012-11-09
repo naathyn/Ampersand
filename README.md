@@ -1,7 +1,5 @@
 ## Getting Started
 
-If you so wish...
-
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
     $ bundle install
@@ -12,7 +10,7 @@ If you so wish...
 
 # Specified Linux Distros
 
-__Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefore `. populate` usage is really limited when it comes to compatibility. If you are running a Linux distrobution with the Gnome desktop, it should be fine. Otherwise, I wouldn't waste my time.
+__Note__: `server_guard.sh` specifies `gnome-terminal`, therefore `. populate` usage is really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, I wouldn't waste my time.
 
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
@@ -27,7 +25,7 @@ __Note__: `server_guard.sh` specifies `gnome-terminal` as the terminal, therefor
 * Initialize Guard/Spork and start the Rails Server
 * Log this data
 
-The code was really for fun, utilizing bleek time learning shell. But hey, if you can make it work for you, use it!
+The code was really just for fun, utilizing bleek time learning shell. But hey, if you can make it work for you, use it!
 
 If you _can_ use it, be sure your `database.yml` file is setup correctly before you issue `. populate`
 
