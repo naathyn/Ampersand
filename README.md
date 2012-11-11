@@ -1,4 +1,5 @@
-## Getting Started
+Getting Started (Standard)
+==========================
 
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
@@ -8,16 +9,18 @@
     $ bundle exec guard
     $ rails s
 
-# Specified Linux Distros
-
-__Note__: `server_guard.sh` specifies `gnome-terminal`, therefore `. populate` usage is really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, I wouldn't waste my time.
+Getting Started (Optional)
+==========================
 
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
     $ bundle install
-    $ . populate
+    $ . setup
 
-`. populate` is a simple, yet handy, little shell script I threw together that will:
+The Setup Script
+----------------
+
+`. setup` is a simple, yet handy, little shell script I threw together that will:
 
 * Create both development and test databases
 * Migrate and prepare both databases
@@ -25,7 +28,17 @@ __Note__: `server_guard.sh` specifies `gnome-terminal`, therefore `. populate` u
 * Initialize Guard/Spork and start the Rails Server
 * Log this data
 
-The code was really just for fun, utilizing bleek time learning shell. But hey, if you can make it work for you, use it!
+**Notice About the Scripts**: `server_guard.sh` specifies `gnome-terminal`, therefore both ` . populate` and `. setup` are really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, I wouldn't waste my time.
 
-If you _can_ use it, be sure your `database.yml` file is setup correctly before you issue `. populate`
+The Populate Script
+-------------------
 
+Likewise, `. populate` is similar to `. setup`, although is meant to be used once you have your database set up. This script will:
+
+* Reset the database
+* Populate the database with sample data as defined in `lib/tasks/populate.rake`
+* Migrate the database
+* Initialize Guard/Spork and start the Rails Server
+* Log this data
+
+In other words, you should use it if you modify `lib/tasks/populate.rake` and wish to populate its data.
