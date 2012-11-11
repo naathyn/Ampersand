@@ -33,7 +33,7 @@ The Setup Script
 The Populate Script
 ===================
 
-Likewise, `. populate` is similar to `. setup`, although is meant to be used once you have your database set up. This script will:
+`. populate` is similar to `. setup`, although is meant to be used once you have your database set up. This script will:
 
 * Reset the database
 * Populate the database with sample data as defined in `lib/tasks/populate.rake`
