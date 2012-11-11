@@ -1,5 +1,5 @@
 Getting Started (Standard)
-==========================
+--------------------------
 
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
@@ -10,7 +10,7 @@ Getting Started (Standard)
     $ rails s
 
 Getting Started (Optional)
-==========================
+--------------------------
 
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
@@ -18,7 +18,7 @@ Getting Started (Optional)
     $ . setup
 
 The Setup Script
-----------------
+================
 
 `. setup` is a simple, yet handy, little shell script I threw together that will:
 
@@ -28,10 +28,10 @@ The Setup Script
 * Initialize Guard/Spork and start the Rails Server
 * Log this data
 
-**Notice About the Scripts**: `server_guard.sh` specifies `gnome-terminal`, therefore both ` . populate` and `. setup` are really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, I wouldn't waste my time.
+**Notice About the Scripts**: `server_guard.sh` specifies `gnome-terminal`, therefore both ` . populate` and `. setup` are really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, you can safely ignore these optional scripts and/or make it work for you for your machine. They were primarily created for the fun of it.
 
 The Populate Script
--------------------
+===================
 
 Likewise, `. populate` is similar to `. setup`, although is meant to be used once you have your database set up. This script will:
 
