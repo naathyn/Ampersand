@@ -15,30 +15,19 @@ Getting Started (Optional)
     $ git clone git@github.com:naathyn/Ampersand.git amp
     $ cd amp
     $ bundle install
-    $ . setup
+    $ . populate
 
-The Setup Script
-----------------
+Populate
+--------
 
-`. setup` is a simple, yet handy, little shell script I threw together that will:
+`populate` is a simple, yet handy, little shell script I threw together that will:
 
-* Create both development and test databases
-* Migrate and prepare both databases
+* Setup both development and test databases (if not already)
 * Populate the database with sample data as defined in `lib/tasks/populate.rake`
-* Initialize Guard/Spork and start the Rails Server
+* Prepare both databases
+* Initialize guard/spork. start the rails server. take you to your app
 * Log this data
 
-**Notice About the Scripts**: `server_guard.sh` specifies `gnome-terminal`, therefore both ` . populate` and `. setup` are really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, you can safely ignore these optional scripts and/or make it work for you and your machine. They were primarily created for myself while testing.
+It can be used to setup the database for the first time as well as simply testing sample data from `lib/tasks/populate.rake`.
 
-The Populate Script
--------------------
-
-`. populate` is similar to `. setup`, although is meant to be used once you have your database set up. This script will:
-
-* Reset the database
-* Populate the database with sample data as defined in `lib/tasks/populate.rake`
-* Migrate the database
-* Initialize Guard/Spork and start the Rails Server
-* Log this data
-
-In other words, you should use it if you modify `lib/tasks/populate.rake` and wish to populate its data.
+**Notice**: `server_guard.sh` specifies `gnome-terminal`, therefore the script is _pretty_ limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, you can safely ignore this optional setup _or_ make it work for you and your machine. It was primarily created for myself while testing.
