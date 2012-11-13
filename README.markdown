@@ -28,7 +28,7 @@ The Setup Script
 * Initialize Guard/Spork and start the Rails Server
 * Log this data
 
-**Notice About the Scripts**: `server_guard.sh` specifies `gnome-terminal`, therefore both ` . populate` and `. setup` are really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, you can safely ignore these optional scripts and/or make it work for you and your machine. They were primarily created for the fun of it.
+**Notice About the Scripts**: `server_guard.sh` specifies `gnome-terminal`, therefore both ` . populate` and `. setup` are really limited when it comes to compatibility. If you are running a Linux distrobution with said-terminal, it should be fine. Otherwise, you can safely ignore these optional scripts and/or make it work for you and your machine. They were primarily created for myself while testing.
 
 The Populate Script
 -------------------

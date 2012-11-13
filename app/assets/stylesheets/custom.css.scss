@@ -15,13 +15,13 @@
 }
 
 @mixin shadows-border {
+  background-color: rgb(240, 240, 240);
   -webkit-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);
-  background-color: rgb(240, 240, 240);
-  background-image: -moz-linear-gradient(center top , $white, rgb(245, 245, 245));
-  background-image: -webkit-gradient(linear, center top, center bottom, from($white), to(rgb(245, 245, 245)));
-  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(center top, rgb(255, 255, 255), rgb(245, 245, 245));
+  background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(255, 255, 255)), to(rgb(245, 245, 245)));
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245));
 }
 
 @mixin modal-content {
@@ -31,9 +31,9 @@
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px $white inset;
-  -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px $white inset;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px $white inset;
+  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px white inset;
+  -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px white inset;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px white inset;
 }
 
 @mixin profiles {
@@ -479,9 +479,9 @@ aside {
   -webkit-border-radius: 6px 6px 0px 0px;
   -moz-border-radius: 6px 6px 0px 0px;
   border-radius: 6px 6px 0px 0px;
-  -webkit-box-shadow: 0px 1px 0px $white inset;
-  -moz-box-shadow: 0px 1px 0px $white inset;
-  box-shadow: 0px 1px 0px $white inset;
+  -webkit-box-shadow: 0px 1px 0px white inset;
+  -moz-box-shadow: 0px 1px 0px white inset;
+  box-shadow: 0px 1px 0px white inset;
 }
 
 .modal_stats {
@@ -494,7 +494,7 @@ aside {
   font-weight: bold;
   line-height: 18px;
   text-align: center;
-  text-shadow: 0px 1px 0px $white;
+  text-shadow: 0px 1px 0px white;
 }
 
 .modal-footer, #likes {
@@ -509,7 +509,7 @@ aside {
 .modal-content {
   cursor: pointer;
   position: relative;
-  background-color: $white;
+  background-color: white;
   @include modal-content;
 }
 
@@ -557,7 +557,7 @@ aside {
   margin: 0 0 0 -25px;
   -webkit-transform: rotate(-40deg);
   -moz-transform: rotate(-40deg);
-  -o-transform: rotate(-40deg);
+  transform: rotate(-40deg);
 }
 
 .tapethree:after {
@@ -566,11 +566,11 @@ aside {
   margin: 0 0 0 -55px;
   -webkit-transform: rotate(40deg);
   -moz-transform: rotate(40deg);
-  -o-transform: rotate(40deg);
+  transform: rotate(40deg);
 }
 
 .profile {
-  text-shadow: 0px 1px 0px $white;
+  text-shadow: 0px 1px 0px white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   line-height: 16px;
@@ -584,8 +584,9 @@ aside {
   background-color: rgb(246, 246, 246);
   padding: 12px;
   line-height: 16px;
-  background-image: -moz-linear-gradient(center top , white, rgb(249, 249, 249));
-  background-image: -webkit-gradient(linear, center top, center bottom, from($white), to(rgb(249, 249, 249)));
+  background-image: -moz-linear-gradient(center top, rgb(255, 255, 255), rgb(249, 249, 249));
+  background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(255, 255, 255)), to(rgb(249, 249, 249)));
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(249, 249, 249));
 }
 
 .profile-inner {
@@ -852,6 +853,7 @@ aside {
   color: $blue;
   vertical-align: 5px;
   padding: 0;
+  font-size: 13px;
   &:hover {
     text-decoration: underline;
   }
