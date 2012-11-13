@@ -12,7 +12,6 @@ describe Micropost do
   it { should respond_to(:user) }
 
   it { should respond_to(:to) }
-  it { should respond_to(:replies) }
 
   it { should respond_to(:opinions) }
   it { should respond_to(:likes) }

@@ -1,14 +1,6 @@
 <% content_for :head do %>
-  <% provide(:title, "Sign in") %>	
+  <% provide(:title, "Sign in") %>
 <% end %>
-
-  <div class=" navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-      <%= render 'layouts/navigation_root' %>
-    </div>
-  </div>
-</div>
 
 <h1>Sign in</h1>
 
@@ -28,4 +20,3 @@
     <p>Not a member? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>
-

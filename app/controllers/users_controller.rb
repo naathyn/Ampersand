@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :following, :followers]
-  before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: :destroy
+  before_filter :signed_in_user, :only => [:index, :show, :edit, :update, :destroy, :following, :followers]
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user, :only => :destroy
 
   def index
     @users = User.paginate(page: params[:page])
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @atreply_items = @user.atreply.paginate(page: params[:page], :per_page => 10)
+    @atreply_items = @user.atreply.paginate(page: params[:page], :per_page => 8)
     @profile_items = @user.profile.paginate(page: params[:page], :per_page => 20)
     @micropost = current_user.microposts.build(params[:micropost])
   end

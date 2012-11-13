@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+SERVER="bin/server_guard.sh"
 LOGFILE="log/populate.log"
 TAIL="Follow the log by hitting 'Ctl+Shift+N' and running 'tail -f $LOGFILE'"
 
@@ -73,7 +74,7 @@ echo "✔ Migrate"
 echo "✔ Prepare"
 echo "Servers..."
 echo "✔ Guard/Spork and Rails Server initialized at $(date +%T)" >> $LOGFILE
-. server_guard.sh
+bash $SERVER
 echo "✔ All servers up and running at $(date +%T)" >> $LOGFILE
 sleep 5
 

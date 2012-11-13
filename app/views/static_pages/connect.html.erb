@@ -2,20 +2,12 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <div class=" navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <%= render 'layouts/navigation_edit' %>
-      </div>
-    </div>
-  </div>
-
-  <aside class="side-module side-menu mini-profile">
-    <a href="<%= user_path(current_user) %>" class="share-anchor">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-    </a>
+<aside class="side-module side-menu mini-profile">
+  <a href="<%= user_path(current_user) %>" class="share-anchor">
+    <section>
+      <%= render 'shared/user_info' %>
+    </section>
+  </a>
     <section>
       <%= render 'shared/stats' %>
     </section>
@@ -24,6 +16,6 @@
     </span>
   </aside>
 
-  <div class="share-container">
-    <%= render 'feeds/inbox' %>
+<div class="share-container">
+  <%= render 'feeds/inbox' %>
 </div>

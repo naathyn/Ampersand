@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+SERVER="bin/server_guard.sh"
 LOGFILE="log/setup.log"
 TAIL="Follow the log by hitting 'Ctl+Shift+N' and running 'tail -f $LOGFILE'"
 
@@ -94,7 +95,7 @@ sleep 4
 
 echo
 
-echo "A standard terminal window..."
+echo "A tab for a new workspace..."
 sleep 4
 
 echo "...a tab for guard/spork..."
@@ -125,7 +126,7 @@ echo "✔ Prepare"
 echo "Servers..."
 sleep 1
 echo "✔ Guard/Spork and Rails Server initialized at $(date +%T)" >> $LOGFILE
-. server_guard.sh
+bash $SERVER
 echo "✔ All servers up and running at $(date +%T)" >> $LOGFILE
 sleep 10
 

@@ -2,24 +2,16 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <%= yield flash.now[:info] = "Last updated November 12th, at 8:00 pm CST, tagged: upgraded to Rails 3.2.9, modified About page" %>
+<%= yield flash.now[:info] = "Last updated November 13th, at 5:30 pm CST. Upgraded to Rails 3.2.9. Detailed upgrades link on the About page." %>
 
-  <div class=" navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <%= render 'layouts/navigation_root' %>
-          </div>
-        </div>
-      </div>
+  <% if signed_in? %>
 
-    <% if signed_in? %>
-
-      <aside class="side-module side-menu mini-profile">
-        <a href="<%= user_path(current_user) %>" class="share-anchor">
-          <section>
-            <%= render 'shared/user_info' %>
-          </section>
-        </a>
+    <aside class="side-module side-menu mini-profile">
+      <a href="<%= user_path(current_user) %>" class="share-anchor">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+      </a>
         <section>
           <%= render 'shared/stats' %>
         </section>
@@ -41,15 +33,16 @@
     <% else %>
 
       <div class="center hero-unit">
+
         <h1>Ampersand</h1>
-          <h3>
-          Simple.  Modern.  Interactive.
-        </h3>
+       <h3>Simple.  Modern.  Interactive.</h3>
       <h5>Alpha Release #2</h5>
 
     <%= link_to "Sign up now!", signup_path,
         class: "btn btn-large btn-primary" %>
+
     <h6 style="font-size:11px;">Alpha Release #1 Video</h6>
+
     <center>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/XKwHgbiyne4?rel=0" frameborder="0" allowfullscreen></iframe>
     </center>

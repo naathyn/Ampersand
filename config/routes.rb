@@ -16,7 +16,6 @@ Socialrails::Application.routes.draw do
   get    '/signin' => 'sessions#new'
   delete '/signout' => 'sessions#destroy'
 
-  get    '/updates' => 'static_pages#updates'
   get    '/about' => 'static_pages#about'
   get    '/contact' => 'static_pages#contact'
   get    '/connect' => 'static_pages#connect', :as => :inbox

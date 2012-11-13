@@ -2,14 +2,6 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <div class=" navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-      <%= render 'layouts/navigation_members' %>
-    </div>
-  </div>
-</div>
-
 <% @user ||= current_user %>
   <div class="row-fluid">
     <aside class="side-module side-menu mini-profile">

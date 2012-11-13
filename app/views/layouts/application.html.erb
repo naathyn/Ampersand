@@ -11,15 +11,22 @@
       <%= render 'layouts/shim' %>
       <%= yield(:head) %>
     </head>
-  <body>
-    <div class="container page-wrapper" id="main" role="main">
+    <body>
+      <div class="container page-wrapper" id="main" role="main">
+        <header class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <%= render 'layouts/navigation' %>
+            </div>
+          </div>
+        </header>
       <div class="content">
         <%= render 'layouts/messages' %>
           <%= yield %>
+            </div>
           </div>
-    </div>
-                <footer class="footer">
-              <%= render 'layouts/footer' %>
-            </footer>
+        <footer class="footer">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

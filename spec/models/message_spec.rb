@@ -9,12 +9,10 @@ describe Message do
   subject { @message }
 
   it { should respond_to(:convo) }
-  it { should respond_to(:read) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
 
   it { should respond_to(:to) }
-  it { should respond_to(:replies) }
 
   its(:user) { should == user }
 

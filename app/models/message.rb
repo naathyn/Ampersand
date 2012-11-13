@@ -1,11 +1,8 @@
 class Message < ActiveRecord::Base
-  attr_accessible :read, :convo
+  attr_accessible :convo
 
   belongs_to :user
   belongs_to :to, class_name: "User"
-  belongs_to :read, class_name: "User"
-
-  has_many :replies, foreign_key: "to_id", class_name: "Message", dependent: :destroy
 
   validates :user_id, presence: true
 
@@ -19,7 +16,7 @@ class Message < ActiveRecord::Base
 private
 
   def self.from_users_inbox(user)
-    where("user_id = :user_id OR to_id = :user_id AND read_id IS NULL", user_id: user.id)
+    where("user_id = :user_id OR to_id = :user_id", user_id: user.id)
   end
 
   MESSAGE_REGEX = /\A!([^\s]*)/
