@@ -16,14 +16,10 @@
       <div class="content">
         <%= render 'layouts/messages' %>
           <%= yield %>
-            <% unless signed_in? %>
-              <div class="container-fluid">
+          </div>
+    </div>
                 <footer class="footer">
               <%= render 'layouts/footer' %>
             </footer>
-          </div>
-        <% end %>
-      </div>
-    </div>
   </body>
 </html>

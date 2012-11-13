@@ -7,7 +7,6 @@ gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
-gem 'jquery-datatables-rails'
 gem 'rails_autolink'
 
 group :development, :test do

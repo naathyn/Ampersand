@@ -2,4 +2,9 @@
   <span class="user"><%= link_to gravatar_for(user), user %></span>
   <span class="username"><%= link_to user.realname, user %></span>
   <span class="username_modal"><small>@</small><%= user.name %></span>
+
+    <% if current_user.admin? && !current_user?(user) %>
+      <%= link_to "remove", user, method: :delete,
+          data: { confirm: "Are you sure you want to delete this member?" } %>
+      <% end %>
 </li>

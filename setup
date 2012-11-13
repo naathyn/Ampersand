@@ -36,7 +36,7 @@ echo $TAIL
 echo
 echo "✔ Initialize"
 echo "Creating..."
-rake db:create:all
+bundle exec rake db:create:all
 echo "✔ Database created at $(date +%T)" >> $LOGFILE
 
 clear
@@ -46,7 +46,7 @@ echo
 echo "✔ Initialize"
 echo "✔ Create"
 echo "Migrating..."
-rake db:migrate
+bundle exec rake db:migrate
 echo "✔ Database migrated at $(date +%T)" >> $LOGFILE
 
 clear
@@ -57,7 +57,7 @@ echo "✔ Initialize"
 echo "✔ Create"
 echo "✔ Migrate"
 echo "Populating..."
-rake db:populate
+bundle exec rake db:populate
 echo "✔ Database populated at $(date +%T)" >> $LOGFILE
 
 clear
@@ -69,7 +69,7 @@ echo "✔ Create"
 echo "✔ Migrate"
 echo "✔ Populate"
 echo "Preparing..."
-rake db:test:prepare
+bundle exec rake db:test:prepare
 echo "✔ Database prepared at $(date +%T)" >> $LOGFILE
 
 clear

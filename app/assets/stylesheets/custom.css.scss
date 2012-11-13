@@ -122,10 +122,13 @@ small {
 }
 
 footer {
-  margin: 30px -20px 0px;
-  width: 105%;
-  padding-top: 10px;
-  border-top: 1px solid rgb(240, 240, 240);
+  clear: both;
+  min-height: 35px;
+  margin: auto;
+  padding: 1.5em 1em 0px;
+  width: 837px;
+  border: 1px solid rgb(240, 240, 240);
+  background-color: rgb(253, 253, 253);
   color: $grayLight;
   a {
     color: $gray;
@@ -133,56 +136,40 @@ footer {
       color: $grayDarker;
     }
   }
-  small {
-    float: left;
+}
+
+aside section {
+  border-top: 1px solid rgb(232, 232, 232);
+  padding: 10px 0;
+  &:first-child {
+    border: 0;
+    padding-top: 0;
   }
 }
 
-aside {
-  section {
-    border-top: 1px solid rgb(232, 232, 232);
-    padding: 10px 0;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-  }
+aside section span {
+  display: block;
+  margin-bottom: 3px;
+  line-height: 1;
 }
 
 /* Page Layout */
 
 .page-wrapper {
-  border-left: 1px solid rgb(240, 240, 240);
-  border-right: 1px solid rgb(240, 240, 240);
+  background-color: rgb(253, 253, 253);
+  border: 1px solid rgb(240, 240, 240);
   position: relative;
   width: 837px;
   min-height: 100%;
   margin: -1em auto;
-  padding: 1.5em 1em;
-  padding-bottom: 0px;
-  background-color: rgb(253, 253, 253);
-}
-
-.navbar .navbar-fixed-top {
-  min-width: 100%;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  z-index: 1000;
+  padding: 1.5em 1em 2em;
 }
 
 .navbar-inverse {
   box-shadow: 0 3px 6px rgba(0,0,0,.15);
-}
-
-.navbar-inner .container {
-  width: 890px;
+  .container {
+    width: 890px;
+  }
 }
 
 .navbar .gravatar {
@@ -199,10 +186,9 @@ aside {
   float: right;
   display: inline-block;
   margin-bottom: 0;
-}
-
-.login-home input {
-  display: inline-block;
+  input {
+    display: inline-block;
+  }
 }
 
 .close {
@@ -238,11 +224,23 @@ aside {
   }
 }
 
+/* About Page */
+
+.quote {
+  border: 1px dashed rgb(200, 200, 200);
+  padding: 1em;
+}
+
+.quote blockquote li:last-child {
+  margin-bottom: -18px;
+}
+
 /* Mini-Profile Module */
 
 .side-module {
   float: left;
   width: 278px;
+  padding-bottom: 1.5em;
   border: 1px solid rgb(229, 229, 229);
   border-radius: 6px 6px 6px 6px;
   @include shadows-border;
@@ -333,7 +331,7 @@ aside {
 
 .mini-profile {
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 45px;
   line-height: 16px;
 }
 
