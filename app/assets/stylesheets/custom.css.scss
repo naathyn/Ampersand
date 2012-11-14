@@ -31,9 +31,9 @@
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px white inset;
-  -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px white inset;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px white inset;
+  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px rgb(255, 255, 255) inset;
+  -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px rgb(255, 255, 255) inset;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px rgb(255, 255, 255) inset;
 }
 
 @mixin profiles {
@@ -479,9 +479,9 @@ aside {
   -webkit-border-radius: 6px 6px 0px 0px;
   -moz-border-radius: 6px 6px 0px 0px;
   border-radius: 6px 6px 0px 0px;
-  -webkit-box-shadow: 0px 1px 0px white inset;
-  -moz-box-shadow: 0px 1px 0px white inset;
-  box-shadow: 0px 1px 0px white inset;
+  -webkit-box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+  -moz-box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+  box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
 }
 
 .modal_stats {
@@ -494,7 +494,7 @@ aside {
   font-weight: bold;
   line-height: 18px;
   text-align: center;
-  text-shadow: 0px 1px 0px white;
+  text-shadow: 0px 1px 0px rgb(255, 255, 255);
 }
 
 .modal-footer, #likes {
@@ -509,7 +509,7 @@ aside {
 .modal-content {
   cursor: pointer;
   position: relative;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   @include modal-content;
 }
 
@@ -570,7 +570,7 @@ aside {
 }
 
 .profile {
-  text-shadow: 0px 1px 0px white;
+  text-shadow: 0px 1px 0px rgb(255, 255, 255);
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   line-height: 16px;
@@ -965,27 +965,6 @@ aside {
   margin-bottom: 8px;
 }
 
-/* Icons */
-
-[class^="icon-comment"], [class*=" icon-comment"] {
-  margin-right: 5px;
-  margin-left: 1px;
-}
-
-[class^="icon-remove"], [class*=" icon-remove"] {
-  vertical-align: 2px;
-}
-
-[class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
-  vertical-align: 2px;
-  margin-left: 3px;
-}
-
-[class^="icon-heart"], [class*=" icon-heart"] {
-  vertical-align: 2px;
-  margin-left: 3px;
-}
-
 /* Alert Errors */
 
 #alert-notice {
@@ -1014,4 +993,20 @@ aside {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+/* Icons */
+
+[class^="icon-comment"], [class*=" icon-comment"] {
+  margin-right: 5px;
+  margin-left: 1px;
+}
+
+[class^="icon-remove"], [class*=" icon-remove"] {
+  vertical-align: 2px;
+}
+
+[class^="icon-heart"], [class*=" icon-heart"], [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
+  vertical-align: 2px;
+  margin-left: 3px;
 }

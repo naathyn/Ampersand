@@ -22,7 +22,7 @@ Populate
 
 `populate` is a simple, yet handy, little shell script I threw together that will:
 
-* Setup both development and test databases (if not already)
+* Setup both development and test databases (alternatively reset them if already created)
 * Populate the database with sample data as defined in `lib/tasks/populate.rake`
 * Prepare both databases
 * Initialize guard/spork. start the rails server. take you to your app

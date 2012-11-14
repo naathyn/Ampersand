@@ -6,10 +6,10 @@
           <b class="caret"></b>
             </a>
               <ul class="dropdown-menu">
-            <li class=""><%= link_to "Inbox", inbox_path %></li>
-          <li class=""><%= link_to "Profile", current_user %></li>
-        <li class=""><%= link_to "Account", edit_user_path(current_user) %></li>
+            <li><%= link_to "Inbox", inbox_path %></li>
+          <li><%= link_to "Profile", current_user %></li>
+        <li><%= link_to "Account", edit_user_path(current_user) %></li>
       <li class="divider"></li>
-    <li class=""><%= link_to "Sign out", signout_path, method: "delete" %></li>
+    <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
   </li>
 </ul>
