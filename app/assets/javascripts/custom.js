@@ -1,11 +1,15 @@
 $(function(){
-    $('.navbar li, .dropdown-menu li').each(function(){
+    $('.navbar li').each(function(){
       if(window.location.href.indexOf($(this).find('a:first').attr('href'))>-1)
         {
-          if($(this).parents(".navbar").length > 0)
-            $(this).addClass('active').siblings().removeClass('active');
-          else
-            $(this).removeClass('active')
+      $(this).addClass('active').siblings().removeClass('active');
+        }
+    });
+
+    $('.dropdown-menu li').each(function(){
+      if(window.location.href.indexOf($(this).find('a:first').attr('href'))>-1)
+        {
+      $(this).removeClass('active')
         }
     });
 
