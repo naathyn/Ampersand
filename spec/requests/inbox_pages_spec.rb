@@ -13,7 +13,6 @@ describe "Inbox" do
   end
 
   describe "creating a message" do
-    
     before do
       sign_in user
       visit inbox_path
@@ -23,7 +22,7 @@ describe "Inbox" do
 
     describe "with invalid information" do
 
-      it "should not create a micropost" do
+      it "should not create a message" do
         expect { click_button "Send" }.not_to change(Message, :count)
       end
 

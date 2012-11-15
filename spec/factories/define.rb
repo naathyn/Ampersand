@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:realname) { |n| "Nathan Ghost #{n}" }
-    sequence(:email) { |n| "ghost3k_#{n}@gmail.com"}
-    sequence(:name) { |n| "ghost_of_me#{n}" }
+    sequence(:realname) { |n| "Nathan Couch #{n}" }
+    sequence(:email) { |n| "nathan3k_#{n}@gmail.com"}
+    sequence(:name) { |n| "naathyn#{n}" }
     password "secret"
     password_confirmation "secret"
 
@@ -24,9 +24,9 @@ FactoryGirl.define do
     user.password_confirmation "secret"
   end
 
-  factory :message do |message|
-    message.convo "!audrey_couch hey!"
-    message.user :user
+  factory :message do
+    convo "!audrey_couch hey!"
+    user
   end
 
   factory :message_user, class: User do |user|
