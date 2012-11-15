@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require custom
-//= require bootstrap-alert
 //= require bootstrap-transition
+//= require bootstrap-alert
 //= require bootstrap-button
-//= require bootstrap-dropdown
 //= require bootstrap-collapse
+//= require bootstrap-dropdown
 //= require bootstrap-modal
+//= require custom
