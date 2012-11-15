@@ -1,43 +1,38 @@
-<div id="<%= profile_item.user.name %>_<%= profile_item.id %>" class="well well-inner">
-
+<div id="<%= profile_item.id %>" class="well well-inner">
   <div class="well-inner-header">
 
     <%= link_to gravatar_for(profile_item.user), profile_item.user %>
+      <span class="user" id="<%= profile_item.user.name %>">
+        <%= link_to profile_item.user.realname, profile_item.user %>
+      </span>
 
-        <span class="user">
-          <%= link_to profile_item.user.realname, profile_item.user %>
-        </span>
+    <a data-toggle="collapse" data-target="#<%= profile_item.id %>_reply" class="item-anchor">
 
-        <a data-toggle="collapse" data-target="#<%= profile_item.id %>_reply" class="item-anchor">
+      <span class="username">@<%= profile_item.user.name %></span>
+      <span class="timestamp">
+        <small><%= time_ago_in_words(profile_item.created_at) %> ago</small>
+      </span>
 
-          <span class="username"> 
-            @<%= profile_item.user.name %>
-          </span>
+  </div>
 
-          <span class="timestamp">
-            <small><%= time_ago_in_words(profile_item.created_at) %> ago </small>
-          </span>
+      <span class="content">
+        <%= auto_link(profile_item.content, :html => { :target => '_blank' }) do |a|
+        truncate(a, :length => 30) end %>
+      </span>
 
-        </div> <!-- well-inner-header -->
+    </a>
 
-          <span class="content">
-          <%= auto_link(profile_item.content, :html => { :target => '_blank' }) do |link|
-        truncate(link, :length => 30) end %>
-          </span>
+      <div class="well-footer">
 
-        </a> <!-- item-anchor -->
+        <ul class="inline-share-stats share-stats">
+          <li id="like_count<%= profile_item.id %>">
+            <a><i class="icon-heart"></i></a>
+            <strong><%= profile_item.likes.count %></strong>
+          </li>
+        </ul>
 
-        <div class="well-footer">
-
-          <ul class="inline-share-stats share-stats">
-            <li id="like_count<%= profile_item.id %>">
-              <a><i class="icon-heart"></i></a>
-              <strong><%= profile_item.likes.count %></strong>
-            </li>
-          </ul>
-
-          <ul class="share-actions">
-        <% if current_user?(profile_item.user) %>
+        <ul class="share-actions">
+          <% if current_user?(profile_item.user) %>
 
             <li>
               <i class="icon-remove"></i>
@@ -46,51 +41,52 @@
                   class: "btn-link", title: profile_item.content %>
             </li>
 
-        <% else %> <!-- if not profile user -->
+          <% else %>
 
             <li>
-              <a class="shown" data-toggle="collapse" data-target="#<%= profile_item.id %>_reply">
-                <i class="icon-comment"></i>Reply
-              </a>
+              <a class="shown" data-toggle="collapse" 
+              data-target="#<%= profile_item.id %>_reply">
+              <i class="icon-comment"></i>Reply</a>
             </li>
 
-          <li id="like_form<%= profile_item.id %>">
-        <% if current_user.liked?(profile_item) %>
-              <%= form_for(current_user.fans.find_by_like_id(profile_item),
-                          html: { method: :delete },
-                          remote: true) do |f| %>
-                  <i class="icon-heart"></i>
-                <%= f.submit "Unlike", class: "btn-link" %>
-              <% end %>
+            <li id="like_form<%= profile_item.id %>">
+              <% if current_user.liked?(profile_item) %>
 
-        <% else %>
-
-            <%= form_for(current_user.fans.build(like_id: profile_item.id),
-                        remote: true) do |f| %>
-                  <div><%= f.hidden_field :like_id %></div>
-                <i class="icon-thumbs-up"></i>
-              <%= f.submit "Like", class: "btn-link" %>
-            <% end %>
-
-        <% end %>
-      </li>
-    </ul>
-
-          <div id="<%= profile_item.id %>_reply" class="show collapse">
-            <div class="inline-share-reply">
-              <div class="inline-container">
-
-                <%= form_for(@micropost) do |f| %>
-                  <%= render 'shared/error_messages', object: f.object %>
-                    <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= profile_item.user.name %>">@<%= profile_item.user.name %> </textarea>
-                  <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+                <%= form_for(current_user.fans.find_by_like_id(profile_item),
+                            html: { method: :delete },
+                            remote: true) do |f| %>
+                    <i class="icon-heart"></i>
+                  <%= f.submit "Unlike", class: "btn-link" %>
                 <% end %>
 
-              </div>
-            </div>
-          </div>
+              <% else %>
 
-      <% end %>
+                <%= form_for(current_user.fans.build(like_id: profile_item.id),
+                            remote: true) do |f| %>
+                      <div><%= f.hidden_field :like_id %></div>
+                    <i class="icon-thumbs-up"></i>
+                  <%= f.submit "Like", class: "btn-link" %>
+                <% end %>
+
+            <% end %>
+          </li>
+        </ul>
+
+      <div id="<%= profile_item.id %>_reply" class="show collapse">
+        <div class="inline-share-reply">
+          <div class="inline-container">
+
+            <%= form_for(@micropost) do |f| %>
+              <%= render 'shared/error_messages', object: f.object %>
+                <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= profile_item.user.name %>">@<%= profile_item.user.name %> </textarea>
+              <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+    <% end %>
 
   </div>
 </div>

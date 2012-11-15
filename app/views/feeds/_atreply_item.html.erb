@@ -1,50 +1,46 @@
-<div id="<%= atreply_item.user.name %>_<%= atreply_item.id %>" class="well well-inner">
-
+<div id="<%= atreply_item.id %>" class="well well-inner">
   <div class="well-inner-header">
 
     <%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
+      <span class="user" id="<%= atreply_item.user.name %>">
+        <%= link_to atreply_item.user.realname, atreply_item.user %>
+      </span>
 
-        <span class="user">
-          <%= link_to atreply_item.user.realname, atreply_item.user %>
-        </span>
+    <a data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply" 
+    class="item-anchor">
 
-        <a data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply" class="item-anchor">
+      <span class="timestamp">
+        <small><%= time_ago_in_words(atreply_item.created_at) %> ago</small>
+      </span>
+      <span class="username">@<%= atreply_item.user.name %></span>
 
-        <span class="timestamp">
-          <small><%= time_ago_in_words(atreply_item.created_at) %> ago </small>
-        </span>
+  </div>
 
-        <span class="username">
-          @<%= atreply_item.user.name %>
-        </span>
+      <span class="content">
+        <%= auto_link(atreply_item.content, :html => { :target => '_blank' }) do |a|
+        truncate(a, :length => 30) end %>
+      </span>
 
-      </div> <!-- well-inner-header -->
+    </a>
 
-        <span class="content">
-          <%= auto_link(atreply_item.content, :html => { :target => '_blank' }) do |link|
-        truncate(link, :length => 30) end %>
-        </span>
+    <div class="well-footer">
 
-      </a> <!-- item-anchor -->
+      <ul class="inline-share-stats share-stats">
+        <li id="like_count<%= atreply_item.id %>">
+          <a><i class="icon-heart"></i></a>
+          <strong><%= atreply_item.likes.count %></strong>
+        </li>
+      </ul>
 
-          <div class="well-footer">
+      <ul class="share-actions">
+        <li>
+          <a class="shown" data-toggle="collapse" 
+          data-target="#<%= atreply_item.id %>_reply">
+          <i class="icon-comment"></i>Reply</a>
+        </li>
 
-          <ul class="inline-share-stats share-stats">
-            <li id="like_count<%= atreply_item.id %>">
-              <a><i class="icon-heart"></i></a>
-              <strong><%= atreply_item.likes.count %></strong>
-            </li>
-          </ul>
-
-          <ul class="share-actions">
-            <li>
-              <a class="shown" data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply">
-                <i class="icon-comment"></i>Reply
-              </a>
-            </li>
-
-          <li id="like_form<%= atreply_item.id %>">
-        <% if current_user.liked?(atreply_item) %>
+        <li id="like_form<%= atreply_item.id %>">
+          <% if current_user.liked?(atreply_item) %>
 
             <%= form_for(current_user.fans.find_by_like_id(atreply_item),
                         html: { method: :delete },
@@ -53,32 +49,32 @@
               <%= f.submit "Unlike", class: "btn-link" %>
             <% end %>
 
-        <% else %>
+          <% else %>
 
             <%= form_for(current_user.fans.build(like_id: atreply_item.id), 
                         remote: true) do |f| %>
-              <div><%= f.hidden_field :like_id %></div>
+                  <div><%= f.hidden_field :like_id %></div>
                 <i class="icon-thumbs-up"></i>
               <%= f.submit "Like", class: "btn-link" %>
             <% end %>
 
-        <% end %>
-      </li>
-    </ul>
+          <% end %>
+        </li>
+      </ul>
 
-          <div id="<%= atreply_item.id %>_reply" class="show collapse">
-            <div class="inline-share-reply">
-              <div class="inline-container">
+      <div id="<%= atreply_item.id %>_reply" class="show collapse">
+        <div class="inline-share-reply">
+          <div class="inline-container">
 
-                <%= form_for(@micropost) do |f| %>
-                  <%= render 'shared/error_messages', object: f.object %>
-                    <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= atreply_item.user.name %>">@<%= atreply_item.user.name %> </textarea>
-                  <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
-                <% end %>
+            <%= form_for(@micropost) do |f| %>
+              <%= render 'shared/error_messages', object: f.object %>
+                <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= atreply_item.user.name %>">@<%= atreply_item.user.name %> </textarea>
+            <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+          <% end %>
 
-              </div>
-            </div>
-          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

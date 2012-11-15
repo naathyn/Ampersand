@@ -12,14 +12,14 @@ html, body {
 }
 
 body, input, textarea, select, .uneditable-input {
-  font-family: "Helvetica Neue",Arial,sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 body { 
   font-size: 14px;
   line-height: 18px;
   padding-top: 54px;
-  background-color: rgb(249, 249, 249);
+  background-color: $outterBody;
 }
 
 section {
@@ -31,7 +31,7 @@ textarea {
 }
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid rgb(204, 204, 204);
+  border: 1px solid $inputBorder;
   width: 100%;
   padding: 10px;
   height: auto !important;
@@ -100,7 +100,7 @@ footer {
   margin: auto;
   padding: 1.5em 1em 0px;
   width: 837px;
-  border: 1px solid rgb(240, 240, 240);
+  border: 1px solid $mainGray;
   color: $grayLight;
   @include footer;
 }
@@ -114,7 +114,7 @@ footer a {
 
 aside {
   section {
-    border-top: 1px solid rgb(232, 232, 232);
+    border-top: 1px solid $border;
     padding: 10px 0;
     &:first-child {
       border: 0;
@@ -131,8 +131,8 @@ aside {
 /* Page Layout */
 
 .page-wrapper {
-  background-color: rgb(253, 253, 253);
-  border: 1px solid rgb(240, 240, 240);
+  background-color: $innerBody;
+  border: 1px solid $mainGray;
   position: relative;
   width: 837px;
   min-height: 100%;
@@ -179,7 +179,7 @@ aside {
 .hero-unit {
   padding: 30px;
   margin-bottom: 15px;
-  background-color: rgb(245, 245, 245);
+  background-color: $wellGray;
   @include hero;
   h1 {
     letter-spacing: -2px;
@@ -204,7 +204,7 @@ aside {
 .side-module {
   float: left;
   width: 278px;
-  border: 1px solid rgb(229, 229, 229);
+  border: 1px solid $moduleBorder;
   @include modules; @include shadows;
 }
 
@@ -249,15 +249,15 @@ aside {
 }
 
 .item-anchor, .item-anchor:hover {
-  color: rgb(51,51,51);
+  color: $textGray;
   text-decoration: none;
 }
 
 .side-module-share {
   line-height: 1;
   padding: 10px 0 1px 10px;
-  background-color: rgb(246, 246, 246);
-  border-top: 1px solid rgb(230, 230, 230);
+  background-color: $moduleGray;
+  border-top: 1px solid $moduleBorder;
   height: auto;
 }
 
@@ -268,7 +268,7 @@ aside {
 
 .side-module-share form.active textarea {
   height: 78px !important;
-  color: rgb(69, 69, 69);
+  color: $textGrayLight;
   font-size: 14px;
 }
 
@@ -283,7 +283,7 @@ aside {
 }
 
 .side-module-share textarea {
-  color: rgb(170, 170, 170);
+  color: $textGrayLighter;
   font-size: 13px;
   height: 34px !important;
   width: 258px;
@@ -329,7 +329,7 @@ aside {
   }
   strong {
     display: block;
-    color: rgb(51, 51, 51);
+    color: $textGray;
     font-size: 14px;
   }
 }
@@ -357,38 +357,41 @@ aside {
   li {
     overflow: auto;
     padding: 10px 14px;
-    border-top: 1px solid rgb(237, 237, 237);
+    border-top: 1px solid $userBorder;
     &:last-child {
-      border-bottom: 1px solid rgb(237, 237, 237);
+      border-bottom: 1px solid $userBorder;
     }
     &:nth-child(2n+1) {
-      background-color: rgb(247, 247, 247);
+      background-color: $moduleGray;
     }
   }
 }
 
 /* Temporary for May :) */
 
-#thole, .users #thole a {
+.well-inner-header #thole a, .users #thole a:first-child {
     color: $pink;
-    font-weight: bold;
+}
+
+.users #thole a:first-child {
+  text-shadow: 0px 0px 3px $white;
+  font-weight: bold;
+}
+
+.users #thole .username_modal {
+  color: $peach;
+  text-shadow: 0px 0px 1px $white;
 }
 
 .users #thole {
-  text-shadow: 1px 1px 1px pink;
-  background-color: rgb(251, 234, 226);
-  border-color: rgb(253, 216, 215);
-    .username_modal {
-    color: #F4846C;
-    text-shadow: none;
-    font-weight: normal;
-    }
-  }
+  background-color: $pinkBackground;
+  border-color: $pinkBorder;
+}
 
 /* Share Items with Modal Config */
 
 .well-header, .well-bottom {
-  border: 1px solid rgb(240, 240, 240);
+  border: 1px solid $mainGray;
   @include shadows;
 }
 
@@ -403,8 +406,8 @@ aside {
 }
 
 .well {
-  background-color: rgb(253, 253, 253);
-  border: 1px solid rgb(234, 234, 234);
+  background-color: $innerBody;
+  border: 1px solid $border;
   margin: 0;
   padding: 12px 12px;
   cursor: pointer;
@@ -413,7 +416,7 @@ aside {
 }
 
 .well-bottom {
-  border: 1px solid rgb(240, 240, 240);
+  border: 1px solid $mainGray;
   padding: 10px;
   min-height: 7px;
   border-top-width: 0;
@@ -421,7 +424,7 @@ aside {
 }
 
 .well:first-child {
-  border-top: 1px solid rgb(253, 253, 253);
+  border-top: 1px solid $innerBody;
 }
 
 .well-inner {
@@ -446,15 +449,14 @@ aside {
   }
   .timestamp {
     font-size: 13px;
-    color: rgb(170, 187, 170);
+    color: $timestamp;
     float: right;
     font-weight: normal;
   }
 }
 
-.well #naathyn {
+.well-inner-header #naathyn a {
   color: $green;
-  font-weight: bold;
 }
 
 .well-inner .content, .modal_content .content {
@@ -474,7 +476,7 @@ aside {
   padding-top: 5px;
   padding-left: 10px;
   margin-bottom: -3px;
-  margin-top: -5px;
+  margin-top: -6px;
 }
 
 .well-footer form {
@@ -487,11 +489,11 @@ aside {
 }
 
 .well:hover {
-  background-color: rgb(245, 245, 245);
+  background-color: $wellGray;
 }
 
 .well:hover:active {
-  background-color: rgb(240, 240, 240);
+  background-color: $mainGray;
 }
 
 .well:hover .timestamp {
@@ -507,7 +509,7 @@ aside {
 }
 
 .well-inner:hover strong {
- color: $red;
+  color: $red;
 }
 
 /* Share Item Hover Links */
@@ -569,7 +571,7 @@ aside {
 }
 
 .inline-share-stats a {
-  color: rgb(153, 153, 153);
+  color: $statsGray;
   font-size: 10px;
   text-transform: uppercase;
   &:first-child {
@@ -610,7 +612,7 @@ aside {
 }
 
 .inline-container form textarea, .modal-form form textarea {
-  color: rgb(170, 170, 170);
+  color: $textGrayLighter;
   font-size: 13px;
   line-height: 18px;
   height: 38px !important;
@@ -621,7 +623,7 @@ aside {
 
 .inline-container form.active textarea {
   height: 78px !important;
-  color: rgb(69, 69, 69);
+  color: $textGrayLight;
   font-size: 14px;
   line-height: 18px;
 }
@@ -632,7 +634,7 @@ aside {
 }
 
 .modal-form form textarea {
-  color: rgb(69, 69, 69);
+  color: $textGrayLight;
   font-size: 14px;
   height: 78px !important;
 }
@@ -649,8 +651,8 @@ aside {
   li {
     margin: 0px -14px;
     padding-left: 28px;
-    border-top: 1px solid rgb(220, 220, 220);
-    border-bottom: 1px solid rgb(220, 220, 220);
+    border-top: 1px solid $borderDarker;
+    border-bottom: 1px solid $borderDarker;
     &:first-child {
       border: 0px;
     }
@@ -659,7 +661,7 @@ aside {
       margin-bottom: -15px;
     }
     &:nth-child(even) {
-      background-color: rgb(240, 240, 240);
+      background-color: $mainGray;
     }
   }
 }
@@ -680,8 +682,8 @@ aside {
   cursor: default;
   padding-top: 8px;
   padding-bottom: 8px;
-  background-color: rgb(236, 236, 236);
-  border-bottom: 1px solid rgb(221, 221, 221);
+  background-color: $userBorder;
+  border-bottom: 1px solid $borderDarker;
   @include modal-header;
 }
 
@@ -695,7 +697,7 @@ aside {
   font-weight: bold;
   line-height: 18px;
   text-align: center;
-  text-shadow: 0px 1px 0px rgb(255, 255, 255);
+  text-shadow: 0px 1px 0px $white;
 }
 
 .modal-footer, #likes {
@@ -703,14 +705,14 @@ aside {
 }
 
 #likes {
-  background-color: rgb(236, 236, 236);
-  border-top: 1px solid rgb(221, 221, 221);
+  background-color: $userBorder;
+  border-top: 1px solid $borderDarker;
 }
 
 .modal-content {
   cursor: pointer;
   position: relative;
-  background-color: rgb(255, 255, 255);
+  background-color: $white;
   @include modal;
 }
 
@@ -719,11 +721,11 @@ aside {
 }
 
 .modal-body:hover {
-  background-color: rgb(247, 247, 247);
+  background-color: $moduleGray;
 }
 
 .modal-body:hover:active {
-  background-color: rgb(242, 242, 242);
+  background-color: $modalActive;
 }
 
 /* included in the users#show controller */
@@ -739,11 +741,11 @@ aside {
   content: "";
   height: 20px;
   width: 80px;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
   position: absolute;
-  -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.4);
-  -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.4);
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0 ,0.4);
+  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .tapetwo:after {
@@ -771,7 +773,7 @@ aside {
 }
 
 .profile {
-  text-shadow: 0px 1px 0px rgb(255, 255, 255);
+  text-shadow: 0px 1px 0px $white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   line-height: 16px;
@@ -779,7 +781,7 @@ aside {
 }
 
 .profile-header {
-  background-color: rgb(246, 246, 246);
+  background-color: $moduleGray;
   padding: 12px;
   line-height: 16px;
   @include profile-header;
@@ -796,7 +798,7 @@ aside {
     font-size: 18px;
     font-weight: normal;
     line-height: 24px;
-    color: rgb(119, 119, 119);
+    color: $grayLarge;
     margin-bottom: 5px;
   }
 }
@@ -809,14 +811,14 @@ aside {
     line-height: 1;
     margin-bottom: 2px;
     font-weight: bold;
-    color: rgb(51, 51, 51);
+    color: $textGray;
     }
 }
 
 .bio {
   max-width: 420px;
-  font: italic 14px/18px Georgia,"Times New Roman",serif;
-  color: rgb(119, 119, 119);
+  font: italic 14px/18px Georgia, "Times New Roman", serif;
+  color: $grayLarge;
   word-wrap: break-word;
   padding-bottom:7px;
 }
@@ -824,7 +826,7 @@ aside {
 .location {
   font-size: 12px;
   line-height: 18px;
-  color: rgb(119, 119, 119);
+  color: $grayLarge;
 }
 
 /* User Profile Stats */
@@ -849,13 +851,13 @@ aside {
   display: block;
   border-width: 1px 0px 0px;
   border-style: solid none none;
-  border-color: rgb(232, 232, 232);
-  color: rgb(153,153,153);
+  border-color: $border;
+  color: $statsGray;
   font-size: 10px;
   line-height: 16px;
   text-transform: uppercase;
   &:hover {
-    color: rgb(0, 136, 204);
+    color: $blue;
   }
 }
 
@@ -864,12 +866,12 @@ aside {
 }
 
 .actions .stats a strong {
-  color: rgb(51,51,51);
+  color: $textGray;
   font-size: 14px;
 }
 
 .actions .stats a:hover strong {
-  color: rgb(0, 136, 204);
+  color: $blue;
 }
 
 .actions .stats li {
@@ -881,7 +883,7 @@ aside {
   padding: 6px 12px 6px 0px;
   border-width: 1px 0px 0px;
   border-style: solid none none;
-  border-color: rgb(232, 232, 232);
+  border-color: $border
 }
 
 .actions .stats li:first-child a {
@@ -891,7 +893,7 @@ aside {
 /* included in static_pages/about#show */
 
 .quote {
-  border: 1px dashed rgb(200, 200, 200);
+  border: 1px dashed $quotesBorder;
   padding: 1em;
 }
 

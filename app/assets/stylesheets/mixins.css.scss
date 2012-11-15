@@ -1,1 +1,134 @@
-@mixin forms{-webkit-border-radius: 0 0 4px 4px;-moz-border-radius: 0 0 4px 4px;border-radius: 0 0 4px 4px;-webkit-box-sizing: border-box;-webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;-moz-box-sizing: border-box;-moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;box-sizing: border-box;box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;}@mixin footer{background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(255, 255, 255)), to(rgb(240, 240, 240)));background-image: -moz-linear-gradient(center top, rgb(255, 255, 255), rgb(240, 240, 240));background-image: linear-gradient(rgb(255, 255, 255), rgb(240, 240, 240));}@mixin navbar{-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.15);-moz-box-shadow: 0 3px 6px rgba(0,0,0,.15);box-shadow: 0 3px 6px rgba(0,0,0,.15);}@mixin hero{-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;}@mixin shadows{-webkit-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);background-image: -moz-linear-gradient(center top, rgb(255, 255, 255), rgb(245, 245, 245));background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(255, 255, 255)), to(rgb(245, 245, 245)));background-image: linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245));}@mixin modules{-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;}@mixin inline-container{-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}@mixin gravatars{-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}@mixin well-header{-webkit-border-radius: 5px 5px 0px 0px;-moz-border-radius: 5px 5px 0px 0px;border-radius: 5px 5px 0px 0px;}@mixin well{-webkit-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}@mixin well-bottom{-webkit-border-radius: 0px 0px 5px 5px;-moz-border-radius: 0px 0px 5px 5px;border-radius: 0px 0px 5px 5px;}@mixin modal-header{-webkit-border-radius: 6px 6px 0px 0px;-moz-border-radius: 6px 6px 0px 0px;border-radius: 6px 6px 0px 0px;-webkit-box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;-moz-box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;}@mixin modal{-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;-webkit-background-clip: padding-box;-moz-background-clip: padding;background-clip: padding-box;-webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px rgb(255, 255, 255) inset;-moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px rgb(255, 255, 255) inset;box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px rgb(255, 255, 255) inset;}@mixin profiles{-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;-webkit-background-clip: padding-box;-moz-background-clip: padding;background-clip: padding-box;-webkit-box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);}@mixin profile-header{-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;background-image: -moz-linear-gradient(center top, rgb(255, 255, 255), rgb(249, 249, 249));background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(255, 255, 255)), to(rgb(249, 249, 249)));background-image: linear-gradient(rgb(255, 255, 255), rgb(249, 249, 249));}
+$innerBody: rgb(253, 253, 253);
+$outterBody: rgb(249, 249, 249);
+$moduleGray: rgb(247, 247, 247);
+$wellGray: rgb(245, 245, 245);
+$modalActive: rgb(242, 242, 242);
+$mainGray: rgb(240, 240, 240);
+$userBorder: rgb(237, 237, 237);
+$border: rgb(232, 232, 232);
+$moduleBorder: rgb(229, 229, 229);
+$borderDarker: rgb(220, 220, 220);
+$inputBorder: rgb(204, 204, 204);
+$quotesBorder: rgb(200, 200, 200);
+$timestamp: rgb(170, 187, 170);
+$textGrayLighter: rgb(170, 170, 170);
+$statsGray: rgb(153, 153, 153);
+$grayLarge: rgb(119, 119, 119);
+$textGrayLight: rgb(69, 69, 69);
+$textGray: rgb(51, 51, 51);
+$peach: rgb(244, 132, 108);
+$pink: rgb(232, 85, 146);
+$pinkBackground: rgb(251, 234, 226);
+$pinkBorder: rgb(253, 216, 215);
+
+@mixin paddings {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@mixin forms {
+  @include paddings;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;
+  -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset;
+}
+
+@mixin footer {
+  background-image: -webkit-gradient(linear, center top, center bottom, from($white), to($mainGray));
+  background-image: -moz-linear-gradient(center top, $white, $mainGray);
+  background-image: linear-gradient($white, $mainGray);
+}
+
+@mixin navbar {
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,.15);
+  box-shadow: 0 3px 6px rgba(0,0,0,.15);
+}
+
+@mixin hero {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+@mixin shadows {
+  -webkit-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1);
+  background-image: -webkit-gradient(linear, center top, center bottom, from($white), to($wellGray));
+  background-image: -moz-linear-gradient(center top, $white, $wellGray);
+  background-image: linear-gradient($white, $wellGray);
+}
+
+@mixin modules {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+@mixin inline-container {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+@mixin gravatars {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+@mixin well-header {
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+@mixin well {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);
+}
+
+@mixin well-bottom {
+  -webkit-border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+@mixin modal-header {
+  -webkit-border-radius: 6px 6px 0px 0px;
+  -moz-border-radius: 6px 6px 0px 0px;
+  border-radius: 6px 6px 0px 0px;
+  -webkit-box-shadow: 0px 1px 0px $white inset;
+  -moz-box-shadow: 0px 1px 0px $white inset;
+  box-shadow: 0px 1px 0px $white inset;
+}
+
+@mixin modal {
+  @include paddings; @include modules;
+  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px $white inset;
+  -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px $white inset;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), 0px 1px 0px $white inset;
+}
+
+@mixin profiles {
+  @include paddings; @include modules;
+  -webkit-box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
+}
+
+@mixin profile-header {
+  @include gravatars;
+  background-image: -webkit-gradient(linear, center top, center bottom, from($white), to($outterBody));
+  background-image: -moz-linear-gradient(center top, $white, $outterBody);
+  background-image: linear-gradient($white, $outterBody);
+}

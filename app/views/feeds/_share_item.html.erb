@@ -1,49 +1,47 @@
-<div id="<%= share_item.user.name %>_<%= share_item.id %>" class="well well-inner">
-
+<div id="<%= share_item.id %>" class="well well-inner">
   <div class="well-inner-header">
 
     <%= link_to gravatar_for(share_item.user), share_item.user %>
+      <span class="user" id="<%= share_item.user.name %>">
+        <%= link_to share_item.user.realname, share_item.user %>
+      </span>
+      <span class="timestamp">
+        <small>
+          <%= link_to "#{time_ago_in_words(share_item.created_at)} ago", 
+              share_item, { :remote => true, 'data-toggle' => "modal", 
+              'data-target' => "#modal-window", :class => "timestamp" } %>
+        </small>
+      </span>
 
-        <span class="user">
-          <%= link_to share_item.user.realname, share_item.user, :id => share_item.user.name %>
-        </span>
+    <a data-toggle="collapse" data-target="#<%= share_item.id %>_reply" 
+    class="item-anchor">
 
-        <span class="timestamp">
-          <small>
-            <%= link_to "#{time_ago_in_words(share_item.created_at)} ago", share_item, { :remote => true,
-                'data-toggle' => "modal", 'data-target' => "#modal-window", :class => "timestamp" } %>
-          </small>
-        </span>
+      <span class="username">@<%= share_item.user.name %></span>
 
-        <a data-toggle="collapse" data-target="#<%= share_item.id %>_reply" class="item-anchor">
+  </div>
 
-        <span class="username">
-          @<%= share_item.user.name %>
-        </span>
+      <span class="content">
+        <%= auto_link(share_item.content, :html => { :target => '_blank' }) do |a|
+            truncate(a, :length => 30) end %>
+      </span>
 
-      </div> <!-- well-inner-header -->
+    </a>
 
-        <span class="content">
-          <%= auto_link(share_item.content, :html => { :target => '_blank' }) do |link|
-        truncate(link, :length => 30) end %>
-        </span>
+      <div class="well-footer">
 
-      </a> <!-- item-anchor -->
+        <ul class="inline-share-stats share-stats">
+          <li id="like_count<%= share_item.id %>">
+            <a><i class="icon-heart"></i></a>
+            <strong><%= share_item.likes.count %></strong>
+          </li>
+        </ul>
 
-        <div class="well-footer">
+      <%= link_to "Detach", share_item, { :remote => true, 
+          'data-toggle' => "modal", 'data-target' => "#modal-window", 
+          :class => "shown detach" } %>
 
-          <ul class="inline-share-stats share-stats">
-            <li id="like_count<%= share_item.id %>">
-              <a><i class="icon-heart"></i></a>
-              <strong><%= share_item.likes.count %></strong>
-            </li>
-          </ul>
-
-        <%= link_to "Detach", share_item, { :remote => true, 'data-toggle' => "modal",
-            'data-target' => "#modal-window", :class => "shown detach" } %>
-
-          <ul class="share-actions">
-        <% if current_user?(share_item.user) %>
+        <ul class="share-actions">
+          <% if current_user?(share_item.user) %>
 
             <li>
               <i class="icon-remove"></i>
@@ -52,52 +50,52 @@
                   class: "btn-link", title: share_item.content %>
             </li>
 
-        <% else %> <!-- if not share user -->
+          <% else %>
 
             <li>
-              <a class="shown" data-toggle="collapse" data-target="#<%= share_item.id %>_reply">
-                <i class="icon-comment"></i>Reply
-              </a>
+              <a class="shown" data-toggle="collapse" 
+              data-target="#<%= share_item.id %>_reply">
+              <i class="icon-comment"></i>Reply</a>
             </li>
 
-          <li id="like_form<%= share_item.id %>">
-        <% if current_user.liked?(share_item) %>
+            <li id="like_form<%= share_item.id %>">
+              <% if current_user.liked?(share_item) %>
 
-              <%= form_for(current_user.fans.find_by_like_id(share_item),
-                          html: { method: :delete },
+                <%= form_for(current_user.fans.find_by_like_id(share_item),
+                            html: { method: :delete },
                           remote: true) do |f| %>
-                  <i class="icon-heart"></i>
-                <%= f.submit "Unlike", class: "btn-link" %>
-              <% end %>
+                    <i class="icon-heart"></i>
+                  <%= f.submit "Unlike", class: "btn-link" %>
+                <% end %>
 
-        <% else %>
+              <% else %>
 
-              <%= form_for(current_user.fans.build(like_id: share_item.id), 
-                          remote: true) do |f| %>
-                    <div><%= f.hidden_field :like_id %></div>
-                  <i class="icon-thumbs-up"></i>
-                <%= f.submit "Like", class: "btn-link" %>
-              <% end %>
+                <%= form_for(current_user.fans.build(like_id: share_item.id), 
+                            remote: true) do |f| %>
+                      <div><%= f.hidden_field :like_id %></div>
+                    <i class="icon-thumbs-up"></i>
+                  <%= f.submit "Like", class: "btn-link" %>
+                <% end %>
 
-      <% end %>
-      </li>
-    </ul>
+          <% end %>
+        </li>
+      </ul>
 
-          <div id="<%= share_item.id %>_reply" class="show collapse">
-            <div class="inline-share-reply">
-              <div class="inline-container">
+      <div id="<%= share_item.id %>_reply" class="show collapse">
+        <div class="inline-share-reply">
+          <div class="inline-container">
 
-              <%= form_for(@micropost) do |f| %>
-                <%= render 'shared/error_messages', object: f.object %>
-                  <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= share_item.user.name %>">@<%= share_item.user.name %> </textarea>
-                <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
-              <% end %>
+            <%= form_for(@micropost) do |f| %>
+              <%= render 'shared/error_messages', object: f.object %>
+                <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= share_item.user.name %>">@<%= share_item.user.name %> </textarea>
+              <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+            <% end %>
 
-              </div>
-            </div>
           </div>
+        </div>
+      </div>
 
-      <% end %>
+    <% end %>
 
   </div>
 </div>
