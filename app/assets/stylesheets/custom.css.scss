@@ -409,7 +409,7 @@ aside {
   background-color: $innerBody;
   border: 1px solid $border;
   margin: 0;
-  padding: 12px 12px;
+  padding: 12px 10px;
   cursor: pointer;
   border-top-width: 0;
   @include well;
@@ -460,15 +460,15 @@ aside {
 }
 
 .well-inner .content, .modal_content .content {
-  line-height: 19px;
   display: block;
-  margin-left: 60px;
+  line-height: 19px;
+  margin-left: 58px;
   word-wrap: break-word;
 }
 
 .well-footer {
   font-size: 13px;
-  margin-left: 60px;
+  margin-left: 58px;
   margin-bottom: -10px;
 }
 
