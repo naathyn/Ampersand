@@ -367,6 +367,21 @@ aside {
   }
 }
 
+/* Temporary for May :) */
+
+.users li:last-child {
+  background-color: rgb(251, 234, 226);
+  border-color: rgb(253, 216, 215);
+  .username a {
+    color: $pink;
+    text-shadow: 1px 1px 1px pink;
+    font-weight: bold;
+  }
+  .username_modal {
+    color: #F4846C;
+  }
+}
+
 /* Share Items with Modal Config */
 
 .well-header, .well-bottom {
