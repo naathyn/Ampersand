@@ -369,18 +369,21 @@ aside {
 
 /* Temporary for May :) */
 
+#thole, .users #thole a {
+    color: $pink;
+    font-weight: bold;
+}
+
 .users #thole {
+  text-shadow: 1px 1px 1px pink;
   background-color: rgb(251, 234, 226);
   border-color: rgb(253, 216, 215);
-  .username a {
-    color: $pink;
-    text-shadow: 1px 1px 1px pink;
-    font-weight: bold;
-  }
-  .username_modal {
+    .username_modal {
     color: #F4846C;
+    text-shadow: none;
+    font-weight: normal;
+    }
   }
-}
 
 /* Share Items with Modal Config */
 
@@ -436,10 +439,6 @@ aside {
   .user {
     font-weight: bold;
   }
-  .admin a {
-    font-weight: bold;
-    color: $green;
-  }
   .username {
     font-size: 13px;
     color: $grayLight;
@@ -451,6 +450,11 @@ aside {
     float: right;
     font-weight: normal;
   }
+}
+
+.well #naathyn {
+  color: $green;
+  font-weight: bold;
 }
 
 .well-inner .content, .modal_content .content {

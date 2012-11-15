@@ -3,23 +3,12 @@
   <div class="well-inner-header">
 
     <%= link_to gravatar_for(profile_item.user), profile_item.user %>
-      <% if profile_item.user.admin? %>
-
-        <span class="admin">
-          <%= link_to profile_item.user.realname, profile_item.user %>
-        </span>
-
-      <% else %>
 
         <span class="user">
           <%= link_to profile_item.user.realname, profile_item.user %>
         </span>
 
-      <% end %>
-
-      <% if !current_user?(profile_item.user) %>
         <a data-toggle="collapse" data-target="#<%= profile_item.id %>_reply" class="item-anchor">
-      <% end %>
 
           <span class="username"> 
             @<%= profile_item.user.name %>

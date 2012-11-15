@@ -3,23 +3,12 @@
   <div class="well-inner-header">
 
     <%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
-      <% if atreply_item.user.admin? %>
-
-        <span class="admin">
-          <%= link_to atreply_item.user.realname, atreply_item.user %>
-        </span>
-
-      <% else %>
 
         <span class="user">
           <%= link_to atreply_item.user.realname, atreply_item.user %>
         </span>
 
-      <% end %>
-
-      <% if !current_user?(atreply_item.user) %>
         <a data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply" class="item-anchor">
-      <% end %>
 
         <span class="timestamp">
           <small><%= time_ago_in_words(atreply_item.created_at) %> ago </small>

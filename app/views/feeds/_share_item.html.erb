@@ -3,19 +3,10 @@
   <div class="well-inner-header">
 
     <%= link_to gravatar_for(share_item.user), share_item.user %>
-      <% if share_item.user.admin? %>
-
-        <span class="admin">
-          <%= link_to share_item.user.realname, share_item.user %>
-        </span>
-
-      <% else %>
 
         <span class="user">
-          <%= link_to share_item.user.realname, share_item.user %>
+          <%= link_to share_item.user.realname, share_item.user, :id => share_item.user.name %>
         </span>
-
-      <% end %>
 
         <span class="timestamp">
           <small>
@@ -24,9 +15,7 @@
           </small>
         </span>
 
-      <% if !current_user?(share_item.user) %>
         <a data-toggle="collapse" data-target="#<%= share_item.id %>_reply" class="item-anchor">
-      <% end %>
 
         <span class="username">
           @<%= share_item.user.name %>
