@@ -353,14 +353,16 @@ aside {
 }
 
 .users, .users_modal {
-  list-style: none;
-  margin: 0;
+  margin: 0px -14px;
   li {
     overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    padding: 10px 14px;
+    border-top: 1px solid rgb(237, 237, 237);
     &:last-child {
-      border-bottom: 1px solid $grayLighter;
+      border-bottom: 1px solid rgb(237, 237, 237);
+    }
+    &:nth-child(2n+1) {
+      background-color: rgb(247, 247, 247);
     }
   }
 }
