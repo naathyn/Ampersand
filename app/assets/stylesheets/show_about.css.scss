@@ -1,0 +1,10 @@
+/* This file is included in static_pages/about#show */
+
+.quote {
+  border: 1px dashed rgb(200, 200, 200);
+  padding: 1em;
+}
+
+.quote blockquote li:last-child {
+  margin-bottom: -18px;
+}
