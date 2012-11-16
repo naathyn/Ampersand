@@ -3,7 +3,7 @@
     <%= pluralize(@user.atreply.count, "@reply") %> for you
       </div>
       <% @atreply_items.each do |item| %>
-        <%= render :partial => 'feedsatreply_item', 
+        <%= render :partial => 'feeds/atreply_item', 
         :object => item, :as => 'reply_item' %>
       <% end %>
     <div class="well-bottom"> </div>
