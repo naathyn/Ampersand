@@ -1,23 +1,23 @@
-<div id="<%= atreply_item.id %>" class="well well-inner">
+<div id="<%= reply_item.id %>" class="well well-inner">
   <div class="well-inner-header">
 
-    <%= link_to gravatar_for(atreply_item.user), atreply_item.user %>
-      <span class="user" id="<%= atreply_item.user.name %>">
-        <%= link_to atreply_item.user.realname, atreply_item.user %>
+    <%= link_to gravatar_for(reply_item.user), reply_item.user %>
+      <span class="user" id="<%= reply_item.user.name %>">
+        <%= link_to reply_item.user.realname, reply_item.user %>
       </span>
 
-    <a data-toggle="collapse" data-target="#<%= atreply_item.id %>_reply" 
+    <a data-toggle="collapse" data-target="#<%= reply_item.id %>_reply" 
     class="item-anchor">
 
       <span class="timestamp">
-        <small><%= time_ago_in_words(atreply_item.created_at) %> ago</small>
+        <small><%= time_ago_in_words(reply_item.created_at) %> ago</small>
       </span>
-      <span class="username">@<%= atreply_item.user.name %></span>
+      <span class="username">@<%= reply_item.user.name %></span>
 
   </div>
 
       <span class="content">
-        <%= auto_link(atreply_item.content, :html => { :target => '_blank' }) do |a|
+        <%= auto_link(reply_item.content, :html => { :target => '_blank' }) do |a|
         truncate(a, :length => 30) end %>
       </span>
 
@@ -26,55 +26,34 @@
     <div class="well-footer">
 
       <ul class="inline-share-stats share-stats">
-        <li id="like_count<%= atreply_item.id %>">
+        <li id="like_count<%= reply_item.id %>">
           <a><i class="icon-heart"></i></a>
-          <strong><%= atreply_item.likes.count %></strong>
+          <strong><%= reply_item.likes.count %></strong>
         </li>
       </ul>
 
       <ul class="share-actions">
         <li>
           <a class="shown" data-toggle="collapse" 
-          data-target="#<%= atreply_item.id %>_reply">
+          data-target="#<%= reply_item.id %>_reply">
           <i class="icon-comment"></i>Reply</a>
         </li>
 
-        <li id="like_form<%= atreply_item.id %>">
-          <% if current_user.liked?(atreply_item) %>
+        <% if current_user.liked?(reply_item) %>
 
-            <%= form_for(current_user.fans.find_by_like_id(atreply_item),
-                        html: { method: :delete },
-                        remote: true) do |f| %>
-                <i class="icon-heart"></i>
-              <%= f.submit "Unlike", class: "btn-link" %>
-            <% end %>
+          <%= render :partial => 'feeds/shared/unlike', 
+          :object => reply_item, :as => 'item' %>
 
-          <% else %>
+        <% else %>
 
-            <%= form_for(current_user.fans.build(like_id: atreply_item.id), 
-                        remote: true) do |f| %>
-                  <div><%= f.hidden_field :like_id %></div>
-                <i class="icon-thumbs-up"></i>
-              <%= f.submit "Like", class: "btn-link" %>
-            <% end %>
+          <%= render :partial => 'feeds/shared/like', 
+          :object => reply_item, :as => 'item' %>
 
-          <% end %>
-        </li>
+        <% end %>
       </ul>
 
-      <div id="<%= atreply_item.id %>_reply" class="show collapse">
-        <div class="inline-share-reply">
-          <div class="inline-container">
-
-            <%= form_for(@micropost) do |f| %>
-              <%= render 'shared/error_messages', object: f.object %>
-                <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= atreply_item.user.name %>">@<%= atreply_item.user.name %> </textarea>
-            <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'feeds/shared/form', 
+    :object => reply_item, :as => 'item' %>
 
   </div>
 </div>

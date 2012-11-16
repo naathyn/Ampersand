@@ -34,12 +34,8 @@
         <ul class="share-actions">
           <% if current_user?(profile_item.user) %>
 
-            <li>
-              <i class="icon-remove"></i>
-              <%= link_to "Delete", profile_item, method: :delete, 
-                  data: { confirm: "Are you sure you want to delete this?" }, 
-                  class: "btn-link", title: profile_item.content %>
-            </li>
+            <%= render :partial => 'feeds/shared/delete', 
+            :object => profile_item, :as => 'item' %>
 
           <% else %>
 
@@ -49,42 +45,21 @@
               <i class="icon-comment"></i>Reply</a>
             </li>
 
-            <li id="like_form<%= profile_item.id %>">
               <% if current_user.liked?(profile_item) %>
 
-                <%= form_for(current_user.fans.find_by_like_id(profile_item),
-                            html: { method: :delete },
-                            remote: true) do |f| %>
-                    <i class="icon-heart"></i>
-                  <%= f.submit "Unlike", class: "btn-link" %>
-                <% end %>
+                <%= render :partial => 'feeds/shared/unlike', 
+                :object => profile_item, :as => 'item' %>
 
               <% else %>
 
-                <%= form_for(current_user.fans.build(like_id: profile_item.id),
-                            remote: true) do |f| %>
-                      <div><%= f.hidden_field :like_id %></div>
-                    <i class="icon-thumbs-up"></i>
-                  <%= f.submit "Like", class: "btn-link" %>
-                <% end %>
+            <%= render :partial => 'feeds/profiles/like', 
+            :object => profile_item, :as => 'item' %>
 
-            <% end %>
-          </li>
+          <% end %>
         </ul>
 
-      <div id="<%= profile_item.id %>_reply" class="show collapse">
-        <div class="inline-share-reply">
-          <div class="inline-container">
-
-            <%= form_for(@micropost) do |f| %>
-              <%= render 'shared/error_messages', object: f.object %>
-                <textarea id="micropost_content" name="micropost[content]" placeholder="Reply to @<%= profile_item.user.name %>">@<%= profile_item.user.name %> </textarea>
-              <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
-            <% end %>
-
-          </div>
-        </div>
-      </div>
+      <%= render :partial => 'feeds/profiles/form', 
+      :object => profile_item, :as => 'item' %>
 
     <% end %>
 

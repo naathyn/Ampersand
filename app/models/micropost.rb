@@ -12,7 +12,7 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 255 }
 
   default_scope order: 'microposts.created_at DESC'
-  before_create :send_reply
+  before_save :send_reply
 
 private
 

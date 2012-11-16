@@ -1,0 +1,8 @@
+<li id="like_form<%= item.id %>">
+  <%= form_for(current_user.fans.find_by_like_id(item),
+          html: { method: :delete },
+        remote: true) do |f| %>
+      <i class="icon-heart"></i>
+    <%= f.submit "Unlike", class: "btn-link" %>
+  <% end %>
+</li>

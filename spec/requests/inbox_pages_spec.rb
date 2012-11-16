@@ -30,15 +30,6 @@ describe "Inbox" do
         before { click_button "Send" }
         it { should have_content('error') }
       end
-
-    describe "with an invalid conversation" do
-
-      before do
-        fill_in 'message_convo', with: "Lorem ipsum"
-        click_button "Send"
-      end
-        it { should have_content('error') }
-      end
     end
 
     describe "with valid information" do

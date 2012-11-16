@@ -36,20 +36,6 @@ describe Message do
     it { should_not be_valid }
   end
 
-  describe "with the correct conversation format" do
-    before { @message.convo = "!#{recipient.name} hey, how are you? :)" }
-    it { should be_valid }
-  end
-
-  describe "with the wrong conversation format" do
-    it "should be invalid" do
-      convos = %w["@#{recipient.name}" "!#{recipient.name}" "#{recipient.name} hey, how are you? :)" "hey, #{recipient.name}" "hey, how are you? :)"]
-      convos.each do |invalid_convo|
-        @message.convo = invalid_convo
-        @message.should_not be_valid
-      end
-    end
-  end
 
   describe "with a conversation that is too long" do
     before { @message.convo = "a" * 256 }

@@ -396,12 +396,16 @@ aside {
   @include shadows;
 }
 
+.views {
+  margin-top: 15px;
+}
+
 .well-header {
-  border-bottom-width: 0;
   color: $textGrayLight;
   font-weight: bold;
   padding: 8px;
   min-height: 17px;
+  border-bottom-width: 0;
   @include well-header;
 }
 

@@ -6,12 +6,10 @@ class Message < ActiveRecord::Base
 
   validates :user_id, presence: true
 
-  VALID_MESSAGE = /\A!([^\s*][a-z\d_.]{5,15}+\s*\w\W)+([\s\w\W]{0,250})\Z/i
-  validates :convo, presence: true, length: { maximum: 255 },
-  format: { with: VALID_MESSAGE }
+  validates :convo, presence: true, length: { maximum: 255 }
 
   default_scope order: 'messages.created_at DESC'
-  before_create :send_message
+  before_save :send_message
 
 private
 

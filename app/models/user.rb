@@ -19,11 +19,10 @@ class User < ActiveRecord::Base
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships
   
-  before_create { |user| user.email = email.downcase }
-  before_create { |user| user.name = name.downcase }
-  before_create :create_remember_token
+  before_save { |user| user.email = email.downcase }
+  before_save { |user| user.name = name.downcase }
+  before_save :create_remember_token
 
-  # /\A([a-zA-Z]{2,20}\s+[a-zA-Z]{2,20})\Z/i #
   VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
   validates :realname, presence: true, 
                     length: { minimum: 2, maximum: 20 },
