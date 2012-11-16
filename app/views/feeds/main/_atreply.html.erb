@@ -2,9 +2,8 @@
   <div class="well-header views">
     <%= pluralize(@user.atreply.count, "@reply") %> for you
       </div>
-      <% @atreply_items.each do |item| %>
-        <%= render :partial => 'feeds/atreply_item', 
-        :object => item, :as => 'reply_item' %>
+      <% @atreply_items.each do |reply_item| %>
+        <%= render :partial => 'feeds/atreply_item', :object => reply_item %>
       <% end %>
     <div class="well-bottom"> </div>
   <%= will_paginate @atreply_items %>

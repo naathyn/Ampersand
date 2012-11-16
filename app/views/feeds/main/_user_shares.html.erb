@@ -1,7 +1,6 @@
 <% if @share_items.any? %>
-  <% @share_items.each do |item| %>
-    <%= render :partial => 'feeds/share_item', 
-    :object => item, :as => 'share_item' %>
+  <% @share_items.each do |share_item| %>
+    <%= render :partial => 'feeds/share_item', :object => share_item %>
       <% end %>
       <div class="well-bottom">
         <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>

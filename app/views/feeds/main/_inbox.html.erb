@@ -2,9 +2,8 @@
   <div class="well-header">
     Displaying <%= pluralize(@inbox_items.count, "private message") %>
     </div>
-      <% @inbox_items.each do |item| %>
-        <%= render :partial => 'feeds/inbox_item', 
-        :object => item, :as => 'inbox_item' %>
+      <% @inbox_items.each do |inbox_item| %>
+        <%= render :partial => 'feeds/inbox_item', :object => inbox_item %>
       <% end %>
       <div class="well-bottom">
         <a href="/"><i class="icon-home"></i></a>
