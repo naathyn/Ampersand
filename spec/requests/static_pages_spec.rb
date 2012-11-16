@@ -28,7 +28,7 @@ describe "Static pages" do
 
       it "should show user shares" do
         user.share.each do |item|
-          page.should have_selector("div##{user.name}_#{item.id}", text: item.content)
+          page.should have_selector("div##{item.id}", text: item.content)
         end
       end
 

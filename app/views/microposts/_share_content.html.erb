@@ -1,43 +1,43 @@
 <div class="modal_header">
   <%= link_to gravatar_for(@micropost.user), @micropost.user %>
-      <span class="user">
+
+      <span class="user" id="<%= @micropost.user.name %>">
         <%= link_to @micropost.user.realname, @micropost.user %>
       </span>
 
-    <% if !current_user?(@micropost.user) %>
-      <a data-toggle="collapse" data-target="#modal_reply" class="item-anchor">
-    <% end %>
+    <a data-toggle="collapse" data-target="#modal_reply" class="item-anchor">
 
       <span class="timestamp">
         <small><%= time_ago_in_words(@micropost.created_at) %> ago</small>
       </span>
-      <span class="username">
-        @<%= @micropost.user.name %>
-      </span>
-    </div> <!-- modal_header -->
+      <span class="username">@<%= @micropost.user.name %></span>
+
+  </div>
 
       <div class="modal_content">
         <span class="content">
-          <%= auto_link(@micropost.content, :html => { :target => '_blank' }) do |link|
-        truncate(link, :length => 30) end %>
+          <%= auto_link(@micropost.content, :html => { :target => '_blank' }) do |a|
+          truncate(a, :length => 30) end %>
         </span>
       </div>
-    </a> <!-- item-anchor -->
 
-        <div class="well-footer">
+  </a>
 
-          <ul class="inline-share-stats share-stats modal_stats">
-            <li id="modal_like_count<%= @micropost.id %>">
-              <a><i class="icon-heart"></i></a>
-              <strong><%= @micropost.likes.count %></strong>
-            </li>
-          </ul>
+      <div class="well-footer">
 
-          <ul class="share-actions">
-        <% if current_user?(@micropost.user) %>
+        <ul class="inline-share-stats share-stats modal_stats">
+          <li id="modal_like_count<%= @micropost.id %>">
+            <a><i class="icon-heart"></i></a>
+            <strong><%= @micropost.likes.count %></strong>
+          </li>
+        </ul>
 
-          <%= render :partial => 'microposts/delete' %>
-        <% else %>
+        <ul class="share-actions">
+          <% if current_user?(@micropost.user) %>
+
+            <%= render :partial => 'microposts/delete' %>
+
+          <% else %>
 
             <li>
               <a class="shown" data-toggle="collapse" data-target="#modal_reply"> 
@@ -45,20 +45,25 @@
               </a>
             </li>
 
-        <% if current_user.liked?(@micropost) %>
-            <%= render :partial => 'scripts/modal_unlike' %>
-        <% else %>
-            <%= render :partial => 'scripts/modal_like' %>
-        <% end %>
-      <% end %>
-    </ul>
+              <% if current_user.liked?(@micropost) %>
 
-          <div class="show collapse" id="modal_reply">
-            <div class="inline-share-reply">
-              <div class="modal-form">
-                <%= render :partial => 'microposts/form' %>
-              </div>
-            </div>
-          </div>
+                <%= render :partial => 'scripts/modal_unlike' %>
+
+              <% else %>
+
+                <%= render :partial => 'scripts/modal_like' %>
+
+              <% end %>
+
+          <% end %>
+        </ul>
+
+  <div class="show collapse" id="modal_reply">
+    <div class="inline-share-reply">
+      <div class="modal-form">
+        <%= render :partial => 'microposts/form' %>
+      </div>
+    </div>
+  </div>
 
 </div>

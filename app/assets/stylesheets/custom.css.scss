@@ -392,16 +392,15 @@ aside {
 
 .well-header, .well-bottom {
   border: 1px solid $mainGray;
+  text-align: right;
   @include shadows;
 }
 
 .well-header {
   color: #555;
-  text-align: right;
   font-weight: bold;
   padding: 8px;
   min-height: 17px;
-  border-bottom-width: 0;
   @include well-header;
 }
 
@@ -419,7 +418,6 @@ aside {
   border: 1px solid $mainGray;
   padding: 10px;
   min-height: 7px;
-  border-top-width: 0;
   @include well-bottom;
 }
 
