@@ -4,4 +4,4 @@ $ jQuery ->
     $(this).addClass("active").siblings().removeClass "active"
 
  $(".inline-container form, .side-module-share form").on "click", ->
- $(this).addClass "active"
+  $(this).addClass "active"
