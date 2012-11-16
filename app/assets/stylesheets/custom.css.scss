@@ -43,7 +43,7 @@ input, textarea, select, .uneditable-input {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  color: #333;
+  color: $textGrayLight;
   text-rendering: optimizeLegibility
 }
 
@@ -62,7 +62,7 @@ h2 {
 h2 small {
   font-size: 12px;
   font-weight: normal;
-  color: #999
+  color: $statsGray
 }
 
 h3 {
@@ -228,7 +228,7 @@ aside {
   min-height: 32px;
   display: block;
   text-decoration: none;
-  color: #454545;
+  color: $textGrayLight;
   cursor: pointer;
 }
 
@@ -241,7 +241,7 @@ aside {
 
 .share-anchor:hover {
   text-decoration: none;
-  color: #454545;
+  color: $textGrayLight;
 }
 
 .share-anchor:hover .profile-anchor {
@@ -397,7 +397,8 @@ aside {
 }
 
 .well-header {
-  color: #555;
+  border-bottom-width: 0;
+  color: $textGrayLight;
   font-weight: bold;
   padding: 8px;
   min-height: 17px;
@@ -406,16 +407,15 @@ aside {
 
 .well {
   background-color: $innerBody;
-  border: 1px solid $border;
+  border-top-width: 0;
   margin: 0;
   padding: 12px 10px;
   cursor: pointer;
-  border-top-width: 0;
   @include well;
 }
 
 .well-bottom {
-  border: 1px solid $mainGray;
+  border-top-width: 0;
   padding: 10px;
   min-height: 7px;
   @include well-bottom;
@@ -923,7 +923,7 @@ aside {
 }
 
 #error_explanation {
-  color:#f00;
+  color: $red;
   ul {
     list-style: none;
     margin: 0 0 18px 0;
