@@ -1,27 +1,7 @@
 <div id="<%= reply_item.id %>" class="well well-inner">
-  <div class="well-inner-header">
 
-    <%= link_to gravatar_for(reply_item.user), reply_item.user %>
-      <span class="user" id="<%= reply_item.user.name %>">
-        <%= link_to reply_item.user.realname, reply_item.user %>
-      </span>
-
-    <a data-toggle="collapse" data-target="#<%= reply_item.id %>_reply" 
-    class="item-anchor">
-
-      <span class="timestamp">
-        <small><%= time_ago_in_words(reply_item.created_at) %> ago</small>
-      </span>
-      <span class="username">@<%= reply_item.user.name %></span>
-
-  </div>
-
-      <span class="content">
-        <%= auto_link(reply_item.content, :html => { :target => '_blank' }) do |a|
-        truncate(a, :length => 30) end %>
-      </span>
-
-    </a>
+  <%= render :partial => 'feeds/shared/header', 
+  :object => reply_item, :as => 'item' %>
 
     <div class="well-footer">
 

@@ -1,0 +1,22 @@
+<div class="well-inner-header">
+
+  <%= link_to gravatar_for(item.user), item.user %>
+    <span class="user" id="<%= item.user.name %>">
+      <%= link_to item.user.realname, item.user %>
+    </span>
+
+  <a data-toggle="collapse" data-target="#<%= item.id %>_reply" class="item-anchor">
+
+    <span class="username">@<%= item.user.name %></span>
+    <span class="timestamp">
+      <small><%= time_ago_in_words(item.created_at) %> ago</small>
+    </span>
+
+  </div>
+
+    <span class="content">
+      <%= auto_link(item.content, :html => { :target => '_blank' }) do |a|
+      truncate(a, :length => 30) end %>
+    </span>
+
+</a>

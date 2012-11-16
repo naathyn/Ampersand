@@ -1,56 +1,37 @@
 <div id="<%= profile_item.id %>" class="well well-inner">
-  <div class="well-inner-header">
 
-    <%= link_to gravatar_for(profile_item.user), profile_item.user %>
-      <span class="user" id="<%= profile_item.user.name %>">
-        <%= link_to profile_item.user.realname, profile_item.user %>
-      </span>
+  <%= render :partial => 'feeds/shared/header', 
+  :object => profile_item, :as => 'item' %>
 
-    <a data-toggle="collapse" data-target="#<%= profile_item.id %>_reply" class="item-anchor">
+    <div class="well-footer">
 
-      <span class="username">@<%= profile_item.user.name %></span>
-      <span class="timestamp">
-        <small><%= time_ago_in_words(profile_item.created_at) %> ago</small>
-      </span>
+      <ul class="inline-share-stats share-stats">
+        <li id="like_count<%= profile_item.id %>">
+         <a><i class="icon-heart"></i></a>
+          <strong><%= profile_item.likes.count %></strong>
+        </li>
+      </ul>
 
-  </div>
+      <ul class="share-actions">
+        <% if current_user?(profile_item.user) %>
 
-      <span class="content">
-        <%= auto_link(profile_item.content, :html => { :target => '_blank' }) do |a|
-        truncate(a, :length => 30) end %>
-      </span>
+          <%= render :partial => 'feeds/shared/delete', 
+          :object => profile_item, :as => 'item' %>
 
-    </a>
+        <% else %>
 
-      <div class="well-footer">
-
-        <ul class="inline-share-stats share-stats">
-          <li id="like_count<%= profile_item.id %>">
-            <a><i class="icon-heart"></i></a>
-            <strong><%= profile_item.likes.count %></strong>
+          <li>
+            <a class="shown" data-toggle="collapse" 
+            data-target="#<%= profile_item.id %>_reply">
+            <i class="icon-comment"></i>Reply</a>
           </li>
-        </ul>
 
-        <ul class="share-actions">
-          <% if current_user?(profile_item.user) %>
+            <% if current_user.liked?(profile_item) %>
 
-            <%= render :partial => 'feeds/shared/delete', 
-            :object => profile_item, :as => 'item' %>
+              <%= render :partial => 'feeds/shared/unlike', 
+              :object => profile_item, :as => 'item' %>
 
-          <% else %>
-
-            <li>
-              <a class="shown" data-toggle="collapse" 
-              data-target="#<%= profile_item.id %>_reply">
-              <i class="icon-comment"></i>Reply</a>
-            </li>
-
-              <% if current_user.liked?(profile_item) %>
-
-                <%= render :partial => 'feeds/shared/unlike', 
-                :object => profile_item, :as => 'item' %>
-
-              <% else %>
+            <% else %>
 
             <%= render :partial => 'feeds/profiles/like', 
             :object => profile_item, :as => 'item' %>
