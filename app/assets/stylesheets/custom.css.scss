@@ -370,7 +370,7 @@ aside {
 /* Temporary for May :) */
 
 .well-inner-header #thole a, .users #thole a:first-child {
-    color: $pink;
+  color: $pink;
 }
 
 .users #thole a:first-child {
@@ -661,9 +661,6 @@ aside {
     &:last-child {
       border-bottom: 0px;
       margin-bottom: -15px;
-    }
-    &:nth-child(even) {
-      background-color: $mainGray;
     }
   }
 }

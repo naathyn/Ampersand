@@ -1,5 +1,3 @@
-<% @micropost ||= share_item %>
-
 <li id="like_form<%= @micropost.id %>">
   <%= form_for(current_user.fans.build(like_id: @micropost.id),
                remote: true) do |f| %>

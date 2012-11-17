@@ -33,13 +33,13 @@
 
             <% else %>
 
-            <%= render :partial => 'feeds/profiles/like', 
+            <%= render :partial => 'feeds/shared/like', 
             :object => profile_item, :as => 'item' %>
 
           <% end %>
         </ul>
 
-      <%= render :partial => 'feeds/profiles/form', 
+      <%= render :partial => 'feeds/shared/form', 
       :object => profile_item, :as => 'item' %>
 
     <% end %>
