@@ -5,6 +5,9 @@
 /tmp/*
 /doc/*
 
+/bin/*
+*.sh
+
 **.swp
 *~
 *.save
