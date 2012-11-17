@@ -9,9 +9,12 @@
 
     <span class="username">@<%= item.user.name %></span>
     <span class="timestamp">
-      <small><%= time_ago_in_words(item.created_at) %> ago</small>
+      <small>
+        <%= link_to "#{time_ago_in_words(item.created_at)} ago", 
+            item, { :remote => true, 'data-toggle' => "modal", 
+            'data-target' => "#modal-window", :class => "timestamp" } %>
+      </small>
     </span>
-
   </div>
 
     <span class="content">

@@ -1,31 +1,7 @@
 <div id="<%= share_item.id %>" class="well well-inner">
-  <div class="well-inner-header">
 
-    <%= link_to gravatar_for(share_item.user), share_item.user %>
-      <span class="user" id="<%= share_item.user.name %>">
-        <%= link_to share_item.user.realname, share_item.user %>
-      </span>
-      <span class="timestamp">
-        <small>
-          <%= link_to "#{time_ago_in_words(share_item.created_at)} ago", 
-              share_item, { :remote => true, 'data-toggle' => "modal", 
-              'data-target' => "#modal-window", :class => "timestamp" } %>
-        </small>
-      </span>
-
-    <a data-toggle="collapse" data-target="#<%= share_item.id %>_reply" 
-    class="item-anchor">
-
-      <span class="username">@<%= share_item.user.name %></span>
-
-  </div>
-
-      <span class="content">
-        <%= auto_link(share_item.content, :html => { :target => '_blank' }) do |a|
-            truncate(a, :length => 30) end %>
-      </span>
-
-    </a>
+  <%= render :partial => 'feeds/shared/header', 
+  :object => share_item, :as => 'item' %>
 
       <div class="well-footer">
 

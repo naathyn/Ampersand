@@ -2,11 +2,12 @@
   <% provide(:title, @user.realname) %>
 <% end %>
 
-<div class="profile">
-  <div class="profile-header">
-    <div class="row-fluid">
-      <%= render 'shared/profile_stats' %>
-      </div></div></div>
-    <%= render 'feeds/main/atreply' %>
-  <%= render 'follow_form' %>
-<%= render 'feeds/main/profile' %>
+  <div class="profile">
+    <div class="profile-header">
+      <div class="row-fluid">
+        <%= render 'shared/profile_stats' %>
+        </div></div></div>
+      <%= render 'feeds/main/atreply' %>
+    <%= render 'follow_form' %>
+  <%= render 'feeds/main/profile' %>
+<%= render 'microposts/modal' %>

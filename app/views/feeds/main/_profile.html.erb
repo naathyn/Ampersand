@@ -1,10 +1,15 @@
 <% if @profile_items.any? %>
+
   <div class="well-header views">
     <%= pluralize(@user.profile.count, "share") %> by <%= @user.name %>
       </div>
+
       <% @profile_items.each do |profile_item| %>
         <%= render partial: 'feeds/profile_item', :object => profile_item %>
       <% end %>
+
     <div class="well-bottom"> </div>
+
   <%= will_paginate @profile_items %>
+
 <% end %>
