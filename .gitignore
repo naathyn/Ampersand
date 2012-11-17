@@ -7,7 +7,9 @@
 
 /bin/*
 *.sh
+
 Guardfile
+.rspec
 
 **.swp
 *~
