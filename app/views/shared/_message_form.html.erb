@@ -1,9 +1,0 @@
-<div class="side-module-share">
-  <%= form_for(@message) do |f| %>
-    <%= render 'shared/message_error', object: f.object %>
-      <div class="field">
-        <%= f.text_area :convo, rows: "2", placeholder: "!username to send private messages" %>
-      </div>
-    <%= f.submit "Send", class: "btn btn-primary", style: "padding-left:10px;" %>
-  <% end %>
-</div>

@@ -5,7 +5,6 @@ namespace :db do
     make_relationships
     make_microposts
     make_replies
-    make_messages
     make_links
     make_mailtos
     make_likes
@@ -55,18 +54,6 @@ def make_replies
     content = Faker::Lorem.sentence
     followed_users.each { |followed| user.microposts.create!(content: "@#{followed.name} #{content}") }
     followers.each { |follower| follower.microposts.create!(content: "@#{user.name} #{content}") }
-  end
-end
-
-def make_messages
-  users = User.all
-  user = users.first
-  receivers = users[17..28]
-  senders = users[9..16]
-  2.times do
-    convo = Faker::Lorem.sentence
-    receivers.each { |receiver| user.messages.create!(convo: "!#{receiver.name} #{convo}") }
-    senders.each { |sender| sender.messages.create!(convo: "!#{user.name} #{convo}") }
   end
 end
 

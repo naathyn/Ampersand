@@ -23,17 +23,4 @@ FactoryGirl.define do
     user.password "secret"
     user.password_confirmation "secret"
   end
-
-  factory :message do
-    convo "!audrey_couch hey!"
-    user
-  end
-
-  factory :message_user, class: User do |user|
-    user.realname "Audrey Couch"
-    user.email "audeyboo10@gmail.com"
-    user.name "audrey_couch"
-    user.password "secret"
-    user.password_confirmation "secret"
-  end
 end

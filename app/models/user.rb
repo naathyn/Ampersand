@@ -8,10 +8,6 @@ class User < ActiveRecord::Base
 
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
 
-  has_many :messages, dependent: :destroy
-  has_many :convos, foreign_key: "to_id", class_name: "Message", dependent: :destroy
-  has_many :read_messages, foreign_key: "read_id", class_name: "Message", dependent: :destroy
-
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
@@ -54,10 +50,6 @@ class User < ActiveRecord::Base
 
   def share
     Micropost.from_users_shares(self)
-  end
-
-  def inbox
-    Message.from_users_inbox(self)
   end
 
   def following?(other_user)

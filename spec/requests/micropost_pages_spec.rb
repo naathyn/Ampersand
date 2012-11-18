@@ -56,7 +56,7 @@ describe "Micropost pages" do
 
   describe "user privileges (well-footer links)" do
 
-   before { FactoryGirl.create(:micropost, user: user) }
+    before { FactoryGirl.create(:micropost, user: user) }
 
     describe "as user" do
       before { sign_in user }

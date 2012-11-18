@@ -21,19 +21,14 @@ describe User do
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:microposts) }
-  it { should respond_to(:messages) }
   it { should respond_to(:replies) }
   it { should respond_to(:fans) }
-  it { should respond_to(:messages) }
-  it { should respond_to(:convos) }
-  it { should respond_to(:read_messages) }
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }
   it { should respond_to(:reverse_relationships) }
   it { should respond_to(:share) }
   it { should respond_to(:profile) }
   it { should respond_to(:atreply) }
-  it { should respond_to(:inbox) }
   it { should respond_to(:followers) }
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
@@ -319,41 +314,6 @@ describe User do
     end
   end
 
-  describe "inbox and private messages" do
-    before do 
-      @user.save
-      @recipient.save
-    end
-
-    let!(:older_message) do
-      FactoryGirl.create(:message, user: @user, convo: "!#{@recipient.name} hey!", created_at: 1.day.ago)
-    end
-    let!(:newer_message) do
-      FactoryGirl.create(:message, user: @user, convo: "!#{@recipient.name} hey!", created_at: 1.hour.ago)
-    end
-
-    let(:a_private_message_for_someone_else) do
-      FactoryGirl.create(:message, user: FactoryGirl.create(:user), convo: "!#{@recipient.name} hey you!")
-    end
-
-    it "should have messages in the correct order" do
-      @user.messages.should == [newer_message, older_message]
-    end
-
-    before do
-      3.times { @recipient.messages.create!(convo: "!#{@user.name} what up?") }
-    end
-
-    its(:inbox) { should include(newer_message) }
-    its(:inbox) { should include(older_message) }
-    its(:inbox) { should_not include(a_private_message_for_someone_else) }
-    its(:inbox) do
-      @user.messages.each do |message|
-        should include(message)
-      end
-    end
-  end
-
   describe "replies for the atreply feed" do
     before do
       @recipient = FactoryGirl.create(:user_reply)
@@ -364,20 +324,6 @@ describe User do
       m = @user.microposts.create(content:"@hatchiebird hey!")
       m.to.should == @recipient
       @recipient.replies.should == [m]
-    end
-  end
-
-  describe "messages for user inbox" do
-    before do
-      @from_ = FactoryGirl.create(:message_user)
-      @from_.save
-      @user.save
-    end
-
-    it "should set conversation to_id to self" do
-      m = @from_.messages.create(convo:"!naathyn what up?")
-      m.to.should == @user
-      @user.convos.should == [m]
     end
   end
 

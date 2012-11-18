@@ -15,15 +15,4 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
-
-  def connect
-    if signed_in?
-      @title = "!#{current_user.name}"
-      @message = current_user.messages.build
-      @inbox_items = current_user.inbox.paginate(page: params[:page])
-    else
-      redirect_to signin_path
-      flash[:notice] = "Please signin to view your inbox"
-    end
-  end
 end

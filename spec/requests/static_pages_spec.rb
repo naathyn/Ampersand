@@ -37,11 +37,6 @@ describe "Static pages" do
         page.should have_selector('title', text: full_title('Members'))
       end
 
-      it "should be able to show inbox when signed in" do
-        click_link "Inbox"
-        page.should have_selector('title', text: full_title("!#{user.name}"))
-      end
-
       describe "when a user likes or follows" do
         let(:other_user) { FactoryGirl.create(:user) }
         let(:second_micropost) { FactoryGirl.create(:micropost, user: other_user, content: "Lorem ipsum") }

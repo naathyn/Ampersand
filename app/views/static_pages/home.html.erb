@@ -2,11 +2,9 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated November 18th, at 2:10 pm CST. Re-arranged feeds with clickable usernames." unless signed_in? %>
+<%= yield flash.now[:info] = "Last updated November 19th, at 10:10 am CST. Removed private messaing for the time being." %>
 
   <% if signed_in? %>
-
-<%= yield flash.now[:notice] = "The inbox feature is currently junky and needs a lot of work. It will be taken down soon until I can figure out what to do with it." %>
 
     <aside class="side-module side-menu mini-profile">
       <a href="<%= user_path(current_user) %>" class="share-anchor">
@@ -23,10 +21,7 @@
       <div class="share-container">
         <div class="well-header">
           <a href="<%= user_path(current_user) %>" alt="Profile">
-            <i class="icon-user" style="padding-left:8px;"> </i>
-          </a>
-          <a href="<%= inbox_path %>" alt="Inbox">
-            <i class="icon-envelope"></i>
+            <i class="icon-user"> </i>
           </a>
         </div>
           <%= render 'feeds/main/user_shares' %>
