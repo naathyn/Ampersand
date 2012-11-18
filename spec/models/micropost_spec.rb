@@ -53,7 +53,7 @@ describe Micropost do
       @micropost.to.should == recipient
     end
 
-    it "have a clickable link" do
+    it "should have a clickable link" do
       @micropost.content.should =~ /\A<a href=/
     end
   end
