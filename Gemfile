@@ -2,6 +2,7 @@ source 'https://www.rubygems.org/'
 
 gem 'rails', '3.2.9'
 gem 'thin'
+gem 'pg'
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
 gem 'will_paginate'
@@ -10,7 +11,6 @@ gem 'jquery-rails'
 gem 'rails_autolink'
 
 group :development, :test do
-  gem 'pg'
   gem 'faker'
   gem 'rspec-rails'
   gem 'guard-rspec'
@@ -29,8 +29,4 @@ end
 group :test do
   gem 'capybara', '1.1.3'
   gem 'factory_girl_rails'
-end
-
-group :production do
-  gem 'pg'
 end

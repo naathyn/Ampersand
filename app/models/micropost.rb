@@ -12,7 +12,7 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 255 }
 
   default_scope order: 'microposts.created_at DESC'
-  before_save :send_reply
+  before_save :reply_n_linkify
 
 private
 
@@ -32,10 +32,13 @@ private
   end
 
   REPLY_REGEX = /\A@([^\s]*)/
-  def send_reply
+  def reply_n_linkify
     if match = REPLY_REGEX.match(content)
       user = User.find_by_name(match[1])
       self.to ||= user
+
+      user = "<a href='users/#{to.id}'>@#{user.name}</a>" if user
+      self.content = "#{user} #{content.gsub(REPLY_REGEX, '')}"
     end
   end
 end

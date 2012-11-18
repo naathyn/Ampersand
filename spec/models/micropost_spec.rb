@@ -52,5 +52,9 @@ describe Micropost do
     it "should match the to_id to the recipient (user)" do
       @micropost.to.should == recipient
     end
+
+    it "have a clickable link" do
+      @micropost.content.should =~ /\A<a href=/
+    end
   end
 end
