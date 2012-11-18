@@ -2,9 +2,11 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated November 18th, at 2:10 pm CST. Re-arranged feeds with clickable usernames." %>
+<%= yield flash.now[:info] = "Last updated November 18th, at 2:10 pm CST. Re-arranged feeds with clickable usernames." unless signed_in? %>
 
   <% if signed_in? %>
+
+<%= yield flash.now[:notice] = "The inbox feature is currently junky and needs a lot of work. It will be taken down soon until I can figure out what to do with it." %>
 
     <aside class="side-module side-menu mini-profile">
       <a href="<%= user_path(current_user) %>" class="share-anchor">
