@@ -5,7 +5,7 @@
       </div>
 
       <% @profile_items.each do |profile_item| %>
-        <%= render partial: 'feeds/profile_item', :object => profile_item %>
+        <%= render partial: 'feeds/share_item', :object => profile_item, :as => "item" %>
       <% end %>
 
     <div class="well-bottom"> </div>

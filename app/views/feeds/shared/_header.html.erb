@@ -18,11 +18,7 @@
 
   </div>
 
-  <a data-toggle="collapse" data-target="#<%= item.id %>_reply" class="item-anchor">
-
-    <span class="content">
-      <%= auto_link(item.content, :html => { :target => '_blank' }) do |a|
-      truncate(a, :length => 30) end %>
-    </span>
-
-</a>
+  <span class="content">
+    <%= auto_link(item.content, :html => { :target => '_blank' }) do |a|
+  truncate(a, :length => 30) end %>
+</span>

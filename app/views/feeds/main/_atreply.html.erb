@@ -1,10 +1,15 @@
 <% if @atreply_items.any? && current_user?(@user) %>
+
   <div class="well-header views">
     <%= pluralize(@user.atreply.count, "@reply") %> for you
       </div>
+
       <% @atreply_items.each do |reply_item| %>
-        <%= render :partial => 'feeds/reply_item', :object => reply_item %>
+        <%= render :partial => 'feeds/share_item', :object => reply_item, :as => "item" %>
       <% end %>
+
     <div class="well-bottom"> </div>
+
   <%= will_paginate @atreply_items %>
+
 <% end %>

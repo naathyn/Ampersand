@@ -6,9 +6,6 @@
         <%= link_to inbox_item.user.realname, inbox_item.user %>
       </span>
 
-    <a data-toggle="collapse" data-target="#<%= inbox_item.id %>_reply" 
-    class="item-anchor">
-
       <span class="timestamp">
         <small><%= time_ago_in_words(inbox_item.created_at) %> ago</small>
       </span>
@@ -18,10 +15,8 @@
 
       <span class="content">
         <%= auto_link(inbox_item.convo, :html => { :target => '_blank' }) do |a|
-            truncate(a, :length => 30) end %>
+        truncate(a, :length => 30) end %>
       </span>
-
-    </a>
 
       <% if !current_user?(inbox_item.user) %>
 

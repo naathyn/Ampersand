@@ -1,50 +1,50 @@
-<div id="<%= share_item.id %>" class="well well-inner">
+<div id="<%= item.id %>" class="well well-inner">
 
   <%= render :partial => 'feeds/shared/header', 
-  :object => share_item, :as => 'item' %>
+  :object => item, :as => 'item' %>
 
       <div class="well-footer">
 
         <ul class="inline-share-stats share-stats">
-          <li id="like_count<%= share_item.id %>">
+          <li id="like_count<%= item.id %>">
             <a><i class="icon-heart"></i></a>
-            <strong><%= share_item.likes.count %></strong>
+            <strong><%= item.likes.count %></strong>
           </li>
         </ul>
 
-      <%= link_to "Detach", share_item, { :remote => true, 
+      <%= link_to "Detach", item, { :remote => true, 
           'data-toggle' => "modal", 'data-target' => "#modal-window", 
           :class => "shown detach" } %>
 
         <ul class="share-actions">
-          <% if current_user?(share_item.user) %>
+          <% if current_user?(item.user) %>
 
             <%= render :partial => 'feeds/shared/delete', 
-            :object => share_item, :as => 'item' %>
+            :object => item, :as => 'item' %>
 
           <% else %>
 
             <li>
               <a class="shown" data-toggle="collapse" 
-              data-target="#<%= share_item.id %>_reply">
+              data-target="#<%= item.id %>_reply">
               <i class="icon-comment"></i>Reply</a>
             </li>
 
-              <% if current_user.liked?(share_item) %>
+              <% if current_user.liked?(item) %>
 
                 <%= render :partial => 'feeds/shared/unlike', 
-                :object => share_item, :as => 'item' %>
+                :object => item, :as => 'item' %>
 
               <% else %>
 
             <%= render :partial => 'feeds/shared/like', 
-            :object => share_item, :as => 'item' %>
+            :object => item, :as => 'item' %>
 
           <% end %>
         </ul>
 
       <%= render :partial => 'feeds/shared/form', 
-      :object => share_item, :as => 'item' %>
+      :object => item, :as => 'item' %>
 
     <% end %>
 

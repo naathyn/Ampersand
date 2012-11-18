@@ -369,7 +369,7 @@ aside {
 
 /* Temporary for May :) */
 
-.well-inner-header #thole a, .users #thole a:first-child {
+.well-inner-header #thole a, .users #thole a:first-child, .modal_header #thole a {
   color: $pink;
 }
 
@@ -414,7 +414,6 @@ aside {
   border-top-width: 0;
   margin: 0;
   padding: 12px 10px;
-  cursor: pointer;
   @include well;
 }
 
@@ -427,10 +426,6 @@ aside {
 
 .well:first-child {
   border-top: 1px solid $innerBody;
-}
-
-.well-inner {
-  cursor: pointer;
 }
 
 .well-inner .gravatar, .modal_header .gravatar {
@@ -457,7 +452,7 @@ aside {
   }
 }
 
-.well-inner-header #naathyn a {
+.well-inner-header #naathyn a, .modal_header #naathyn a {
   color: $green;
 }
 
@@ -492,10 +487,6 @@ aside {
 
 .well:hover {
   background-color: $wellGray;
-}
-
-.well:hover:active {
-  background-color: $mainGray;
 }
 
 .well:hover .timestamp {
@@ -709,7 +700,6 @@ aside {
 }
 
 .modal-content {
-  cursor: pointer;
   position: relative;
   background-color: $white;
   @include modal;
@@ -721,10 +711,6 @@ aside {
 
 .modal-body:hover {
   background-color: $moduleGray;
-}
-
-.modal-body:hover:active {
-  background-color: $modalActive;
 }
 
 /* included in the users#show controller */
