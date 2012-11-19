@@ -5,12 +5,8 @@
 
       <div class="well-footer">
 
-        <ul class="inline-share-stats share-stats">
-          <li id="like_count<%= item.id %>">
-            <a><i class="icon-heart"></i></a>
-            <strong><%= item.likes.count %></strong>
-          </li>
-        </ul>
+        <%= render :partial => 'feeds/shared/stats',
+        :object => item, :as => 'item' %>
 
       <%= link_to "Detach", item, { :remote => true, 
           'data-toggle' => "modal", 'data-target' => "#modal-window", 

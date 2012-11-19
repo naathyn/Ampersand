@@ -5,7 +5,6 @@
 
 html {
   overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 html, body {
@@ -557,8 +556,8 @@ aside {
   font-size: 14px
 }
 
-.inline-share-stats {
-  display: inline-block;
+.hearts {
+  cursor: crosshair;
 }
 
 .inline-share-stats a {
@@ -575,10 +574,6 @@ aside {
 
 .inline-share-stats li {
   display: inline;
-}
-
-.inline-share-stats li:first-child a {
-  margin-top: 1px;
 }
 
 .inline-share-reply {
@@ -943,4 +938,18 @@ aside {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+.popover-title {
+  background-color: white;
+  border: 1px solid $moduleBorder;
+  border-left: none;
+  border-right: none;
+}
+
+.popover {
+  width: 317px;
+  border: 1px solid $moduleBorder;
+  border-radius: 6px 6px 6px 6px;
+  height: 225px;
 }
