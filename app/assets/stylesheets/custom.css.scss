@@ -5,6 +5,7 @@
 
 html {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 html, body {
@@ -15,10 +16,10 @@ body, input, textarea, select, .uneditable-input {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-body { 
+body {
   font-size: 14px;
   line-height: 18px;
-  padding-top: 54px;
+  padding-top: 60px;
   background-color: $outterBody;
 }
 
@@ -136,7 +137,7 @@ aside {
   position: relative;
   width: 837px;
   min-height: 100%;
-  margin: -1em auto;
+  margin: -1.5em auto;
   padding: 1.5em 1em 2em;
 }
 
@@ -636,6 +637,70 @@ aside {
 
 /* Modal */
 
+.modal-backdrop, .modal-backdrop.fade.in {
+  opacity: .4;
+}
+
+.modal {
+  margin-top: -195px;
+  background: none repeat scroll 0% 0% transparent;
+  overflow: visible;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.modal-content {
+  position: relative;
+  background-color: $white;
+  @include modal;
+}
+
+.modal-header button.close {
+  margin-top: -2px;
+}
+
+.modal-header {
+  cursor: default;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: $userBorder;
+  border-bottom: 1px solid $borderDarker;
+  @include modal-header;
+}
+
+.modal-header .modal-title {
+  cursor: move;
+  width: 75%;
+  margin: 0px auto;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0px 1px 0px $white;
+}
+
+.modal-footer {
+  cursor: move;
+}
+
+#likes {
+  cursor: default;
+  background-color: $userBorder;
+  border-top: 1px solid $borderDarker;
+}
+
+.modal-body {
+  overflow: hidden;
+}
+
+.modal-body:hover {
+  background-color: $moduleGray;
+}
+
+.modal_stats {
+  margin-bottom: -10px;
+}
+
 .users_modal {
   margin-top: -15px;
   li {
@@ -659,55 +724,6 @@ aside {
 
 .modal-body .gravatar {
   size: 48px;
-}
-
-.modal-header button.close {
-  margin-top: -2px;
-}
-
-.modal-header {
-  cursor: default;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background-color: $userBorder;
-  border-bottom: 1px solid $borderDarker;
-  @include modal-header;
-}
-
-.modal_stats {
-  margin-bottom: -10px;
-}
-
-.modal-header .modal-title {
-  width: 75%;
-  margin: 0px auto;
-  font-weight: bold;
-  line-height: 18px;
-  text-align: center;
-  text-shadow: 0px 1px 0px $white;
-}
-
-.modal-footer, #likes {
-  cursor: default;
-}
-
-#likes {
-  background-color: $userBorder;
-  border-top: 1px solid $borderDarker;
-}
-
-.modal-content {
-  position: relative;
-  background-color: $white;
-  @include modal;
-}
-
-.modal-body {
-  overflow: hidden;
-}
-
-.modal-body:hover {
-  background-color: $moduleGray;
 }
 
 /* included in the users#show controller */

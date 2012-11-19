@@ -321,9 +321,9 @@ describe User do
 
     it "should set to_id to self" do
       @user.save
-      m = @user.microposts.create(content:"@hatchiebird hey!")
-      m.to.should == @recipient
-      @recipient.replies.should == [m]
+      reply = @user.microposts.create(content:"@hatchiebird hey!")
+      reply.to.should == @recipient
+      @recipient.replies.should == [reply]
     end
   end
 

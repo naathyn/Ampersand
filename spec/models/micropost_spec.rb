@@ -54,7 +54,7 @@ describe Micropost do
     end
 
     it "should have a clickable link" do
-      @micropost.content.should =~ /\A<a href=/
+      @micropost.content.should =~ (%r{/users/(\d)})
     end
   end
 end

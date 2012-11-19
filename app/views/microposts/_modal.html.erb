@@ -1,8 +1,8 @@
 <div id="modal-window" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="likes" aria-hidden="false">
 
-  <div class="modal-content">
+  <div id="dragme" class="modal-content">
 
-    <div class="modal-header">
+    <div class="modal-header" onmousedown="dragInit(event, 'dragme')">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 class="modal-title">Loading...</h3>
       </div>
@@ -16,7 +16,7 @@
           </div>
         </div> <!-- end likes -->
 
-      <div class="modal-footer">
+      <div class="modal-footer" onmousedown="dragInit(event, 'dragme')">
     </div>
 
   </div> <!-- end modal-content -->
