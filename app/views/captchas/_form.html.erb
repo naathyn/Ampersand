@@ -1,0 +1,10 @@
+<div class="captcha-form">
+
+  <%= form_for(@captcha) do |f| %>
+    <div class="field">
+      <%= f.text_area :content %>
+      </div>
+    <%= f.submit "Captcha'", class: "btn btn-large btn-primary" %>
+  <% end %>
+
+</div>

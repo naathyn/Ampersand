@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :correct_user, only: :destroy
+  before_filter :correct_user, :only => :destroy
 
   respond_to :html, :js
 

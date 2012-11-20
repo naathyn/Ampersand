@@ -1,0 +1,29 @@
+<% content_for :head do %>
+  <% provide(:title, 'Captchas!') %>
+  <%= stylesheet_link_tag "captchas" %>
+<% end %>
+
+<aside class="captchaside">
+  <section>
+
+    <h1 id="captcha-h1">A shorter and sweeter status</h1>
+
+      <p>It goes like this: You can <strong><i>Captcha</i></strong> anything you'd like from quotes, favourites movies, what you did today, your current mood, 
+what the weather's like, all the way to some funny thing your cat just did ten seconds ago.  One of your <strong><i>Captcha's</i></strong> will be chosen at random and displayed as a comment bubble when a someone hovers over your gravatar in the feeds. Remember to fill them up, because everytime the page reloads, so does it!</p>
+  <br />
+
+    <h1 id="captcha-h1" style="padding-top: 11px;border-top: 1px solid #EEE;">Captcha' double your colour</h1>
+
+      <p>Just as one wants to be socially defined in person, he wishes the same for himself in his online community. I see it like this: When it comes to being social, the more interactivity a group can cook up, the more wholesome the environment. Notice I say, <i>inter</i>activity.  Yes, while activity is still very important, I feel so often people get caught up in life's <i>activities</i>, that they forget the importance of intrapersonal... interactivities. Ok I went too far. At any rate, loosen up a bit, <strong><i>Captcha</strong> the moment</i>, and please yourself in order to please others... please?</p>
+
+    </section>
+  </aside>
+
+  <%= will_paginate %>
+  <ul class="captcha">
+    <%= render @captchas %>
+  </ul>
+
+    <section class="captcha-sec">
+  <%= render :partial => 'captchas/form' %>
+</section>

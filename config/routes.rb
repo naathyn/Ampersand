@@ -8,13 +8,15 @@ Socialrails::Application.routes.draw do
   resources :microposts, :only => [:create, :show, :destroy]
   resources :opinions, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
+  resources :captchas, :only => [:index, :create, :destroy]
 
   root :to => 'static_pages#home'
 
-  get    '/signup' => 'users#new'
-  get    '/signin' => 'sessions#new'
+  get    '/signup'  => 'users#new'
+  get    '/signin'  => 'sessions#new'
   delete '/signout' => 'sessions#destroy'
 
-  get    '/about' => 'static_pages#about'
+  get    '/about'   => 'static_pages#about'
   get    '/contact' => 'static_pages#contact'
+  get    '/captcha' => 'captchas#new'
 end

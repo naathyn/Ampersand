@@ -1,0 +1,10 @@
+<li>
+  <h2 id="captcha-bio" class="bio">Captcha'd <%= time_ago_in_words(captcha.created_at) %> ago</h2>
+  <p id="captcha-content" class="content"><%= captcha.content %></p>
+</li>
+
+<li id="captcha-delete">
+      <%= link_to "Delete", captcha, method: :delete,
+      data: { confirm: "Are you sure really really REALLY sure?" },
+      title: captcha.content  %>
+</li>

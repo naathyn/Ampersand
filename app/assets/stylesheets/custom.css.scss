@@ -84,7 +84,7 @@ p {
   margin: 0;
 }
 
-ul, ol {
+ul, ol, li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -352,7 +352,7 @@ aside {
   }
 }
 
-.users, .users_modal {
+.users, .users_modal, .captcha {
   margin: 0px -14px;
   li {
     overflow: auto;

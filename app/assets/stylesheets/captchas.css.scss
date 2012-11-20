@@ -1,0 +1,84 @@
+@import "mixins";
+
+a {
+  color: $blue;
+    &:hover {
+    padding: 1px;
+    background-color: $blue;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0px 0px 1px $grayLarge;
+    border-radius: 3px;
+  }
+}
+
+.captchaside {
+  clear: both;
+  width: 386px;
+  float: right;
+}
+
+.captcha {
+  float: left;
+  margin: 0px auto;
+  width: 405px;
+  border-right: 1px solid $modalActive;
+  overflow-y: auto;
+  max-height: 360px;
+}
+
+.captcha li:first-child, .captcha li:nth-child(2n+1) {
+  background-color: $innerBody;
+  padding-left: 0px;
+}
+
+.captcha li:first-child {
+  border-top: none;
+}
+
+.captcha li:last-child {
+  border-bottom: none;
+}
+
+.captcha-sec {
+  float: left;
+  padding: 8px;
+  padding-top: 12px;
+  padding-right: 51px;
+  border-right: 1px solid $modalActive;
+}
+
+.captcha-form {
+  margin-left: 28px;
+}
+
+.captcha-form textarea {
+  width: 318px;
+  height: 76px !important;
+  @include inline-container;
+}
+
+#captcha-bio {
+  padding-top: 4px;
+  margin-top: -7px;
+  padding-bottom: 9px;
+}
+
+#captcha-h1 {padding-bottom: 8px;}
+
+#captcha-content {
+  font-size: 15px;
+  margin-top: -7px;
+}
+
+#captcha-delete {
+  margin-bottom: 4px;
+  margin-top: -19px;
+  border-top: 0px;
+  padding-bottom: 3px;
+  padding-left: 0px;
+  background-color: $innerBody;
+  a {
+    font-size: 13px;
+  }
+}

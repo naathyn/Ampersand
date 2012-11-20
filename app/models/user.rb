@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  has_many :captchas, dependent: :destroy
+
   has_many :microposts, dependent: :destroy
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
@@ -17,6 +19,7 @@ class User < ActiveRecord::Base
   
   before_save { |user| user.email = email.downcase }
   before_save { |user| user.name = name.downcase }
+  before_save :make_default
   before_save :create_remember_token
 
   VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
@@ -36,6 +39,8 @@ class User < ActiveRecord::Base
 
   validates :location, length: { maximum: 50 }
   validates :bio, length: { maximum: 255 }
+
+  validates :captcha, length: { minimum: 2 }
 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
@@ -74,6 +79,12 @@ class User < ActiveRecord::Base
 
   def unlike!(random_share)
     fans.find_by_like_id(random_share.id).destroy
+  end
+
+private
+
+  def make_default(captcha)
+    Captcha.captcha = "I just joined Ampersand!"
   end
 
 protected

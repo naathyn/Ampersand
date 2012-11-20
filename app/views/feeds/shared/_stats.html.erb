@@ -1,10 +1,9 @@
-  <% if item.likes.any? %>  
+  <% if item.likes.any? %>
 
-    <ul class="inline-share-stats share-stats hearts over" 
-    data-original-title="<% item.fans.each do |user| %>
-                                       <%= user.name %>
-                                                 <br />
-                                            <% end %>">
+    <ul class="inline-share-stats share-stats hearts over"
+        data-original-title="<% item.fans.each do |user| %>
+                                  <li><%= user.name %></li>
+                                                <% end %>">
 
   <% else %>
 

@@ -2,5 +2,5 @@
   <%= render 'shared/error_messages', object: f.object %>
     <textarea id="micropost[content]" name="micropost[content]" 
     placeholder="Reply to @<%= @micropost.user.name %>">@<%= @micropost.user.name %> </textarea>
-  <%= f.submit "Reply", class: "btn btn-small btn-primary" %>
+  <%= f.submit "Reply", class: "btn btn-primary" %>
 <% end %>
