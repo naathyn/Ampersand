@@ -1,7 +1,7 @@
 <% if @share_items.any? %>
 
   <% @share_items.each do |share_item| %>
-    <%= render :partial => 'feeds/share_item', :object => share_item, :as => "item" %>
+    <%= render :partial => 'feeds/share_item', object: share_item, as: "item" %>
       <% end %>
 
       <div class="well-bottom">

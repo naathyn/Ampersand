@@ -11,8 +11,9 @@ class Micropost < ActiveRecord::Base
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 255 }
 
-  default_scope order: 'microposts.created_at DESC'
   before_save :reply_n_linkify
+
+  default_scope order: 'microposts.created_at DESC'
 
 private
 

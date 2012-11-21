@@ -1,0 +1,13 @@
+
+
+  <aside class="span8 captchaside">
+    <%= render 'about' %>
+  </aside>
+
+  <aside class="span4 captcha-sec">
+    <%= render :partial => 'captchas/form' %>
+    <%= will_paginate %>
+      <ul class="captcha">
+        <%= render @captchas %>
+      </ul>
+  </aside>

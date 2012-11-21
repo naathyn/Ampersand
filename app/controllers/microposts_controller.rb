@@ -11,14 +11,15 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @share_items = []
+      flash.now[:notice] = "Don't look at me..."
       render 'static_pages/home'
     end
   end
 
   def show
     @micropost = Micropost.find(params[:id])
-    @microposts = @micropost.fans.paginate(page: params[:page])
-    @modal = current_user.microposts.build(params[:micropost])
+    @microposts = @micropost.fans.page(params[:page])
+    @modal = current_user.microposts.build
   end
 
   def destroy

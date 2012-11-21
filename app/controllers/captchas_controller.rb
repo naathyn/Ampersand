@@ -3,19 +3,23 @@ class CaptchasController < ApplicationController
   before_filter :correct_user, :only => :destroy
 
   def index
-    @captchas = Captcha.page(params[:page]).order('created_at DESC')
+    @captchas = current_user.captchas.page(params[:page])
     @captcha = current_user.captchas.build
   end
 
   def create
     @captcha = current_user.captchas.build(params[:captcha])
     if @captcha.save
-      flash[:success] = "Thanks for sharing! I am sure a few are eager to read."
+      flash[:success] = "Thanks for sharing! I am sure some are eager to read."
       redirect_to captchas_path
     else
-      flash[:error] = "Oops! Something didn't go quite right. Try again?"
+      flash.now[:error] = "Oops! Something didn't go quite right. Try again?"
       redirect_to captchas_path
     end
+  end
+
+  def show
+    @captcha = Captcha.random
   end
 
   def destroy

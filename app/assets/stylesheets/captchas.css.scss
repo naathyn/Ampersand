@@ -1,10 +1,10 @@
 @import "mixins";
 
 a {
-  color: $blue;
+  color: rgb(4, 156, 219);
     &:hover {
     padding: 1px;
-    background-color: $blue;
+    background-color: rgb(4, 156, 219);
     color: white;
     text-decoration: none;
     text-shadow: 0px 0px 1px $grayLarge;
@@ -12,69 +12,73 @@ a {
   }
 }
 
+a.close:hover {
+  background: none;
+  color: black;
+  padding: 8px 14px;
+  text-shadow: 0px 0px 1px white;
+}
+
+#cp {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  background-color: $wellGray;
+}
+
 .captchaside {
-  clear: both;
-  width: 386px;
+  padding-right: 20px;
   float: right;
+  width: 420px;
+  p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 20px;
+  }
 }
 
 .captcha {
-  float: left;
-  margin: 0px auto;
-  width: 405px;
-  border-right: 1px solid $modalActive;
   overflow-y: auto;
-  max-height: 360px;
+  max-height: 380px;
 }
 
-.captcha li:first-child, .captcha li:nth-child(2n+1) {
-  background-color: $innerBody;
-  padding-left: 0px;
+.captcha li {
+  line-height: 21px;
+  padding: 1px;
+  border: none;
+  &:first-child {
+    background-color: $innerBody;
+    margin-top: 10px;
+  }
+  &:last-child {
+    background-color: $innerBody;
+    border-bottom: none;
+  }
 }
 
-.captcha li:first-child {
-  border-top: none;
-}
-
-.captcha li:last-child {
-  border-bottom: none;
+.captcha p {
+  margin: 0;
 }
 
 .captcha-sec {
   float: left;
-  padding: 8px;
-  padding-top: 12px;
-  padding-right: 51px;
-  border-right: 1px solid $modalActive;
 }
 
 .captcha-form {
-  margin-left: 28px;
+
 }
 
 .captcha-form textarea {
-  width: 318px;
-  height: 76px !important;
+  width: 280px;
+  height: 81px !important;
   @include inline-container;
 }
 
-#captcha-bio {
-  padding-top: 4px;
-  margin-top: -7px;
-  padding-bottom: 9px;
-}
-
-#captcha-h1 {padding-bottom: 8px;}
-
 #captcha-content {
   font-size: 15px;
-  margin-top: -7px;
 }
 
 #captcha-delete {
-  margin-bottom: 4px;
-  margin-top: -19px;
-  border-top: 0px;
+  margin-bottom: 15px;
+  border: none;
   padding-bottom: 3px;
   padding-left: 0px;
   background-color: $innerBody;

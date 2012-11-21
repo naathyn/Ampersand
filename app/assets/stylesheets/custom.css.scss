@@ -7,15 +7,12 @@ html {
   overflow-y: scroll;
 }
 
-html, body {
-  height: 100%;
-}
-
 body, input, textarea, select, .uneditable-input {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
 body {
+  height: 100%;
   font-size: 14px;
   line-height: 18px;
   padding-top: 60px;
@@ -81,7 +78,7 @@ h5, h6 {
 }
 
 p {
-  margin: 0;
+  margin: 0px 0px 10px;
 }
 
 ul, ol, li {
@@ -98,7 +95,7 @@ footer {
   clear: both;
   min-height: 35px;
   margin: auto;
-  padding: 1.5em 1em 0px;
+  padding: 2.5em 1em 0px;
   width: 837px;
   border: 1px solid $mainGray;
   color: $grayLight;
@@ -352,7 +349,7 @@ aside {
   }
 }
 
-.users, .users_modal, .captcha {
+.users, .users_modal, .users-follow {
   margin: 0px -14px;
   li {
     overflow: auto;
@@ -366,6 +363,9 @@ aside {
     }
   }
 }
+
+.users-follow li:nth-child(2n+1){background-color: $innerBody;}
+.users-follow li:first-child{border-top: none;}
 
 /* Temporary for May :) */
 
@@ -434,7 +434,7 @@ aside {
 }
 
 .well-inner-header, .modal_header {
-  line-height: 11px;
+  line-height: 10px;
   margin-bottom: 4px;
   .user {
     font-weight: bold;
@@ -456,7 +456,7 @@ aside {
   color: $green;
 }
 
-.well-inner .content, .modal_content .content {
+.well-inner .content, .modal_content {
   display: block;
   line-height: 19px;
   margin-left: 58px;
@@ -466,7 +466,11 @@ aside {
 .well-footer {
   font-size: 13px;
   margin-left: 58px;
-  margin-bottom: -10px;
+  margin-bottom: -12px;
+}
+
+.well-footer:first-child {
+  margin-bottom: -12px;
 }
 
 .well-footer .collapse {
@@ -507,9 +511,7 @@ aside {
   display: inline-block;
 }
 
-.detach {
-  margin-right: 3px;
-}
+.detach {margin-right: 1px;}
 
 .shown {
   cursor: pointer;

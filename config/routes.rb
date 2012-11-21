@@ -8,7 +8,7 @@ Socialrails::Application.routes.draw do
   resources :microposts, :only => [:create, :show, :destroy]
   resources :opinions, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
-  resources :captchas, :only => [:index, :create, :destroy]
+  resources :captchas, :except => [:edit, :update]
 
   root :to => 'static_pages#home'
 
