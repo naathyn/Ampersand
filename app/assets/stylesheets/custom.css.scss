@@ -899,6 +899,84 @@ aside {
   margin-bottom: -18px;
 }
 
+/* Captcha pages */
+
+@import "mixins";
+
+.captchaside {
+  padding-right: 20px;
+  float: right;
+  width: 420px;
+  p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 20px;
+  }
+}
+
+#cp {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  background-color: $wellGray;
+}
+
+.captcha {
+  margin-top: -15px;
+  overflow-y: auto;
+  max-height: 380px;
+}
+
+.captcha li {
+  line-height: 21px;
+  padding: 1px;
+  &:first-child {
+    background-color: $innerBody;
+    margin-top: 10px;
+  }
+  &:last-child {
+    background-color: $innerBody;
+    border-bottom: none;
+  }
+}
+
+.captcha a {
+  color: $blue;
+  font-size: 13px;
+    &:hover {
+    padding: 1px;
+    background-color: $blue;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0px 0px 1px $grayLarge;
+    border-radius: 3px;
+  }
+}
+
+.captcha .bio {
+  border-top: 1px solid $border;
+  padding-top: 3px;
+  &:first-child {
+    border: none;
+  }
+}
+
+.captcha .content {
+  font-size: 15px;
+}
+
+.captcha p {
+  margin: 0;
+}
+
+.captcha-sec {
+  float: left;
+}
+
+.captcha-form textarea {
+  width: 280px;
+  height: 81px !important;
+  @include inline-container;
+}
+
 /* various different icons */
 
 [class^="icon-comment"], [class*=" icon-comment"] {
