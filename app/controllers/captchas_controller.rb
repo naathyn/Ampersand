@@ -19,7 +19,7 @@ class CaptchasController < ApplicationController
   end
 
   def show
-    @captcha = Captcha.random
+    @captcha = current_user.captchas.random
   end
 
   def destroy
