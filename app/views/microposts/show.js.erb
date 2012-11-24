@@ -1,4 +1,3 @@
 $(".modal-title").html("@<%= @micropost.user.name %> (<%= @micropost.user.realname %>)")
 $(".modal-body").html("<%= escape_javascript(render('share_content')) %>")
 $("#likes").html("<%= escape_javascript(render('share_render')) %>")
-$(".modal-footer").html("<button class='btn' data-dismiss='modal'>Close</button>")

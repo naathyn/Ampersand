@@ -397,7 +397,8 @@ aside {
 
 .well {
   background-color: $innerBody;
-  border-top: none;
+  border-top-width: 0;
+  border-bottom: 1px solid $moduleBorder;
   margin: 0;
   padding: 12px;
   @include well;
@@ -932,6 +933,7 @@ aside {
 .captcha .bio {
   border-top: 1px solid $border;
   padding-top: 3px;
+  margin-bottom: -3px;
   &:first-child {
     border: none;
   }
