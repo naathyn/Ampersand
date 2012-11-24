@@ -1,46 +1,49 @@
 <div class="modal_header">
+
   <%= link_to gravatar_for(@micropost.user, size: 48), @micropost.user %>
 
       <span class="user" id="<%= @micropost.user.name %>">
         <%= link_to @micropost.user.realname, @micropost.user %>
       </span>
 
-    <a data-toggle="collapse" data-target="#modal_reply" class="item-anchor">
-
       <span class="timestamp">
         <small><%= time_ago_in_words(@micropost.created_at) %> ago</small>
       </span>
+
       <span class="username">@<%= @micropost.user.name %></span>
 
   </div>
 
       <div class="modal_content">
         <span class="content">
-          <%= auto_link(@micropost.content, :html => { :target => '_blank' }) do |a|
+          <%= auto_link(@micropost.content, 
+          :html => { :target => '_blank' }) do |a|
           truncate(a, :length => 30) end %>
         </span>
       </div>
 
-  </a>
-
       <div class="well-footer">
 
         <ul class="inline-share-stats share-stats modal_stats">
-          <li id="modal_like_count<%= @micropost.id %>">
-            <a><i class="icon-heart"></i></a>
-            <strong><%= @micropost.likes.count %></strong>
+          <li>
+            <a><i class="icon-heart"></i>
+              <strong id="modal_likes<%= @micropost.id %>">
+                <%= @micropost.likes.count %>
+              </strong>
+            </a>
           </li>
         </ul>
 
         <ul class="share-actions">
           <% if current_user?(@micropost.user) %>
 
-            <%= render :partial => 'microposts/delete' %>
+            <%= render :partial => 'delete' %>
 
           <% else %>
 
             <li>
-              <a class="shown" data-toggle="collapse" data-target="#modal_reply"> 
+              <a class="shown" data-toggle="collapse" 
+              data-target="#modal_reply"> 
                 <i class="icon-comment"></i>Reply
               </a>
             </li>
@@ -61,7 +64,7 @@
   <div class="show collapse" id="modal_reply">
     <div class="inline-share-reply">
       <div class="modal-form">
-        <%= render :partial => 'microposts/form' %>
+        <%= render :partial => 'form' %>
       </div>
     </div>
   </div>

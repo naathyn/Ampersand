@@ -100,7 +100,7 @@ footer {
   margin: auto;
   padding: 2.5em 1em 0px;
   width: 837px;
-  border: 1px solid $mainGray;
+  border: 1px solid $userBorder;
   color: $grayLight;
   @include footer;
 }
@@ -133,6 +133,7 @@ aside {
 .page-wrapper {
   background-color: $innerBody;
   border: 1px solid $mainGray;
+  border-bottom: 1px solid $userBorder;
   position: relative;
   width: 837px;
   min-height: 100%;
@@ -258,6 +259,7 @@ aside {
   padding: 10px 0 1px 10px;
   background-color: $wellGray;
   border-top: 1px solid $moduleBorder;
+  @include modules-bot
 }
 
 .side-module-share form {
@@ -391,7 +393,7 @@ aside {
   font-weight: bold;
   padding: 8px;
   min-height: 17px;
-  border-bottom: 0;
+  border-bottom-width: 0;
   @include well-header;
 }
 
@@ -405,7 +407,7 @@ aside {
 }
 
 .well-bottom {
-  border-top: none;
+  border-top-width: 0;
   padding: 10px;
   min-height: 7px;
   @include well-bottom;
@@ -447,7 +449,7 @@ aside {
 .well-footer {
   font-size: 13px;
   margin-left: 58px;
-  margin-bottom: -10px;
+  margin-bottom: -11px;
 }
 
 .well-footer .collapse {
@@ -519,6 +521,7 @@ aside {
 
 .share-stats {
   float: right;
+  overflow: hidden;
 }
 
 .share-stats a {
@@ -530,8 +533,9 @@ aside {
 }
 
 .share-stats strong {
-  display: inline-block;
-  margin-top: 1px;
+  display: inline;
+  margin-left: 3px;
+  vertical-align: 3px;
   font-size: 14px
 }
 
@@ -547,12 +551,12 @@ aside {
     margin-top: 2px;
     border-left: none;
     line-height: 4px;
-    margin-right: -3px;
+    margin-right: -10px;
   }
 }
 
 .inline-share-stats li {
-  display: inline;
+  display: inline-block;
 }
 
 .inline-share-reply {
@@ -568,7 +572,7 @@ aside {
 }
 
 .inline-container form, .modal-form form {
-  margin: -15px -11px -10px;
+  margin: -10px -11px -10px;
   padding: 5px;
 }
 
@@ -1001,18 +1005,4 @@ aside {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
-}
-
-.popover-title {
-  background-color: white;
-  border: 1px solid $moduleBorder;
-  border-left: none;
-  border-right: none;
-}
-
-.popover {
-  width: 317px;
-  border: 1px solid $moduleBorder;
-  border-radius: 6px 6px 6px 6px;
-  height: 225px;
 }
