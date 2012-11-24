@@ -32,9 +32,16 @@
   border-radius: 10px
 
 @mixin shadows
-  -webkit-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1)
-  -moz-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1)
-  box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 7px rgba(0, 0, 0, 0.1)
+  -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+  -moz-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+
+@mixin shadows-header
+  -webkit-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 6px rgba(0, 0, 0, 0.1)
+  -moz-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 6px rgba(0, 0, 0, 0.1)
+  box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 6px rgba(0, 0, 0, 0.1)
+
+@mixin grads
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($white), to($wellGray))
   background-image: -webkit-linear-gradient(top, $white, $wellGray)
   background-image: -moz-linear-gradient(top, $white, $wellGray)
@@ -60,19 +67,23 @@
   -webkit-border-radius: 5px 5px 0px 0px
   -moz-border-radius: 5px 5px 0px 0px
   border-radius: 5px 5px 0px 0px
+  @include grads
+  @include shadows-header
 
 @mixin well
   -webkit-border-radius: 0
   -moz-border-radius: 0
   border-radius: 0
-  -webkit-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1)
-  -moz-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1)
-  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1)
+  -webkit-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1)
+  -moz-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1)
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1)
 
 @mixin well-bottom
   -webkit-border-radius: 0px 0px 5px 5px
   -moz-border-radius: 0px 0px 5px 5px
   border-radius: 0px 0px 5px 5px
+  @include grads
+  @include shadows
 
 @mixin modal-header
   -webkit-border-radius: 6px 6px 0px 0px
@@ -91,9 +102,9 @@
 @mixin profiles
   @include paddings
   @include modules
-  -webkit-box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1)
-  -moz-box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1)
-  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1)
+  -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+  -moz-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
 
 @mixin profile-header
   @include gravatars

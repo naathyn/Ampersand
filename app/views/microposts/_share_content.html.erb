@@ -1,5 +1,5 @@
 <div class="modal_header">
-  <%= link_to gravatar_for(@micropost.user), @micropost.user %>
+  <%= link_to gravatar_for(@micropost.user, size: 48), @micropost.user %>
 
       <span class="user" id="<%= @micropost.user.name %>">
         <%= link_to @micropost.user.realname, @micropost.user %>

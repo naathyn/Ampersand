@@ -256,9 +256,8 @@ aside {
 .side-module-share {
   line-height: 1;
   padding: 10px 0 1px 10px;
-  background-color: $moduleGray;
+  background-color: $wellGray;
   border-top: 1px solid $moduleBorder;
-  height: auto;
 }
 
 .side-module-share form {
@@ -364,18 +363,27 @@ aside {
   }
 }
 
-.users li:hover, .users_modal li:hover {
+.users li:hover {
   background-color: $wellGray;
 }
 
-.users-follow li{border: none;}
+.users-follow {
+  margin: 0px 14px;
+  li {
+    padding-left: 0px;
+    border-top: none;
+    border-bottom: 1px solid $userBorder;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
 
 /* Feeds Share Items  */
 
 .well-header, .well-bottom {
-  border: 1px solid $mainGray;
+  border: 1px solid $moduleBorder;
   text-align: right;
-  @include shadows;
 }
 
 .well-header {
@@ -391,7 +399,7 @@ aside {
   background-color: $innerBody;
   border-top: none;
   margin: 0;
-  padding: 12px 10px;
+  padding: 12px;
   @include well;
 }
 
@@ -400,11 +408,6 @@ aside {
   padding: 10px;
   min-height: 7px;
   @include well-bottom;
-}
-
-.well-inner .gravatar, .modal_header .gravatar {
-  height: 48px;
-  width: 48px;
 }
 
 .well-inner-header, .modal_header {
@@ -443,11 +446,7 @@ aside {
 .well-footer {
   font-size: 13px;
   margin-left: 58px;
-  margin-bottom: -12px;
-}
-
-.well-footer:first-child {
-  margin-bottom: -12px;
+  margin-bottom: -10px;
 }
 
 .well-footer .collapse {
