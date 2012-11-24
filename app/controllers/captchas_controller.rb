@@ -1,6 +1,5 @@
 class CaptchasController < ApplicationController
   before_filter :signed_in_user
-  before_filter :correct_user, :only => :destroy
 
   def index
     @title = "#{current_user.realname} | Captchas (#{current_user.captchas.count})"
@@ -23,12 +22,5 @@ class CaptchasController < ApplicationController
     @captcha.destroy
     flash[:notice] = "Captcha removed. Personally I didn't think it was half bad."
     redirect_to captchas_url
-  end
-
-private
-
-  def correct_user
-    @captcha = current_user.captchas.find_by_id(params[:id])
-    redirect_to(root_url) if @captcha.nil?
   end
 end

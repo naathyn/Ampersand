@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, :only => [:index, :show, :edit, :update, :destroy, :following, :followers, :replies]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :signed_in_user, :except => [:new, :create]
+  before_filter :correct_user, :only => [:edit, :update, :replies]
   before_filter :admin_user, :only => :destroy
 
   def index
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @title = "#{@user.realname} | Shares (#{@user.profile.count})"
-    @profile_items = @user.profile.paginate(page: params[:page])
+    @profile_items = @user.profile.page(params[:page])
     @micropost = current_user.microposts.build
   end
 
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @title = "@#{@user.name} | Following (#{@user.followed_users.count})"
     @active = "Following"
-    @users = @user.followed_users.paginate(page: params[:page])
+    @users = @user.followed_users.page(params[:page])
     render 'show_follow'
   end
 
@@ -61,13 +61,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @title = "@#{@user.name} | Followers (#{@user.followers.count})"
     @active = "Followers"
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.page(params[:page])
     render 'show_follow'
   end
 
   def replies
     @title = "#{current_user.realname} | Replies (#{current_user.atreply.count})"
-    @atreply_items = current_user.atreply.paginate(page: params[:page])
+    @atreply_items = current_user.atreply.page(params[:page])
     @micropost = current_user.microposts.build
     render 'replies'
   end
@@ -76,7 +76,7 @@ private
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    redirect_to(user_url(current_user)) unless current_user?(@user)
   end
 
   def admin_user

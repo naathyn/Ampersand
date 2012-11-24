@@ -1,14 +1,14 @@
 Socialrails::Application.routes.draw do
   resources :users do
-    member do
-      get :following, :followers, :replies
+      member do
+        get :following, :followers, :replies
+      end
     end
-  end
-  resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :show, :destroy]
-  resources :opinions, :only => [:create, :destroy]
+  resources :sessions,      :only => [:new, :create, :destroy]
+  resources :microposts,    :only => [:create, :show, :destroy]
+  resources :opinions,      :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
-  resources :captchas, :except => [:edit, :update]
+  resources :captchas,      :only => [:index, :create, :destroy]
 
   root :to => 'static_pages#home'
 
