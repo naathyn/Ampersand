@@ -15,7 +15,7 @@
   </div>
 
       <div class="modal_content">
-        <span class="content">
+        <span class="content" data-toggle="collapse" data-target="#modal_reply">
           <%= auto_link(@micropost.content, 
           :html => { :target => '_blank' }) do |a|
           truncate(a, :length => 30) end %>
@@ -61,9 +61,9 @@
           <% end %>
         </ul>
 
-  <div class="show collapse" id="modal_reply">
-    <div class="inline-share-reply">
-      <div class="modal-form">
+      <div class="show collapse" id="modal_reply">
+        <div class="inline-share-reply">
+          <div class="modal-form">
         <%= render :partial => 'form' %>
       </div>
     </div>

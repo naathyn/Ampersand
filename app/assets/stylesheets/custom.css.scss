@@ -257,9 +257,13 @@ aside {
 .side-module-share {
   line-height: 1;
   padding: 10px 0 1px 10px;
-  background-color: $wellGray;
+  background-color: $outterBody;
   border-top: 1px solid $moduleBorder;
   @include modules-bot
+}
+
+.side-module-share:hover {
+  background-color: $moduleGray;
 }
 
 .side-module-share form {
@@ -398,6 +402,7 @@ aside {
 }
 
 .well {
+  cursor: pointer;
   background-color: $innerBody;
   border-top-width: 0;
   border-bottom: 1px solid $moduleBorder;
@@ -453,10 +458,7 @@ aside {
 }
 
 .well-footer .collapse {
-  padding-top: 5px;
   padding-left: 10px;
-  margin-bottom: -3px;
-  margin-top: -6px;
 }
 
 .well-footer form {
@@ -466,6 +468,10 @@ aside {
 
 .well:hover {
   background-color: $wellGray;
+}
+
+.well:hover:active {
+  background-color: $modalActive;
 }
 
 .well:hover .timestamp {
@@ -561,6 +567,7 @@ aside {
 
 .inline-share-reply {
   display: block;
+  padding-top: 5px;
 }
 
 /* Share Item Reply Container */
@@ -572,7 +579,7 @@ aside {
 }
 
 .inline-container form, .modal-form form {
-  margin: -10px -11px -10px;
+  margin: -15px -11px -10px;
   padding: 5px;
 }
 
@@ -668,6 +675,7 @@ aside {
 }
 
 .modal-body {
+  cursor: pointer;
   overflow: hidden;
 }
 
@@ -681,6 +689,7 @@ aside {
 
 .users_modal {
   margin-top: -15px;
+  background-color: $innerBody;
   li {
     margin: 0px -14px;
     padding-left: 28px;
@@ -695,6 +704,8 @@ aside {
     }
   }
 }
+
+.users_modal li:hover{background-color: $wellGray;}
 
 .username_modal {
   display: block;
