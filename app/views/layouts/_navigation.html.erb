@@ -1,12 +1,16 @@
-<ul class="navbar nav navigation">
-  <li class=""><%= link_to "Home", root_path %></li>
+<% if signed_in? %>
+
+  <nav id="links" class="navbar nav navigation pull-left">
+    <li class=""><%= link_to "Home", root_path %></li>
     <li class=""><%= link_to "Members", users_path %></li>
-      <li class=""><%= link_to "About", about_path %></li>
-        <li class=""><%= link_to "Contact", contact_path %></li>
-          <% if signed_in? %>
-          </ul>
-        <%= render 'layouts/usernav' %>
-      <% else %>
-    </ul>
-  <%= render 'layouts/login' %>
+    <li class=""><%= link_to "Captchas", captchas_path %></li>
+    <li class=""><%= link_to "About", about_path %></li>
+  </nav>
+
+  <nav id="links_right" class="nav nav-right pull-right">
+    <%= render 'layouts/usernav' %>
+  </nav>
+
+  <% else %>
+    <%= render 'layouts/guest' %>
 <% end %>

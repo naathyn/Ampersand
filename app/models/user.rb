@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   def captcha
-    Captcha.from_users_captchas(self)
+    Captcha.random(self)
   end
 
   def following?(other_user)

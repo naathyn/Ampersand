@@ -6,12 +6,10 @@ class Captcha < ActiveRecord::Base
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 180 }
 
-  default_scope order: 'captchas.created_at DESC'
-
 private
 
-  def self.random
-    ids = connection.select_all("SELECT id FROM captchas")
-    find(ids[rand(ids.length)]["id"].to_i) unless ids.blank?
+  def self.random(user)
+    captcha_ids = where("user_id = :user_id", user_id: user.id)
+    find(captcha_ids[rand(captcha_ids.length)]["id"].to_i)
   end
 end

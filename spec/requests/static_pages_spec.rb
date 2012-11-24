@@ -64,13 +64,6 @@ describe "Static pages" do
     it { should have_selector('title', text: full_title('About')) }
   end
 
-  describe "Contact page" do
-    before { visit contact_path }
-
-    it { should have_selector('h1', text: 'Contact') }
-    it { should have_selector('title', text: full_title('Contact')) }
-  end
-
   it "should have the correct layout" do
     visit root_path
     click_link "Members"
@@ -78,8 +71,6 @@ describe "Static pages" do
     page.should have_selector 'title', text: full_title('Sign in')
     click_link "About"
     page.should have_selector 'title', text: full_title('About')
-    click_link "Contact"
-    page.should have_selector 'title', text: full_title('Contact')
     click_link "Home"
     click_link "Sign up now!"
     page.should have_selector 'title', text: full_title('Sign up')

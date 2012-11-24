@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, :only => [:index, :show, :edit, :update, :destroy, :following, :followers]
+  before_filter :signed_in_user, :only => [:index, :show, :edit, :update, :destroy, :following, :followers, :replies]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => :destroy
 
   def index
     @users = User.page(params[:page])
+    @title = "Members (#{@users.count})"
   end
 
   def show
     @user = User.find(params[:id])
-    @atreply_items = @user.atreply.paginate(page: params[:page], :per_page => 8)
-    @profile_items = @user.profile.paginate(page: params[:page], :per_page => 20)
-    @micropost = current_user.microposts.build(params[:micropost])
+    @title = "#{@user.realname} | Shares (#{@user.profile.count})"
+    @profile_items = @user.profile.paginate(page: params[:page])
+    @micropost = current_user.microposts.build
   end
 
   def new
@@ -44,22 +45,31 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User removed"
+    flash[:notice] = "User removed"
     redirect_to users_url
   end
 
   def following
-    @title = "Following"
     @user = User.find(params[:id])
+    @title = "@#{@user.name} | Following (#{@user.followed_users.count})"
+    @active = "Following"
     @users = @user.followed_users.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
     @user = User.find(params[:id])
+    @title = "@#{@user.name} | Followers (#{@user.followers.count})"
+    @active = "Followers"
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def replies
+    @title = "#{current_user.realname} | Replies (#{current_user.atreply.count})"
+    @atreply_items = current_user.atreply.paginate(page: params[:page])
+    @micropost = current_user.microposts.build
+    render 'replies'
   end
 
 private

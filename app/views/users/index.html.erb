@@ -1,10 +1,12 @@
 <% content_for :head do %>
-  <% provide(:title, 'Members') %>
+  <% provide(:title, @title) %>
 <% end %>
 
-<h2 class="center" style="padding-bottom:2em;">
-  <%= pluralize(@users.count, "member") %> and growing
-</h2>
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", root_path %> 
+    <span class="divider">/</span></li>
+    <li class="active">Members</li>
+  </ul>
 
 <%= will_paginate %>
   <ul class="users">

@@ -361,16 +361,16 @@ aside {
     &:last-child {
       border-bottom: 1px solid $userBorder;
     }
-    &:nth-child(2n+1) {
-      background-color: $moduleGray;
-    }
   }
 }
 
-.users-follow li:nth-child(2n+1){background-color: $innerBody;}
-.users-follow li:first-child{border-top: none;}
+.users li:hover, .users_modal li:hover {
+  background-color: $wellGray;
+}
 
-/* Share Items with Modal Config */
+.users-follow li{border: none;}
+
+/* Feeds Share Items  */
 
 .well-header, .well-bottom {
   border: 1px solid $mainGray;
@@ -378,36 +378,28 @@ aside {
   @include shadows;
 }
 
-.views {
-  margin-top: 15px;
-}
-
 .well-header {
   color: $textGrayLight;
   font-weight: bold;
   padding: 8px;
   min-height: 17px;
-  border-bottom-width: 0;
+  border-bottom: 0;
   @include well-header;
 }
 
 .well {
   background-color: $innerBody;
-  border-top-width: 0;
+  border-top: none;
   margin: 0;
   padding: 12px 10px;
   @include well;
 }
 
 .well-bottom {
-  border-top-width: 0;
+  border-top: none;
   padding: 10px;
   min-height: 7px;
   @include well-bottom;
-}
-
-.well:first-child {
-  border-top: 1px solid $innerBody;
 }
 
 .well-inner .gravatar, .modal_header .gravatar {
@@ -446,7 +438,6 @@ aside {
   display: block;
   line-height: 19px;
   margin-left: 58px;
-  word-wrap: break-word;
 }
 
 .well-footer {
@@ -568,7 +559,7 @@ aside {
   display: block;
 }
 
-/* Share Item Reply Container and Modal Config */
+/* Share Item Reply Container */
 
 .inline-container, .modal-form {
   padding: 10px 0 3px 0;
@@ -607,6 +598,8 @@ aside {
   margin-bottom: 8px;
 }
 
+/* Modal Config */
+
 .modal-form form textarea {
   color: $textGrayLight;
   font-size: 14px;
@@ -617,8 +610,6 @@ aside {
   display: block;
   margin-bottom: 8px;
 }
-
-/* Modal */
 
 .modal-backdrop, .modal-backdrop.fade.in {
   opacity: .4;
@@ -768,6 +759,10 @@ aside {
   @include profile-header;
 }
 
+.profile-header .gravatar {
+  margin-bottom: 3px;
+}
+
 .profile-inner {
   line-height: 16px;
   float: left;
@@ -775,7 +770,6 @@ aside {
   margin: 0 0 0 12px;
   h2 {
     text-align: left;
-    letter-spacing: 0;
     font-size: 18px;
     font-weight: normal;
     line-height: 24px;
@@ -793,18 +787,17 @@ aside {
     margin-bottom: 2px;
     font-weight: bold;
     color: $textGray;
-    }
+  }
 }
 
 .bio {
-  max-width: 420px;
+  margin-bottom: 0px;
   font: italic 14px/18px Georgia, "Times New Roman", serif;
   color: $grayLarge;
-  word-wrap: break-word;
-  padding-bottom:7px;
 }
 
 .location {
+  padding-top: 8px;
   font-size: 12px;
   line-height: 18px;
   color: $grayLarge;
@@ -821,6 +814,7 @@ aside {
 .actions .stats {
   max-height: 300px;
   overflow: hidden;
+  margin-right: 10px;
 }
 
 .actions .stats strong {
@@ -834,7 +828,7 @@ aside {
   border-style: solid none none;
   border-color: $border;
   color: $statsGray;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 16px;
   text-transform: uppercase;
   &:hover {
@@ -843,7 +837,7 @@ aside {
 }
 
 .actions .stats:first-child a {
-  border-left: 0px none;
+  border-left: none;
 }
 
 .actions .stats a strong {
@@ -868,7 +862,11 @@ aside {
 }
 
 .actions .stats li:first-child a {
-  border-top: 0px none;
+  border-top: none;
+}
+
+.actions .stats li:last-child a {
+  padding-bottom: 0px;
 }
 
 /* included in static_pages/about#show */

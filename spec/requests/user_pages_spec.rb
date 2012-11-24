@@ -128,7 +128,7 @@ describe "User pages" do
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_selector('h1', text: 'Sign up') }
+    it { should have_selector('h1', text: 'Registration') }
     it { should have_selector('title', text: full_title('Sign up')) }
   end
 
@@ -170,7 +170,7 @@ describe "User pages" do
         let(:user) { User.find_by_name('naathyn') }
 
         it { should have_selector('title', text: user.realname) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome,') }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
         it { should have_link('Sign out') }
       end
     end
@@ -184,7 +184,6 @@ describe "User pages" do
     end
 
     describe "page" do
-      it { should have_selector('h1', text: "Update your profile") }
       it { should have_selector('title', text: user.name) }
       it { should have_button "change" }
     end
@@ -224,7 +223,7 @@ describe "User pages" do
         visit following_user_path(user)
       end
 
-      it { should have_selector('title', text: full_title('Following')) }
+      it { should have_selector('title', text: full_title("@#{user.name} | Following (#{user.followed_users.count})")) }
       it { should have_link(other_user.name, href: user_path(other_user)) }
     end
 
@@ -234,7 +233,7 @@ describe "User pages" do
         visit followers_user_path(other_user)
       end
 
-      it { should have_selector('title', text: full_title('Followers')) }
+      it { should have_selector('title', text: full_title("@#{other_user.name} | Followers (#{other_user.followers.count})")) }
       it { should have_link(user.name, href: user_path(user)) }
     end
   end

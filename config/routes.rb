@@ -1,7 +1,7 @@
 Socialrails::Application.routes.draw do
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :replies
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
@@ -15,8 +15,5 @@ Socialrails::Application.routes.draw do
   get    '/signup'  => 'users#new'
   get    '/signin'  => 'sessions#new'
   delete '/signout' => 'sessions#destroy'
-
   get    '/about'   => 'static_pages#about'
-  get    '/contact' => 'static_pages#contact'
-  get    '/captcha' => 'captchas#new'
 end

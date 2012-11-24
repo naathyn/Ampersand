@@ -8,6 +8,12 @@ $ ->
   $('.side-module-share form, .inline-container form').on 'click', ->
     $(@).addClass 'active'
    # Adds height to forms when clicked
+
+  $(".likes").tooltip html: true
+   # Enables html with bootstrap tooltips (likes)
  
-  $(".over").tooltip html: true
-   # Enables html with bootstrap tooltips
+  $(".captchas").tooltip html: true,
+  delay: 
+    show: 250, 
+    hide: 250
+   # Enables html with bootstrap tooltips (captchas)

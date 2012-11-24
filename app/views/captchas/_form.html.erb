@@ -1,8 +1,9 @@
 <div class="captcha-form">
 
   <%= form_for(@captcha) do |f| %>
-    <div class="field">
-      <%= f.text_area :content %>
+    <%= render 'shared/error_messages', object: f.object %>
+      <div class="field">
+        <%= f.text_area :content %>
       </div>
     <%= f.submit "Captcha' it", class: "btn btn-large btn-primary" %>
   <% end %>

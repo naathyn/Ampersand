@@ -7,10 +7,12 @@
     <span class="divider">/</span></li>
     <li><%= link_to "Members", users_path %> 
     <span class="divider">/</span></li>
+    <li><%= link_to current_user.realname, user_path(current_user) %> 
+    <span class="divider">/</span></li>
 
-    <li class="active"><%= @user.realname %></li>
+    <li class="active">Replies</li>
   </ul>
 
 <%= render 'shared/profile_stats' %>
-<%= render 'feeds/main/profile' %>
+<%= render 'feeds/main/atreply' %>
 <%= render 'microposts/modal' %>

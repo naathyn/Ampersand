@@ -2,18 +2,27 @@
   <% provide(:title, "About") %>
 <% end %>
 
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", root_path %> 
+    <span class="divider">/</span></li>
+
+    <li class="active">About</li>
+  </ul>
+
 <div class="row-fluid">
   <div class="span12">
 
     <h2 class="center">
-      <%= link_to "Detailed Updates", "https://github.com/naathyn/Ampersand/commits/master/" %>
+      <%= link_to "Detailed Updates", 
+      "https://github.com/naathyn/Ampersand/commits/master/", 
+      :alt => "Ampersand's Updates via Github", :target => "_blank" %>
     </h2>
 
       <hr />
 
     <div class="row-fluid">
       <div class="span6">
-        <h2 style="padding-bottom:10px;">Background</h2>
+        <h2 style="padding-bottom:10px;"> Background </h2>
 
         <p>
           Using a Linux operating system for the first time quickly fed my interest in the web application
@@ -21,7 +30,11 @@
           Server, where I was vigourously motivated to learn the ropes around LAMP  (aka LAMP Server,  
           Linux, Apache MySQL, PHP). Having gotten a fairly advanced mail server up and running, I found 
           myself wanting to create more and more web applications. 
-          <i>Thanks <a href="http://flurdy.com" target="_blank">Flurdy</a></i>
+          <i>Thanks
+
+            <%= link_to "Flurdy", "http://www.flurdy.com/", :alt => "Flurdy", 
+            :target => "_blank" %>
+          </i>
         </p>
 
         <p>
@@ -29,7 +42,9 @@
           as-- just-another-neo-language trying to supersede Python, Perl, C++ or similar languages-- 
           without really looking in-to the specifications of Ruby on Rails.  One day while browsing new 
           Linux Distrobutions, I came across a distro named 
-          <a href="http://www.turnkeylinux.org/" target="_blank">Turnkey Linux</a>.
+
+          <%= link_to "Turnkey Linux", "http://www.turnkeylinux.org/", 
+          :alt => "Turnkey Linux", :target => "_blank" %>.
         </p>
 
         <p style="padding-bottom:1.5em;">
@@ -62,7 +77,11 @@
       </p>
 
       <p>
-        Ampersand is currently being hosted on a <a href="https://heroku.com" target="blank">Heroku</a> 
+        Ampersand is currently being hosted on a 
+
+          <%= link_to "Heroku", "https://www.heroku.com/", 
+          :alt => "Heroku", :target => "_blank" %>
+
         server (a free online database with SSL encyption that offers developers a secure testing platform 
         for their projects) If everything goes as planned, I hope to host Ampersand under my own domain 
         soon.  None-the-less, I hope you like what what's in development so far!  Go ahead: give it a try, 
@@ -78,16 +97,29 @@
     <div class="span8 offset2 quote">
 
       <p>
-        I would like to thank <a href="http://michaelhartl.com" target="_blank">Micahel Hartl</a>, a self-
-        less, kind and brilliant man for his help in making all of this possible.
+        I would like to thank
+
+          <%= link_to "Michael Hartl", "http://www.michaelhartl.com/", 
+          :alt => "Michael Hartl", :target => "_blank" %>,
+
+        a self-less, kind and brilliant man for his help in making all of this possible.
+
       </p>
 
       <p>
-        His <a href="http://railstutorial.org" target="_blank"><i><b>Ruby on Rails Tutorial</b>: Learn Web 
-        Development with Rails</i></a> is where it all began for me and my journey learning Rails. Without 
-        Michael and his kind works, I guarentee hundreds if not thousands of aspiring 'Rubyists' would have 
-        become uninterested and given up, simply because they could not find a single Rails tutorial 
-        applying practicality alongside example.
+        His
+
+          <%= link_to "Ruby on Rails Tutorial: 
+          Learn Web Development with Rails", 
+          "http://www.railstutorial.org/", 
+          :alt => "Ruby on Rails Tutorial: 
+          Learn Web Development with Rails", 
+          :target => "_blank" %>
+
+        is where it all began for me and my journey learning Rails. Without 
+        Michael and his kind works, I guarentee hundreds if not thousands of aspiring 'Rubyists' 
+        would have become uninterested and given up, simply because they could not find a single Rails 
+        tutorial applying practicality alongside example.
       </p>  
 
       <p>

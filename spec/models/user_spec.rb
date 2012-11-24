@@ -20,12 +20,14 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:captchas) }
   it { should respond_to(:microposts) }
   it { should respond_to(:replies) }
   it { should respond_to(:fans) }
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }
   it { should respond_to(:reverse_relationships) }
+  it { should respond_to(:captcha) }
   it { should respond_to(:share) }
   it { should respond_to(:profile) }
   it { should respond_to(:atreply) }

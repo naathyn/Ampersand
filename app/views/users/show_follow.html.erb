@@ -3,6 +3,17 @@
 <% end %>
 
 <% @user ||= current_user %>
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", root_path %> 
+    <span class="divider">/</span></li>
+    <li><%= link_to "Members", users_path %> 
+    <span class="divider">/</span></li>
+    <li><%= link_to @user.realname, user_path(@user) %> 
+    <span class="divider">/</span></li>
+
+    <li class="active"><%= @active %></li>
+  </ul>
+
   <div class="row-fluid">
     <aside class="side-module side-menu mini-profile">
       <a href="<%= user_path(@user) %>" class="share-anchor">
@@ -23,6 +34,7 @@
   </aside>
     <div class="share-container">
       <% if @users.any? %>
+      <%= will_paginate %>
         <ul class="users-follow">
           <%= render @users %>
         </ul>
