@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <% provide(:title, @title) %>
+  <% provide(:title, 'Members') %>
 <% end %>
 
   <ul class="breadcrumb">
@@ -8,8 +8,27 @@
     <li class="active">Members</li>
   </ul>
 
-<%= will_paginate %>
-  <ul class="users">
-    <%= render @users %>
+  <ul class="nav nav-tabs" id="profileMenu">
+    <li class="active"><a href="#members">Members (<%= @users.count %>)</a></li>
+
+    <li><a href="#online">Online Now! (<%= @online_users.count %>)</a></li>
   </ul>
-<%= will_paginate %>
+ 
+  <div class="tab-content">
+
+    <div class="tab-pane active" id="members">
+      <ul class="users-follow" style="margin:0;">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate @users %>
+    </div>
+
+
+  <div class="tab-pane" id="online">
+    <ul class="users-follow" style="margin:0;">
+      <%= render @online_users %>
+    </ul>
+    <%= will_paginate @online_users %>
+  </div>
+
+</div>

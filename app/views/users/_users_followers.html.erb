@@ -1,0 +1,6 @@
+<% if @followers.any? %>
+  <ul class="users-follow" style="margin:0;">
+    <%= render @followers %>
+  </ul>
+  <%= will_paginate @followers %>
+<% end %>

@@ -369,7 +369,7 @@ aside {
   }
 }
 
-.users li:hover {
+.users li:hover, .users-follow li:hover {
   background-color: $wellGray;
 }
 
@@ -379,9 +379,6 @@ aside {
     padding-left: 0px;
     border-top: none;
     border-bottom: 1px solid $userBorder;
-    &:last-child {
-      border-bottom: none;
-    }
   }
 }
 

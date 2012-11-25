@@ -14,14 +14,17 @@
   <%= render 'shared/profile_stats' %>
 
   <ul class="nav nav-tabs" id="profileMenu">
-    <li class="active"><a href="#profile">Profile</a></li>
+    <li class="active"><a href="#profile">@<%= @user.name %></a></li>
 
       <% if current_user?(@user) %>
 
-    <li><a href="#replies">Replies</a></li>
-    <li><a href="#captchas">Captchas</a></li>
+    <li><a href="#replies">Replies (<%= current_user.replies.count %>)</a></li>
+    <li><a href="#captchas">Captchas (<%= current_user.captchas.count %>)</a></li>
 
       <% end %>
+
+    <li><a href="#follow">Following (<%= @user.followed_users.count %>)</a></li>
+    <li><a href="#followed">Followers (<%= @user.followers.count %>)</a></li>
   </ul>
  
   <div class="tab-content">
@@ -32,19 +35,23 @@
 
       <% if current_user?(@user) %>
 
-          <div class="tab-pane" id="replies">
-            <%= render 'feeds/main/atreply' %>
-          </div>
+        <div class="tab-pane" id="replies">
+          <%= render 'feeds/main/atreply' %>
+        </div>
 
         <div class="tab-pane" id="captchas">
-
-          <aside class="span8 captchaside">
-            <%= render 'captchas/about_about' %>
-          </aside>
-            <%= render 'captchas/about_some' %>
-      </div>
+          <%= render 'captchas/about_about' %>
+        </div>
 
       <% end %>
+
+      <div class="tab-pane" id="follow">
+        <%= render 'users_following' %>
+      </div>
+
+      <div class="tab-pane" id="followed">
+        <%= render 'users_followers' %>
+      </div>
 
     </div>
 

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page])
-    @title = "Members (#{@users.count})"
+    @online_users = User.where(:online => true).page(params[:page])
   end
 
   def show
@@ -13,8 +13,10 @@ class UsersController < ApplicationController
     @title = "#{@user.realname}"
     @profile_items = @user.profile.page(params[:page])
     @atreply_items = current_user.atreply.page(params[:page])
-    @micropost = current_user.microposts.build
     @captchas = current_user.captchas.page(params[:page]).order('created_at DESC')
+    @following = @user.followed_users.page(params[:page])
+    @followers = @user.followers.page(params[:page])
+    @micropost = current_user.microposts.build
     @captcha = current_user.captchas.build
   end
 
@@ -66,11 +68,6 @@ class UsersController < ApplicationController
     @active = "Followers"
     @users = @user.followers.page(params[:page])
     render 'show_follow'
-  end
-
-  def online
-    @users = User.where(:online => true).page(params[:page])
-    render 'online_users'
   end
 
 private
