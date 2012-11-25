@@ -1,10 +1,10 @@
 <aside class="span4 captcha-sec" style="margin-top:1.5em">
-    <% if @captchas.any? %>
-      <%= will_paginate @captchas %>
+  <% if @captchas.any? %>
       <ul class="captcha">
         <%= render  @captchas %>
-    </ul>
-  <% else %>
-  <h2 class="lead"><%= link_to "Start Your Captcha's", captchas_path %></h2>
+      </ul>
+        <%= will_paginate @captchas %>
+      <% else %>
+    <h2 class="lead"><%= link_to "Start Your Captcha's", captchas_path %></h2>
   <% end %>
 </aside>

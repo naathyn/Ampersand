@@ -3,7 +3,8 @@ module SessionsHelper
   def sign_in(user)
     user.update_attribute(:online, true)
     user.increment!(:sign_in_count)
-    cookies.permanent[:remember_token] = user.remember_token
+    cookies[:remember_token] = { value: user.remember_token,
+                                expires: 2.hours.from_now.utc }
     self.current_user = user
   end
 
@@ -31,8 +32,8 @@ module SessionsHelper
   end
 
   def sign_out
-    current_user.update_attribute(:online, false)
-    current_user = nil
+    self.current_user.update_attribute(:online, false)
+    self.current_user = nil
     cookies.delete(:remember_token)
   end
 
