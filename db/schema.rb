@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120013721) do
+ActiveRecord::Schema.define(:version => 20121125015234) do
 
   create_table "captchas", :force => true do |t|
     t.integer  "user_id"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(:version => 20121120013721) do
     t.boolean  "admin",           :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.boolean  "online"
+    t.integer  "sign_in_count",   :default => 0
   end
 
   add_index "users", ["bio"], :name => "index_users_on_bio"
