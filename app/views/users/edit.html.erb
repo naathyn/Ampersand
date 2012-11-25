@@ -13,12 +13,16 @@
     <li class="active">Edit</li>
   </ul>
 
+<h1>Update Profile</h1>
+
 <div class="row">
   <div class="span5 offset3">
 
-   <%= gravatar_for @user %>
-      <br /><br /><br /><br />
-    <a class="btn btn-small" href="http://gravatar.com/emails" alt="Sign in to Gravatar to change your profile picture" type="submit" target="_blank" style="margin-bottom:1.5em">Change</a>
+   <%= gravatar_for(@user, size: 75) %>
+      <br /><br /><br /><br /><br />
+    <a class="btn btn-small" href="http://gravatar.com/emails" 
+    alt="Sign in to Gravatar to change your profile picture" 
+    type="submit" target="_blank" style="margin-bottom:1em;">Change</a>
 
   <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
