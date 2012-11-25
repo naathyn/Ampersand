@@ -18,7 +18,7 @@ $ ->
     hide: 250
    # Enables html with bootstrap tooltips (captchas)
 
-  $("#profileMenu a").click (e) ->
+  $(".nav-tabs a").click (e) ->
     e.preventDefault()
-    $(this).tab "show"
+    $(@).tab "show"
    # Triggers bootstraps tabs when clicked
