@@ -72,6 +72,11 @@ class UsersController < ApplicationController
     render 'replies'
   end
 
+  def online
+    @users = User.where(:online => true).page(params[:page])
+    render 'online_users'
+  end
+
 private
 
   def correct_user

@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     Captcha.random(self)
   end
 
+  def online
+    User.from_users_online(self)
+  end
+
   def following?(other_user)
     relationships.find_by_followed_id(other_user.id)
   end

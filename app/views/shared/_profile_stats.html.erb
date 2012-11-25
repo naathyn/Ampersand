@@ -13,8 +13,14 @@
         <%= @user.realname %>
       </h1>
 
-      <h2 class="name"><span class="name">
-        <small>@</small><%= @user.name %></span>
+      <h2 class="name">
+        <span class="name">
+          <small>@</small><%= @user.name %>  
+
+          <% if @user.online? %>
+            <span class="label label-success">Online!</span>
+          <% end %>
+        </span>
       </h2>
 
       <span class="bio"><%= @user.bio %></span>
