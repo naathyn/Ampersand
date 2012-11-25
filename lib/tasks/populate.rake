@@ -8,6 +8,7 @@ namespace :db do
     make_links
     make_mailtos
     make_likes
+    make_captchas
   end
 end
 
@@ -83,4 +84,12 @@ def make_likes
   microposts = Micropost.all
   likes = microposts[3..27]
   likes.each { |share| user.like!(share) }
+end
+
+def make_captchas
+  users = User.all(limit: 10)
+  10.times do
+    content = Faker::Lorem.sentence
+    users.each { |user| user.captchas.create!(content: content) }
+  end
 end

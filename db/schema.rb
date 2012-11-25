@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125015234) do
+ActiveRecord::Schema.define(:version => 20121125201152) do
 
   create_table "captchas", :force => true do |t|
     t.integer  "user_id"
@@ -23,28 +23,19 @@ ActiveRecord::Schema.define(:version => 20121125015234) do
   add_index "captchas", ["user_id", "created_at"], :name => "index_captchas_on_user_id_and_created_at"
   add_index "captchas", ["user_id"], :name => "index_captchas_on_user_id"
 
-  create_table "messages", :force => true do |t|
-    t.string   "convo"
-    t.integer  "user_id"
-    t.integer  "to_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "read_id"
-  end
-
-  add_index "messages", ["to_id"], :name => "index_messages_on_to_id"
-  add_index "messages", ["user_id", "created_at"], :name => "index_messages_on_user_id_and_created_at"
-  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
-
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.integer  "to_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "read",       :default => false
   end
 
+  add_index "microposts", ["to_id", "created_at"], :name => "index_microposts_on_to_id_and_created_at"
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+  add_index "microposts", ["user_id", "read"], :name => "index_microposts_on_user_id_and_read"
+  add_index "microposts", ["user_id", "to_id"], :name => "index_microposts_on_user_id_and_to_id"
 
   create_table "opinions", :force => true do |t|
     t.integer  "fan_id"
@@ -83,10 +74,9 @@ ActiveRecord::Schema.define(:version => 20121125015234) do
     t.integer  "sign_in_count",   :default => 0
   end
 
-  add_index "users", ["bio"], :name => "index_users_on_bio"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["location"], :name => "index_users_on_location"
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
+  add_index "users", ["online"], :name => "index_users_on_online"
   add_index "users", ["realname"], :name => "index_users_on_realname", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 

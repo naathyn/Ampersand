@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @profile_items = @user.profile.page(params[:page])
-    @atreply_items = current_user.atreply.page(params[:page])
-    @captchas = current_user.captchas.page(params[:page]).order('created_at DESC')
+    @atreply_items = @user.atreply.page(params[:page])
+    @captchas = @user.captchas.page(params[:page]).order('created_at DESC')
     @following = @user.followed_users.page(params[:page])
     @followers = @user.followers.page(params[:page])
     @micropost = current_user.microposts.build

@@ -10,6 +10,6 @@ private
 
   def self.random(user)
     captcha_ids = where("user_id = :user_id", user_id: user.id)
-    find(captcha_ids[rand(captcha_ids.length)]["id"].to_i)
-  end
+      find(captcha_ids[rand(captcha_ids.length)]["id"].to_i)
+    end
 end
