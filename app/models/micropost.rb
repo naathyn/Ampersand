@@ -38,7 +38,7 @@ private
       user = User.find_by_name(match[1])
       self.to ||= user
 
-      user = "<a href='/users/#{to.id}'>@#{user.name}</a>" if user
+      user = "<a href='/users/#{user.name}'>@#{user.name}</a>" if user
       self.content = "#{user} #{content.gsub(REPLY_REGEX, '')}"
     end
   end

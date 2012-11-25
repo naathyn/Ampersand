@@ -1,13 +1,9 @@
 <% if @atreply_items.any? %>
 
-  <%= will_paginate @atreply_items %>
-
-  <div class="well-header"> </div>
-
-    <% @atreply_items.each do |reply_item| %>
-      <%= render :partial => 'feeds/share_item', 
-      :object => reply_item, :as => "item" %>
-    <% end %>
+  <% @atreply_items.each do |reply_item| %>
+    <%= render :partial => 'feeds/share_item', 
+    :object => reply_item, :as => "item" %>
+  <% end %>
 
     <div class="well-bottom">
       <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>

@@ -1,10 +1,10 @@
 Socialrails::Application.routes.draw do
   resources :users do
+    member do
+      get :following, :followers
+    end
     collection do
       get :online
-    end
-    member do
-      get :following, :followers, :replies
     end
   end
   resources :sessions,      :only => [:new, :create, :destroy]

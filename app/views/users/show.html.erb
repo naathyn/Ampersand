@@ -11,6 +11,41 @@
     <li class="active"><%= @user.realname %></li>
   </ul>
 
-<%= render 'shared/profile_stats' %>
-<%= render 'feeds/main/profile' %>
+  <%= render 'shared/profile_stats' %>
+
+  <ul class="nav nav-tabs" id="profileMenu">
+    <li class="active"><a href="#profile">Profile</a></li>
+
+      <% if current_user?(@user) %>
+
+    <li><a href="#replies">Replies</a></li>
+    <li><a href="#captchas">Captchas</a></li>
+
+      <% end %>
+  </ul>
+ 
+  <div class="tab-content">
+
+    <div class="tab-pane active" id="profile">
+      <%= render 'feeds/main/profile' %>
+        </div>
+
+      <% if current_user?(@user) %>
+
+          <div class="tab-pane" id="replies">
+            <%= render 'feeds/main/atreply' %>
+          </div>
+
+        <div class="tab-pane" id="captchas">
+
+          <aside class="span8 captchaside">
+            <%= render 'captchas/about_about' %>
+          </aside>
+            <%= render 'captchas/about_some' %>
+      </div>
+
+      <% end %>
+
+    </div>
+
 <%= render 'microposts/modal' %>

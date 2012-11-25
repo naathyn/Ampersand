@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, :except => [:new, :create]
-  before_filter :correct_user, :only => [:edit, :update, :replies]
+  before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => :destroy
 
   def index
@@ -10,9 +10,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @title = "#{@user.realname} | Shares (#{@user.profile.count})"
+    @title = "#{@user.realname}"
     @profile_items = @user.profile.page(params[:page])
+    @atreply_items = current_user.atreply.page(params[:page])
     @micropost = current_user.microposts.build
+    @captchas = current_user.captchas.page(params[:page]).order('created_at DESC')
+    @captcha = current_user.captchas.build
   end
 
   def new
@@ -63,13 +66,6 @@ class UsersController < ApplicationController
     @active = "Followers"
     @users = @user.followers.page(params[:page])
     render 'show_follow'
-  end
-
-  def replies
-    @title = "#{current_user.realname} | Replies (#{current_user.atreply.count})"
-    @atreply_items = current_user.atreply.page(params[:page])
-    @micropost = current_user.microposts.build
-    render 'replies'
   end
 
   def online
