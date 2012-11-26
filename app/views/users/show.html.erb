@@ -43,16 +43,16 @@
           <%= render 'captchas/about_about' %>
         </div>
 
-      <%= render 'microposts/modal' %>
-
       <% end %>
 
       <div class="tab-pane" id="follow">
         <%= render 'users_following' %>
       </div>
 
-      <div class="tab-pane" id="followed">
-        <%= render 'users_followers' %>
-      </div>
-
+    <div class="tab-pane" id="followed">
+      <%= render 'users_followers' %>
     </div>
+
+  </div>
+
+<%= render 'microposts/modal' %>
