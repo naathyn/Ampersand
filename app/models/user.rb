@@ -47,8 +47,16 @@ class User < ActiveRecord::Base
     Micropost.from_users_followed_by(self)
   end
 
+  def replies
+    Micropost.from_users_replies(self)
+  end
+
+  def profile
+    Micropost.from_users_microposts(self)
+  end
+
   def captcha
-    Captcha.random(self)
+    Captcha.from_users_captchas(self)
   end
 
   def following?(other_user)

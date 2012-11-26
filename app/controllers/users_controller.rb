@@ -9,13 +9,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user           = User.find(params[:id])
-    @microposts     = @user.microposts.page(params[:page])
-    @replies        = Micropost.where(:to_id => @user).page(params[:page])
-    @captchas       = @user.captchas.page(params[:page]).order('created_at DESC')
-    @following      = @user.followed_users.page(params[:page])
-    @followers      = @user.followers.page(params[:page])
-    @micropost      = current_user.microposts.build
+    @user       = User.find(params[:id])
+    @microposts = @user.profile.page(params[:page])
+    @replies    = @user.replies.page(params[:page])
+    @captchas   = @user.captchas.page(params[:page]).order('created_at DESC')
+    @following  = @user.followed_users.page(params[:page])
+    @followers  = @user.followers.page(params[:page])
+    @micropost  = current_user.microposts.build
   end
 
   def new
@@ -26,7 +26,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome, and thanks for joining!  Why don't you edit your profile and tell us a little about yourself?  Whenever you're ready, hit Home to check out your feed.  Post some content and follow members to fill it up!"
+      flash[:success] = "Welcome, and thanks for joining!  
+      Why don't you edit your profile and tell us a little about yourself?  
+      Whenever you're ready, hit Home to check out your feed.  
+      Post some content and follow members to fill it up!"
       redirect_to @user
     else
       render 'new'

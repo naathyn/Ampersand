@@ -45,14 +45,14 @@
 
       <%= render 'microposts/modal' %>
 
-    <% end %>
+      <% end %>
 
-    <div class="tab-pane" id="follow">
-      <%= render 'users_following' %>
+      <div class="tab-pane" id="follow">
+        <%= render 'users_following' %>
+      </div>
+
+      <div class="tab-pane" id="followed">
+        <%= render 'users_followers' %>
+      </div>
+
     </div>
-
-  <div class="tab-pane" id="followed">
-    <%= render 'users_followers' %>
-  </div>
-
-</div>
