@@ -23,6 +23,7 @@
         <div class="content">
           <%= render 'layouts/messages' %>
             <%= yield %>
+<%= debug(params) unless Rails.env.production? %>
             </div>
           </div>
         <footer class="footer">

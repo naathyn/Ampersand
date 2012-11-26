@@ -18,8 +18,8 @@
 
       <% if current_user?(@user) %>
 
-    <li><a href="#replies">Replies (<%= current_user.replies.count %>)</a></li>
-    <li><a href="#captchas">Captchas (<%= current_user.captchas.count %>)</a></li>
+    <li><a href="#replies">Replies (<%= @user.replies.count %>)</a></li>
+    <li><a href="#captchas">Captchas (<%= @user.captchas.count %>)</a></li>
 
       <% end %>
 
@@ -30,29 +30,29 @@
   <div class="tab-content">
 
     <div class="tab-pane active" id="profile">
-      <%= render 'feeds/main/profile' %>
+      <%= render 'feeds/main/micropost' %>
         </div>
 
       <% if current_user?(@user) %>
 
         <div class="tab-pane" id="replies">
-          <%= render 'feeds/main/atreply' %>
+          <%= render 'feeds/main/reply' %>
         </div>
 
         <div class="tab-pane" id="captchas">
           <%= render 'captchas/about_about' %>
         </div>
 
-      <% end %>
+      <%= render 'microposts/modal' %>
 
-      <div class="tab-pane" id="follow">
-        <%= render 'users_following' %>
-      </div>
+    <% end %>
 
-      <div class="tab-pane" id="followed">
-        <%= render 'users_followers' %>
-      </div>
-
+    <div class="tab-pane" id="follow">
+      <%= render 'users_following' %>
     </div>
 
-<%= render 'microposts/modal' %>
+  <div class="tab-pane" id="followed">
+    <%= render 'users_followers' %>
+  </div>
+
+</div>

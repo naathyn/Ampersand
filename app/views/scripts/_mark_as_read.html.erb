@@ -1,0 +1,8 @@
+<li id="notification<%= @micropost.id %>">
+  <%= form_for(current_user.notifications.build(share_id: @micropost.id),
+               remote: true) do |f| %>
+        <div><%= f.hidden_field :share_id %></div>
+      <i class="icon-star-empty"></i>
+    <%= f.submit "Like", class: "btn-link shown" %>
+  <% end %>
+</li>

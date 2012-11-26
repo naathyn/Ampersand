@@ -27,14 +27,12 @@ ActiveRecord::Schema.define(:version => 20121125201152) do
     t.string   "content"
     t.integer  "user_id"
     t.integer  "to_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "read",       :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "microposts", ["to_id", "created_at"], :name => "index_microposts_on_to_id_and_created_at"
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
-  add_index "microposts", ["user_id", "read"], :name => "index_microposts_on_user_id_and_read"
   add_index "microposts", ["user_id", "to_id"], :name => "index_microposts_on_user_id_and_to_id"
 
   create_table "opinions", :force => true do |t|

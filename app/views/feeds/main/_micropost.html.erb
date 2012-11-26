@@ -1,0 +1,14 @@
+<% if @microposts.any? %>
+
+  <% @microposts.each do |a| %>
+    <%= render partial: 'feeds/share_item',
+    :object => a, :as => "item" %>
+  <% end %>
+
+    <div class="well-bottom">
+      <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
+    </div>
+
+  <%= will_paginate @microposts %>
+
+<% end %>

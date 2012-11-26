@@ -71,7 +71,7 @@ GEM
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
-    guard-rspec (2.1.2)
+    guard-rspec (2.2.0)
       guard (>= 1.1)
       rspec (~> 2.11)
     guard-spork (1.2.3)
@@ -203,7 +203,7 @@ DEPENDENCIES
   jquery-rails
   libnotify
   pg
-  rails (= 3.2.9)
+  rails
   rails_autolink
   rb-inotify
   rspec-rails

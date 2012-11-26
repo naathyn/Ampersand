@@ -1016,3 +1016,11 @@ aside {
   @extend .control-group;
   @extend .error;
 }
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include paddings; @include forms;
+}

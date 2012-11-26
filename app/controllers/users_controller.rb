@@ -9,13 +9,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @profile_items = @user.profile.page(params[:page])
-    @atreply_items = @user.atreply.page(params[:page])
-    @captchas = @user.captchas.page(params[:page]).order('created_at DESC')
-    @following = @user.followed_users.page(params[:page])
-    @followers = @user.followers.page(params[:page])
-    @micropost = current_user.microposts.build
+    @user           = User.find(params[:id])
+    @microposts     = @user.microposts.page(params[:page])
+    @replies        = Micropost.where(:to_id => @user).page(params[:page])
+    @captchas       = @user.captchas.page(params[:page]).order('created_at DESC')
+    @following      = @user.followed_users.page(params[:page])
+    @followers      = @user.followers.page(params[:page])
+    @micropost      = current_user.microposts.build
   end
 
   def new
@@ -70,12 +70,12 @@ class UsersController < ApplicationController
 
 private
 
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(user_url(current_user)) unless current_user?(@user)
-  end
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(user_url(current_user)) unless current_user?(@user)
+    end
 
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
 end

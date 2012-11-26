@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :captchas, dependent: :destroy
 
   has_many :microposts, dependent: :destroy
-  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
+  has_many :replies, through: :microposts, source: :to
 
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
 
@@ -43,16 +43,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  def profile
-    Micropost.from_users_profile(self)
-  end
-
-  def atreply
-    Micropost.from_users_replies(self)
-  end
-
   def share
-    Micropost.from_users_shares(self)
+    Micropost.from_users_followed_by(self)
   end
 
   def captcha
@@ -85,7 +77,7 @@ class User < ActiveRecord::Base
 
 protected
 
-  def create_remember_token
-    self.remember_token = SecureRandom.uuid
-  end
+    def create_remember_token
+      self.remember_token = SecureRandom.uuid
+    end
 end
