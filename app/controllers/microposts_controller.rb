@@ -10,7 +10,7 @@ class MicropostsController < ApplicationController
       flash[:success] = "Your share has been posted!"
       redirect_to root_url
     else
-      @share_items = []
+      @shares = []
       flash.now[:notice] = "Don't look at me..."
       render 'static_pages/home'
     end

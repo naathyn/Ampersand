@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     Micropost.from_users_followed_by(self)
   end
 
-  def replies
+  def reply
     Micropost.from_users_replies(self)
   end
 

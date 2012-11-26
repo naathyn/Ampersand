@@ -19,6 +19,8 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
+  it { should respond_to(:sign_in_count) }
+  it { should respond_to(:online) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:captchas) }
   it { should respond_to(:microposts) }
@@ -29,8 +31,8 @@ describe User do
   it { should respond_to(:reverse_relationships) }
   it { should respond_to(:captcha) }
   it { should respond_to(:share) }
+  it { should respond_to(:reply) }
   it { should respond_to(:profile) }
-  it { should respond_to(:atreply) }
   it { should respond_to(:followers) }
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
@@ -287,7 +289,7 @@ describe User do
       end
     end
 
-    describe "atreply feed" do
+    describe "reply feed" do
       let(:replier) { FactoryGirl.create(:user) }
 
       let!(:older_reply) do
@@ -305,10 +307,10 @@ describe User do
         FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
       end
 
-      its(:atreply) { should include(newer_reply) }
-      its(:atreply) { should include(older_reply) }
-      its(:atreply) { should_not include(non_reply) }
-      its(:atreply) do
+      its(:reply) { should include(newer_reply) }
+      its(:reply) { should include(older_reply) }
+      its(:reply) { should_not include(non_reply) }
+      its(:reply) do
         @user.microposts.each do |own_post|
           should_not include(own_post)
         end
@@ -316,16 +318,16 @@ describe User do
     end
   end
 
-  describe "replies for the atreply feed" do
+  describe "replies for the reply feed" do
     before do
       @recipient = FactoryGirl.create(:user_reply)
     end
 
     it "should set to_id to self" do
       @user.save
-      reply = @user.microposts.create(content:"@hatchiebird hey!")
-      reply.to.should == @recipient
-      @recipient.replies.should == [reply]
+      a = @user.microposts.create(content:"@hatchiebird hey!")
+      a.to.should == @recipient
+      @recipient.replies.should == [a]
     end
   end
 

@@ -223,7 +223,7 @@ describe "User pages" do
         visit following_user_path(user)
       end
 
-      it { should have_selector('title', text: full_title("@#{user.name} | Following (#{user.followed_users.count})")) }
+      it { should have_selector('title', text: full_title(user.realname)) }
       it { should have_link(other_user.name, href: user_path(other_user)) }
     end
 
@@ -233,7 +233,7 @@ describe "User pages" do
         visit followers_user_path(other_user)
       end
 
-      it { should have_selector('title', text: full_title("@#{other_user.name} | Followers (#{other_user.followers.count})")) }
+      it { should have_selector('title', text: full_title(user.realname)) }
       it { should have_link(user.name, href: user_path(user)) }
     end
   end
