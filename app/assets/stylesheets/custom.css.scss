@@ -385,11 +385,13 @@ aside {
 /* Feeds Share Items  */
 
 .well-header, .well-bottom {
+  margin-left: 295px;
   border: 1px solid $moduleBorder;
   text-align: right;
 }
 
 .well-header {
+  width: 524px;
   color: $textGrayLight;
   font-weight: bold;
   padding: 8px;
@@ -409,6 +411,7 @@ aside {
 }
 
 .well-bottom {
+  width: 520px;
   border-top-width: 0;
   padding: 10px;
   min-height: 7px;

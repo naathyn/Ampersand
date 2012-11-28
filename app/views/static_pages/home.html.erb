@@ -2,7 +2,7 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on November 24th at 4:00 am, CST. Members: Too many new features to list!" %>
+<%= yield flash.now[:info] = "Last updated on November 27th at 4:00 am, CST. tagged: checkups" %>
 
   <% if signed_in? %>
 
@@ -20,13 +20,22 @@
         </section>
       </aside>
 
-      <div class="share-container">
-        <div class="well-header">
-          <a href="<%= user_path(current_user) %>" alt="Profile">
-            <i class="icon-user"> </i>
-          </a>
-        </div>
+      <div class="well-header">
+        <a href="<%= user_path(current_user) %>" alt="Profile">
+          <i class="icon-user"> </i>
+        </a>
+      </div>
+
+        <div class="share-container">
           <%= render 'feeds/main/share' %>
+        </div>
+
+      <div class="well-bottom">
+        <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
+      </div>
+
+        <div id="pagination" style="float:right;">
+          <%= will_paginate @shares %>
         </div>
 
     <% else %>
