@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, :except => [:new, :create]
-  before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user, :only => :destroy
+  before_filter :signed_in_user, except: [:new, :create]
+  before_filter :correct_user, only: [:edit, :update]
+  before_filter :admin_user, only: :destroy
 
   def index
     @users = User.page(params[:page])
-    @online_users = User.where(:online => true).page(params[:page])
+    @online_users = User.where(online: true).page(params[:page])
   end
 
-  def show
+ def show
     @user       = User.find(params[:id])
-    @microposts = @user.profile.page(params[:page])
-    @replies    = current_user.reply.page(params[:page])
+    @microposts = @user.microposts.page(params[:page])
+    @replies    = current_user.replies.page(params[:page])
     @captchas   = current_user.captchas.page(params[:page]).order('created_at DESC')
     @following  = @user.followed_users.page(params[:page])
     @followers  = @user.followers.page(params[:page])

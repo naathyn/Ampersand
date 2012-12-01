@@ -24,19 +24,6 @@ private
             user_id: user.id)
     end
 
-    def self.from_users_replies(user)
-      to_ids = "SELECT followed_id FROM relationships
-                           WHERE follower_id = :user_id"
-      where("user_id IN (#{to_ids}) AND to_id = :user_id", 
-            user_id: user.id)
-    end
-
-    def self.from_users_microposts(user)
-      user_ids = "SELECT followed_id FROM relationships
-                           WHERE follower_id = :user_id"
-      where("user_id = :user_id", user_id: user.id)
-    end
-
     REPLY_REGEX = /\A@([^\s]*)/
     def reply_n_linkify
       if match = REPLY_REGEX.match(content)

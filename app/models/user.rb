@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :captchas, dependent: :destroy
 
   has_many :microposts, dependent: :destroy
-  has_many :replies, through: :microposts, source: :to
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
 
@@ -45,14 +45,6 @@ class User < ActiveRecord::Base
 
   def share
     Micropost.from_users_followed_by(self)
-  end
-
-  def reply
-    Micropost.from_users_replies(self)
-  end
-
-  def profile
-    Micropost.from_users_microposts(self)
   end
 
   def captcha

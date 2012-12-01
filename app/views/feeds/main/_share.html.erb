@@ -1,7 +1,7 @@
 <% if @shares.any? %>
 
   <% @shares.each do |a| %>
-      <%= render :partial => 'feeds/share_item', object: a, as: "item" %>
+      <%= render partial: 'feeds/share_item', object: a, as: "item" %>
     <% end %>
 
       <%= render 'microposts/modal' %>

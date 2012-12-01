@@ -1,8 +1,7 @@
 <% if @replies.any? %>
 
   <% @replies.each do |a| %>
-    <%= render :partial => 'feeds/share_item', 
-    :object => a, :as => "item" %>
+    <%= render partial: 'feeds/share_item', object: a, as: "item" %>
   <% end %>
 
     <div class="well-bottom" style="width:815px;margin-left:0;">
