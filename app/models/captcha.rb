@@ -8,7 +8,7 @@ class Captcha < ActiveRecord::Base
 
 private
 
-    def self.from_users_captchas(user)
+    def self.random(user)
       captcha_ids = where("user_id = :user_id", user_id: user.id)
       find(captcha_ids[rand(captcha_ids.length)]["id"].to_i)
     end

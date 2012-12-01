@@ -1,6 +1,13 @@
-<%= form_for(@modal) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-    <textarea id="micropost[content]" name="micropost[content]" 
-    placeholder="Reply to @<%= @micropost.user.name %>">@<%= @micropost.user.name %> </textarea>
-  <%= f.submit "Reply", class: "btn btn-primary" %>
-<% end %>
+<div class="show collapse" id="modal_reply">
+  <div class="inline-share-reply">
+    <div class="modal-form">
+
+      <%= form_for(@modal) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+          <textarea id="micropost[content]" name="micropost[content]" 
+          placeholder="Reply to @<%= @micropost.user.name %>">@<%= @micropost.user.name %> </textarea>
+        <%= f.submit "Reply", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

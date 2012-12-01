@@ -4,9 +4,8 @@ class Micropost < ActiveRecord::Base
   belongs_to :user
   belongs_to :to, class_name: "User"
 
-  has_many :opinions, foreign_key: "like_id", dependent: :destroy
-  has_many :likes, through: :opinions
-  has_many :fans, through: :opinions
+  has_many :likes, foreign_key: "like_id", class_name: "Opinion", dependent: :destroy
+  has_many :fans, through: :likes
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 255 }

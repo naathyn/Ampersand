@@ -4,18 +4,16 @@
 
       <div class="well-footer">
 
-        <%= render :partial => 'feeds/shared/footer-stats',
-        :object => item, :as => 'item' %>
+      <%= render :partial => 'feeds/shared/footer-stats', object: item, as: 'item' %>
 
-      <%= link_to "Detach", item, { :remote => true,
-          'data-toggle' => "modal", 'data-target' => "#modal-window",
-          :class => "shown detach" } %>
+      <%= link_to "Detach", item, { remote: true,
+          'data-toggle' =>"modal", 'data-target' => "#modal-window",
+          class: "shown detach" } %>
 
         <ul class="share-actions">
           <% if current_user?(item.user) %>
 
-            <%= render :partial => 'feeds/shared/delete',
-            :object => item, :as => 'item' %>
+            <%= render :partial => 'feeds/shared/delete', object: item, as: 'item' %>
 
           <% else %>
 
@@ -27,19 +25,16 @@
 
               <% if current_user.liked?(item) %>
 
-                <%= render :partial => 'feeds/shared/unlike',
-                :object => item, :as => 'item' %>
+                <%= render :partial => 'feeds/shared/unlike', object: item, as: 'item' %>
 
               <% else %>
 
-            <%= render :partial => 'feeds/shared/like',
-            :object => item, :as => 'item' %>
+            <%= render :partial => 'feeds/shared/like', object: item, as: 'item' %>
 
           <% end %>
         </ul>
 
-      <%= render :partial => 'feeds/shared/form',
-      :object => item, :as => 'item' %>
+      <%= render :partial => 'feeds/shared/form', object: item, as: 'item' %>
 
     <% end %>
   </div>

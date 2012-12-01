@@ -14,14 +14,14 @@
 
     <small class="timestamp">
       <%= link_to "#{time_ago_in_words(item.created_at)} ago",
-      item, { :remote => true, 'data-toggle' => "modal",
-      'data-target' => "#modal-window", :class => "timestamp" } %>
+      item, { remote: true, 'data-toggle' => "modal",
+      'data-target' => "#modal-window", class: "timestamp" } %>
     </small>
 
   </div>
 
   <span class="content" data-toggle="collapse"
   data-target="#<%= item.id %>_reply">
-    <%= auto_link(item.content, :html => { :target => '_blank' }) do |a|
-    truncate(a, :length => 30) end %>
+    <%= auto_link(item.content, html: { target: '_blank' }) do |a|
+    truncate(a, length: 30) end %>
 </span>

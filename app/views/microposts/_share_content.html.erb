@@ -16,9 +16,8 @@
 
       <div class="modal_content">
         <span class="content" data-toggle="collapse" data-target="#modal_reply">
-          <%= auto_link(@micropost.content, 
-          :html => { :target => '_blank' }) do |a|
-          truncate(a, :length => 30) end %>
+          <%= auto_link(@micropost.content, html: { target: '_blank' }) do |a|
+          truncate(a, length: 30) end %>
         </span>
       </div>
 
@@ -37,7 +36,7 @@
         <ul class="share-actions">
           <% if current_user?(@micropost.user) %>
 
-            <%= render :partial => 'delete' %>
+            <%= render 'delete' %>
 
           <% else %>
 
@@ -50,23 +49,17 @@
 
               <% if current_user.liked?(@micropost) %>
 
-                <%= render :partial => 'scripts/modal_unlike' %>
+                <%= render 'scripts/modal_unlike' %>
 
               <% else %>
 
-                <%= render :partial => 'scripts/modal_like' %>
+                <%= render 'scripts/modal_like' %>
 
               <% end %>
 
           <% end %>
         </ul>
 
-      <div class="show collapse" id="modal_reply">
-        <div class="inline-share-reply">
-          <div class="modal-form">
-        <%= render :partial => 'form' %>
-      </div>
-    </div>
-  </div>
+  <%= render 'form' %>
 
 </div>
