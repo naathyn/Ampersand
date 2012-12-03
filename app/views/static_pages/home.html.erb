@@ -2,7 +2,7 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on November 27th at 8:00 pm, CST. tagged: checkups" %>
+<%= yield flash.now[:info] = "Last updated on December 3rd at 1:20 am, CST. tagged: routes tests, and home-page" %>
 
   <% if signed_in? %>
 
@@ -49,13 +49,12 @@
     <%= link_to "Sign up now!", signup_path,
         class: "btn btn-large btn-primary" %>
 
-    <h6 style="font-size:11px;">Alpha Release #1 Video</h6>
-
-    <center>
-      <iframe width="560" height="315" 
-      src="https://www.youtube.com/embed/XKwHgbiyne4?rel=0" 
-      frameborder="0" allowfullscreen></iframe>
-    </center>
+    <h6>
+        <%= link_to "Watch the Alpha Release #1 Video", 
+        "http://www.youtube.com/watch?v=XKwHgbiyne4",
+        alt: "Ampersand Alpha Release #1",
+        target: "_blank" %>
+    </h6>
 
   </div>
 
