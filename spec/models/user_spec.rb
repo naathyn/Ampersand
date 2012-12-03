@@ -20,18 +20,16 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:sign_in_count) }
-  it { should respond_to(:online) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:captchas) }
+  it { should respond_to(:captcha) }
   it { should respond_to(:microposts) }
   it { should respond_to(:replies) }
+  it { should respond_to(:share) }
   it { should respond_to(:opinions) }
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }
   it { should respond_to(:reverse_relationships) }
-  it { should respond_to(:captchas) }
-  it { should respond_to(:captcha) }
-  it { should respond_to(:share) }
   it { should respond_to(:followers) }
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
@@ -324,9 +322,9 @@ describe User do
 
     it "should set to_id to self" do
       @user.save
-      a = @user.microposts.create(content:"@hatchiebird hey!")
-      a.to.should == @recipient
-      @recipient.replies.should == [a]
+      your_reply = @user.microposts.create(content:"@hatchiebird hey!")
+      your_reply.to.should == @recipient
+      @recipient.replies.should == [your_reply]
     end
   end
 

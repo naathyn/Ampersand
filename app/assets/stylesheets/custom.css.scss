@@ -43,7 +43,7 @@ input, textarea, select, .uneditable-input {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  color: $textGrayLight;
+  color: inherit;
   text-rendering: optimizeLegibility;
 }
 
@@ -167,8 +167,8 @@ aside {
   }
 }
 
-.close {
-  padding: 8px 14px;
+#close_home {
+  padding: 6px 15px;
 }
 
 /* Home Page (Non Signed in Users) */

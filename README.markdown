@@ -1,3 +1,6 @@
+>There was me, that is Alex, and my three droogs, that is Pete, Georgie, and Dim, and we sat in the Korova Milkbar trying to make up our rassoodocks what to do with the evening. The Korova milkbar sold milk-plus, milk plus vellocet or synthemesc or drencrom, which is what we were drinking. This would sharpen you up and make you ready for a bit of the old ultra-violence.
+<cite>[Alex, A Clockwork Orange](http://www.imdb.com/title/tt0066921/)</cite>
+
 Getting Started
 ---------------
 

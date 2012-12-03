@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user do
     sequence(:realname) { |n| "Nathan Couch #{n}" }
     sequence(:email) { |n| "nathan3k_#{n}@gmail.com"}
-    sequence(:name) { |n| "naathyn#{n}" }
+    sequence(:name) { |n| "naathyn #{n}" }
     password "secret"
     password_confirmation "secret"
 
@@ -12,7 +12,13 @@ FactoryGirl.define do
   end
 
   factory :micropost do
-    content "I got plenty moneyyy"
+    content "What's in my pocket, dawg, big face hundreds...
+    ...just left the mall, bought everything that I wanted."
+    user
+  end
+
+  factory :captcha do
+    content "I hate rap."
     user
   end
 
