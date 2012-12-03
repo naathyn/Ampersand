@@ -25,14 +25,13 @@ describe User do
   it { should respond_to(:captchas) }
   it { should respond_to(:microposts) }
   it { should respond_to(:replies) }
-  it { should respond_to(:fans) }
+  it { should respond_to(:opinions) }
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }
   it { should respond_to(:reverse_relationships) }
+  it { should respond_to(:captchas) }
   it { should respond_to(:captcha) }
   it { should respond_to(:share) }
-  it { should respond_to(:reply) }
-  it { should respond_to(:profile) }
   it { should respond_to(:followers) }
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
@@ -278,11 +277,11 @@ describe User do
         3.times { @user.microposts.create!(content: "Lorem ipsum") }
       end
 
-      its(:profile) { should include(newer_share) }
-      its(:profile) { should include(older_share) }
-      its(:profile) { should include(own_share) }
-      its(:profile) { should_not include(other_share) }
-      its(:profile) do
+      its(:microposts) { should include(newer_share) }
+      its(:microposts) { should include(older_share) }
+      its(:microposts) { should include(own_share) }
+      its(:microposts) { should_not include(other_share) }
+      its(:microposts) do
         @user.microposts.each do |share|
           should include(share)
         end
@@ -307,10 +306,10 @@ describe User do
         FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
       end
 
-      its(:reply) { should include(newer_reply) }
-      its(:reply) { should include(older_reply) }
-      its(:reply) { should_not include(non_reply) }
-      its(:reply) do
+      its(:replies) { should include(newer_reply) }
+      its(:replies) { should include(older_reply) }
+      its(:replies) { should_not include(non_reply) }
+      its(:replies) do
         @user.microposts.each do |own_post|
           should_not include(own_post)
         end
@@ -351,26 +350,6 @@ describe User do
 
       it { should_not be_following(other_user) }
       its(:followed_users) { should_not include(other_user) }
-    end
-  end
-
-  describe "liking" do
-    let(:random_share) { FactoryGirl.create(:micropost) }
-    before do
-      @user.save
-      @user.like!(random_share)
-    end
-    it { should be_liked(random_share) }
-
-    describe "liked share" do
-      subject { random_share }
-      its(:fans) { should include(@user) }
-    end
-
-    describe "and unliking" do
-      before { @user.unlike!(random_share) }
-      it { should_not be_liked(random_share) }
-      its(:fans) { should_not include(random_share) }
     end
   end
 end

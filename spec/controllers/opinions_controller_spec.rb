@@ -24,7 +24,7 @@ describe OpinionsController do
   describe "destroying an opinion with Ajax" do
 
     before { user.like!(micropost) }
-    let(:opinion) { user.fans.find_by_like_id(micropost) }
+    let(:opinion) { user.opinions.find_by_like_id(micropost) }
 
     it "should decrement the Opinion count" do
       expect do

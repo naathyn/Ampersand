@@ -6,7 +6,6 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(params[:micropost])
-    @modal = current_user.microposts.build
     if @micropost.save
       flash[:success] = "Your share has been posted"
       redirect_to root_url

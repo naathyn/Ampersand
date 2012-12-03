@@ -12,8 +12,8 @@ Socialrails::Application.routes.draw do
 
   root :to => 'static_pages#home'
 
-  get    '/signup'   => 'users#new'
-  get    '/signin'   => 'sessions#new'
-  delete '/signout'  => 'sessions#destroy'
-  get    '/about'    => 'static_pages#about'
+  match '/signup'   => 'users#new'
+  match '/signin'   => 'sessions#new'
+  match '/signout'  => 'sessions#destroy', :via => :delete
+  match '/about'    => 'static_pages#about'
 end

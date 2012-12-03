@@ -10,12 +10,12 @@ class UsersController < ApplicationController
 
  def show
     @user       = User.find(params[:id])
+    @micropost  = current_user.microposts.build
     @microposts = @user.microposts.page(params[:page])
     @replies    = current_user.replies.page(params[:page])
     @captchas   = current_user.captchas.page(params[:page]).order('created_at DESC')
     @following  = @user.followed_users.page(params[:page])
     @followers  = @user.followers.page(params[:page])
-    @micropost  = current_user.microposts.build
   end
 
   def new
@@ -75,7 +75,7 @@ private
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(user_url(current_user)) unless current_user?(@user)
+      redirect_to(root_url) unless current_user?(@user)
     end
 
     def admin_user

@@ -5,7 +5,7 @@ describe Opinion do
   let(:user) { FactoryGirl.create(:user) }
   let(:micropost) { FactoryGirl.create(:micropost) }
 
-  let(:opinion) { user.fans.build(like_id: micropost.id) }
+  let(:opinion) { user.opinions.build(like_id: micropost.id) }
 
   subject { opinion }
 

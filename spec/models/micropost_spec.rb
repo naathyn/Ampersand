@@ -13,7 +13,6 @@ describe Micropost do
 
   it { should respond_to(:to) }
 
-  it { should respond_to(:opinions) }
   it { should respond_to(:likes) }
   it { should respond_to(:fans) }
 

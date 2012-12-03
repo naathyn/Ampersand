@@ -37,8 +37,9 @@ describe "Authentication" do
       it { should have_selector('title', text: user.realname) }
 
       it { should have_link('Members', href: users_path) }
-      it { should have_link('Profile', href: user_path(user)) }
-      it { should have_link('Account', href: edit_user_path(user)) }
+      it { should have_link('You', href: user_path(user)) }
+      it { should have_link("Captcha's", href: captchas_path) }
+      it { should have_link('Settings', href: edit_user_path(user)) }
       it { should have_link('Sign out', href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 
@@ -125,6 +126,19 @@ describe "Authentication" do
         end
       end
 
+      describe "in the Captchas controller" do
+
+        describe "submitting to the create action" do
+          before { post captchas_path }
+          specify { response.should redirect_to(signin_url) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete captchas_path(FactoryGirl.create(:captcha)) }
+          specify { response.should redirect_to(signin_url) }
+        end
+      end
+
       describe "in the Relationships controller" do
         describe "submitting to the create action" do
           before { post relationships_path }
@@ -160,7 +174,7 @@ describe "Authentication" do
         it { should have_selector('title', text: full_title('')) }
       end
 
-      describe "trying to update the some other user" do
+      describe "trying to update some other user" do
         before { put user_path(wrong_user) }
         specify { response.should redirect_to(root_url) }
       end
