@@ -2,7 +2,6 @@ class CaptchasController < ApplicationController
   before_filter :signed_in_user
 
   def index
-    @title = "#{current_user.realname} | Captchas (#{current_user.captchas.count})"
     @captchas = current_user.captchas.page(params[:page]).order('created_at DESC')
     @captcha = current_user.captchas.build
   end
