@@ -8,7 +8,7 @@ class Micropost < ActiveRecord::Base
   has_many :fans, through: :likes
 
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { maximum: 650 }
 
   before_save :reply_n_linkify
 
@@ -31,6 +31,8 @@ private
 
         user = "<a href='/users/#{to.id}'>@#{user.name}</a>" if user
         self.content = "#{user} #{content.gsub(REPLY_REGEX, '')}"
+        content = "#{content}"
+        
       end
     end
 end
