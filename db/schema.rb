@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206004313) do
+ActiveRecord::Schema.define(:version => 20121206015559) do
 
   create_table "captchas", :force => true do |t|
     t.integer  "user_id"
@@ -63,13 +63,13 @@ ActiveRecord::Schema.define(:version => 20121206004313) do
     t.string   "email"
     t.string   "name"
     t.string   "location"
-    t.text     "bio"
-    t.boolean  "online"
-    t.boolean  "admin",           :default => false
+    t.string   "bio"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.boolean  "online"
     t.integer  "sign_in_count",   :default => 0
   end
 
@@ -83,5 +83,6 @@ ActiveRecord::Schema.define(:version => 20121206004313) do
   add_index "users", ["realname", "name"], :name => "index_users_on_realname_and_name", :unique => true
   add_index "users", ["realname"], :name => "index_users_on_realname", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["sign_in_count"], :name => "index_users_on_sign_in_count"
 
 end

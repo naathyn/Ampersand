@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text    :bio
       t.boolean :online
       t.boolean :admin, :default => false
+      t.integer :sign_in_count, :default => 0
       t.string  :password_digest
       t.string  :remember_token
 
