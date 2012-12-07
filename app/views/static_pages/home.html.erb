@@ -2,22 +2,27 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on December 5th at 8:00 pm, CST. Initiating next project." %>
+  <%= yield flash.now[:info] = "Last updated on December 7th at 5:15 pm, CST. 
+  Touching up some configurations." %>
 
   <% if signed_in? %>
 
     <aside class="side-module side-menu mini-profile">
+
       <a href="<%= user_path(current_user) %>" class="share-anchor">
         <section>
           <%= render 'shared/user_info' %>
         </section>
       </a>
+
         <section>
           <%= render 'shared/stats' %>
         </section>
+
         <section class="side-module-share">
           <%= render 'shared/share_form' %>
         </section>
+
       </aside>
 
       <div class="well-header">
@@ -34,11 +39,11 @@
         <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
       </div>
 
-        <% if @shares.any? %>
-          <div id="pagination" style="float:right;">
-            <%= will_paginate @shares %>
-          </div>
-        <% end %>
+      <% if @shares.any? %>
+        <div id="pagination" style="float:right;">
+          <%= will_paginate @shares %>
+        </div>
+      <% end %>
 
     <% else %>
 

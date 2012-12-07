@@ -25,13 +25,14 @@ class User < ActiveRecord::Base
   VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
   validates :realname, presence: true, 
                     length: { minimum: 2, maximum: 20 },
+                    format: { with: VALID_REALNAME },
                     uniqueness: { case_sensitive: false }
 
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates :email, presence: true, format: { with: VALID_EMAIL },
                     uniqueness: { case_sensitive: false }
 
-  VALID_USERNAME = /\A[a-z\d_.]{5,15}\Z/i
+  VALID_USERNAME = /\A[a-z\d_]*\Z/i
   validates :name, presence: true, 
                     length: { minimum: 5, maximum: 15 },
                     format: { with: VALID_USERNAME }, 

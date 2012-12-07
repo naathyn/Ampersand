@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
-    @title = "@#{@user.name}"
+    @title = @user.realname
     @active = "Following"
     @users = @user.followed_users.page(params[:page])
     render 'show_follow'
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.find(params[:id])
-    @title = "@#{@user.name}"
+    @title = @user.realname
     @active = "Followers"
     @users = @user.followers.page(params[:page])
     render 'show_follow'

@@ -2,7 +2,7 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<% @user ||= current_user %>
+  <% @user ||= current_user %>
   <ul class="breadcrumb">
     <li><%= link_to "Home", root_path %> 
     <span class="divider">/</span></li>
@@ -16,11 +16,13 @@
 
   <div class="row-fluid">
     <aside class="side-module side-menu mini-profile">
+
       <a href="<%= user_path(@user) %>" class="share-anchor">
         <section>
           <%= render 'shared/user_info' %>
         </section>
       </a>
+
       <section>
         <%= render 'shared/stats' %>
           <% if @users.any? %>
@@ -28,17 +30,21 @@
               <% @users.each do |user| %>
             <%= link_to gravatar_for(user, size: 32), user %>
           <% end %>
-        </div>
-      <% end %>
-    </section>
-  </aside>
+            </div>
+          <% end %>
+      </section>
+    </aside>
+
     <div class="share-container">
       <% if @users.any? %>
+
       <%= will_paginate %>
         <ul class="users-follow">
           <%= render @users %>
         </ul>
       <%= will_paginate %>
+
     <% end %>
   </div>
+
 </div>
