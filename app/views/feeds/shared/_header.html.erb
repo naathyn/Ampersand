@@ -1,10 +1,16 @@
 <div class="well-inner-header">
 
-    <span class="captchas" data-original-title="<% if item.user.captchas.any? %>
-    <%= item.user.captcha.content %>
-    <% end %>">
-                                        <%= gravatar_for(item.user, size: 48) %>
+  <% if item.user.captchas.any? %>
+
+    <span class="captchas" data-original-title="<%= item.user.captcha.content %>">
+                                          <%= gravatar_for(item.user, size: 48) %>
     </span>
+
+  <% else %>
+
+    <%= gravatar_for(item.user, size: 48) %>
+
+  <% end %>
 
     <span class="user" id="<%= item.user.name %>">
       <%= link_to item.user.realname, item.user %>
@@ -22,6 +28,6 @@
 
   <span class="content" data-toggle="collapse"
   data-target="#<%= item.id %>_reply">
-    <%= auto_link(item.content, html: { target: '_blank' }) do |a|
-    truncate(a, length: 30) end %>
+    <%= auto_link(item.content, html: { target: '_blank' }) do |content|
+    truncate(content, length: 30) end %>
 </span>

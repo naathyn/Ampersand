@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
  def show
-    @user       = User.find(params[:id], include: [:microposts, :replies])
+    @user       = User.find(params[:id])
     @micropost  = current_user.microposts.build
     @microposts = @user.microposts.page(params[:page])
     @replies    = current_user.replies.page(params[:page])

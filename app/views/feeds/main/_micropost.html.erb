@@ -1,7 +1,7 @@
 <% if @microposts.any? %>
 
-  <% @microposts.each do |a| %>
-    <%= render partial: 'feeds/share_item', object: a, as: "item" %>
+  <% @microposts.each do |micropost| %>
+    <%= render partial: 'feeds/share_item', object: micropost, as: "item" %>
   <% end %>
 
     <div class="well-bottom" style="width:815px;margin-left:0;">
