@@ -2,8 +2,8 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <%= yield flash.now[:info] = "Last updated on December 7th at 5:15 pm, CST. 
-  Touching up some configurations." %>
+  <%= yield flash.now[:info] = "Last updated on December 11th at 12:00 am, CST.
+  Expect cool, new features shortly!" %>
 
   <% if signed_in? %>
 
@@ -39,11 +39,9 @@
         <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
       </div>
 
-      <% if @shares.any? %>
-        <div id="pagination" style="float:right;">
-          <%= will_paginate @shares %>
-        </div>
-      <% end %>
+      <div id="pagination" style="float:right;">
+        <%= will_paginate @shares if @shares.any? %>
+      </div>
 
     <% else %>
 

@@ -23,14 +23,15 @@ private
             user_id: user.id)
     end
 
-    REPLY_REGEX = /\A@([^\s]*)/
     def reply_n_linkify
-      if match = REPLY_REGEX.match(content)
+      if match = /\A@([^\s]*)/.match(content)
         user = User.find_by_name(match[1])
+
         self.to ||= user
 
         user = "<a href='/users/#{to.id}'>@#{user.name}</a>" if user
-        self.content = "#{user} #{content.gsub(REPLY_REGEX, '')}"
+        self.content = "#{user} #{content.gsub(/\A@([^\s]*)/, '')}"
+
         content = "#{content}"
         
       end

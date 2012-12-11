@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   before_filter :admin_user, only: :destroy
 
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:page]).order('created_at DESC')
   end
 
  def show
-    @user       = User.find(params[:id])
+    @user       = User.find(params[:id], include: [:microposts, :replies])
     @micropost  = current_user.microposts.build
     @microposts = @user.microposts.page(params[:page])
     @replies    = current_user.replies.page(params[:page])
