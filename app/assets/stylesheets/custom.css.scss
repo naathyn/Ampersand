@@ -96,9 +96,9 @@ small {
 
 footer {
   clear: both;
-  margin: auto;
+  min-width: 767px;
+  margin: 0px 5%;
   padding: 1em;
-  width: 837px;
   border: 1px solid $userBorder;
   color: $grayLight;
   @include footer;
@@ -135,37 +135,26 @@ aside {
 .page-wrapper {
   background-color: $innerBody;
   border: 1px solid $mainGray;
-  border-bottom: 1px solid $userBorder;
-  width: 837px;
+  border-bottom-width: 0;
   min-height: 100%;
-  margin: -1.5em auto;
-  padding: 1.5em 1em 2em;
+  min-width: 767px;
+  margin: -1.4em 5% auto;
+  padding: 1.4em 1em 2em;
 }
 
 .navbar-inverse {
   @include navbar;
-  .container {
-    width: 890px;
-  }
+}
+
+.navbar-inner .container-fluid {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 0;
+  min-width: 560px;
 }
 
 .navbar .gravatar {
   @include hero;
-}
-
-.navbar-inner li:first-child a {
-  margin: 0px auto;
-}
-
-.login-home form {
-  margin-top: 1px;
-  margin-right: 1em;
-  float: right;
-  display: inline-block;
-  margin-bottom: 0;
-  input {
-    display: inline-block;
-  }
 }
 
 #close_home {
@@ -204,8 +193,6 @@ aside {
 /* Mini-Profile Module */
 
 .side-module {
-  float: left;
-  width: 278px;
   border: 1px solid $moduleBorder;
   @include modules; @include shadows;
 }
@@ -255,8 +242,7 @@ aside {
 }
 
 .side-module-share {
-  line-height: 1;
-  padding: 10px 0 1px 10px;
+  padding: 10px 10px 0px 10px;
   background-color: $outterBody;
   border-top: 1px solid $moduleBorder;
   @include modules-bot
@@ -291,7 +277,6 @@ aside {
   color: $textGrayLighter;
   font-size: 13px;
   height: 34px !important;
-  width: 258px;
   padding: 6px 8px 0;
   @include inline-container;
 }
@@ -300,11 +285,6 @@ aside {
   font-size: 12px;
   margin-bottom: 45px;
   line-height: 16px;
-}
-
-.share-container {
-  width: 542px;
-  margin-left: 295px;
 }
 
 /* User Stats (Following, Shares etc) */
@@ -356,7 +336,7 @@ aside {
   }
 }
 
-.users, .users_modal, .users-follow {
+.users, .users_modal {
   margin: 0px -14px;
   li {
     overflow: auto;
@@ -368,29 +348,36 @@ aside {
   }
 }
 
-.users li:hover, .users-follow li:hover {
+.users li:hover {
   background-color: $wellGray;
 }
 
 .users-follow {
-  margin: 0px 14px;
+  margin: 0px;
   li {
-    padding-left: 0px;
-    border-top: none;
-    border-bottom: 1px solid $userBorder;
+    overflow: auto;
+    padding: 10px 14px;
+    padding-left: none;
+    border-top: 1px solid $userBorder;
+    opacity: .9;
+    &:first-child {
+      border-top: none;
+    }
   }
+}
+
+.users-follow li:hover {
+  opacity: 100;
 }
 
 /* Feeds Share Items  */
 
 .well-header, .well-bottom {
-  margin-left: 295px;
   border: 1px solid $moduleBorder;
   text-align: right;
 }
 
 .well-header {
-  width: 524px;
   color: $textGrayLight;
   font-weight: bold;
   padding: 8px;
@@ -410,7 +397,6 @@ aside {
 }
 
 .well-bottom {
-  width: 520px;
   border-top-width: 0;
   padding: 10px;
   min-height: 7px;
@@ -780,7 +766,7 @@ aside {
 .profile-inner {
   line-height: 16px;
   float: left;
-  width: 50%;
+  width: 54%;
   margin: 0 0 0 12px;
   h2 {
     text-align: left;
@@ -811,6 +797,7 @@ aside {
 }
 
 .location {
+  display: block;
   padding-top: 8px;
   font-size: 12px;
   line-height: 18px;
@@ -901,7 +888,6 @@ aside {
 .captchaside {
   padding-right: 20px;
   float: right;
-  width: 420px;
   p {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 20px;
@@ -934,11 +920,11 @@ aside {
 }
 
 .captcha a {
-  color: $blue;
+  color: $green;
   font-size: 13px;
     &:hover {
     padding: 1px;
-    background-color: $blue;
+    background-color: $green;
     color: white;
     text-decoration: none;
     text-shadow: 0px 0px 1px $grayLarge;
@@ -963,12 +949,7 @@ aside {
   margin: 0;
 }
 
-.captcha-sec {
-  float: left;
-}
-
 .captcha-form textarea {
-  width: 280px;
   height: 81px !important;
   @include inline-container;
 }
@@ -1020,7 +1001,7 @@ aside {
 }
 
 .debug_dump {
-  float: left;
+  clear: both;
   width: 100%;
   margin-top: 15px;
   @include paddings; @include forms;

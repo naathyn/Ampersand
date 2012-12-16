@@ -4,12 +4,13 @@ class Captcha < ActiveRecord::Base
   belongs_to :user
 
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 190 }
+  validates :content, presence: true, length: { minimum: 5, maximum: 250 }
 
 private
 
-    def self.random(user)
-      captcha_ids = where(user_id: user.id)
-      find(captcha_ids[rand(captcha_ids.length)]["id"].to_i)
-    end
+  def self.from_random_user_captcha_ids(user)
+    captcha_user_ids = where(user_id: user.id)
+    find(captcha_user_ids[rand(captcha_user_ids.length)]["id"].to_i) unless captcha_user_ids.blank?
+  end
 end
+

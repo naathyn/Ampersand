@@ -1,15 +1,11 @@
 <div class="well-inner-header">
 
   <% if item.user.captchas.any? %>
-
-    <span class="captchas" data-original-title="<%= item.user.captcha.content %>">
-                                          <%= gravatar_for(item.user, size: 48) %>
+    <span class="captchas" data-original-title="<%= item.user.randomized_captcha.content %>">
+      <%= gravatar_for(item.user, size: 48) %>
     </span>
-
   <% else %>
-
     <%= gravatar_for(item.user, size: 48) %>
-
   <% end %>
 
     <span class="user" id="<%= item.user.name %>">

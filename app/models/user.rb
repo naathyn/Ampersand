@@ -48,8 +48,8 @@ class User < ActiveRecord::Base
     Micropost.from_users_followed_by(self)
   end
 
-  def captcha
-    Captcha.random(self)
+  def randomized_captcha
+    Captcha.from_random_user_captcha_ids(self)
   end
 
   def following?(other_user)

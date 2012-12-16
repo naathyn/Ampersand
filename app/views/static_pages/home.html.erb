@@ -2,48 +2,45 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <%= yield flash.now[:info] = "Last updated on December 11th at 12:00 am, CST.
-  Expect cool, new features shortly!" %>
+  <%= yield flash.now[:info] = "Last updated on December 16th at 12:00 am, CST.
+  Started responsive layout for phones and tablets" %>
+  
+    <% if signed_in? %>
 
-  <% if signed_in? %>
+      <div class="row-fluid">
 
-    <aside class="side-module side-menu mini-profile">
+        <aside class="span4 side-module side-menu mini-profile">
+          <a href="<%= user_path(current_user) %>" class="share-anchor">
+             <section>
+              <%= render 'shared/user_info' %>
+            </section>
+          </a>
+            <section>
+              <%= render 'shared/stats' %>
+            </section>
+            <section class="side-module-share">
+              <%= render 'shared/share_form' %>
+            </section>
+          </aside>
 
-      <a href="<%= user_path(current_user) %>" class="share-anchor">
-        <section>
-          <%= render 'shared/user_info' %>
-        </section>
-      </a>
+          <div id="feed" class="span8">
+            <div class="well-header">
+              <a href="<%= user_path(current_user) %>" title="Profile">
+                <i class="icon-user"> </i>
+              </a>
+            </div>
+              <%= render 'feeds/main/share' %>
+            <div class="well-bottom" style="margin-bottom:1em;">
+              <a href="#" title="Top"><i class="icon-arrow-up"></i></a>
+            </div>
+          </div>
 
-        <section>
-          <%= render 'shared/stats' %>
-        </section>
-
-        <section class="side-module-share">
-          <%= render 'shared/share_form' %>
-        </section>
-
-      </aside>
-
-      <div class="well-header">
-        <a href="<%= user_path(current_user) %>" alt="Profile">
-          <i class="icon-user"> </i>
-        </a>
-      </div>
-
-        <div id="feed" class="share-container">
-          <%= render 'feeds/main/share' %>
+          <div id="pagination" style="float:right;clear:both;">
+            <%= will_paginate @shares if @shares.any? %>
+          </div>
         </div>
 
-      <div class="well-bottom">
-        <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
-      </div>
-
-      <div id="pagination" style="float:right;">
-        <%= will_paginate @shares if @shares.any? %>
-      </div>
-
-    <% else %>
+      <% else %>
 
       <div class="center hero-unit">
 

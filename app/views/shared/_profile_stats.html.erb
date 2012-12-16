@@ -1,4 +1,3 @@
-<% @user ||= current_user %>
 <div class="profile">
   <div class="profile-header">
     <div class="row-fluid">
@@ -11,24 +10,26 @@
 
       <h1 class="fullname">
         <%= @user.realname %>
+          <% if current_user?(@user) %>
+            <%= link_to "Captcha' Moments", captchas_user_path(@user), 
+            class: "btn btn-success" %>
+          <% end %>
       </h1>
 
       <h2 class="name">
-        <span class="name">
-          <small>@</small><%= @user.name %>
-        </span>
+        <small>@</small><%= @user.name %>
       </h2>
 
       <span class="bio"><%= @user.bio %></span>
 
-      <span class="location" style="display:block;"><%= @user.location %></span> 
+      <span class="location"><%= @user.location %></span> 
 
     </div> <!-- profile-inner -->
 
       <div class="actions">
 
         <% if current_user?(@user) %>
-          <%= link_to "Edit your profile", edit_user_path(current_user), 
+          <%= link_to "Edit your profile", edit_user_path(@user), 
           class: "btn btn-default", style: "margin-bottom: 15px;" %>
         <% else %>
           <%= render 'follow_form' %>
@@ -38,21 +39,21 @@
 
           <li>
             <a href="<%= user_path(@user) %>">
-              <strong id="@user"><%= @user.microposts.count %></strong> 
+              <strong id="@user"><%= @microposts.count %></strong> 
               shares
             </a>
           </li>
 
           <li>
             <a href="<%= following_user_path(@user) %>">
-              <strong id="following"><%= @user.followed_users.count %></strong> 
+              <strong id="following"><%= @following.count %></strong> 
               following
             </a>
           </li>
 
           <li>
             <a href="<%= followers_user_path(@user) %>">
-              <strong id="followers"><%= @user.followers.count %></strong> 
+              <strong id="followers"><%= @followers.count %></strong> 
               followers 
             </a>
           </li>

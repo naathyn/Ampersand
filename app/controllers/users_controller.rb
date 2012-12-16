@@ -2,19 +2,19 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, except: [:new, :create]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
+  before_filter :captcha_user, only: :captchas
 
   def index
     @users = User.page(params[:page]).order('created_at DESC')
   end
 
  def show
-    @user       = User.find(params[:id])
-    @micropost  = current_user.microposts.build
-    @microposts = @user.microposts.page(params[:page])
-    @replies    = current_user.replies.page(params[:page])
-    @captchas   = current_user.captchas.page(params[:page]).order('created_at DESC')
+    @user = User.find(params[:id], include: [:microposts => {:user => {:replies => {:user => {:followed_users => {:followers => :opinions}}}}}])
+    @replies    = @user.replies.paginate(page: params[:page])
+    @microposts = @user.microposts.paginate(page: params[:page])
     @following  = @user.followed_users.page(params[:page])
     @followers  = @user.followers.page(params[:page])
+    @micropost  = current_user.microposts.build
   end
 
   def new
@@ -70,11 +70,23 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def captchas
+    @user = User.find(params[:id])
+    @captchas = @user.captchas.page(params[:page]).order('created_at DESC')
+    @captcha = current_user.captchas.build
+    render 'captchas/index'
+  end
+
 private
 
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def captcha_user
+      @user = User.find(params[:id])
+      redirect_to(captchas_user_path(current_user)) unless current_user?(@user)
     end
 
     def admin_user

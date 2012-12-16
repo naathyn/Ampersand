@@ -2,7 +2,8 @@
   <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
       <%= f.text_area :content,
-      placeholder: "Speak up, the world needs listeners..." %>
+      placeholder: "Speak up, the world needs listeners...", 
+      style: "overflow:hidden;" %>
     </div>
   <%= f.submit "Share", class: "btn btn-primary", 
   style: "padding-left:10px;" %>

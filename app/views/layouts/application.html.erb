@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title><%= full_title(yield(:title)) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "A Social Platform in development" %>">
     <meta name="author" content="<%= content_for?(:author) ? yield(:author) : "Nathan Couch" %>">
       <%= stylesheet_link_tag "application", media: "all" %>
@@ -11,21 +12,21 @@
       <%= render 'layouts/shim' %>
       <%= yield(:head) %>
     </head>
-    <body class="<%= current_user.name if current_user %>">
-      <div class="container page-wrapper" id="main" role="main">
-        <header class="navbar navbar-inverse navbar-fixed-top">
-          <nav class="navbar-inner">
-            <div class="container">
-              <%= render 'layouts/navigation' %>
-            </div>
-          </nav>
-        </header>
+    <body>
+      <header class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container-fluid">
+            <%= render 'layouts/navigation' %>
+          </div>
+        </nav>
+      </header>
+      <div class="page-wrapper" id="main" role="main">
         <%= render 'layouts/messages' %>
         <%= yield %>
         <%= debug(params) if Rails.env.development? %>
-      </div> <!-- end main -->
-        <footer class="footer">
-          <div class="container">
+      </div>
+    <footer class="footer">
+      <div class="container">
         <%= render 'layouts/footer' %>
       </div>
     </footer>

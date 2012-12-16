@@ -2,15 +2,17 @@
   <% provide(:title, "Captcha The Moment") %>
 <% end %>
 
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", root_path %> 
+  <ul class="captchas breadcrumb">
+    <li><%= link_to "Home", :root %> 
+    <span class="divider">/</span></li>
+    <li><%= link_to current_user.realname, current_user %> 
     <span class="divider">/</span></li>
 
     <li class="active">Captchas</li>
   </ul>
 
   <% if @captchas.any? %>
-    <%= render 'some' %>
+    <%= render 'captchas/some' %>
   <% else %>
-    <%= render 'none' %>
-<% end %>
+    <%= render 'captchas/none' %>
+  <% end %>

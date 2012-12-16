@@ -1,19 +1,20 @@
-<% if signed_in? %>
+<div class="nav-collapse collapse">
+  <% if signed_in? %>
 
-  <nav id="links" class="navbar nav navigation pull-left">
-    <li class=""><%= link_to "Home", root_path %></li>
-    <li class=""><%= link_to "Members", users_path %></li>
-    <li class=""><%= link_to "You", user_path(current_user) %></li>
-    <li class=""><%= link_to "Captchas", captchas_path %></li>
-    <li class=""><%= link_to "About", about_path %></li>
-  </nav>
+    <ul id="links" class="nav navigation pull-left">
+      <li class=""><%= link_to "Home", root_path %></li>
+      <li class=""><%= link_to "Members", users_path %></li>
+      <li class=""><%= link_to "You", user_path(current_user) %></li>
+      <li class=""><%= link_to "About", about_path %></li>
+    </ul>
 
-  <nav id="links_right" class="nav pull-right">
-    <%= render 'layouts/usernav' %>
-  </nav>
+    <ul id="links_right" class="nav pull-right">
+      <%= render 'layouts/usernav' %>
+    </ul>
 
   <% else %>
 
     <%= render 'layouts/guest' %>
 
-<% end %>
+  <% end %>
+</div>

@@ -8,7 +8,7 @@ class Micropost < ActiveRecord::Base
   has_many :fans, through: :likes
 
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { minimum: 5, maximum: 800 }
 
   before_save :reply_n_linkify
 

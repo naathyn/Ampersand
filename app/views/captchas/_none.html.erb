@@ -1,7 +1,11 @@
-<aside class="span8 captchaside">
-  <%= render 'captchas/about' %>
-</aside>
+<div class="row-fluid">
+  <aside class="span7" style="float:right;">
+    <div class="container-fluid">
+      <%= render 'captchas/about' %>
+    </div>
+  </aside>
 
-<div class="captcha-sec">
-  <%= render 'captchas/form' %>
+  <aside class="span5" style="float:left;">
+    <%= render 'captchas/form' %>
+  </aside>
 </div>
