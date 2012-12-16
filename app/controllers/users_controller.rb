@@ -9,11 +9,13 @@ class UsersController < ApplicationController
   end
 
  def show
-    @user = User.find(params[:id], include: [:microposts => {:user => {:replies => {:user => {:followed_users => {:followers => :opinions}}}}}])
-    @replies    = @user.replies.paginate(page: params[:page])
-    @microposts = @user.microposts.paginate(page: params[:page])
-    @following  = @user.followed_users.page(params[:page])
-    @followers  = @user.followers.page(params[:page])
+    @user = User.find(params[:id])
+    @replies    = @user.replies.paginate(page: params[:page], include: [:user => 
+    {:followed_users => {:followers => :opinions}}])
+    @microposts = @user.microposts.paginate(page: params[:page], include: [:user => 
+    {:followed_users => {:followers => :opinions}}])
+    @following  = @user.followed_users.paginate(page: params[:page], include: :relationships)
+    @followers  = @user.followers.paginate(page: params[:page], include: :relationships)
     @micropost  = current_user.microposts.build
   end
 
