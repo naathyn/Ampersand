@@ -14,7 +14,7 @@
   </ul>
 
   <div class="row-fluid">
-    <aside class="side-module side-menu mini-profile">
+    <aside class="span4 side-module side-menu mini-profile">
 
       <a href="<%= user_path(@user) %>" class="share-anchor">
         <section>
@@ -34,7 +34,7 @@
       </section>
     </aside>
 
-    <div class="share-container">
+    <div class="span8 share-container">
       <% if @users.any? %>
 
       <%= will_paginate %>
