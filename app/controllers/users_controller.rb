@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
   before_filter :captcha_user, only: :captchas
+  before_filter :wipe_the_chat, only: :chatroom
 
   def index
     @users = User.page(params[:page]).order('created_at DESC')
@@ -79,6 +80,12 @@ class UsersController < ApplicationController
     render 'captchas/index'
   end
 
+  def chatroom
+    @messages = current_user.chat.paginate(page: params[:page], per_page: 15, 
+    include: [:user => :relationships])
+    render 'chat'
+  end
+
 private
 
     def correct_user
@@ -86,12 +93,21 @@ private
       redirect_to(root_url) unless current_user?(@user)
     end
 
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
     def captcha_user
       @user = User.find(params[:id])
       redirect_to(captchas_user_path(current_user)) unless current_user?(@user)
     end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
+    def wipe_the_chat
+      @messages = current_user.chat
+      @messages.all.each do |message|
+        if message.created_at<=(1.day.ago)
+          message.delete
+        end
+      end
     end
 end

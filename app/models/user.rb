@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base 
   attr_accessible :realname, :email, :name, :location, :bio, 
-  :password, :password_confirmation, :sign_in_count
+  :password, :password_confirmation, :sign_in_count, :online
 
   has_secure_password
 
@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
   has_many :opinions, foreign_key: "fan_id", dependent: :destroy
+
+  has_many :messages, dependent: :delete_all
+  has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -46,6 +49,10 @@ class User < ActiveRecord::Base
 
   def share
     Micropost.from_users_followed_by(self)
+  end
+
+  def chat
+    Message.from_chatroom_users(self)
   end
 
   def randomized_captcha

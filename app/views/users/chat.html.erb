@@ -1,0 +1,41 @@
+<div class="row-fluid">
+
+  <aside class="span4 side-module side-menu mini-profile">
+    <a href="<%= user_path(current_user) %>" class="share-anchor">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+    </a>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+     </aside>
+
+      <div id="chat_wrapper" class="span8">
+        <div class="well-header">
+          <a href="<%= user_path(current_user) %>" title="Profile">
+            <i class="icon-user"> </i>
+          </a>
+        </div>
+
+          <div class="chat_container">
+            <div id="new_chat">
+              <div id="chat_room">
+                <%= render partial: 'feeds/main/chat' %>
+              </div>
+            </div>
+
+            <div class="chat_container_text" id="chat_box">
+              <%= form_for(current_user.messages.build, remote: true) do |f| %>
+                <%= f.text_field :content, 
+                placeholder: "Press enter to send your message." %>
+              <% end %>
+            </div>
+          </div>
+
+        <div class="well-bottom" style="margin-bottom:1em;">
+      <a href="#" title="Top"><i class="icon-arrow-up"></i></a>
+    </div>
+  </div>
+
+</div>

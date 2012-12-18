@@ -1000,6 +1000,80 @@ aside {
   @extend .error;
 }
 
+/* users chatroom in development */
+
+.chat_container_text {
+	padding: 10px 0 1px 10px;
+	background-color: rgb(246, 246, 246);
+	border-top: 1px solid rgb(230, 230, 230);
+	height: auto;
+}
+
+.chat_container {
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px solid rgb(225, 225, 225);
+  border-top: none;
+  background-color: rgb(253, 253, 253);
+	box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
+	background-image: -moz-linear-gradient(center top , white, rgb(246, 246, 246));
+}
+
+.chat_container_text {
+  margin: 0px -12px -12px;
+  border-radius: 0px 0px 6px 6px;
+  background-color: rgb(243, 243, 243);
+}
+
+.chat_container .room p strong {
+  color: red;
+  font-size: 14px;
+}
+
+.chat_container .room {
+  margin-top: -15px;
+  padding-right: 10px;
+  .user {
+    font-weight: bold;
+  }
+  .username {
+    font-size: 13px;
+    color: $grayLight;
+    font-weight: normal;
+  }
+  .timestamp {
+    font-size: 13px;
+    color: $timestamp;
+    float: right;
+    font-weight: normal;
+  }
+  p {
+    margin-left: 50px;
+    padding: 0 0 5px;
+    font-size: 13px;
+    margin-bottom: -8px
+  }
+}
+
+.chat_container .room:first-child {
+  margin-top: 0;
+}
+
+.chat_container_text form {
+  width: 69%;
+  margin-top: -12px;
+}
+
+#chat_room, #new_chat {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 275px;
+}
+
+.chat_container_text form input {
+  margin: 15px 0px -10px 73px;
+}
+
 .debug_dump {
   clear: both;
   width: 100%;
