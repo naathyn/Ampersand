@@ -1,3 +1,18 @@
+<% content_for :head do %>
+  <% provide(:title, 'Chatroom') %>
+<% end %>
+
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", root_path %> 
+      <span class="divider">/</span>
+    </li>
+    <li><%= link_to "Members", users_path %> 
+      <span class="divider">/</span>
+    </li>
+
+    <li class="active">Chatroom</li>
+  </ul>
+
 <div class="row-fluid">
 
   <aside class="span4 side-module side-menu mini-profile">

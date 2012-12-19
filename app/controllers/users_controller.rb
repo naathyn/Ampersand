@@ -83,7 +83,6 @@ class UsersController < ApplicationController
   def chatroom
     @messages = current_user.chat.paginate(page: params[:page], per_page: 15, 
     include: [:user => :relationships])
-    render 'chat'
   end
 
 private

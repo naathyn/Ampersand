@@ -1,11 +1,10 @@
 class StaticPagesController < ApplicationController
-  before_filter :signed_in_user, only: :chat
 
   def home
     if signed_in?
       @title = "@#{current_user.name}"
-      @micropost = current_user.microposts.build
       @shares = current_user.share.page(params[:page])
+      @micropost = current_user.microposts.build
     else
       @title = "Sign up now!"
     end
