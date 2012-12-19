@@ -14,9 +14,8 @@ class CaptchasController < ApplicationController
   end
 
   def destroy
-    @captcha = Captcha.find(params[:id])
     @captcha.destroy
-    flash.now[:notice] = "Captcha removed. Personally I didn't think it was half bad."
+    flash[:notice] = "Captcha removed. Personally I didn't think it was half bad."
     redirect_to captchas_user_url(current_user)
   end
 

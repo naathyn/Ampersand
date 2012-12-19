@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base 
   attr_accessible :realname, :email, :name, :location, :bio, 
-  :password, :password_confirmation, :sign_in_count, :online
+  :password, :password_confirmation, :sign_in_count
 
   has_secure_password
 
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
-  has_many :opinions, foreign_key: "fan_id", dependent: :destroy
+  has_many :opinions, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
 
   has_many :messages, dependent: :delete_all
   has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def randomized_captcha
-    Captcha.from_random_user_captcha_ids(self)
+    Captcha.from_random_captcha_ids(self)
   end
 
   def following?(other_user)
@@ -81,6 +81,10 @@ class User < ActiveRecord::Base
 
   def unlike!(random_share)
     opinions.find_by_like_id(random_share.id).destroy
+  end
+
+  def to_param
+    name
   end
 
 protected

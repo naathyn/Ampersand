@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, except: [:new, :create]
   before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: :destroy
   before_filter :captcha_user, only: :captchas
+  before_filter :admin_user, only: :destroy
   before_filter :wipe_the_chat, only: :chatroom
 
   def index
@@ -10,14 +10,13 @@ class UsersController < ApplicationController
   end
 
  def show
-    @user = User.find(params[:id])
-    @replies    = @user.replies.paginate(page: params[:page], include: [:user => 
-    {:followed_users => {:followers => :opinions}}])
+    @user = User.find_by_name(params[:id])
+    @replies    = current_user.replies.page(params[:page])
     @microposts = @user.microposts.paginate(page: params[:page], include: [:user => 
     {:followed_users => {:followers => :opinions}}])
     @following  = @user.followed_users.paginate(page: params[:page], include: :relationships)
     @followers  = @user.followers.paginate(page: params[:page], include: :relationships)
-    @micropost  = current_user.microposts.build
+    @micropost = current_user.microposts.build
   end
 
   def new
@@ -58,7 +57,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user = User.find(params[:id])
+    @user = User.find_by_name(params[:id])
     @title = @user.realname
     @active = "Following"
     @users = @user.followed_users.page(params[:page])
@@ -66,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find(params[:id])
+    @user = User.find_by_name(params[:id])
     @title = @user.realname
     @active = "Followers"
     @users = @user.followers.page(params[:page])
@@ -74,7 +73,7 @@ class UsersController < ApplicationController
   end
 
   def captchas
-    @user = User.find(params[:id])
+    @user = User.find_by_name(params[:id])
     @captchas = @user.captchas.page(params[:page]).order('created_at DESC')
     @captcha = current_user.captchas.build
     render 'captchas/index'
@@ -88,17 +87,17 @@ class UsersController < ApplicationController
 private
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find_by_name(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def captcha_user
+      @user = User.find_by_name(params[:id])
+      redirect_to(captchas_user_path(current_user)) unless current_user?(@user)
     end
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
-    end
-
-    def captcha_user
-      @user = User.find(params[:id])
-      redirect_to(captchas_user_path(current_user)) unless current_user?(@user)
     end
 
     def wipe_the_chat

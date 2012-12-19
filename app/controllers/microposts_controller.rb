@@ -16,16 +16,15 @@ class MicropostsController < ApplicationController
     end
   end
 
-  def show
-    @micropost = Micropost.find(params[:id])
-    @microposts = @micropost.fans.page(params[:page])
-    @modal = current_user.microposts.build
-  end
-
   def destroy
     @micropost.destroy
     flash[:notice] = "Your share has been removed"
     redirect_to root_url
+  end
+
+  def fans
+    @micropost = Micropost.find(params[:id])
+    @microposts = @micropost.fans.paginate(page: params[:page], per_page: 5)
   end
 
 private

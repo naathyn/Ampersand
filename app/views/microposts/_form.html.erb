@@ -2,7 +2,7 @@
   <div class="inline-share-reply">
     <div class="modal-form">
 
-      <%= form_for(@modal) do |f| %>
+      <%= form_for(current_user.microposts.build) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
           <textarea id="micropost[content]" name="micropost[content]" 
           placeholder="Reply to @<%= @micropost.user.name %>">@<%= @micropost.user.name %> </textarea>

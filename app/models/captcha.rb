@@ -8,9 +8,9 @@ class Captcha < ActiveRecord::Base
 
 private
 
-  def self.from_random_user_captcha_ids(user)
-    captcha_user_ids = where(user_id: user.id)
-    find(captcha_user_ids[rand(captcha_user_ids.length)]["id"].to_i) unless captcha_user_ids.blank?
-  end
+    def self.from_random_captcha_ids(user)
+      captcha_user_ids = where(user_id: user.id)
+      find(captcha_user_ids[rand(captcha_user_ids.length)]["id"].to_i) unless captcha_user_ids.blank?
+    end
 end
 

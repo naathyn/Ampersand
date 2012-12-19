@@ -7,10 +7,13 @@ class Micropost < ActiveRecord::Base
   has_many :likes, foreign_key: "like_id", class_name: "Opinion", dependent: :destroy
   has_many :fans, through: :likes
 
+  has_many :tags, dependent: :destroy
+  has_many :hashtags, through: :tags
+
   validates :user_id, presence: true
   validates :content, presence: true, length: { minimum: 5, maximum: 800 }
 
-  before_save :reply_n_linkify
+  after_validation :reply_n_linkify
 
   default_scope order: 'microposts.created_at DESC'
 
@@ -26,14 +29,10 @@ private
     def reply_n_linkify
       if match = /\A@([^\s]*)/.match(content)
         user = User.find_by_name(match[1])
-
         self.to ||= user
 
-        user = "<a href='/users/#{to.id}'>@#{user.name}</a>" if user
-        self.content = "#{user} #{content.gsub(/\A@([^\s]*)/, '')}"
-
-        content = "#{content}"
-        
+        user = "<a href='/users/#{user.name}'>@#{user.name}</a>" if user
+        self.content = "#{user} #{content.gsub(/\A@([^\s]*)/,'')}"
       end
     end
 end

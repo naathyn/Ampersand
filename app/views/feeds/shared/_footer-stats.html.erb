@@ -1,22 +1,18 @@
-  <% if item.fans.any? %>
+<% if item.fans.any? %>
+  <ul class="inline-share-stats share-stats hearts likes"
+      data-original-title="<% item.fans.each do |user| %>
+                                <li><%= user.name %></li>
+                                              <% end %>">
+<% else %>
+  <ul class="inline-share-stats share-stats">
+<% end %>
 
-    <ul class="inline-share-stats share-stats hearts likes"
-        data-original-title="<% item.fans.each do |user| %>
-                                  <li><%= user.name %></li>
-                                                <% end %>">
+  <li>
+    <a><i class="icon-heart"></i>
+      <strong id="likes<%= item.id %>">
+        <%= item.fans.count %>
+      </strong>
+    </a>
+  </li>
 
-  <% else %>
-
-    <ul class="inline-share-stats share-stats">
-
-  <% end %>
-
-      <li>
-        <a><i class="icon-heart"></i>
-          <strong id="likes<%= item.id %>">
-            <%= item.likes.count %>
-          </strong>
-        </a>
-      </li>
-
-    </ul>
+</ul>

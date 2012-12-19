@@ -6,7 +6,7 @@
 
       <%= render partial: 'feeds/shared/footer-stats', object: item, as: 'item' %>
 
-      <%= link_to "Detach", item, { remote: true,
+      <%= link_to "Detach", fans_micropost_path(item), { remote: true,
           'data-toggle' =>"modal", 'data-target' => "#modal-window",
           class: "shown detach" } %>
 

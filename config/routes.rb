@@ -7,9 +7,12 @@ Socialrails::Application.routes.draw do
   end
   resources :sessions,      :only => [:new, :create, :destroy]
   resources :captchas,      :only => [:create, :destroy]
-  resources :microposts,    :only => [:create, :show, :destroy]
+  resources :microposts,    :only => [:create, :destroy] do
+    get :fans, :on => :member
+  end
   resources :opinions,      :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
+  resources :hashtags,      :only => :create
   resources :messages,      :only => :create
 
   root :to => 'static_pages#home'

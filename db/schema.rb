@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218010111) do
+ActiveRecord::Schema.define(:version => 20121219201110) do
 
   create_table "captchas", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(:version => 20121218010111) do
 
   add_index "captchas", ["user_id", "created_at"], :name => "index_captchas_on_user_id_and_created_at"
   add_index "captchas", ["user_id"], :name => "index_captchas_on_user_id"
+
+  create_table "hashtags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "hashtags", ["name", "created_at"], :name => "index_hashtags_on_name_and_created_at"
+  add_index "hashtags", ["name"], :name => "index_hashtags_on_name"
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
@@ -73,6 +82,15 @@ ActiveRecord::Schema.define(:version => 20121218010111) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["name", "created_at"], :name => "index_tags_on_name_and_created_at"
+  add_index "tags", ["name"], :name => "index_tags_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "realname"
