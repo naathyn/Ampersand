@@ -11,15 +11,15 @@ class User < ActiveRecord::Base
 
   has_many :opinions, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
 
-  has_many :messages, dependent: :delete_all
-  has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
-
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
                                     class_name: "Relationship",
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships
+
+  has_many :messages, dependent: :delete_all
+  has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
   
   before_save { |user| user.email = email.downcase }
   before_save { |user| user.name = name.downcase }
@@ -51,12 +51,12 @@ class User < ActiveRecord::Base
     Micropost.from_users_followed_by(self)
   end
 
-  def chat
-    Message.from_chatroom_users(self)
-  end
-
   def randomized_captcha
     Captcha.from_random_captcha_ids(self)
+  end
+
+  def chat
+    Message.from_chatroom_users(self)
   end
 
   def following?(other_user)

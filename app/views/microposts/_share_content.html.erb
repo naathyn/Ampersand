@@ -2,63 +2,47 @@
 
   <%= link_to gravatar_for(@micropost.user, size: 48), @micropost.user %>
 
-      <span class="user" id="<%= @micropost.user.name %>">
-        <%= link_to @micropost.user.realname, @micropost.user %>
-      </span>
+    <span class="user" id="<%= @micropost.user.name %>">
+      <%= link_to @micropost.user.realname, @micropost.user %>
+    </span>
 
-      <span class="timestamp">
-        <small><%= time_ago_in_words(@micropost.created_at) %> ago</small>
-      </span>
+    <span class="timestamp">
+      <small><%= time_ago_in_words(@micropost.created_at) %> ago</small>
+     </span>
 
-      <span class="username">@<%= @micropost.user.name %></span>
+    <span class="username">@<%= @micropost.user.name %></span>
 
   </div>
 
-      <div class="modal_content">
-        <span class="content" data-toggle="collapse" data-target="#modal_reply">
-          <%= auto_link(@micropost.content, html: { target: '_blank' }) do |a|
-          truncate(a, length: 30) end %>
-        </span>
-      </div>
+    <div class="modal_content">
+      <span class="content" data-toggle="collapse" data-target="#modal_reply">
+        <%= auto_link(@micropost.content, html: { target: '_blank' }) do |content|
+            truncate(content, length: 30) end %>
+      </span>
+    </div>
 
-      <div class="well-footer">
+    <div class="well-footer">
 
-        <ul class="inline-share-stats share-stats modal_stats">
-          <li>
-            <a><i class="icon-heart"></i>
-              <strong id="modal_likes<%= @micropost.id %>">
-                <%= @micropost.likes.count %>
-              </strong>
-            </a>
-          </li>
-        </ul>
+      <ul class="share-actions">
+        <% if current_user?(@micropost.user) %>
+          <%= render 'delete' %>
+        <% else %>
 
-        <ul class="share-actions">
-          <% if current_user?(@micropost.user) %>
-
-            <%= render 'delete' %>
-
-          <% else %>
-
-            <li>
-              <a class="shown" data-toggle="collapse" 
+        <li>
+          <a class="shown" data-toggle="collapse" 
               data-target="#modal_reply"> 
-                <i class="icon-comment"></i>Reply
-              </a>
-            </li>
+            <i class="icon-comment"></i>Reply
+          </a>
+        </li>
 
-              <% if current_user.liked?(@micropost) %>
+        <% if current_user.liked?(@micropost) %>
+          <%= render 'scripts/modal_unlike' %>
+        <% else %>
+          <%= render 'scripts/modal_like' %>
+        <% end %>
 
-                <%= render 'scripts/modal_unlike' %>
-
-              <% else %>
-
-                <%= render 'scripts/modal_like' %>
-
-              <% end %>
-
-          <% end %>
-        </ul>
+      <% end %>
+    </ul>
 
   <%= render 'form' %>
 

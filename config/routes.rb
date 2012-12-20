@@ -1,9 +1,9 @@
 Socialrails::Application.routes.draw do
   resources :users do
+    get :chatroom, :on => :collection
     member do
       get :following, :followers, :captchas
     end
-    get :chatroom, :on => :collection
   end
   resources :sessions,      :only => [:new, :create, :destroy]
   resources :captchas,      :only => [:create, :destroy]

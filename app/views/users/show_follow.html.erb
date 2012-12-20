@@ -4,16 +4,17 @@
 
   <ul class="breadcrumb">
     <li><%= link_to "Home", root_path %> 
-    <span class="divider">/</span></li>
+      <span class="divider">/</span></li>
     <li><%= link_to "Members", users_path %> 
-    <span class="divider">/</span></li>
+      <span class="divider">/</span></li>
     <li><%= link_to @user.realname, user_path(@user) %> 
-    <span class="divider">/</span></li>
+      <span class="divider">/</span></li>
 
     <li class="active"><%= @active %></li>
   </ul>
 
   <div class="row-fluid">
+
     <aside class="span4 side-module side-menu mini-profile">
 
       <a href="<%= user_path(@user) %>" class="share-anchor">
@@ -21,29 +22,30 @@
           <%= render 'shared/user_info' %>
         </section>
       </a>
+        <section>
+          <%= render 'shared/stats' %>
 
-      <section>
-        <%= render 'shared/stats' %>
-          <% if @users.any? %>
-            <div class="side-module-share user_avatars">
-              <% @users.each do |user| %>
-            <%= link_to gravatar_for(user, size: 32), user %>
-          <% end %>
+            <% if @users.any? %>
+              <div class="side-module-share user_avatars">
+                <% @users.each do |user| %>
+                <%= link_to gravatar_for(user, size: 32), user %>
+              <% end %>
             </div>
           <% end %>
-      </section>
-    </aside>
 
-    <div class="span8 share-container">
-      <% if @users.any? %>
+        </section>
+      </aside>
 
-      <%= will_paginate %>
-        <ul class="users-follow">
-          <%= render @users %>
-        </ul>
-      <%= will_paginate %>
+    <% if @users.any? %>
+      <div class="span8 share-container">
 
+        <%= will_paginate %>
+          <ul class="users-follow">
+            <%= render @users %>
+          </ul>
+        <%= will_paginate %>
+
+      </div>
     <% end %>
-  </div>
 
-</div>
+  </div>

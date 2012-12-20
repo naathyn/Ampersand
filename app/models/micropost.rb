@@ -7,7 +7,7 @@ class Micropost < ActiveRecord::Base
   has_many :likes, foreign_key: "like_id", class_name: "Opinion", dependent: :destroy
   has_many :fans, through: :likes
 
-  has_many :tags, dependent: :destroy
+  has_many :tags
   has_many :hashtags, through: :tags
 
   validates :user_id, presence: true

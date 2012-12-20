@@ -3,31 +3,15 @@
 
 /* global configurations */
 
-html {
-  overflow-y: scroll;
-}
-
-html, body {
-  height: 100%;
-}
-
-body, input, textarea, select, .uneditable-input {
-  font-family: 'Lato', Calibri, Arial, sans-serif;
-}
+html {overflow-y: scroll;}
+html, body {height: 100%;}
+body, input, textarea, select, .uneditable-input {font-family: 'Lato', Calibri, Arial, sans-serif;}
 
 body {
   font-size: 14px;
   line-height: 18px;
   padding-top: 60px;
   background-color: $outterBody;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
 }
 
 input, textarea, select, .uneditable-input {
@@ -40,6 +24,8 @@ input, textarea, select, .uneditable-input {
   resize: none;
   @include forms;
 }
+
+textarea {resize: vertical;}
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
@@ -76,22 +62,14 @@ h4 {
   line-height: 18px;
 }
 
-h5, h6 {
-  font-size: 11px;
-}
-
-p {
-  margin: 0px 0px 10px;
-}
+h5, h6 {font-size: 11px;}
+p {margin: 0px 0px 10px;}
+small {font-size: 12px;}
 
 ul, ol, li {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-small {
-  font-size: 12px;
 }
 
 footer {
@@ -130,6 +108,8 @@ aside {
   }
 }
 
+section {overflow: auto;}
+
 /* Page Layout */
 
 .page-wrapper {
@@ -142,10 +122,6 @@ aside {
   padding: 1.4em 1em 2em;
 }
 
-.navbar-inverse {
-  @include navbar;
-}
-
 .navbar-inner .container-fluid {
   margin-left: 5%;
   margin-right: 5%;
@@ -153,19 +129,11 @@ aside {
   min-width: 560px;
 }
 
-.navbar .gravatar {
-  @include hero;
-}
-
-#close_home {
-  padding: 6px 15px;
-}
+.navbar-inverse {@include navbar;}
+.navbar .gravatar {@include hero;}
+#close_home {padding: 6px 15px;}
 
 /* Home Page (Non Signed in Users) */
-
-.center {
-  text-align: center;
-}
 
 .hero-unit {
   padding: 30px;
@@ -190,27 +158,13 @@ aside {
   }
 }
 
+.center {text-align: center;}
+
 /* Mini-Profile Module */
 
 .side-module {
   border: 1px solid $moduleBorder;
   @include modules; @include shadows;
-}
-
-.side-menu {
-  line-height: 16px;
-}
-
-.side-menu .stats {
-  background: none;
-}
-
-.side-content {
-  padding: 12px 0px 0 12px;
-}
-
-.profile-name {
-  font-size: 14px;
 }
 
 .share-anchor {
@@ -232,10 +186,6 @@ aside {
   color: $textGrayLight;
 }
 
-.share-anchor:hover .profile-anchor {
-  color: $blue;
-}
-
 .item-anchor, .item-anchor:hover {
   color: $textGray;
   text-decoration: none;
@@ -245,11 +195,7 @@ aside {
   padding: 10px 10px 0px 10px;
   background-color: $outterBody;
   border-top: 1px solid $moduleBorder;
-  @include modules-bot
-}
-
-.side-module-share:hover {
-  background-color: $moduleGray;
+  @include modules-bot;
 }
 
 .side-module-share form {
@@ -261,10 +207,6 @@ aside {
   height: 78px !important;
   color: $textGrayLight;
   font-size: 14px;
-}
-
-.side-module-share form input {
-  display: none;
 }
 
 .side-module-share form.active input {
@@ -286,6 +228,14 @@ aside {
   margin-bottom: 45px;
   line-height: 16px;
 }
+
+.side-menu {line-height: 16px;}
+.side-menu .stats {background: none;}
+.side-content {padding: 12px 0px 0 12px;}
+.profile-name {font-size: 14px;}
+.share-anchor:hover .profile-anchor {color: $blue;}
+.side-module-share:hover {background-color: $moduleGray;}
+.side-module-share form input {display: none;}
 
 /* User Stats (Following, Shares etc) */
 
@@ -318,10 +268,6 @@ aside {
   }
 }
 
-.stats a:hover strong {
-  color: $blue;
-}
-
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -336,7 +282,20 @@ aside {
   }
 }
 
-.users, .users_modal {
+.username {
+  font-size: 13px;
+  color: $grayLight;
+  font-weight: normal;
+}
+
+.timestamp {
+  font-size: 13px;
+  color: $timestamp;
+  float: right;
+  font-weight: normal;
+}
+
+.users {
   margin: 0px -14px;
   li {
     overflow: auto;
@@ -348,27 +307,22 @@ aside {
   }
 }
 
-.users li:hover {
-  background-color: $wellGray;
-}
-
-.users-follow {
-  margin: 0px;
-  li {
-    overflow: auto;
-    padding: 10px 14px;
-    padding-left: none;
-    border-top: 1px solid $userBorder;
-    opacity: .9;
-    &:first-child {
-      border-top: none;
-    }
+.users-follow li {
+ overflow: auto;
+ padding: 10px 14px;
+ padding-left: none;
+ border-top: 1px solid $userBorder;
+ opacity: .9;
+ &:first-child {
+   border-top: none;
   }
 }
 
-.users-follow li:hover {
-  opacity: 100;
-}
+.stats a:hover strong {color: $blue;}
+.user {font-weight: bold;}
+.users li:hover {background-color: $wellGray;}
+.users-follow {margin: 0px;}
+.users-follow li:hover {opacity: 100;}
 
 /* Feeds Share Items  */
 
@@ -406,28 +360,6 @@ aside {
 .well-inner-header, .modal_header {
   line-height: 10px;
   margin-bottom: 4px;
-  .user {
-    font-weight: bold;
-  }
-  .username {
-    font-size: 13px;
-    color: $grayLight;
-    font-weight: normal;
-  }
-  .timestamp {
-    font-size: 13px;
-    color: $timestamp;
-    float: right;
-    font-weight: normal;
-  }
-}
-
-.well-inner-header #naathyn a, .modal_header #naathyn a {
-  color: $green;
-}
-
-.well-inner-header #thole a, .modal_header #thole a {
-  color: $pink;
 }
 
 .well-inner .content, .modal_content {
@@ -442,55 +374,26 @@ aside {
   margin-bottom: -12px;
 }
 
-.well-footer .collapse {
-  padding-left: 10px;
-}
-
 .well-footer form {
   display: inline-block;
   margin-bottom: -6px;
 }
 
-.well:hover {
-  background-color: $wellGray;
-}
-
-.well:hover:active {
-  background-color: $modalActive;
-}
-
-.well:hover .timestamp {
-  color: $blue;
-}
-
-.well:hover .well-footer li, .modal-body:hover .well-footer li {
-  opacity: 100;
-}
-
-.well:hover .well-footer a, .modal-body:hover .well-footer a {
-  color: $blue;
-}
-
-.well-inner:hover strong {
-  color: $red;
-}
+.well-inner-header #naathyn a {color: $green;}
+.well-footer .collapse {padding-left: 10px;}
+.well:hover {background-color: $wellGray;}
+.well:hover:active {background-color: $modalActive;}
+.well:hover .timestamp {color: $blue;}
+.well:hover .well-footer li, .modal-body:hover .well-footer li {opacity: 100;}
+.well:hover .well-footer a, .modal-body:hover .well-footer a {color: $blue;}
+.well-inner:hover strong {color: $red;}
 
 /* Share Item Hover Links */
-
-.share-actions {
-  display: inline-block;
-}
-
-.detach {margin-right: 1px;}
 
 .shown {
   cursor: pointer;
   color: $grayLight;
   vertical-align: 6px;
-}
-
-.share-actions a {
-  display: inline;
 }
 
 .share-actions li {
@@ -507,6 +410,10 @@ aside {
     text-decoration: underline;
   }
 }
+
+.detach {margin-right: 1px;}
+.share-actions {display: inline-block;}
+.share-actions a {display: inline;}
 
 /* Share Item Likes Stats */
 
@@ -530,10 +437,6 @@ aside {
   font-size: 14px
 }
 
-.hearts {
-  cursor: crosshair;
-}
-
 .inline-share-stats a {
   color: $statsGray;
   font-size: 10px;
@@ -546,14 +449,13 @@ aside {
   }
 }
 
-.inline-share-stats li {
-  display: inline-block;
-}
-
 .inline-share-reply {
   display: block;
   padding-top: 5px;
 }
+
+.hearts {cursor: crosshair;}
+.inline-share-stats li {display: inline-block;}
 
 /* Share Item Reply Container */
 
@@ -568,9 +470,7 @@ aside {
   padding: 5px;
 }
 
-.inline-container form input {
-  display: none;
-}
+.inline-container form input {display: none;}
 
 .inline-container form textarea, .modal-form form textarea {
   color: $textGrayLighter;
@@ -607,10 +507,6 @@ aside {
   margin-bottom: 8px;
 }
 
-.modal-backdrop, .modal-backdrop.fade.in {
-  opacity: .4;
-}
-
 .modal {
   margin-top: -195px;
   background: none repeat scroll 0% 0% transparent;
@@ -624,10 +520,6 @@ aside {
   position: relative;
   background-color: $white;
   @include modal;
-}
-
-.modal-header button.close {
-  margin-top: -2px;
 }
 
 .modal-header {
@@ -649,10 +541,6 @@ aside {
   text-shadow: 0px 1px 0px $white;
 }
 
-.modal-footer {
-  cursor: move;
-}
-
 #likes {
   cursor: default;
   background-color: $userBorder;
@@ -664,41 +552,17 @@ aside {
   overflow: hidden;
 }
 
-.modal-body:hover {
-  background-color: $moduleGray;
-}
-
-.modal_stats {
-  margin-bottom: -10px;
-}
-
 .users_modal {
-  margin-top: -15px;
-  background-color: $innerBody;
-  li {
-    margin: 0px -14px;
-    padding-left: 28px;
-    border-top: 1px solid $borderDarker;
-    border-bottom: 1px solid $borderDarker;
-    &:first-child {
-      border: 0px;
-    }
-    &:last-child {
-      border-bottom: 0px;
-      margin-bottom: -15px;
-    }
-  }
+  margin: -.5em 0 -.8em;
 }
-
+  
+.modal-backdrop, .modal-backdrop.fade.in {opacity: .4;}
+.modal-header button.close {margin-top: -2px;}
+.modal-body:hover {background-color: $moduleGray;}
+.username_modal {display: block;}
+.modal_stats {margin-bottom: -10px;}
 .users_modal li:hover{background-color: $wellGray;}
-
-.username_modal {
-  display: block;
-}
-
-.modal-body .gravatar {
-  size: 48px;
-}
+.modal-footer {cursor: move;}
 
 /* included in the users#show controller */
 
@@ -759,10 +623,6 @@ aside {
   @include profile-header;
 }
 
-.profile-header .gravatar {
-  margin-bottom: 3px;
-}
-
 .profile-inner {
   line-height: 16px;
   float: left;
@@ -804,6 +664,8 @@ aside {
   color: $grayLarge;
 }
 
+.profile-header .gravatar {margin-bottom: 3px;}
+
 /* User Profile Stats */
 
 .actions {
@@ -816,10 +678,6 @@ aside {
   max-height: 300px;
   overflow: hidden;
   margin-right: 10px;
-}
-
-.actions .stats strong {
-  display: inline;
 }
 
 .actions .stats a {
@@ -837,17 +695,9 @@ aside {
   }
 }
 
-.actions .stats:first-child a {
-  border-left: none;
-}
-
 .actions .stats a strong {
   color: $textGray;
   font-size: 14px;
-}
-
-.actions .stats a:hover strong {
-  color: $blue;
 }
 
 .actions .stats li {
@@ -862,13 +712,11 @@ aside {
   border-color: $border
 }
 
-.actions .stats li:first-child a {
-  border-top: none;
-}
-
-.actions .stats li:last-child a {
-  padding-bottom: 0px;
-}
+.actions .stats:first-child a {border-left: none;}
+.actions .stats a:hover strong {color: $blue;}
+.actions .stats strong {display: inline;}
+.actions .stats li:first-child a {border-top: none;}
+.actions .stats li:last-child a {padding-bottom: 0px;}
 
 .nav-tabs{margin-bottom:0;}
 
@@ -879,9 +727,7 @@ aside {
   padding: 1em;
 }
 
-.quote blockquote li:last-child {
-  margin-bottom: -18px;
-}
+.quote blockquote li:last-child {margin-bottom: -18px;}
 
 /* Captcha pages */
 
@@ -941,18 +787,13 @@ aside {
   }
 }
 
-.captcha .content {
-  font-size: 15px;
-}
-
-.captcha p {
-  margin: 0;
-}
-
 .captcha-form textarea {
   height: 81px !important;
   @include inline-container;
 }
+
+.captcha .content {font-size: 15px;}
+.captcha p {margin: 0;}
 
 /* various different icons */
 
@@ -961,14 +802,12 @@ aside {
   margin-left: 1px;
 }
 
-[class^="icon-remove"], [class*=" icon-remove"] {
-  vertical-align: 3px;
-}
-
 [class^="icon-heart"], [class*=" icon-heart"], [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
   vertical-align: 2px;
   margin-left: 3px;
 }
+
+[class^="icon-remove"], [class*=" icon-remove"] {vertical-align: 3px;}
 
 /* alert messages */
 
@@ -1003,20 +842,20 @@ aside {
 /* users chatroom in development */
 
 .chat_container_text {
-	padding: 10px 0 1px 10px;
-	background-color: rgb(246, 246, 246);
-	border-top: 1px solid rgb(230, 230, 230);
-	height: auto;
+  padding: 10px 0 1px 10px;
+  background-color: $wellGray;
+  border-top: 1px solid $border;
+  height: auto;
 }
 
 .chat_container {
   margin: 0 auto;
   padding: 12px;
-  border: 1px solid rgb(225, 225, 225);
+  border: 1px solid $moduleBorder;
   border-top: none;
-  background-color: rgb(253, 253, 253);
-	box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
-	background-image: -moz-linear-gradient(center top , white, rgb(246, 246, 246));
+  background-color: $innerBody;
+  @include footer;
+  @include shadows;
 }
 
 .chat_container_text {
@@ -1033,30 +872,12 @@ aside {
 .chat_container .room {
   margin-top: -15px;
   padding-right: 10px;
-  .user {
-    font-weight: bold;
-  }
-  .username {
-    font-size: 13px;
-    color: $grayLight;
-    font-weight: normal;
-  }
-  .timestamp {
-    font-size: 13px;
-    color: $timestamp;
-    float: right;
-    font-weight: normal;
-  }
   p {
     margin-left: 50px;
     padding: 0 0 5px;
     font-size: 13px;
     margin-bottom: -8px
   }
-}
-
-.chat_container .room:first-child {
-  margin-top: 0;
 }
 
 .chat_container_text form {
@@ -1070,9 +891,10 @@ aside {
   height: 275px;
 }
 
-.chat_container_text form input {
-  margin: 15px 0px -10px 73px;
-}
+.chat_container .room:first-child {margin-top: 0;}
+.chat_container_text form input {margin: 15px 0px -10px 73px;}
+
+/* debugging for development */
 
 .debug_dump {
   clear: both;
