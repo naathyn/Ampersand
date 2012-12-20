@@ -3,9 +3,10 @@
 
 /* global configurations */
 
-html {overflow-y: scroll;}
-html, body {height: 100%;}
-body, input, textarea, select, .uneditable-input {font-family: 'Lato', Calibri, Arial, sans-serif;}
+html { overflow-y: scroll; }
+html, body { height: 100%; }
+
+body, input, textarea, select, .uneditable-input { font-family: 'Lato', Calibri, Arial, sans-serif; }
 
 body {
   font-size: 14px;
@@ -21,11 +22,10 @@ input, textarea, select, .uneditable-input {
   height: auto !important;
   margin-bottom: 10px;
   display: inline-block;
-  resize: none;
   @include forms;
 }
 
-textarea {resize: vertical;}
+textarea { resize: none; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
@@ -62,9 +62,11 @@ h4 {
   line-height: 18px;
 }
 
-h5, h6 {font-size: 11px;}
-p {margin: 0px 0px 10px;}
-small {font-size: 12px;}
+h5, h6 { font-size: 11px; }
+
+p { margin: 0px 0px 10px;}
+
+small { font-size: 12px; }
 
 ul, ol, li {
   list-style: none;
@@ -108,7 +110,7 @@ aside {
   }
 }
 
-section {overflow: auto;}
+section { overflow: auto; }
 
 /* Page Layout */
 
@@ -129,9 +131,10 @@ section {overflow: auto;}
   min-width: 560px;
 }
 
-.navbar-inverse {@include navbar;}
-.navbar .gravatar {@include hero;}
-#close_home {padding: 6px 15px;}
+.navbar-inverse { @include navbar; }
+.navbar .gravatar { @include hero; }
+
+#close_home { padding: 6px 15px; }
 
 /* Home Page (Non Signed in Users) */
 
@@ -158,7 +161,7 @@ section {overflow: auto;}
   }
 }
 
-.center {text-align: center;}
+.center { text-align: center; }
 
 /* Mini-Profile Module */
 
@@ -229,13 +232,15 @@ section {overflow: auto;}
   line-height: 16px;
 }
 
-.side-menu {line-height: 16px;}
-.side-menu .stats {background: none;}
-.side-content {padding: 12px 0px 0 12px;}
-.profile-name {font-size: 14px;}
-.share-anchor:hover .profile-anchor {color: $blue;}
-.side-module-share:hover {background-color: $moduleGray;}
-.side-module-share form input {display: none;}
+.side-menu { line-height: 16px; }
+.side-content { padding: 12px 0px 0 12px; }
+.side-menu .stats { background: none; }
+
+.profile-name { font-size: 14px; }
+.share-anchor:hover .profile-anchor { color: $blue; }
+
+.side-module-share:hover { background-color: $moduleGray; }
+.side-module-share form input { display: none; }
 
 /* User Stats (Following, Shares etc) */
 
@@ -318,11 +323,13 @@ section {overflow: auto;}
   }
 }
 
-.stats a:hover strong {color: $blue;}
-.user {font-weight: bold;}
-.users li:hover {background-color: $wellGray;}
-.users-follow {margin: 0px;}
-.users-follow li:hover {opacity: 100;}
+.user { font-weight: bold; }
+
+.users li:hover { background-color: $wellGray; }
+.users-follow { margin: 0px; }
+.users-follow li:hover { opacity: 100; }
+
+.stats a:hover strong { color: $blue; }
 
 /* Feeds Share Items  */
 
@@ -379,14 +386,17 @@ section {overflow: auto;}
   margin-bottom: -6px;
 }
 
-.well-inner-header #naathyn a {color: $green;}
+.well:hover { background-color: $wellGray; }
+.well:hover .timestamp { color: $blue; }
+.well:hover:active { background-color: $modalActive; }
+
+.well-inner-header #naathyn a { color: $green; }
+.well-inner:hover strong { color: $red; }
+
+.well:hover .well-footer li, .modal-body:hover .well-footer li { opacity: 100; }
+.well:hover .well-footer a, .modal-body:hover .well-footer a { color: $blue; }
+
 .well-footer .collapse {padding-left: 10px;}
-.well:hover {background-color: $wellGray;}
-.well:hover:active {background-color: $modalActive;}
-.well:hover .timestamp {color: $blue;}
-.well:hover .well-footer li, .modal-body:hover .well-footer li {opacity: 100;}
-.well:hover .well-footer a, .modal-body:hover .well-footer a {color: $blue;}
-.well-inner:hover strong {color: $red;}
 
 /* Share Item Hover Links */
 
@@ -411,9 +421,9 @@ section {overflow: auto;}
   }
 }
 
-.detach {margin-right: 1px;}
-.share-actions {display: inline-block;}
-.share-actions a {display: inline;}
+.detach { margin-right: 1px; }
+.share-actions { display: inline-block; }
+.share-actions a { display: inline; }
 
 /* Share Item Likes Stats */
 
@@ -454,8 +464,8 @@ section {overflow: auto;}
   padding-top: 5px;
 }
 
-.hearts {cursor: crosshair;}
-.inline-share-stats li {display: inline-block;}
+.inline-share-stats li { display: inline-block; }
+.hearts { cursor: crosshair; }
 
 /* Share Item Reply Container */
 
@@ -469,8 +479,6 @@ section {overflow: auto;}
   margin: -15px -11px -10px;
   padding: 5px;
 }
-
-.inline-container form input {display: none;}
 
 .inline-container form textarea, .modal-form form textarea {
   color: $textGrayLighter;
@@ -493,6 +501,8 @@ section {overflow: auto;}
   display: block;
   margin-bottom: 8px;
 }
+
+.inline-container form input { display: none; }
 
 /* Modal Config */
 
@@ -543,8 +553,13 @@ section {overflow: auto;}
 
 #likes {
   cursor: default;
-  background-color: $userBorder;
+  background-color: $mainGray;
   border-top: 1px solid $borderDarker;
+  a { margin-top: 10px; }
+  strong { font-size: 16px; }
+  .gravatar { opacity: .8; &:hover { opacity: 1; } }
+    &:hover {
+  background-color: $userBorder; strong { color: $red; } }
 }
 
 .modal-body {
@@ -552,17 +567,16 @@ section {overflow: auto;}
   overflow: hidden;
 }
 
-.users_modal {
-  margin: -.5em 0 -.8em;
-}
-  
-.modal-backdrop, .modal-backdrop.fade.in {opacity: .4;}
-.modal-header button.close {margin-top: -2px;}
-.modal-body:hover {background-color: $moduleGray;}
-.username_modal {display: block;}
-.modal_stats {margin-bottom: -10px;}
-.users_modal li:hover{background-color: $wellGray;}
-.modal-footer {cursor: move;}
+.modal-backdrop, .modal-backdrop.fade.in { opacity: .4; }
+
+.modal-header button.close { margin-top: -2px; }
+.modal-body:hover { background-color: $moduleGray; }
+.username_modal { display: block; }
+.modal-footer { cursor: move; }
+
+.users_modal { margin: -.5em 0 -.8em; }
+.users_modal li:hover { background-color: $wellGray; }
+.modal_stats { margin-bottom: -10px; }
 
 /* included in the users#show controller */
 
@@ -712,13 +726,13 @@ section {overflow: auto;}
   border-color: $border
 }
 
-.actions .stats:first-child a {border-left: none;}
-.actions .stats a:hover strong {color: $blue;}
-.actions .stats strong {display: inline;}
-.actions .stats li:first-child a {border-top: none;}
-.actions .stats li:last-child a {padding-bottom: 0px;}
+.actions .stats:first-child a { border-left: none; }
+.actions .stats a:hover strong { color: $blue; }
+.actions .stats strong { display: inline; }
+.actions .stats li:first-child a { border-top: none; }
+.actions .stats li:last-child a { padding-bottom: 0px; }
 
-.nav-tabs{margin-bottom:0;}
+.nav-tabs { margin-bottom:0; }
 
 /* included in static_pages/about#show */
 
@@ -727,7 +741,7 @@ section {overflow: auto;}
   padding: 1em;
 }
 
-.quote blockquote li:last-child {margin-bottom: -18px;}
+.quote blockquote li:last-child { margin-bottom: -18px; }
 
 /* Captcha pages */
 
@@ -792,8 +806,8 @@ section {overflow: auto;}
   @include inline-container;
 }
 
-.captcha .content {font-size: 15px;}
-.captcha p {margin: 0;}
+.captcha .content { font-size: 15px; }
+.captcha p { margin: 0; }
 
 /* various different icons */
 
@@ -891,8 +905,8 @@ section {overflow: auto;}
   height: 275px;
 }
 
-.chat_container .room:first-child {margin-top: 0;}
-.chat_container_text form input {margin: 15px 0px -10px 73px;}
+.chat_container .room:first-child { margin-top: 0; }
+.chat_container_text form input { margin: 15px 0px -10px 73px; }
 
 /* debugging for development */
 
