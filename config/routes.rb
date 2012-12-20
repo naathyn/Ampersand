@@ -12,7 +12,7 @@ Socialrails::Application.routes.draw do
   end
   resources :opinions,      :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
-  resources :hashtags,      :only => :create
+  resources :hashtags
   resources :messages,      :only => :create
 
   root :to => 'static_pages#home'

@@ -84,13 +84,18 @@ ActiveRecord::Schema.define(:version => 20121219201110) do
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "micropost_id"
+    t.integer  "hashtag_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "tags", ["name", "created_at"], :name => "index_tags_on_name_and_created_at"
-  add_index "tags", ["name"], :name => "index_tags_on_name"
+  add_index "tags", ["hashtag_id", "created_at"], :name => "index_tags_on_hashtag_id_and_created_at"
+  add_index "tags", ["hashtag_id"], :name => "index_tags_on_hashtag_id"
+  add_index "tags", ["micropost_id", "created_at"], :name => "index_tags_on_micropost_id_and_created_at"
+  add_index "tags", ["micropost_id", "hashtag_id", "created_at"], :name => "index_tags_on_micropost_id_and_hashtag_id_and_created_at"
+  add_index "tags", ["micropost_id", "hashtag_id"], :name => "index_tags_on_micropost_id_and_hashtag_id", :unique => true
+  add_index "tags", ["micropost_id"], :name => "index_tags_on_micropost_id"
 
   create_table "users", :force => true do |t|
     t.string   "realname"

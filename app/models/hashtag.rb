@@ -1,6 +1,6 @@
 class Hashtag < ActiveRecord::Base
-	attr_accessible :name
+  attr_accessible :name
 
-  has_many :hashtags, dependent: :destroy  
-  has_many :microposts, through: :hashtags 
+  has_many :tags, dependent: :destroy
+  has_many :microposts, through: :tags
 end

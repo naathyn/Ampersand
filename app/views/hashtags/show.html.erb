@@ -1,0 +1,5 @@
+<h2> <small>#</small><%= @hashtag.name %> </h2>
+
+<% @microposts.each do |micropost| %>
+  <%= render partial: 'feeds/main/share', item: micropost, as: "item" %>
+<% end %>

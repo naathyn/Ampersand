@@ -7,13 +7,14 @@ class Micropost < ActiveRecord::Base
   has_many :likes, foreign_key: "like_id", class_name: "Opinion", dependent: :destroy
   has_many :fans, through: :likes
 
-  has_many :tags
+  has_many :tags, dependent: :destroy
   has_many :hashtags, through: :tags
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { minimum: 5, maximum: 800 }
 
   after_validation :reply_n_linkify
+  after_save :arrange_hashtags
 
   default_scope order: 'microposts.created_at DESC'
 
@@ -33,6 +34,15 @@ private
 
         user = "<a href='/users/#{user.name}'>@#{user.name}</a>" if user
         self.content = "#{user} #{content.gsub(/\A@([^\s]*)/,'')}"
+      end
+    end
+
+    def arrange_hashtags
+      if match = /\#([^\s]*)/.match(content)
+        self.hashtags = content.split(/\,/).map do |name|
+          name.gsub!(/#/, '')
+          Hashtag.find_or_create_by_name(name)
+        end
       end
     end
 end
