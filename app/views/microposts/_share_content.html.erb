@@ -36,9 +36,9 @@
         </li>
 
         <% if current_user.liked?(@micropost) %>
-          <%= render 'scripts/modal_unlike' %>
+          <%= render 'unlike' %>
         <% else %>
-          <%= render 'scripts/modal_like' %>
+          <%= render 'like' %>
         <% end %>
 
       <% end %>

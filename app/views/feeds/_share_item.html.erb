@@ -1,19 +1,15 @@
 <div id="<%= item.id %>" class="well well-inner">
 
-  <%= render partial: 'feeds/shared/header', object: item, as: 'item' %>
+  <%= render partial: 'feeds/shared/header', object: item, as: :item %>
 
-      <div class="well-footer">
+    <div class="well-footer">
 
-      <%= render partial: 'feeds/shared/footer-stats', object: item, as: 'item' %>
-
-      <%= link_to "Detach", fans_micropost_path(item), { remote: true,
-          'data-toggle' =>"modal", 'data-target' => "#modal-window",
-          class: "shown detach" } %>
+      <%= render partial: 'feeds/shared/footer', object: item, as: :item %>
 
         <ul class="share-actions">
           <% if current_user?(item.user) %>
 
-            <%= render partial: 'feeds/shared/delete', object: item, as: 'item' %>
+            <%= render partial: 'feeds/shared/delete', object: item, as: :item %>
 
           <% else %>
 
@@ -23,18 +19,18 @@
               <i class="icon-comment"></i>Reply</a>
             </li>
 
-              <% if current_user.liked?(item) %>
+          <% if current_user.liked?(item) %>
 
-                <%= render partial: 'feeds/shared/unlike', object: item, as: 'item' %>
+            <%= render partial: 'feeds/shared/unlike', object: item, as: :item %>
 
-              <% else %>
+          <% else %>
 
-            <%= render partial: 'feeds/shared/like', object: item, as: 'item' %>
+            <%= render partial: 'feeds/shared/like', object: item, as: :item %>
 
           <% end %>
         </ul>
 
-      <%= render partial: 'feeds/shared/form', object: item, as: 'item' %>
+      <%= render partial: 'feeds/shared/form', object: item, as: :item %>
 
     <% end %>
   </div>

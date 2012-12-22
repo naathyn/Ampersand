@@ -86,12 +86,7 @@ footer {
 
 footer .container {
   width: auto;
-  a {
-    color: $gray;
-    &:hover {
-      color: $grayDarker;
-    }
-  }
+  a { color: $blueDark; &:hover { color: $blue;} }
 }
 
 aside {

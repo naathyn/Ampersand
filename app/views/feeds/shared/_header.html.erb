@@ -2,7 +2,9 @@
 
   <% if item.user.captchas.any? %>
 
-    <span class="captchas" data-original-title="<%= item.user.randomized_captcha.content %>">
+    <% item.user.captchas.shuffle! %>
+    <span class="captchas" 
+          data-original-title="<%= item.user.captchas.last.content %>">
       <%= gravatar_for(item.user, size: 48) %>
     </span>
 
@@ -20,14 +22,14 @@
 
     <small class="timestamp">
       <%= link_to "#{time_ago_in_words(item.created_at)} ago",
-      fans_micropost_path(item), { remote: true, 'data-toggle' => "modal",
+      likes_micropost_path(item), { remote: true, 'data-toggle' => "modal",
       'data-target' => "#modal-window", class: "timestamp" } %>
     </small>
 
   </div>
 
   <span class="content" data-toggle="collapse"
-  data-target="#<%= item.id %>_reply">
+        data-target="#<%= item.id %>_reply">
     <%= auto_link(item.content, html: { target: '_blank' }) do |content|
-    truncate(content, length: 30) end %>
-</span>
+        truncate(content, length: 30) end %>
+  </span>

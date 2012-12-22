@@ -1,0 +1,24 @@
+<% if item.fans.any? %>
+
+  <% item.fans.each do |user| %>
+  <ul class="inline-share-stats share-stats hearts likes"
+      data-original-title="<li><%= user.name %></li>">
+  <% end %>
+
+<% else %>
+  <ul class="inline-share-stats share-stats">
+<% end %>
+
+    <li>
+      <a><i class="icon-heart"></i>
+        <strong id="likes<%= item.id %>">
+          <%= item.fans.count %>
+        </strong>
+      </a>
+    </li>
+
+  </ul>
+
+<%= link_to "Detach", likes_micropost_path(item), { remote: true,
+    'data-toggle' =>"modal", 'data-target' => "#modal-window",
+        class: "shown detach" } %>

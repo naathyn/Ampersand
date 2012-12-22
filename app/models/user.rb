@@ -51,10 +51,6 @@ class User < ActiveRecord::Base
     Micropost.from_users_followed_by(self)
   end
 
-  def randomized_captcha
-    Captcha.from_random_captcha_ids(self)
-  end
-
   def chat
     Message.from_chatroom_users(self)
   end

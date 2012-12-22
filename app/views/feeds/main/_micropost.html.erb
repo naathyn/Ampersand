@@ -1,8 +1,6 @@
 <% if @microposts.any? %>
 
-  <% @microposts.each do |micropost| %>
-    <%= render partial: 'feeds/share_item', object: micropost, as: "item" %>
-  <% end %>
+  <%= render partial: 'feeds/share_item', collection: @microposts, as: :item %>
 
     <div class="well-bottom">
       <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>

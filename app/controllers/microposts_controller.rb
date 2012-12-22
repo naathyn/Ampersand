@@ -22,9 +22,9 @@ class MicropostsController < ApplicationController
     redirect_to root_url
   end
 
-  def fans
+  def likes
     @micropost = Micropost.find(params[:id])
-    @microposts = @micropost.fans.paginate(page: params[:page], per_page: 5)
+    @microposts = @micropost.fans.page(params[:page])
   end
 
 private

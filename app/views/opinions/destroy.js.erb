@@ -1,4 +1,4 @@
-$("#like_form<%= @micropost.id %>").html("<%= escape_javascript(render('scripts/like')) %>")
+$("#like_form").html("<%= escape_javascript(render partial: ('feeds/shared/like'), object: @micropost, as: :item) %>")
 $("#likes<%= @micropost.id %>").html("<%= @micropost.likes.count %>")
-$("#modal_like_form<%= @micropost.id %>").html("<%= escape_javascript(render('scripts/modal_like')) %>")
+$("#modal_like_form<%= @micropost.id %>").html("<%= escape_javascript(render('microposts/like')) %>")
 $("#modal_likes<%= @micropost.id %>").html("<%= @micropost.likes.count %>")

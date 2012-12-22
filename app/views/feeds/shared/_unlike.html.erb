@@ -1,4 +1,4 @@
-<li id="like_form<%= item.id %>">
+<li id="like_form">
   <%= form_for(current_user.opinions.find_by_like_id(item),
           html: { method: :delete },
         remote: true) do |f| %>

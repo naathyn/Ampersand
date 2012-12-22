@@ -1,9 +1,6 @@
 <% if @replies.any? %>
 
-  <% @replies.each do |reply| %>
-    <%= render partial: 'feeds/share_item', object: reply, as: "item" %>
-
-  <% end %>
+    <%= render partial: 'feeds/share_item', collection: @replies, as: :item %>
 
     <div class="well-bottom">
       <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>

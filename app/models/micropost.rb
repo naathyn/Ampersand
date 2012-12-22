@@ -31,7 +31,6 @@ private
       if match = /\A@([^\s]*)/.match(content)
         user = User.find_by_name(match[1])
         self.to ||= user
-
         user = "<a href='/users/#{user.name}'>@#{user.name}</a>" if user
         self.content = "#{user} #{content.gsub(/\A@([^\s]*)/,'')}"
       end
@@ -39,10 +38,9 @@ private
 
     def arrange_hashtags
       if match = /\#([^\s]*)/.match(content)
-        self.hashtags = content.split(/\,/).map do |name|
-          name.gsub!(/#/, '')
-          Hashtag.find_or_create_by_name(name)
-        end
+        self.hashtags = content.split(/\#([^\s]+[a-zA-z]+[^\s*])/).map do |name|
+        Hashtag.find_or_create_by_name(name)
       end
     end
+  end
 end
