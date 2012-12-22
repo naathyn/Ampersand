@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def chat
-    Message.from_chatroom_users(self)
+    Message.from_users_followed_by_including_private_messages(self)
   end
 
   def following?(other_user)
