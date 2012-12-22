@@ -330,16 +330,21 @@ section { overflow: auto; }
 
 .well-header, .well-bottom {
   border: 1px solid $moduleBorder;
+  color: $textGrayLight;
+  font-weight: bold;
   text-align: right;
+  min-height: 17px;
+  padding: 8px;
 }
 
 .well-header {
-  color: $textGrayLight;
-  font-weight: bold;
-  padding: 8px;
-  min-height: 17px;
   border-bottom-width: 0;
   @include well-header;
+}
+
+.well-bottom {
+  border-top-width: 0;
+  @include well-bottom;
 }
 
 .well {
@@ -350,13 +355,6 @@ section { overflow: auto; }
   margin: 0;
   padding: 12px;
   @include well;
-}
-
-.well-bottom {
-  border-top-width: 0;
-  padding: 10px;
-  min-height: 7px;
-  @include well-bottom;
 }
 
 .well-inner-header, .modal_header {
@@ -806,6 +804,9 @@ section { overflow: auto; }
 
 /* various different icons */
 
+[class^="icon-camera"], [class*=" icon-camera"] { margin-left: 12px; }
+#comment-bar { margin-left: 11px; }
+
 [class^="icon-comment"], [class*=" icon-comment"] {
   margin-right: 5px;
   margin-left: 1px;
@@ -816,7 +817,7 @@ section { overflow: auto; }
   margin-left: 3px;
 }
 
-[class^="icon-remove"], [class*=" icon-remove"] {vertical-align: 3px;}
+[class^="icon-remove"], [class*=" icon-remove"] { vertical-align: 3px; }
 
 /* alert messages */
 

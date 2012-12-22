@@ -24,11 +24,18 @@
 
           <div id="feed" class="span8">
             <div class="well-header">
-              <a href="<%= user_path(current_user) %>" title="Profile">
-                <i class="icon-user"> </i>
-              </a>
+              <a href="<%= user_path(current_user) %>" 
+                title="Profile"><i class="icon-user"></i></a>
+
+              <a href="<%= captchas_user_path(current_user) %>"
+                title="Captchas"><i class="icon-camera"></i></a>
+
+              <a href="<%= chatroom_users_path %>" 
+                title="Chatroom"><i class="icon-comment" id="comment-bar"></i></a>
             </div>
+
               <%= render 'feeds/main/share' %>
+
             <div class="well-bottom" style="margin-bottom:1em;">
               <a href="#" title="Top"><i class="icon-arrow-up"></i></a>
             </div>
