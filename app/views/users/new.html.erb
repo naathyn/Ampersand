@@ -1,8 +1,15 @@
 <% content_for :head do %>
-  <% provide(:title, 'Sign up') %>
+  <% provide(:title, @title) %>
 <% end %>
 
-<h1>Registration</h1>
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", root_path %> 
+    <span class="divider">/</span></li>
+
+    <li class="active"><%= @title %></li>
+  </ul>
+
+<legend><%= @title %></legend>
 
 <div class="row-fluid">
   <div class="span5 offset3">
@@ -14,7 +21,7 @@
       <%= f.text_field :realname %>
 
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.email_field :email %>
 
       <%= f.label :name, "Username" %>
       <%= f.text_field :name %>
@@ -25,7 +32,7 @@
       <%= f.label :password_confirmation, "Retype Password" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
 
     <% end %>
 

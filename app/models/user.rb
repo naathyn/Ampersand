@@ -31,9 +31,7 @@ class User < ActiveRecord::Base
                     format: { with: VALID_REALNAME },
                     uniqueness: { case_sensitive: false }
 
-  VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL },
-                    uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   VALID_USERNAME = /\A[a-z\d_]*\Z/i
   validates :name, presence: true, 
@@ -51,13 +49,13 @@ class User < ActiveRecord::Base
     Micropost.from_users_followed_by(self)
   end
 
+  def chat
+    Message.from_users_followed_by_including_private_messages(self)
+  end
+
   def random_captcha
     self.captchas.shuffle!
     self.captchas.last
-  end
-
-  def chat
-    Message.from_users_followed_by_including_private_messages(self)
   end
 
   def following?(other_user)

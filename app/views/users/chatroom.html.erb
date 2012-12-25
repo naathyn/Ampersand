@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <% provide(:title, 'Chatroom') %>
+  <% provide(:title, @title) %>
 <% end %>
 
   <ul class="breadcrumb">
@@ -10,7 +10,7 @@
       <span class="divider">/</span>
     </li>
 
-    <li class="active">Chatroom</li>
+    <li class="active"><%= @title %></li>
   </ul>
 
 <div class="row-fluid">

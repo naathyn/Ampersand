@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <% provide(:title, @user.name) %>
+  <% provide(:title, @title) %>
 <% end %>
 
   <ul class="breadcrumb">
@@ -7,15 +7,15 @@
     <span class="divider">/</span></li>
     <li><%= link_to "Members", users_path %> 
     <span class="divider">/</span></li>
-    <li><%= link_to @user.realname, user_path(@user) %> 
+    <li><%= link_to "@#{current_user.name}", current_user %> 
     <span class="divider">/</span></li>
 
-    <li class="active">Edit</li>
+    <li class="active"><%= @title %></li>
   </ul>
 
-<h1>Update Profile</h1>
+<legend><%= @title %></legend>
 
-<div class="row">
+<div class="row-fluid">
   <div class="span5 offset3">
 
    <%= gravatar_for(@user, size: 75) %>
@@ -40,7 +40,7 @@
       <%= f.text_area :bio, rows: "2", placeholder: "In a short 255 words, please :)" %>
 
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.email_field :email %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>

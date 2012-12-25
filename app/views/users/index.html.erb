@@ -1,11 +1,12 @@
 <% content_for :head do %>
-  <% provide(:title, 'Members') %>
+  <% provide(:title, @title) %>
 <% end %>
 
   <ul class="breadcrumb">
     <li><%= link_to "Home", root_path %> 
     <span class="divider">/</span></li>
-    <li class="active">Members</li>
+
+    <li class="active"><%= @title %></li>
   </ul>
 
   <ul class="nav nav-tabs">

@@ -6,11 +6,13 @@ class UsersController < ApplicationController
   before_filter :wipe_the_chat, only: :chatroom
 
   def index
+    @title = "Members"
     @users = User.page(params[:page]).order('created_at DESC')
   end
 
  def show
     @user       = User.find_by_name(params[:id])
+    @title      = "@#{@user.name}"
     @replies    = current_user.replies.paginate(page: params[:page], include: [:user => :captchas])
     @microposts = @user.microposts.paginate(page: params[:page], include: [:user => :captchas])
     @following  = @user.followed_users.paginate(page: params[:page], include: :relationships)
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @title = "Sign up"
     @user = User.new
   end
 
@@ -37,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @title = "Account"
   end
 
   def update
@@ -57,7 +61,7 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find_by_name(params[:id])
-    @title = @user.realname
+    @title = "@#{@user.name}"
     @active = "Following"
     @users = @user.followed_users.page(params[:page])
     render 'show_follow'
@@ -65,13 +69,14 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.find_by_name(params[:id])
-    @title = @user.realname
+    @title = "@#{@user.name}"
     @active = "Followers"
     @users = @user.followers.page(params[:page])
     render 'show_follow'
   end
 
   def captchas
+    @title = "Captchas"
     @user = User.find_by_name(params[:id])
     @captchas = @user.captchas.page(params[:page]).order('created_at DESC')
     @captcha = current_user.captchas.build
@@ -79,6 +84,7 @@ class UsersController < ApplicationController
   end
 
   def chatroom
+    @title = "Chatroom"
     @messages = current_user.chat.paginate(page: params[:page], per_page: 15, 
     include: [:user => :relationships])
   end

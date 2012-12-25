@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   def new
     if signed_in?
       redirect_to(root_url, notice: "You are already signed in")
+    else
+      @title = "Sign in"
     end
   end
 

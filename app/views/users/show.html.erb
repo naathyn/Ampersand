@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <% provide(:title, @user.realname) %>
+  <% provide(:title, @title) %>
 <% end %>
 
   <% @user ||= current_user %>
@@ -11,13 +11,13 @@
       <span class="divider">/</span>
     </li>
 
-    <li class="active"><%= @user.realname %></li>
+    <li class="active"><%= @title %></li>
   </ul>
 
   <%= render 'shared/profile_stats' %>
 
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#profile">@<%= @user.name %></a></li>
+    <li class="active"><a href="#profile"><%= @title %></a></li>
 
       <% if current_user?(@user) %>
 
