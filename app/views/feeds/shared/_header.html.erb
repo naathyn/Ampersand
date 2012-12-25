@@ -2,9 +2,8 @@
 
   <% if item.user.captchas.any? %>
 
-    <% item.user.captchas.shuffle! %>
     <span class="captchas" 
-          data-original-title="<%= item.user.captchas.last.content %>">
+          data-original-title="<%= item.user.random_captcha.content %>">
       <%= gravatar_for(item.user, size: 48) %>
     </span>
 

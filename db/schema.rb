@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219201110) do
+ActiveRecord::Schema.define(:version => 20121225195731) do
 
   create_table "captchas", :force => true do |t|
     t.integer  "user_id"

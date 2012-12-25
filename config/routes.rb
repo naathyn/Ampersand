@@ -1,4 +1,5 @@
 Socialrails::Application.routes.draw do
+
   resources :users do
     get :chatroom, :on => :collection
     member do
@@ -12,7 +13,7 @@ Socialrails::Application.routes.draw do
   end
   resources :opinions,      :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
-  resources :hashtags,      :only => [:create, :destroy]
+  resources :hashtags,      :only => :create
   resources :messages,      :only => :create
 
   root :to => 'static_pages#home'
