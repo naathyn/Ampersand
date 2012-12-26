@@ -26,24 +26,21 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
-  validates :realname, presence: true, 
-                    length: { minimum: 2, maximum: 20 },
-                    format: { with: VALID_REALNAME },
-                    uniqueness: { case_sensitive: false }
-
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
-
   VALID_USERNAME = /\A[a-z\d_]*\Z/i
-  validates :name, presence: true, 
-                    length: { minimum: 5, maximum: 15 },
-                    format: { with: VALID_USERNAME }, 
-                    uniqueness: { case_sensitive: false }
 
-  validates :location, length: { maximum: 50 }
-  validates :bio, length: { maximum: 255 }
+  validates_presence_of :realname, :email, :name
+  validates_uniqueness_of :realname, :email, :name, case_sensitive: false
 
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates_length_of :realname, within: 2..20
+  validates_length_of :name, within: 5..15
+  validates_length_of :location, maximum: 50
+  validates_length_of :bio, maximum: 255
+
+  validates_length_of :password, minimum: 6
+  validates_confirmation_of :password_confirmation
+
+  validates_format_of :realname, with: VALID_REALNAME
+  validates_format_of :name, with: VALID_USERNAME
 
   def share
     Micropost.from_users_followed_by(self)

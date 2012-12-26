@@ -10,8 +10,8 @@ class Micropost < ActiveRecord::Base
   has_many :tags, dependent: :destroy
   has_many :hashtags, through: :tags
 
-  validates :user_id, presence: true
-  validates :content, presence: true, length: { minimum: 5, maximum: 800 }
+  validates_presence_of :user_id, :content
+  validates_length_of :content, within: 5..800
 
   after_validation :reply_n_linkify
   after_save :arrange_hashtags
@@ -38,7 +38,7 @@ private
 
     def arrange_hashtags
       if match = /\#([^\s]*)/.match(content)
-        self.hashtags = content.split(/\#([^\s])*/).map do |name|
+        self.hashtags = content.split(/\#([^\s]*)/).map do |name|
         Hashtag.find_or_create_by_name(name)
       end
     end

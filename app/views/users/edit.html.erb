@@ -7,7 +7,7 @@
     <span class="divider">/</span></li>
     <li><%= link_to "Members", users_path %> 
     <span class="divider">/</span></li>
-    <li><%= link_to "@#{current_user.name}", current_user %> 
+    <li><%= link_to "@#{@user.name}", @user %> 
     <span class="divider">/</span></li>
 
     <li class="active"><%= @title %></li>

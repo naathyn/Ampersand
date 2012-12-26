@@ -11,15 +11,13 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @shares = []
-      flash.now[:notice] = "Don't look at me..."
       render 'static_pages/home'
     end
   end
 
   def destroy
     @micropost.destroy
-    flash[:notice] = "Your share has been removed"
-    redirect_to root_url
+    redirect_to(root_url, notice: "Your share has been removed")
   end
 
   def likes

@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 
   def edit
     @title = "Account"
+    @user = User.find_by_name(params[:id])
   end
 
   def update
@@ -55,8 +56,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:notice] = "User removed"
-    redirect_to users_url
+    redirect_to(users_url, notice: "User removed")
   end
 
   def following
