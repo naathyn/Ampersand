@@ -38,7 +38,7 @@ private
 
     def arrange_hashtags
       if match = /\#([^\s]*)/.match(content)
-        self.hashtags = content.split(/\#([^\s]+[a-zA-z]+[^\s*])/).map do |name|
+        self.hashtags = content.split(/\#([\w][^\s]*)/).map do |name|
         Hashtag.find_or_create_by_name(name)
       end
     end
