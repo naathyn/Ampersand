@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     @title      = "@#{@user.name}"
     @replies    = current_user.replies.paginate(page: params[:page], include: [:user => :captchas])
     @microposts = @user.microposts.paginate(page: params[:page], include: [:user => :captchas])
-    @following  = @user.followed_users.paginate(page: params[:page], include: :relationships)
-    @followers  = @user.followers.paginate(page: params[:page], include: :relationships)
+    @following  = @user.followed_users.page(params[:page])
+    @followers  = @user.followers.page(params[:page])
     @micropost  = current_user.microposts.build
   end
 
@@ -30,9 +30,9 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome, and thanks for joining!  
-      Why don't you edit your profile and tell us a little about yourself?  
-      Whenever you're ready, hit Home to check out your feed.  
-      Post some content and follow members to fill it up!"
+                        Why don't you edit your profile and tell us a little about yourself?  
+                        Whenever you're ready, hit Home to check out your feed.  
+                        Post some content and follow members to fill it up!"
       redirect_to @user
     else
       render 'new'
@@ -85,8 +85,7 @@ class UsersController < ApplicationController
 
   def chatroom
     @title = "Chatroom"
-    @messages = current_user.chat.paginate(page: params[:page], per_page: 15, 
-    include: [:user => :relationships])
+    @messages = current_user.chat.paginate(page: params[:page], per_page: 15)
   end
 
 private
