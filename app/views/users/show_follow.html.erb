@@ -4,11 +4,14 @@
 
   <ul class="breadcrumb">
     <li><%= link_to "Home", root_path %> 
-      <span class="divider">/</span></li>
+      <span class="divider">/</span>
+    </li>
     <li><%= link_to "Members", users_path %> 
-      <span class="divider">/</span></li>
+      <span class="divider">/</span>
+    </li>
     <li><%= link_to @title, user_path(@user) %> 
-      <span class="divider">/</span></li>
+      <span class="divider">/</span>
+    </li>
 
     <li class="active"><%= @active %></li>
   </ul>
@@ -16,7 +19,6 @@
   <div class="row-fluid">
 
     <aside class="span4 side-module side-menu mini-profile">
-
       <a href="<%= user_path(@user) %>" class="share-anchor">
         <section>
           <%= render 'shared/user_info' %>

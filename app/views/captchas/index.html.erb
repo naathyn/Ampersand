@@ -2,11 +2,16 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <ul class="captchas breadcrumb">
+  <ul class="breadcrumb">
     <li><%= link_to "Home", :root %> 
-    <span class="divider">/</span></li>
+      <span class="divider">/</span>
+    </li>
+    <li><%= link_to "Members", :users %> 
+      <span class="divider">/</span>
+    </li>
     <li><%= link_to "@#{current_user.name}", current_user %> 
-    <span class="divider">/</span></li>
+      <span class="divider">/</span>
+    </li>
 
     <li class="active"><%= @title %></li>
   </ul>

@@ -1,8 +1,6 @@
 <% content_for :head do %>
   <% provide(:title, @title) %>
 <% end %>
-
-  <%= yield flash[:info] = "Last updated on December 25th at 5:30 pm, CST tagged: touchups to the global layout" %>
   
     <% if signed_in? %>
 
@@ -47,6 +45,9 @@
         </div>
 
       <% else %>
+
+      <%= yield flash.now[:info] = "Last updated on December 29th at 2:00 pm, 
+                                CST tagged: touchups to the global layout" %>
 
       <div class="center hero-unit">
 
