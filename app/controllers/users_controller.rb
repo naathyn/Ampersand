@@ -46,8 +46,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated successfully"
       sign_in @user
+      flash[:success] = "Profile updated successfully"
       redirect_to @user
     else
       render 'edit'
@@ -86,6 +86,7 @@ class UsersController < ApplicationController
   def chatroom
     @title = "Chatroom"
     @messages = current_user.chat.paginate(page: params[:page], include: :user)
+    flash.now[:notice] = "Welcome to the chat!  Expect rooms and private messaging soon."
   end
 
 private

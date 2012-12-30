@@ -801,53 +801,6 @@ aside {
 .captcha .content { font-size: 15px; }
 .captcha p { margin: 0; }
 
-/* various different icons */
-
-[class^="icon-camera"], [class*=" icon-camera"] { margin-left: 12px; }
-#comment-bar { margin-left: 11px; }
-
-[class^="icon-comment"], [class*=" icon-comment"] {
-  margin-right: 5px;
-  margin-left: 1px;
-}
-
-[class^="icon-heart"], [class*=" icon-heart"], [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
-  vertical-align: 2px;
-  margin-left: 3px;
-}
-
-[class^="icon-remove"], [class*=" icon-remove"] { vertical-align: 3px; }
-
-/* alert messages */
-
-#alert-notice {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-#error_explanation {
-  color: $red;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
-  }
-}
-
-#inline {
-  margin-left: -10px;
-  margin-bottom: 5px;
-}
-
-#alert-inline {
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
-}
-
 /* users chatroom in development */
 
 .chat_container_text {
@@ -903,11 +856,58 @@ aside {
 .chat_container .room:first-child { margin-top: 0; }
 .chat_container_text form input { margin: 15px 0px -10px 73px; }
 
+/* various different icons */
+
+[class^="icon-camera"], [class*=" icon-camera"] { margin-left: 12px; }
+#comment-bar { margin-left: 11px; }
+
+[class^="icon-comment"], [class*=" icon-comment"] {
+  margin-right: 5px;
+  margin-left: 1px;
+}
+
+[class^="icon-heart"], [class*=" icon-heart"], [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
+  vertical-align: 2px;
+  margin-left: 3px;
+}
+
+[class^="icon-remove"], [class*=" icon-remove"] { vertical-align: 3px; }
+
+/* alert messages */
+
+#alert-notice {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#error_explanation {
+  color: $red;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+#inline {
+  margin-left: -10px;
+  margin-bottom: 5px;
+}
+
+#alert-inline {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
 /* debugging for development */
 
 .debug_dump {
   clear: both;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 3em;
   @include paddings; @include forms;
 }

@@ -15,18 +15,7 @@
 
 <div class="row-fluid">
 
-  <aside class="span4 side-module side-menu mini-profile">
-    <a href="<%= user_path(current_user) %>" class="share-anchor">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-    </a>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-
-  <div id="chat_wrapper" class="span8">
+  <div id="chat_wrapper" class="span10 offset1">
     <div class="well-header"></div>
 
     <div class="chat_container">
