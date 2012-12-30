@@ -18,6 +18,14 @@ class Micropost < ActiveRecord::Base
 
   default_scope order: 'microposts.created_at DESC'
 
+  def fan_likes
+    if self.likes.any?
+      self.likes.count
+    else
+      0
+    end
+  end
+
 private
 
     def self.from_users_followed_by(user)
