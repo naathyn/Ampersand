@@ -1,6 +1,6 @@
 source 'https://www.rubygems.org/'
 
-gem 'rails'
+gem 'rails', '3.2.9'
 gem 'thin'
 gem 'pg'
 gem 'bcrypt-ruby'
@@ -27,6 +27,6 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara', '1.1.3'
+  gem 'capybara'
   gem 'factory_girl_rails'
 end
