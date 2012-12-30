@@ -729,8 +729,9 @@ aside {
 /* included in static_pages/about#show */
 
 .quote {
+  margin-top: 1em;
   border: 1px dashed $quotesBorder;
-  padding: 1em;
+  padding: 1em 1em .5em 2em;
 }
 
 .quote blockquote li:last-child { margin-bottom: -18px; }
