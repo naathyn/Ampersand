@@ -1,4 +1,4 @@
-<% if item.fans.any? %>
+<% if item.likes.any? %>
 
   <ul class="inline-share-stats share-stats hearts likes"
       data-original-title="<% item.fans.each do |user| %>
@@ -12,7 +12,7 @@
     <li>
       <a><i class="icon-heart"></i>
         <strong id="likes<%= item.id %>">
-          <%= item.fans.count %>
+          <%= item.likes.count %>
         </strong>
       </a>
     </li>
