@@ -11,13 +11,13 @@ class UsersController < ApplicationController
   end
 
  def show
-    @user       = User.find_by_name(params[:id])
-    @title      = "@#{@user.name}"
-    @replies    = current_user.replies.paginate(page: params[:page], include: [:user => :captchas])
+    @user = User.find_by_name(params[:id])
+    @title = "@#{@user.name}"
+    @replies = current_user.replies.paginate(page: params[:page], include: [:user => :captchas])
     @microposts = @user.microposts.paginate(page: params[:page], include: [:user => :captchas])
-    @following  = @user.followed_users.page(params[:page])
-    @followers  = @user.followers.page(params[:page])
-    @micropost  = current_user.microposts.build
+    @following = @user.followed_users.page(params[:page])
+    @followers = @user.followers.page(params[:page])
+    @micropost = current_user.microposts.build
   end
 
   def new
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   def chatroom
     @title = "Chatroom"
     @messages = current_user.chat.paginate(page: params[:page], include: :user)
-    flash.now[:notice] = "Welcome to the chat!  Expect rooms and private messaging soon."
+    flash.now[:notice] = "Welcome to the Chat! Expect rooms and private messaging soon."
   end
 
 private
