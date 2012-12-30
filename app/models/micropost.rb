@@ -11,7 +11,7 @@ class Micropost < ActiveRecord::Base
   has_many :hashtags, through: :tags
 
   validates_presence_of :user_id, :content
-  validates_length_of :content, within: 5..800
+  validates_length_of :content, within: (5..800)
 
   after_validation :reply_n_linkify
   after_save :arrange_hashtags

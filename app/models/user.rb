@@ -20,10 +20,6 @@ class User < ActiveRecord::Base
 
   has_many :messages, dependent: :delete_all
   has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
-  
-  before_save { |user| user.email = email.downcase }
-  before_save { |user| user.name = name.downcase }
-  before_save :create_remember_token
 
   VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
   VALID_USERNAME = /\A[a-z\d_]*\Z/i
@@ -31,8 +27,8 @@ class User < ActiveRecord::Base
   validates_presence_of :realname, :email, :name
   validates_uniqueness_of :realname, :email, :name, case_sensitive: false
 
-  validates_length_of :realname, within: 2..20
-  validates_length_of :name, within: 5..15
+  validates_length_of :realname, within: (2..20)
+  validates_length_of :name, within: (5..15)
   validates_length_of :location, maximum: 50
   validates_length_of :bio, maximum: 255
 
@@ -41,6 +37,10 @@ class User < ActiveRecord::Base
 
   validates_format_of :realname, with: VALID_REALNAME
   validates_format_of :name, with: VALID_USERNAME
+
+  before_save { |user| user.email = email.downcase }
+  before_save { |user| user.name = name.downcase }
+  before_save :create_remember_token
 
   def share
     Micropost.from_users_followed_by(self)

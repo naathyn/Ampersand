@@ -21,7 +21,6 @@
       </h2>
 
       <span class="bio"><%= @user.bio %></span>
-
       <span class="location"><%= @user.location %></span> 
 
     </div> <!-- profile-inner -->
@@ -39,7 +38,7 @@
 
           <li>
             <a href="<%= user_path(@user) %>">
-              <strong id="@user"><%= @microposts.count %></strong> 
+              <strong><%= @microposts.count %></strong> 
               shares
             </a>
           </li>

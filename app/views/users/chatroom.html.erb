@@ -3,10 +3,10 @@
 <% end %>
 
   <ul class="breadcrumb">
-    <li><%= link_to "Home", root_path %> 
+    <li><%= link_to "Home", :root %> 
       <span class="divider">/</span>
     </li>
-    <li><%= link_to "Members", users_path %> 
+    <li><%= link_to "Members", :users %> 
       <span class="divider">/</span>
     </li>
 
@@ -39,7 +39,7 @@
       <div class="chat_container_text" id="chat_box">
         <%= form_for(current_user.messages.build, remote: true) do |f| %>
           <%= f.text_field :content, 
-          placeholder: "Press enter to send your message." %>
+              placeholder: "Press enter to send your message." %>
         <% end %>
       </div>
     </div> <!-- chat_container -->

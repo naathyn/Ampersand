@@ -1,5 +1,4 @@
 Socialrails::Application.routes.draw do
-
   resources :users do
     get :chatroom, :on => :collection
     member do

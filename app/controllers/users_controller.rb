@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 
   def chatroom
     @title = "Chatroom"
-    @messages = current_user.chat.paginate(page: params[:page], per_page: 15)
+    @messages = current_user.chat.paginate(page: params[:page], include: :user)
   end
 
 private
@@ -105,8 +105,7 @@ private
     end
 
     def wipe_the_chat
-      @messages = current_user.chat
-      @messages.all.each do |message|
+      current_user.chat.all.each do |message|
         if message.created_at<=(1.day.ago)
           message.delete
         end

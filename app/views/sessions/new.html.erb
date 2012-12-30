@@ -2,11 +2,18 @@
   <% provide(:title, @title) %>
 <% end %>
 
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", :root %> 
+    <span class="divider">/</span></li>
+
+    <li class="active"><%= @title %></li>
+  </ul>
+
 <legend><%= @title %></legend>
 
 <div class="row-fluid">
   <div class="span5 offset3">
-    <%= form_for(:session, url: sessions_path) do |f| %>
+    <%= form_for(:session, url: :sessions) do |f| %>
 
       <%= f.label :name, "Username" %>
       <%= f.text_field :name %>
@@ -17,6 +24,6 @@
       <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
     <% end %>
 
-    <p>Not a member? <%= link_to "Sign up now!", signup_path %></p>
+    <p>Not a member? <%= link_to "Sign up now!", :signup %></p>
   </div>
 </div>

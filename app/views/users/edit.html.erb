@@ -3,9 +3,9 @@
 <% end %>
 
   <ul class="breadcrumb">
-    <li><%= link_to "Home", root_path %> 
+    <li><%= link_to "Home", :root %> 
     <span class="divider">/</span></li>
-    <li><%= link_to "Members", users_path %> 
+    <li><%= link_to "Members", :users %> 
     <span class="divider">/</span></li>
     <li><%= link_to "@#{@user.name}", @user %> 
     <span class="divider">/</span></li>

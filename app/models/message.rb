@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   belongs_to :to, class_name: "User"
 
   validates_presence_of :user_id, :content
-  validates_length_of :content, within: 2..500
+  validates_length_of :content, within: (2..500)
 
   before_save :alert_user
 
