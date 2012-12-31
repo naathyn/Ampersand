@@ -98,7 +98,9 @@ private
 
     def captcha_user
       @user = User.find_by_name(params[:id])
-      redirect_to(captchas_user_path(current_user)) unless current_user?(@user)
+        logger.error "#{current_user.realname} attempted access to @#{params[:id]}'s captcha index."
+      redirect_to(captchas_user_path(current_user),
+      notice: "You can find @#{params[:id]}'s captchas in the feeds") unless current_user?(@user)
     end
 
     def admin_user

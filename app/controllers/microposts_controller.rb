@@ -1,6 +1,7 @@
 class MicropostsController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: :destroy
+  before_filter :correct_post, only: :show
 
   respond_to :html, :js
 
@@ -35,5 +36,14 @@ private
     def correct_user
       @micropost = current_user.microposts.find_by_id(params[:id])
       redirect_to(root_url) if @micropost.nil?
+    end
+
+    def correct_post
+      begin
+        @micropost = Micropost.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        logger.error "#{current_user.realname} attempted access to an invalid post: ##{params[:id]}"
+        redirect_to root_url, notice: "No post with id ##{params[:id]}"
+      end
     end
 end
