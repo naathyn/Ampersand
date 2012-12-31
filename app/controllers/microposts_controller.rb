@@ -28,7 +28,7 @@ class MicropostsController < ApplicationController
 
   def likes
     @micropost = Micropost.find(params[:id], include: :likes)
-    @microposts = @micropost.fans.page(params[:page])
+    @microposts = @micropost.fans.paginate(page: params[:page], include: :opinions)
   end
 
 private
