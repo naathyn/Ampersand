@@ -1,5 +1,5 @@
 <li id="like_form<%= item.id %>">
-  <%= form_for(current_user.fans.build(like_id: item.id),
+  <%= form_for(current_user.opinions.build(like_id: item.id),
                remote: true) do |f| %>
         <div><%= f.hidden_field :like_id %></div>
       <i class="icon-thumbs-up"></i>

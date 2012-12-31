@@ -4,6 +4,9 @@
   
     <% if signed_in? %>
 
+      <%= yield flash.now[:info] = "Last updated on December 30th at 9:45 pm, 
+          CST: Click on the timestamps to view a 'prettier' share!" %>
+
       <div class="row-fluid">
 
         <aside class="span4 side-module side-menu mini-profile">
@@ -46,8 +49,8 @@
 
       <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on December 29th at 2:00 pm, 
-                                 CST tagged: touchups to the global layout" %>
+    <%= yield flash.now[:info] = "Last updated on December 30th at 9:45 pm, 
+                                 CST tagged: pages dedicated to members' shares" %>
 
       <div class="center hero-unit">
 

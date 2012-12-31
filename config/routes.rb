@@ -7,7 +7,7 @@ Socialrails::Application.routes.draw do
   end
   resources :sessions,      :only => [:new, :create, :destroy]
   resources :captchas,      :only => [:create, :destroy]
-  resources :microposts,    :only => [:create, :destroy] do
+  resources :microposts,    :only => [:show, :create, :destroy] do
     get :likes, :on => :member
   end
   resources :opinions,      :only => [:create, :destroy]

@@ -614,12 +614,11 @@ aside {
   transform: rotate(40deg);
 }
 
-.profile {
+.profile, .microposts-profile {
   text-shadow: 0px 1px 0px $white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   line-height: 16px;
-  @include profiles;
 }
 
 .profile-header {
@@ -670,7 +669,8 @@ aside {
   color: $grayLarge;
 }
 
-.profile-header .gravatar {margin-bottom: 3px;}
+.profile { @include profiles; }
+.profile-header .gravatar { margin-bottom: 3px; }
 
 /* User Profile Stats */
 
@@ -801,6 +801,33 @@ aside {
 
 .captcha .content { font-size: 15px; }
 .captcha p { margin: 0; }
+
+/* styles for microposts#show */
+
+.microposts-photo { 
+  float: none;
+  margin: 2.5em 7em;
+}
+
+.microposts-inner {
+  width: 100%;
+  strong {
+    font-size: 20px;
+    margin-left: 5px;
+  }
+  li { text-shadow: 0px 1px 0px $black; }
+}
+
+.profile-inner p {
+  font-family: Georgia,"Times New Roman",serif;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.microposts-profile { @include microposts;}
+.microposts-header { padding: 1.5em 3.5em .5em 2em }
+
+.profile-inner .content { margin-left: 58px; }
 
 /* users chatroom in development */
 

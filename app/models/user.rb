@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
-  has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
+  has_many :opinions, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -68,15 +68,15 @@ class User < ActiveRecord::Base
   end
 
   def liked?(random_share)
-    fans.find_by_like_id(random_share.id)
+    opinions.find_by_like_id(random_share.id)
   end
 
   def like!(random_share)
-    fans.create!(like_id: random_share.id)
+    opinions.create!(like_id: random_share.id)
   end
 
   def unlike!(random_share)
-    fans.find_by_like_id(random_share.id).destroy
+    opinions.find_by_like_id(random_share.id).destroy
   end
 
   def to_param

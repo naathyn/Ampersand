@@ -4,6 +4,10 @@
     <div class="well-footer">
       <%= render partial: 'feeds/shared/footer', object: item, as: :item %>
 
+        <%= link_to "Detach", likes_micropost_path(item), { remote: true,
+            'data-toggle' =>"modal", 'data-target' => "#modal-window",
+                class: "shown detach" } %>
+
         <ul class="share-actions">
           <% if current_user?(item.user) %>
             <%= render partial: 'feeds/shared/delete', object: item, as: :item %>

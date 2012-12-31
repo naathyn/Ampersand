@@ -4,6 +4,11 @@ class MicropostsController < ApplicationController
 
   respond_to :html, :js
 
+  def show
+    @micropost = Micropost.find(params[:id], include: [:likes => {:fan => :opinions}])
+    @title = @micropost.user.realname
+  end
+
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save

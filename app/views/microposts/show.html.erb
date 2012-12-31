@@ -1,0 +1,37 @@
+<% content_for :head do %>
+  <% provide(:title, @title) %>
+<% end %>
+
+
+<div class="photo tapetwo tapethree microposts-photo">
+
+  <div class="microposts-profile">
+    <div class="profile-header microposts-header">
+      <div class="row-fluid">
+
+        <div class="profile-inner microposts-inner">
+          <%= render partial: 'feeds/shared/footer', object: @micropost, as: :item %>
+
+            <%= gravatar_for(@micropost.user, size: 48) %>
+
+            <h1 class="fullname">
+              <%= @micropost.user.realname %>
+            </h1>
+
+            <h2 class="name">
+              <small>@</small><%= @micropost.user.name %>
+            </h2>
+
+            <p class="content">
+              <%= auto_link(@micropost.content, html: { target: '_blank' }) do |content|
+                  truncate(content, length: 30) end %>
+            </p>
+          </div>
+
+        <%= render 'like_form' %>
+
+      </div><!-- row-fluid -->
+    </div>
+  </div>
+
+</div><!-- tape-effects-->

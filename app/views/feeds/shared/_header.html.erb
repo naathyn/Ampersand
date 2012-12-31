@@ -21,8 +21,7 @@
 
     <small class="timestamp">
       <%= link_to "#{time_ago_in_words(item.created_at)} ago",
-      likes_micropost_path(item), { remote: true, 'data-toggle' => "modal",
-      'data-target' => "#modal-window", class: "timestamp" } %>
+      item, class: "timestamp" %>
     </small>
 
   </div>
