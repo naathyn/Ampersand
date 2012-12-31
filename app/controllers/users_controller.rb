@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
  def show
     @user = User.find_by_name(params[:id])
-    @title = "@#{@user.name}"
     @microposts = @user.microposts.paginate(page: params[:page], include: [:user => :captchas])
     @replies = current_user.replies.paginate(page: params[:page], include: [:user => :captchas])
     @following = @user.followed_users.page(params[:page])
@@ -98,9 +97,9 @@ private
 
     def captcha_user
       @user = User.find_by_name(params[:id])
-        logger.error "#{current_user.realname} attempted access to @#{params[:id]}'s captcha index."
+      logger.error "#{current_user.realname} attempted access to @#{params[:id]}'s captcha index."
       redirect_to(captchas_user_path(current_user),
-      notice: "You can find @#{params[:id]}'s captchas in the feeds") unless current_user?(@user)
+      notice: "You can find @#{params[:id]}'s Captcha's in the feeds") unless current_user?(@user)
     end
 
     def admin_user
