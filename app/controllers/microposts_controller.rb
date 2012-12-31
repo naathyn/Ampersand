@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   respond_to :html, :js
 
   def show
-    @micropost = Micropost.find(params[:id], include: [:likes => {:fan => :opinions}])
+    @micropost = Micropost.find(params[:id], include: :likes)
     @title = @micropost.user.realname
   end
 
@@ -26,7 +26,7 @@ class MicropostsController < ApplicationController
   end
 
   def likes
-    @micropost = Micropost.find(params[:id])
+    @micropost = Micropost.find(params[:id], include: :likes)
     @microposts = @micropost.fans.page(params[:page])
   end
 

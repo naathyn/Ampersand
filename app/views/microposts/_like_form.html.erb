@@ -1,7 +1,7 @@
 <% unless current_user?(@micropost.user) %>
   <div id="like_form" class="actions">
   <% if current_user.liked?(@micropost) %>
-    <%= render 'show_unlike' %>
+    <%= render 'show_unlike'%>
   <% else %>
     <%= render 'show_like' %>
   <% end %>

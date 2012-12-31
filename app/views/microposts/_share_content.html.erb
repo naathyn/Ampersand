@@ -6,9 +6,10 @@
       <%= link_to @micropost.user.realname, @micropost.user %>
     </span>
 
-    <span class="timestamp">
-      <small><%= time_ago_in_words(@micropost.created_at) %> ago</small>
-     </span>
+    <small class="timestamp">
+      <%= link_to "#{time_ago_in_words(@micropost.created_at)} ago",
+      pretty_post_path(@micropost), class: "timestamp" %>
+    </small>
 
     <span class="username">@<%= @micropost.user.name %></span>
 
@@ -31,8 +32,7 @@
         <li>
           <a class="shown" data-toggle="collapse" 
               data-target="#modal_reply"> 
-            <i class="icon-comment"></i>Reply
-          </a>
+          <i class="icon-comment"></i>Reply</a>
         </li>
 
         <% if current_user.liked?(@micropost) %>
