@@ -21,4 +21,5 @@ Socialrails::Application.routes.draw do
   match '/signin'   => 'sessions#new'
   match '/signout'  => 'sessions#destroy', :via => :delete
   match '/about'    => 'static_pages#about'
+  match '/pretty-post/:id/' => 'microposts#show', :as => :pretty_post
 end

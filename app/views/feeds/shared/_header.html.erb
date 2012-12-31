@@ -21,7 +21,7 @@
 
     <small class="timestamp">
       <%= link_to "#{time_ago_in_words(item.created_at)} ago",
-      item, class: "timestamp" %>
+      pretty_post_path(item), class: "timestamp" %>
     </small>
 
   </div>
