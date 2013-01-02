@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   has_many :messages, dependent: :delete_all
   has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
 
-  VALID_REALNAME = /\A([a-zA-Z]*\s+[a-zA-Z]*)\Z/i
-  VALID_USERNAME = /\A[a-z\d_]*\Z/i
+  VALID_REALNAME = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
+  VALID_USERNAME = /\A[A-Z\d_]*\Z/i
 
   validates_presence_of :realname, :email, :name
   validates_uniqueness_of :realname, :email, :name, case_sensitive: false

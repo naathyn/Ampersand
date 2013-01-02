@@ -13,12 +13,15 @@ namespace :db do
 end
 
 def make_users
-  admin = User.create!(realname: "Random Person", email: "starmailserver@gmail.com", name: "thatguy", password: "secret", password_confirmation: "secret", location: "Mamas, Basement", bio: "What is here?  Isn't it just there without the 'T'?")
+  admin = User.create!(realname: "Admin Account", email: "starmailserver@gmail.com", name: "admin", password: "secret", password_confirmation: "secret", location: "Ampersand", bio: "Edit me")
   admin.toggle!(:admin)
   29.times do |n|
-    realname = Faker::Name.name[0..18]
+    first_name = Faker::Name.first_name[0..6]
+    last_name = Faker::Name.last_name[0..7]
+    fullname = "#{first_name} #{last_name}"
+    realname = fullname.gsub(/['.\+]/, "")
     email = Faker::Internet.email
-    name = "fake.member_#{n+1}"
+    name = fullname.gsub(/\s+/, "_").downcase!
     password = "secret"
     city = Faker::Address.city[0..26]
     state = Faker::Address.state[0..16]
