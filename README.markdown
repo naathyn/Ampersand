@@ -11,8 +11,7 @@ Getting Started
     $ bundle exec rake db:populate
     $ bundle exec rake db:test:prepare
 
-Thank You
-=========
+### Thank You ###
 
 A long overdue thank you goes out to the most thorough, informative and well developed tutorial on the world wide web: *[Ruby on Rails Tutorial: Learn Web Development with Rails](http://railstutorial.org/ "Rails Tutorial")* by [Michael Hartl](http://www.michaelhartl.com/ "Michael Hartl")
 
