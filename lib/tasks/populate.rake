@@ -5,27 +5,23 @@ namespace :db do
     make_relationships
     make_microposts
     make_replies
-    make_links
     make_mailtos
+    make_links
     make_likes
     make_captchas
   end
 end
 
 def make_users
-  admin = User.create!(realname: "Admin Account", email: "starmailserver@gmail.com", name: "admin", password: "secret", password_confirmation: "secret", location: "Ampersand", bio: "Edit me")
-  admin.toggle!(:admin)
-  29.times do |n|
-    first_name = Faker::Name.first_name[0..6]
-    last_name = Faker::Name.last_name[0..7]
-    fullname = "#{first_name} #{last_name}"
-    realname = fullname.gsub(/['.\+]/, "")
+  bill = User.create!(realname: "Bill Clinton", email: "starmailserver@gmail.com", name: "billclinton", password: "monica", password_confirmation: "monica", location: "here", bio: "What is here?  Isn't it just there without the t?")
+  bill.toggle!(:admin)
+
+  29.times do
+    realname = "#{Faker::Name.first_name[0..5]} #{Faker::Name.last_name[0..6]}".gsub(/['.\+]/, "")
     email = Faker::Internet.email
-    name = fullname.gsub(/\s+/, "_").downcase!
+    name = realname.gsub(/\s+/, "_").downcase!
     password = "secret"
-    city = Faker::Address.city[0..26]
-    state = Faker::Address.state[0..16]
-    location = "#{city}, #{state}"
+    location = "#{Faker::Address.city[0..26]}, #{Faker::Address.state[0..16]}"
     bio = Faker::Lorem.sentence
 
     User.create!(realname: realname, email: email, name: name, password: password, password_confirmation: password, location: location, bio: bio)
@@ -33,66 +29,60 @@ def make_users
 end
 
 def make_relationships
-  users = User.all
-  user = users.first
-  followed_users = users[3..10]
-  followers = users[2..25]
-  followed_users.each { |followed| user.follow!(followed) }
-  followers.each { |follower| follower.follow!(user) }
+  250.times do
+    followed = User.offset(rand(User.count)).first
+    follower = User.offset(rand(User.count)).first
+    followed.follow!(follower) unless followed.following?(follower)
+    follower.follow!(followed) unless follower.following?(followed)
+  end
 end
 
 def make_microposts
-  users = User.all(limit: 10)
-  10.times do
+  200.times do
+    user = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
-    users.each { |user| user.microposts.create!(content: content) }
+    user.microposts.create!(content: content)
   end
 end
 
 def make_replies
-  users = User.all
-  user = users.first
-  followed_users = users[3..8]
-  followers = users[2..16]
-  5.times do
+  100.times do
+    user = User.offset(rand(User.count)).first
+    follower = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
-    followed_users.each { |followed| user.microposts.create!(content: "@#{followed.name} #{content}") }
-    followers.each { |follower| follower.microposts.create!(content: "@#{user.name} #{content}") }
-  end
-end
-
-def make_links
-  users = User.all(limit: 5)
-  5.times do
-    share = Faker::Lorem.sentence
-    link = "https://github.com/naathyn/ampersand"
-    content = "#{link} #{share}"
-    users.each { |user| user.microposts.create!(content: content) }
+    user.microposts.create!(content: "@#{follower.name} #{content}")
+    follower.microposts.create!(content: "@#{user.name} #{content}") unless follower == user
   end
 end
 
 def make_mailtos
-  users = User.all(limit: 3)
-  5.times do
-    share = Faker::Lorem.sentence
-    link = Faker::Internet.email
-    content = "#{link} #{share}"
-    users.each { |user| user.microposts.create!(content: content) }
+ 5.times do
+    user = User.offset(rand(User.count)).first
+    content = "#{Faker::Internet.email} #{Faker::Lorem.sentence}"
+    user.microposts.create!(content: content)
+  end
+end
+
+def make_links
+  15.times do
+    user = User.offset(rand(User.count)).first
+    content = "https://rubyrails.herokuapp.com #{Faker::Lorem.sentence}"
+    user.microposts.create!(content: content)
   end
 end
 
 def make_likes
-  users = User.all
-  user = users.last
-  microposts = Micropost.all
-  likes = microposts[3..27]
-  likes.each { |share| user.like!(share) }
+  200.times do
+    user = User.offset(rand(User.count)).first
+    share = Micropost.offset(rand(Micropost.count)).first
+    user.like!(share) unless user == share.user || user.liked?(share)
+  end
 end
 
 def make_captchas
-  users = User.all(limit: 10)
-  10.times do
+  150.times do
+    user = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
-    users.each { |user| user.captchas.create!(content: content) }
+    user.captchas.create!(content: content)
   end
 end
