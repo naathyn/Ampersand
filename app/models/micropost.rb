@@ -19,8 +19,8 @@ class Micropost < ActiveRecord::Base
   default_scope order: 'microposts.created_at DESC'
 
   def fan_likes_count
-    if self.likes.any?
-      self.likes.count
+    unless self.likes.empty?
+      self.likes.size
     else
       0
     end

@@ -19,9 +19,9 @@ def make_users
   bill.toggle!(:admin)
 
   29.times do
-    realname = "#{Faker::Name.first_name[0..5]} #{Faker::Name.last_name[0..6]}".gsub(/['.\+]/, "")
+    realname = "#{Faker::Name.first_name[0..5]} #{Faker::Name.last_name[0..6]}".gsub(/[^\w+\s]/, "")
     email = Faker::Internet.email
-    name = realname.gsub(/\s+/, "_").downcase!
+    name = realname.gsub(/\s/, "_").downcase!
     password = "secret"
     location = "#{Faker::Address.city[0..26]}, #{Faker::Address.state[0..16]}"
     bio = Faker::Lorem.sentence
@@ -32,7 +32,7 @@ def make_users
 end
 
 def make_relationships
-  250.times do
+  300.times do
     followed = User.offset(rand(User.count)).first
     follower = User.offset(rand(User.count)).first
     followed.follow!(follower) unless followed.following?(follower)
@@ -49,17 +49,17 @@ def make_microposts
 end
 
 def make_replies
-  100.times do
+  200.times do
     user = User.offset(rand(User.count)).first
     follower = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
-    user.microposts.create!(content: "@#{follower.name} #{content}")
+    user.microposts.create!(content: "@#{follower.name} #{content}") unless user == follower
     follower.microposts.create!(content: "@#{user.name} #{content}") unless follower == user
   end
 end
 
 def make_mailtos
- 5.times do
+  5.times do
     user = User.offset(rand(User.count)).first
     content = "#{Faker::Internet.email} #{Faker::Lorem.sentence}"
     user.microposts.create!(content: content)
@@ -75,7 +75,7 @@ def make_links
 end
 
 def make_likes
-  200.times do
+  300.times do
     user = User.offset(rand(User.count)).first
     share = Micropost.offset(rand(Micropost.count)).first
     user.like!(share) unless user == share.user || user.liked?(share)

@@ -1,4 +1,4 @@
-<% if @shares.any? %>
+<% unless @shares.empty? %>
 
   <%= render partial: 'feeds/share_item', collection: @shares, as: :item %>
 

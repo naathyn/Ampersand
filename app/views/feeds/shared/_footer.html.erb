@@ -1,4 +1,4 @@
-<% if item.likes.any? %>
+<% unless item.likes.empty? %>
 
   <ul class="inline-share-stats share-stats hearts likes"
       data-original-title="<% item.fans.each do |user| %>

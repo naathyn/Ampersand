@@ -1,4 +1,4 @@
-<% if @microposts.any? %>
+<% unless @microposts.empty? %>
 
   <%= render partial: 'feeds/share_item', collection: @microposts, as: :item %>
 

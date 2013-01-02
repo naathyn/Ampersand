@@ -1,8 +1,10 @@
-<% if @micropost.likes.any? %>
+<% unless @micropost.likes.empty? %>
   <ul class="inline-share-stats share-stats">
     <li style="float: right;">
       <a><i class="icon-heart"></i>
-        <strong id="modal_likes<%= @micropost.id %>" style="font-size: 16px;"><%= @micropost.fan_likes_count %></strong>
+        <strong id="modal_likes<%= @micropost.id %>" style="font-size: 16px;">
+          <%= @micropost.fan_likes_count %>
+        </strong>
       </a>
     </li>
   </ul>

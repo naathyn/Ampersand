@@ -27,7 +27,7 @@
         <section>
           <%= render 'shared/stats' %>
 
-            <% if @users.any? %>
+            <% unless @users.empty? %>
               <div class="side-module-share user_avatars">
                 <% @users.each do |user| %>
                 <%= link_to gravatar_for(user, size: 32), user %>
@@ -38,7 +38,7 @@
         </section>
       </aside>
 
-    <% if @users.any? %>
+    <% unless @users.empty? %>
       <div class="span8 share-container">
 
         <%= will_paginate %>
