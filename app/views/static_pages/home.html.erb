@@ -1,11 +1,11 @@
 <% content_for :head do %>
   <% provide(:title, @title) %>
 <% end %>
+
+  <%= yield flash.now[:info] = "Last updated on January 3rd at 12:00 a.m. 
+            Upgraded to Rails version 3.2.10" %>
   
     <% if signed_in? %>
-
-      <%= yield flash.now[:info] = "Last updated on December 30th at 9:45 pm, 
-          CST: Click on the timestamps to view a 'prettier' share!" %>
 
       <div class="row-fluid">
 
@@ -49,16 +49,13 @@
 
       <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on December 30th at 9:45 pm, 
-                                 CST tagged: pages dedicated to members' shares" %>
-
       <div class="center hero-unit">
 
         <h1>Ampersand</h1>
        <h3>Simple. Modern. Interactive.</h3>
       <h5>Alpha Release #2</h5>
 
-    <%= link_to "Sign up now!", signup_path,
+    <%= link_to "Sign up now!", :signup,
         class: "btn btn-large btn-primary" %>
 
     <h6>
