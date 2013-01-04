@@ -1,9 +1,9 @@
 <% unless item.likes.empty? %>
   <ul class="inline-share-stats share-stats hearts likes"
-      data-original-title=" <li>
+      data-original-title=" <ul>
                               <%= render(partial: ('feeds/shared/fan_likes'),
                                   locals: { item: item }) %>
-                            </li>">
+                            </ul>">
 
     <%= render(partial: ("feeds/shared/footer_stats"), 
         locals: { item: item }) %>

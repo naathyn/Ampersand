@@ -821,6 +821,11 @@ aside {
   li { text-shadow: 0px 1px 0px $black; }
 }
 
+.profile-inner .content { 
+  margin-left: 58px; 
+  padding-bottom: 5px;
+}
+
 .profile-inner p {
   font-family: Georgia,"Times New Roman",serif;
   font-size: 22px;
@@ -829,8 +834,6 @@ aside {
 
 .microposts-profile { @include microposts;}
 .microposts-header { padding: 1.5em 3.5em .5em 2em }
-
-.profile-inner .content { margin-left: 58px; }
 
 /* users chatroom in development */
 

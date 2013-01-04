@@ -12,7 +12,7 @@ class OpinionsController < ApplicationController
 
   def destroy
     @micropost = Opinion.find(params[:id]).like
-    @microposts = @micropost.fans.paginate(page: params[:page], include: [:microposts => :fan])
+    @microposts = @micropost.fans.paginate(page: params[:page])
     current_user.unlike!(@micropost)
     respond_with @micropost
   end
