@@ -2,8 +2,8 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <%= yield flash.now[:info] = "Last updated on January 3rd at 12:00 a.m. 
-            Upgraded to Rails version 3.2.10" %>
+  <%= yield flash.now[:info] = "Last updated on January 4th at 9:45 a.m. 
+                                Adding interactions to likes and posts." %>
   
     <% if signed_in? %>
 
@@ -12,14 +12,14 @@
         <aside class="span4 side-module side-menu mini-profile">
           <a href="<%= user_path(current_user) %>" class="share-anchor">
              <section>
-              <%= render 'shared/user_info' %>
+              <%= render("shared/user_info") %>
             </section>
           </a>
             <section>
-              <%= render 'shared/stats' %>
+              <%= render("shared/stats") %>
             </section>
             <section class="side-module-share">
-              <%= render 'shared/share_form' %>
+              <%= render("shared/share_form") %>
             </section>
           </aside>
 
@@ -35,7 +35,7 @@
                 title="Chatroom"><i class="icon-comment" id="comment-bar"></i></a>
             </div>
 
-              <%= render 'feeds/main/share' %>
+              <%= render("feeds/main/share") %>
 
             <div class="well-bottom" style="margin-bottom:1em;">
               <a href="#" title="Top"><i class="icon-arrow-up"></i></a>
@@ -55,14 +55,14 @@
        <h3>Simple. Modern. Interactive.</h3>
       <h5>Alpha Release #2</h5>
 
-    <%= link_to "Sign up now!", :signup,
-        class: "btn btn-large btn-primary" %>
+    <%= link_to("Sign up now!", :signup,
+        class: "btn btn-large btn-primary") %>
 
     <h6>
-        <%= link_to "Watch the Alpha Release #1 Video", 
+        <%= link_to("Watch the Alpha Release #1 Video", 
         "http://www.youtube.com/watch?v=XKwHgbiyne4",
         alt: "Ampersand Alpha Release #1",
-        target: "_blank" %>
+        target: "_blank") %>
     </h6>
 
   </div>

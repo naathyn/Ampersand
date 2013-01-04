@@ -380,15 +380,15 @@ aside {
 }
 
 .well:hover { background-color: $wellGray; }
-.well:hover .timestamp { color: $blue; }
-
-.well-inner-header #naathyn a { color: $green; }
+.well:hover .timestamp, .modal-body:hover .timestamp { color: $blue; }
 .well-inner:hover strong { color: $red; }
+
+#naathyn a { color: $green; }
 
 .well:hover .well-footer li, .modal-body:hover .well-footer li { opacity: 100; }
 .well:hover .well-footer a, .modal-body:hover .well-footer a { color: $blue; }
 
-.well-footer .collapse {padding-left: 10px;}
+.well-footer .collapse { padding-left: 10px; }
 
 /* Share Item Hover Links */
 
@@ -547,6 +547,7 @@ aside {
   cursor: default;
   background-color: $mainGray;
   border-top: 1px solid $borderDarker;
+  min-height: 40px;
   a { margin-top: 10px; }
   strong { font-size: 16px; }
   .gravatar { opacity: .8; &:hover { opacity: 1; } }
@@ -562,13 +563,15 @@ aside {
 .modal-backdrop, .modal-backdrop.fade.in { opacity: .4; }
 
 .modal-header button.close { margin-top: -2px; }
-.modal-body:hover { background-color: $moduleGray; }
+.modal-body:hover { background-color: $wellGray; }
 .username_modal { display: block; }
 .modal-footer { cursor: move; }
 
 .users_modal { margin: -.5em 0 -.8em; }
-.users_modal li:hover { background-color: $wellGray; }
+.users_modal li:hover { background-color: $outterBody; }
 .modal_stats { margin-bottom: -10px; }
+.modal_likes { font-size: 16px; }
+#modal_list { float: right; }
 
 /* included in the users#show controller */
 

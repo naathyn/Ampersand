@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @replies = current_user.replies.paginate(page: params[:page], include: [:user => :captchas])
     @following = @user.followed_users.page(params[:page])
     @followers = @user.followers.page(params[:page])
-    @micropost || current_user.microposts.build
   end
 
   def new
@@ -85,7 +84,8 @@ class UsersController < ApplicationController
 
   def chatroom
     @title = "Chatroom"
-    @messages = current_user.chat.paginate(page: params[:page], include: :user)
+    @messages = current_user.chat.paginate(page: params[:page], 
+                per_page: 15, include: :user)
     flash.now[:notice] = "Welcome to the Chat! Expect rooms and private messaging soon."
   end
 

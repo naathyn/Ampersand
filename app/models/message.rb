@@ -7,16 +7,16 @@ class Message < ActiveRecord::Base
   validates_presence_of :user_id, :content
   validates_length_of :content, within: (2..500)
 
-  before_save :alert_user
+  after_validation :alert_user
 
-  default_scope order: 'messages.created_at DESC'
+  default_scope order: 'created_at DESC'
 
 private
 
-    def self.from_users_followed_by_including_private_messages(user)
+    def self.from_users_followed_by(user)
       followed_user_ids = "SELECT followed_id FROM relationships
                            WHERE follower_id = :user_id"
-      where("user_id IN (#{followed_user_ids}) OR user_id = :user_id OR to_id = :user_id", 
+      where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
             user_id: user.id)
     end
 

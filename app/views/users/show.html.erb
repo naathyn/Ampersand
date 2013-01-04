@@ -3,6 +3,7 @@
 <% end %>
 
   <% @user ||= current_user %>
+
   <ul class="breadcrumb">
     <li><%= link_to "Home", :root %> 
       <span class="divider">/</span>
@@ -14,33 +15,33 @@
     <li class="active"><%= @title %></li>
   </ul>
 
-  <%= render 'shared/profile_stats' %>
+  <%= render("shared/profile_stats") %>
 
   <ul class="nav nav-tabs">
     <li class="active"><a href="#profile"><%= @title %></a></li>
       <% if current_user?(@user) %>
-        <li><a href="#replies">Replies (<%= @replies.count %>)</a></li>
+        <li><a href="#replies">Replies</a></li>
       <% end %>
-    <li><a href="#follow">Following (<%= @following.count %>)</a></li>
-    <li><a href="#followed">Followers (<%= @followers.count %>)</a></li>
+    <li><a href="#follow">Following</a></li>
+    <li><a href="#followed">Followers</a></li>
   </ul>
  
   <div class="tab-content">
 
     <div class="tab-pane active" id="profile">
-      <%= render 'feeds/main/micropost' %>
+      <%= render("feeds/main/micropost") %>
     </div>
 
       <% if current_user?(@user) %>
         <div class="tab-pane" id="replies">
-          <%= render 'feeds/main/reply' %>
+          <%= render("feeds/main/reply") %>
         </div>
       <% end %>
 
     <div class="tab-pane" id="follow">
       <% unless @following.empty? %>
         <ul class="users-follow">
-          <%= render @following %>
+          <%= render(@following) %>
         </ul>
         <%= will_paginate @following %>
       <% end %>
@@ -49,7 +50,7 @@
     <div class="tab-pane" id="followed">
       <% unless @followers.empty? %>
         <ul class="users-follow">
-          <%= render @followers %>
+          <%= render(@followers) %>
         </ul>
         <%= will_paginate @followers %>
       <% end %>
@@ -57,4 +58,4 @@
 
   </div><!-- tab-content -->
 
-<%= render 'microposts/modal' %>
+<%= render("shared/modal") %>

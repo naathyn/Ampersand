@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def chat
-    Message.from_users_followed_by_including_private_messages(self)
+    Message.from_users_followed_by(self)
   end
 
   def random_captcha
@@ -65,10 +65,6 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
-  end
-
-  def liked?(random_share)
-    opinions.find_by_like_id(random_share.id)
   end
 
   def like!(random_share)

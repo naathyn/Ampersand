@@ -1,11 +1,7 @@
 <% unless @shares.empty? %>
 
-  <%= render partial: 'feeds/share_item', collection: @shares, as: :item %>
-
-    <%= render 'microposts/modal' %>
-
-    <% else %>
-
-  <%= yield flash.now[:info] = "Your feed looks kinda dull.  How about following a few members or sharing some content to fill it up!" %>
+  <%= render(partial: ("feeds/share_item"), 
+      collection: @shares, as: :item) %>
+  <%= render("shared/modal") %>
 
 <% end %>

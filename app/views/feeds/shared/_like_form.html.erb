@@ -1,0 +1,7 @@
+<% if item.liked_by?(current_user) %>
+  <%= render(partial: ("feeds/shared/unlike"), 
+      locals: { item: item }) %>
+<% else %>
+  <%= render(partial: ("feeds/shared/like"),
+      locals: { item: item }) %>
+<% end %>

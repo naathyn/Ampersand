@@ -10,7 +10,8 @@
       <div class="row-fluid">
 
         <div class="profile-inner microposts-inner">
-          <%= render partial: 'feeds/shared/footer', object: @micropost, as: :item %>
+          <%= render(partial: ("feeds/shared/footer"),
+              locals: { item: @micropost }) %>
 
             <%= gravatar_for(@micropost.user, size: 48) %>
 
@@ -23,12 +24,12 @@
             </h2>
 
             <p class="content">
-              <%= auto_link(@micropost.content, html: { target: '_blank' }) do |content|
-                  truncate(content, length: 30) end %>
+              <%= render(partial: ("feeds/shared/content"),
+              locals: { item: @micropost }) %>
             </p>
           </div>
 
-        <%= render 'like_form' %>
+        <%= render("like_form") %>
 
       </div><!-- row-fluid -->
     </div>

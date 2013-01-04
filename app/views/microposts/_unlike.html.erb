@@ -1,8 +1,0 @@
-<li id="modal_like_form<%= @micropost.id %>">
-  <%= form_for(current_user.opinions.find_by_like_id(@micropost),
-          html: { method: :delete },
-          remote: true) do |f| %>
-      <i class="icon-heart"></i>
-    <%= f.submit "Unlike", class: "btn-link shown" %>
-  <% end %>
-</li>

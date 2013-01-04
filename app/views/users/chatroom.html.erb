@@ -21,15 +21,12 @@
     <div class="chat_container">
       <div id="new_chat">
         <div id="chat_room">
-          <%= render partial: 'feeds/main/chat' %>
+          <%= render(@messages) %>
         </div>
       </div>
 
-      <div class="chat_container_text" id="chat_box">
-        <%= form_for(current_user.messages.build, remote: true) do |f| %>
-          <%= f.text_field :content, 
-              placeholder: "Press enter to send your message." %>
-        <% end %>
+      <div class="chat_container_text">
+        <%= render("messages/form") %>
       </div>
     </div> <!-- chat_container -->
 

@@ -16,14 +16,18 @@ class Micropost < ActiveRecord::Base
   after_validation :reply_n_linkify
   after_save :arrange_hashtags
 
-  default_scope order: 'microposts.created_at DESC'
+  default_scope order: 'created_at DESC'
 
   def fan_likes_count
-    unless self.likes.empty?
-      self.likes.size
+    unless likes.empty?
+      likes.count
     else
-      0
+    0
     end
+  end
+
+  def liked_by?(user)
+    likes.find_by_fan_id(user.id)
   end
 
 private

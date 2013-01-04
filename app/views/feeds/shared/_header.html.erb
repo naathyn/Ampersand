@@ -14,20 +14,14 @@
   <% end %>
 
     <span class="user" id="<%= item.user.name %>">
-      <%= link_to item.user.realname, item.user %>
+      <%= link_to(item.user.realname, item.user) %>
     </span>
 
-    <span class="username">@<%= item.user.name %></span>
+  <span class="username">@<%= item.user.name %></span>
 
-    <small class="timestamp">
-      <%= link_to "#{time_ago_in_words(item.created_at)} ago",
-      pretty_post_path(item), class: "timestamp" %>
-    </small>
+  <small class="timestamp">
+    <%= link_to("#{time_ago_in_words(item.created_at)} ago",
+        pretty_post_path(item), class: "timestamp") %>
+  </small>
 
-  </div>
-
-  <span class="content" data-toggle="collapse"
-        data-target="#<%= item.id %>_reply">
-    <%= auto_link(item.content, html: { target: '_blank' }) do |content|
-        truncate(content, length: 30) end %>
-  </span>
+</div>

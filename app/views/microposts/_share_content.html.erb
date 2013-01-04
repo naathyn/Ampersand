@@ -1,49 +1,50 @@
-<div class="modal_header">
-
-  <%= link_to gravatar_for(@micropost.user, size: 48), @micropost.user %>
-
-    <span class="user" id="<%= @micropost.user.name %>">
-      <%= link_to @micropost.user.realname, @micropost.user %>
-    </span>
-
-    <small class="timestamp">
-      <%= link_to "#{time_ago_in_words(@micropost.created_at)} ago",
-      pretty_post_path(@micropost), class: "timestamp" %>
-    </small>
-
-    <span class="username">@<%= @micropost.user.name %></span>
-
+  <div class="modal_header">
+    <%= render(partial: ("feeds/shared/simple_header"), 
+        locals: { item: @micropost }) %>
   </div>
 
     <div class="modal_content">
-      <span class="content" data-toggle="collapse" data-target="#modal_reply">
-        <%= auto_link(@micropost.content, html: { target: '_blank' }) do |content|
-            truncate(content, length: 30) end %>
+      <span class="content" data-toggle="collapse" 
+            data-target="#modal_reply<%= @micropost.id %>">
+
+        <%= render(partial: ("feeds/shared/content"),
+            locals: { item: @micropost }) %>
+
       </span>
     </div>
 
     <div class="well-footer">
-
       <ul class="share-actions">
+
         <% if current_user?(@micropost.user) %>
-          <%= render 'delete' %>
+          <%= render(partial: ("feeds/shared/delete"), 
+              locals: { item: @micropost }) %>
         <% else %>
 
         <li>
           <a class="shown" data-toggle="collapse" 
-              data-target="#modal_reply"> 
+              data-target="#modal_reply<%= @micropost.id %>"> 
           <i class="icon-comment"></i>Reply</a>
         </li>
 
-        <% if current_user.liked?(@micropost) %>
-          <%= render 'unlike' %>
-        <% else %>
-          <%= render 'like' %>
-        <% end %>
+        <li id="modal_like_form<%= @micropost.id %>">
+          <%= render(partial: ('feeds/shared/like_form'), 
+              locals: { item: @micropost }) %>
+        </li>
 
-      <% end %>
-    </ul>
+      </ul>
 
-  <%= render 'form' %>
+    <div class="show collapse" id="modal_reply<%= @micropost.id %>">
+      <div class="inline-share-reply">
+        <div class="modal-form">
+
+          <%= render(partial: ("feeds/shared/form"), 
+              locals: { item: @micropost }) %>
+
+        </div>
+      </div>
+    </div>
+
+  <% end %>
 
 </div>
