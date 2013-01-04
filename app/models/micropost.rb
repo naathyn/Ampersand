@@ -4,6 +4,8 @@ class Micropost < ActiveRecord::Base
   belongs_to :user
   belongs_to :to, class_name: "User"
 
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
+
   has_many :likes, foreign_key: "like_id", class_name: "Opinion", dependent: :destroy
   has_many :fans, through: :likes
 
@@ -19,8 +21,8 @@ class Micropost < ActiveRecord::Base
   default_scope order: 'created_at DESC'
 
   def fan_likes_count
-    unless likes.empty?
-      likes.count
+    unless fans.empty?
+      fans.count
     else
     0
     end

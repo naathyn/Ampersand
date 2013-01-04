@@ -4,4 +4,4 @@ jQuery ->
     delay: 
       show: 250, 
       hide: 250
-   # Triggers bootstraps tooltips when clicked
+   # Triggers bootstraps tooltips on hover
