@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @title = "Members"
-    @users = User.page(params[:page]).order('created_at DESC')
+    @users = User.page(params[:page]).order('updated_at DESC')
   end
 
  def show
