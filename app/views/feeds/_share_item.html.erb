@@ -4,7 +4,7 @@
       locals: { item: item }) %>
 
     <span class="content" data-toggle="collapse"
-          data-target="#<%= item.id %>_reply">
+          data-target="#<%= item.id %> #reply">
 
       <%= render(partial: ("feeds/shared/content"),
           locals: { item: item }) %>
@@ -29,7 +29,7 @@
 
             <li>
               <a class="shown" data-toggle="collapse"
-                  data-target="#<%= item.id %>_reply">
+                  data-target="#<%= item.id %> #reply">
               <i class="icon-comment"></i>Reply</a>
             </li>
 
@@ -40,7 +40,7 @@
 
         </ul>
 
-      <div id="<%= item.id %>_reply" class="show collapse">
+      <div id="reply" class="show collapse">
         <div class="inline-share-reply">
           <div class="inline-container">
 

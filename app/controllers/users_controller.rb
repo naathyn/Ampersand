@@ -13,8 +13,15 @@ class UsersController < ApplicationController
  def show
     @user = User.find_by_name(params[:id])
     @title = "@#{@user.name}"
-    @microposts = @user.microposts.paginate(page: params[:page], include: [:user => :captchas])
-    @replies = current_user.replies.paginate(page: params[:page], include: [:user => :captchas])
+
+    @microposts = @user.microposts.paginate(page: params[:page], 
+                  include: [:likes, :fans, :user =>
+                      {:captchas => {:user => :opinions}}])
+
+    @replies = current_user.replies.paginate(page: params[:page],
+                  include: [:likes, :fans, :replies, :user =>
+                      {:captchas => {:user => :opinions}}])
+
     @following = @user.followed_users.page(params[:page])
     @followers = @user.followers.page(params[:page])
   end
