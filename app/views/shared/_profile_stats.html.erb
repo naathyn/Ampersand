@@ -21,7 +21,21 @@
       </h2>
 
       <span class="bio"><%= @user.bio %></span>
-      <span class="location"><%= @user.location %></span> 
+
+      <span class="location">
+
+        <% unless @user.location.nil? %>
+          <i class="icon-map-marker"></i> 
+            <a href="<%= @user.for_wiki %>" target="_blank">
+          <%= @user.location %></a>
+        <% end %>
+
+        <% unless @user.website.nil? %>
+          <i class="icon-globe"> </i> 
+          <%= auto_link(@user.website, :html => { target: "_blank" }) %>
+        <% end %>
+
+      </span>
 
     </div> <!-- profile-inner -->
 

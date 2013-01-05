@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base 
   attr_accessible :realname, :email, :name, :location, :bio, 
-  :password, :password_confirmation, :sign_in_count
+  :password, :password_confirmation, :sign_in_count, :website
 
   has_secure_password
 
@@ -22,8 +22,10 @@ class User < ActiveRecord::Base
   has_many :messages, dependent: :delete_all
   has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
 
+
   VALID_REALNAME = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
   VALID_USERNAME = /\A[A-Z\d_]*\Z/i
+  VALID_WEBSITE = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix
 
   validates_presence_of :realname, :email, :name
   validates_uniqueness_of :realname, :email, :name, case_sensitive: false
@@ -38,6 +40,7 @@ class User < ActiveRecord::Base
 
   validates_format_of :realname, with: VALID_REALNAME
   validates_format_of :name, with: VALID_USERNAME
+  validates_format_of :website, with: VALID_WEBSITE
 
   before_save { |user| user.email = email.downcase }
   before_save { |user| user.name = name.downcase }
@@ -74,6 +77,11 @@ class User < ActiveRecord::Base
 
   def unlike!(random_share)
     opinions.find_by_like_id(random_share.id).destroy
+  end
+
+  def for_wiki
+    @location_for_map = "https://en.wikipedia.org/wiki/#{location}"
+    @location_for_map.html_safe
   end
 
   def to_param

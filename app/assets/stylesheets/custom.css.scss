@@ -905,7 +905,13 @@ aside {
   margin-left: 3px;
 }
 
+[class^="icon-globe"], [class*=" icon-globe"] {
+  margin-left: 10px;
+  vertical-align: -3px;
+}
+
 [class^="icon-remove"], [class*=" icon-remove"] { vertical-align: 3px; }
+[class^="icon-map-marker"], [class*=" icon-map-marker"] { vertical-align: -3px; }
 
 /* alert messages */
 
