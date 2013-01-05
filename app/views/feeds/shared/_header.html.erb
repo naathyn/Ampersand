@@ -17,11 +17,10 @@
       <%= link_to(item.user.realname, item.user) %>
     </span>
 
-  <span class="username">@<%= item.user.name %></span>
+    <span class="username">@<%= item.user.name %></span>
 
-  <small class="timestamp">
-    <%= link_to("#{time_ago_in_words(item.created_at)} ago",
-        pretty_post_path(item), class: "timestamp") %>
-  </small>
-
-</div>
+    <small class="timestamp">
+      <%= link_to("#{time_ago_in_words(item.created_at)} ago",
+          pretty_post_path(item), class: "timestamp") %>
+    </small>
+  </div>

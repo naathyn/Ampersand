@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 
     @microposts = @user.microposts.paginate(page: params[:page], 
                   include: [:likes, :fans, :user =>
-                      {:captchas => {:user => :opinions}}])
+                    {:captchas => {:user => :opinions}}])
 
     @replies = current_user.replies.paginate(page: params[:page],
-                  include: [:likes, :fans, :replies, :user =>
-                      {:captchas => {:user => :opinions}}])
+                  include: [:likes, :fans, :user =>
+                    {:captchas => {:user => :opinions}}])
 
     @following = @user.followed_users.page(params[:page])
     @followers = @user.followers.page(params[:page])

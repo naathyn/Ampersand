@@ -1,6 +1,6 @@
 <div id="<%= item.id %>" class="well well-inner">
 
-  <%= render(partial: ("feeds/shared/header"), 
+  <%= render(partial: ("feeds/shared/header"),
       locals: { item: item }) %>
 
     <span class="content" data-toggle="collapse"
@@ -13,7 +13,7 @@
 
     <div class="well-footer">
 
-      <%= render(partial: ("feeds/shared/footer"), 
+      <%= render(partial: ("feeds/shared/footer"),
           locals: { item: item }) %>
 
       <%= link_to "Detach", likes_micropost_path(item), { remote: true,
@@ -23,7 +23,7 @@
         <ul class="share-actions">
 
           <% if current_user?(item.user) %>
-            <%= render(partial: ("feeds/shared/delete"), 
+            <%= render(partial: ("feeds/shared/delete"),
                 locals: { item: item }) %>
           <% else %>
 

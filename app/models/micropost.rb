@@ -16,13 +16,13 @@ class Micropost < ActiveRecord::Base
   after_validation :reply_n_linkify
   after_save :arrange_hashtags
 
-  default_scope order: 'created_at DESC'
+  default_scope order: "created_at DESC"
 
   def fan_likes_count
     unless likes.empty?
       likes.count
     else
-    0
+      0
     end
   end
 
@@ -31,6 +31,8 @@ class Micropost < ActiveRecord::Base
   end
 
 private
+
+    self.per_page = 20
 
     def self.from_users_followed_by(user)
       followed_user_ids = "SELECT followed_id FROM relationships
