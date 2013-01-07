@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 
     @microposts = @user.microposts.paginate(page: params[:page], 
                   include: [:likes, :fans, :user =>
-                    {:captchas => {:user => :opinions}}])
+                    {:captchas => {:user => :fans}}])
 
     @replies = current_user.replies.paginate(page: params[:page],
                   include: [:likes, :fans, :user =>
-                    {:captchas => {:user => :opinions}}])
+                    {:captchas => {:user => :fans}}])
 
     @following = @user.followed_users.page(params[:page])
     @followers = @user.followers.page(params[:page])
@@ -53,8 +53,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       sign_in @user
-      flash[:success] = "Profile updated successfully"
-      redirect_to @user
+      redirect_to(@user, notice: "Profile updated successfully")
     else
       render 'edit'
     end

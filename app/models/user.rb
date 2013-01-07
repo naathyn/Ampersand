@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
-  has_many :opinions, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
+  has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
   has_many :likes, through: :opinions
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -72,16 +72,11 @@ class User < ActiveRecord::Base
   end
 
   def like!(random_share)
-    opinions.create!(like_id: random_share.id)
+    fans.create!(like_id: random_share.id)
   end
 
   def unlike!(random_share)
-    opinions.find_by_like_id(random_share.id).destroy
-  end
-
-  def for_wiki
-    @location_for_map = "https://en.wikipedia.org/wiki/#{location}"
-    @location_for_map.html_safe
+    fans.find_by_like_id(random_share.id).destroy
   end
 
   def to_param

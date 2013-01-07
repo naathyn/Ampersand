@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  respond_to :html, :js
+
   def new
     if signed_in?
       redirect_to(user_url(current_user), notice: "You are already signed in")
@@ -22,7 +24,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    flash[:success] = "You have been signed out.  See you soon!"
-    redirect_to root_url
+    redirect_to(root_url, notice: "You have been signed out.  See you soon!")
   end
 end

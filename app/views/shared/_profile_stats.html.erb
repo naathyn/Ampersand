@@ -26,13 +26,12 @@
 
         <% unless @user.location.nil? %>
           <i class="icon-map-marker"></i> 
-            <a href="<%= @user.for_wiki %>" target="_blank">
-          <%= @user.location %></a>
+            <%= link_to @user.location, wiki_for(@user), target: "_blank" %>
         <% end %>
 
         <% unless @user.website.nil? %>
           <i class="icon-globe"> </i> 
-          <%= auto_link(@user.website, :html => { target: "_blank" }) %>
+          <%= auto_link(@user.website, html: { target: "_blank" }) %>
         <% end %>
 
       </span>
