@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
-  has_many :likes, through: :opinions
+  has_many :likes, through: :fans
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed

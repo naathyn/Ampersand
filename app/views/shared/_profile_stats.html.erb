@@ -24,7 +24,7 @@
 
       <span class="location">
 
-        <% unless @user.location.nil? %>
+        <% unless @user.location.empty? %>
           <i class="icon-map-marker"></i> 
             <%= link_to @user.location, wiki_for(@user), target: "_blank" %>
         <% end %>
