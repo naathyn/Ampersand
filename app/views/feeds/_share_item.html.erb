@@ -16,9 +16,9 @@
       <%= render(partial: ("feeds/shared/footer"),
           locals: { item: item }) %>
 
-      <%= link_to "Detach", likes_micropost_path(item), { remote: true,
-          'data-toggle' =>"modal", 'data-target' => "#modal-window",
-              class: "shown detach" } %>
+      <a href="<%= likes_micropost_path(item) %>" class="shown detach" 
+        data-remote="true" data-toggle="modal" 
+        data-target="#modal-window">Detach</a>
 
         <ul class="share-actions">
 

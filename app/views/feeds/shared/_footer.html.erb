@@ -1,20 +1,13 @@
 <% unless item.likes.empty? %>
-  <ul class="inline-share-stats share-stats hearts likes"
-      data-original-title=" <ol>
-                              <% item.fans.each do |user| %>
+  <ul class="inline-share-stats share-stats likes"
+      data-original-title="<% item.fans.each do |user| %>
                                 <li><%= user.name %></li>
-                              <% end %>
-                            </ol>">
+                                <% end %>">
 <% else %>
   <ul class="inline-share-stats share-stats">
 <% end %>
 
-    <li>
-      <a><i class="icon-heart"></i>
-        <strong id="likes<%= item.id %>">
-          <%= item.fan_likes_count %>
-        </strong>
-      </a>
-    </li>
+  <%= render(partial: ("feeds/shared/footer_stats"), 
+      locals: { item: item }) %>
 
-  </ul>
+</ul>

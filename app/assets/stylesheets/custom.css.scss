@@ -65,10 +65,9 @@ h4 {
 }
 
 h5, h6 { font-size: 11px; }
-
-p { margin: 0px 0px 10px;}
-
+p { margin: 0px 0px 10px; }
 small { font-size: 12px; }
+a:focus { outline: none; }
 
 ul, ol, li {
   list-style: none;
@@ -442,7 +441,6 @@ aside {
 .inline-share-stats a {
   color: $statsGray;
   font-size: 10px;
-  text-transform: uppercase;
   &:first-child {
     margin-top: 2px;
     border-left: none;
@@ -457,7 +455,6 @@ aside {
 }
 
 .inline-share-stats li { display: inline-block; }
-.hearts { cursor: crosshair; }
 
 /* Share Item Reply Container */
 
