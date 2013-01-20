@@ -9,10 +9,11 @@ html, body { height: 100%; }
 body, input, textarea, select, .uneditable-input { font-family: 'Lato', Calibri, Arial, sans-serif; }
 
 body {
+  background-image: url(image_path('dust.png'));
+  background-color: $outterBody;
   font-size: 14px;
   line-height: 18px;
   padding-top: 60px;
-  background-color: $outterBody;
 }
 
 input, textarea, select, .uneditable-input {
@@ -109,8 +110,8 @@ aside {
 /* Page Layout */
 
 .page-wrapper {
-  background-color: $innerBody;
-  border: 1px solid $mainGray;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid $userBorder;
   border-bottom-width: 0;
   min-height: 100%;
   min-width: 767px;
@@ -123,6 +124,22 @@ aside {
   margin-right: 5%;
   padding: 0;
   min-width: 560px;
+}
+
+.navbar-inner {
+  background-image: url(image_path('header.png'));
+}
+
+.nav > li > a {
+  font-size: 103%;
+  letter-spacing: 1px;
+}
+
+.navbar-inverse .nav .active > a,
+.navbar-inverse .nav .active:hover > a
+ {
+  background: transparent;
+  box-shadow: none;
 }
 
 .navbar-inverse { @include navbar; }
