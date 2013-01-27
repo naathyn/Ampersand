@@ -14,8 +14,15 @@
   <span class="content">
     <%= render(partial: ("feeds/shared/content"),
         locals: { item: blog }) %>
-    <p class="bio">
+
+    <p class="bio" style="margin-top:2px;">
       <%= blog.tag_placeholder %>
+
+      <% if blog.has_photo? %>
+        <i class="icon-file"></i> 
+        [<%= link_to "attachment", blog.photo_path, target: "_blank" %>]
+      <% end %>
+
       <% blog.tags.each do |tag| %>
         <i class="icon-tag"></i> <%= link_to tag.name, tag %>
       <% end %>

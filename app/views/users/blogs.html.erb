@@ -13,18 +13,19 @@
     <li class="active"><%= @title %></li>
   </ul>
 
-<div class="row-fluid">
-  <aside class="span8">
-    <legend class="legend">Community Blogs</legend>
+  <div class="row-fluid">
 
-    <% unless @blogs.empty? %>
-      <%= will_paginate @blogs %>
-        <ol class="blogs">
-          <%= render(partial: ("users_blogs"), collection: @blogs, as: :blog) %>
-        </ol>
-      <%= will_paginate @blogs %>
-    <% end %>
-  </aside>
+    <aside class="span8">
+      <legend class="legend">Community Blogs</legend>
+
+      <% unless @blogs.empty? %>
+        <%= will_paginate @blogs %>
+          <ol class="blogs">
+            <%= render(partial: ("users_blogs"), collection: @blogs, as: :blog) %>
+          </ol>
+        <%= will_paginate @blogs %>
+      <% end %>
+    </aside>
 
   <%= render("index_tagbar") %>
 </div>

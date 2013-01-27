@@ -25,14 +25,14 @@
     </div>
   <% end %>
 
-<div class="row-fluid">
-  <aside class="span8">
+  <div class="row-fluid">
+    <aside class="span8">
 
-  <% if current_user?(@user) %>
-    <legend data-toggle="collapse" data-target="#form"
-      style="cursor:pointer;"> Post New Entry </legend>
+    <% if current_user?(@user) %>
+      <legend data-toggle="collapse" data-target="#form"
+        style="cursor:pointer;"> Post New Entry </legend>
       <%= render("blogs/form") %>
-  <% end %>
+    <% end %>
 
     <ul class="nav nav-tabs">
       <li class="active"><a href="#blog"><%= @title %></a></li>
@@ -40,7 +40,6 @@
     </ul>
    
     <div class="tab-content">
-
       <div class="tab-pane active" id="blog">
         <%= render @blogs %>
         <div class="well-bottom">
@@ -49,21 +48,13 @@
       </div>
 
       <div class="tab-pane" id="photos">
-        <% for blog in @blogs %>
-          <% if blog.has_photo? %>
-            <div class="photos blog-container">
-              <%= link_to(image_tag(blog.photo_path, class: "blogs", 
-                  title: blog.title), blog.photo_path, target: "_blank") %>
-              <span class="bio"><%= blog.title %></span>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render(partial: ("blogs/photo"), collection: @blogs, as: :blog) %>
       </div>
-
     </div>
+
   </aside>
 
-  <aside class="span3" id="<%= @user.id %>" style="display:fixed;">
+  <aside class="span3" id="<%= @user.id %>">
     <%= gravatar_for(@user, size: 180) %>
 
     <p class="bio tags"> <%= @user.bio %> </p>
