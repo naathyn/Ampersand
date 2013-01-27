@@ -3,8 +3,6 @@ class MicropostsController < ApplicationController
   before_filter :correct_user, only: :destroy
   before_filter :correct_post, only: :show
 
-  respond_to :html, :js
-
   def show
     @micropost = Micropost.find(params[:id], include: :likes)
     @title = @micropost.user.realname
@@ -29,6 +27,7 @@ class MicropostsController < ApplicationController
   def likes
     @micropost = Micropost.find(params[:id], include: :likes)
     @microposts = @micropost.fans.paginate(page: params[:page], include: :fans)
+    respond_to :js
   end
 
 private
@@ -42,7 +41,6 @@ private
       begin
         @micropost = Micropost.find(params[:id])
       rescue ActiveRecord::RecordNotFound
-        logger.error "#{current_user.realname} attempted access to an invalid post: ##{params[:id]}"
         redirect_to root_url, notice: "No post with id ##{params[:id]}"
       end
     end

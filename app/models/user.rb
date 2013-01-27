@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships
 
+  has_many :blogs, dependent: :destroy
+  has_many :taggings, through: :blogs, source: :tags, uniq: true
+
   has_many :messages, dependent: :delete_all
   has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
 
@@ -40,7 +43,7 @@ class User < ActiveRecord::Base
 
   validates_format_of :realname, with: VALID_REALNAME
   validates_format_of :name, with: VALID_USERNAME
-  validates_format_of :website, with: VALID_WEBSITE
+  validates_format_of :website, with: VALID_WEBSITE, allow_blank: true, allow_nil: true
 
   before_save { |user| user.email = email.downcase }
   before_save { |user| user.name = name.downcase }

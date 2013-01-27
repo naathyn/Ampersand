@@ -1,8 +1,10 @@
 Socialrails::Application.routes.draw do
   resources :users do
-    get :chatroom, :on => :collection
+    collection do
+      get :chatroom, :blogs
+    end
     member do
-      get :following, :followers, :captchas
+      get :following, :followers, :captchas, :blog
     end
   end
   resources :sessions,      :only => [:new, :create, :destroy]
@@ -12,7 +14,8 @@ Socialrails::Application.routes.draw do
   end
   resources :opinions,      :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
-  resources :hashtags,      :only => :create
+  resources :blogs,         :only => [:create, :destroy]
+  resources :tags,          :only => :show
   resources :messages,      :only => :create
 
   root :to => 'static_pages#home'
@@ -21,5 +24,5 @@ Socialrails::Application.routes.draw do
   match '/signin'   => 'sessions#new'
   match '/signout'  => 'sessions#destroy', :via => :delete
   match '/about'    => 'static_pages#about'
-  match '/pretty-post/:id/' => 'microposts#show', :as => :pretty_post
+  match '/permalink/:id/' => 'microposts#show', :as => :permalink
 end

@@ -1,0 +1,25 @@
+<div id="<%= blog.id %>" class="well well-inner">
+
+  <h2 class="bio center blog-title">
+    <%= blog.title %> 
+
+    <% if current_user?(blog.user) %>
+      <%= render( partial: ('blogs/actions'), locals: { blog: blog } ) %>
+    <% end %>
+  </h2>
+
+  <%= render(partial: ("blogs/header"),
+            locals: { item: blog }) %>
+
+  <span class="content">
+    <%= render(partial: ("feeds/shared/content"),
+        locals: { item: blog }) %>
+    <p class="bio">
+      <%= blog.tag_placeholder %>
+      <% blog.tags.each do |tag| %>
+        <i class="icon-tag"></i> <%= link_to tag.name, tag %>
+      <% end %>
+    </p>
+  </span>
+
+</div>

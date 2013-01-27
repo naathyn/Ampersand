@@ -7,8 +7,9 @@
   </a>
 
   <nav id="links_dropdown" class="dropdown-menu">
-    <li class=""><%= link_to "Profile", current_user %></li>
-    <li class=""><%= link_to "Captchas", captchas_user_path(current_user) %></li>
+    <li><%= link_to "Profile", current_user %></li>
+    <li><%= link_to "Blog", blog_user_path(current_user) %></li>
+    <li><%= link_to "Captchas", captchas_user_path(current_user) %></li>
       <li class="divider"></li>
     <li><%= link_to "Account", edit_user_path(current_user) %></li>
     <li><%= link_to "Sign out", :signout, method: "delete" %></li>

@@ -24,12 +24,12 @@
 
       <span class="location">
 
-        <% unless @user.location.blank? %>
+        <% unless @user.location.blank? || @user.location.nil? %>
           <i class="icon-map-marker"></i> 
             <%= link_to @user.location, wiki_for(@user), target: "_blank" %>
         <% end %>
 
-        <% unless @user.website.nil? %>
+        <% unless @user.website.nil? || @user.website.blank? %>
           <i class="icon-globe"> </i> 
           <%= auto_link(@user.website, html: { target: "_blank" }) %>
         <% end %>

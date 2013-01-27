@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
   before_filter :signed_in_user
 
-  respond_to :html, :js
+  respond_to :js
 
   def create
     @user = User.find(params[:relationship][:followed_id])

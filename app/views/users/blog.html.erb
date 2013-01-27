@@ -1,0 +1,71 @@
+<% content_for :head do %>
+  <% provide(:title, @title) %>
+<% end %>
+
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", :root %> 
+      <span class="divider">/</span>
+    </li>
+    <li><%= link_to "Members", :users %> 
+      <span class="divider">/</span>
+    </li>
+    <li><%= link_to "Blogs", :blogs_users %> 
+      <span class="divider">/</span>
+    </li>
+
+    <li class="active"> <%= @title %> </li>
+  </ul>
+
+  <% if current_user?(@user) %>
+    <div class="alert alert-block" style="margin-top:1em;">
+      <h2>Heya Blogger!</h2>
+          Welcome to your new blog! It is still under construction
+          so expect a fancier layout and the ability to 
+          create drafts in the near future!
+    </div>
+  <% end %>
+
+<div class="row-fluid">
+  <aside class="span8">
+
+  <% if current_user?(@user) %>
+    <legend data-toggle="collapse" data-target="#form"
+      style="cursor:pointer;"> Post New Entry </legend>
+      <%= render("blogs/form") %>
+  <% end %>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#blog"><%= @title %></a></li>
+    </ul>
+   
+    <div class="tab-content">
+
+      <div class="tab-pane active" id="blog">
+        <%= render @blogs %>
+        <div class="well-bottom">
+          <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <aside class="span3" id="<%= @user.id %>" style="display:fixed;">
+    <%= gravatar_for(@user, size: 180) %>
+
+    <p class="bio tags"> <%= @user.bio %> </p>
+
+    <% unless @user.location.blank? %>
+      <p class="location">
+        <i class="icon-map-marker"> </i>
+        <%= @user.location %>
+      </p>
+    <% else %>
+      <br />
+    <% end %>
+
+    <p class="user"> <%= link_to "View Full Profile →", @user %> </p>
+
+    <%= render('show_tagbar') %>
+  </aside>
+</div>

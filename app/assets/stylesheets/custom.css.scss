@@ -123,11 +123,12 @@ aside {
   margin-left: 5%;
   margin-right: 5%;
   padding: 0;
-  min-width: 560px;
+  min-width: 646px;
 }
 
 .navbar-inner {
   background-image: url(image_path('header.png'));
+  border: 1px solid $textGray;
 }
 
 .nav > li > a {
@@ -323,7 +324,7 @@ aside {
   }
 }
 
-.users-follow li {
+.users-follow li, .blogs li {
  overflow: auto;
  padding: 10px 14px;
  padding-left: none;
@@ -338,7 +339,9 @@ aside {
 
 .users li:hover { background-color: $wellGray; }
 .users-follow { margin: 0px; }
-.users-follow li:hover { opacity: 100; }
+
+.users-follow li:hover,
+.blogs li:hover { opacity: 100; }
 
 .stats a:hover strong { color: $blue; }
 
@@ -363,7 +366,7 @@ aside {
   @include well-bottom;
 }
 
-.well {
+.well, .well-body {
   cursor: pointer;
   background-color: $innerBody;
   border-top-width: 0;
@@ -401,7 +404,10 @@ aside {
 
 #naathyn a { color: $green; }
 
-.well:hover .well-footer li, .modal-body:hover .well-footer li { opacity: 100; }
+.well:hover .well-footer li,
+.well:hover .well-footer-blog li,
+.modal-body:hover .well-footer li, { opacity: 100; }
+
 .well:hover .well-footer a, .modal-body:hover .well-footer a { color: $blue; }
 
 .well-footer .collapse { padding-left: 10px; }
@@ -742,6 +748,7 @@ aside {
 .actions .stats li:last-child a { padding-bottom: 0px; }
 
 .nav-tabs { margin-bottom:0; }
+.nav-tabs > .active > a { background-color: $innerBody; }
 
 /* included in static_pages/about#show */
 
@@ -904,17 +911,38 @@ aside {
 .chat_container .room:first-child { margin-top: 0; }
 .chat_container_text form input { margin: 15px 0px -10px 73px; }
 
-/* various different icons */
+/* user blogs */
 
-[class^="icon-camera"], [class*=" icon-camera"] { margin-left: 12px; }
-#comment-bar { margin-left: 12px; }
+.blog-actions {
+  display: inline-block;
+  li {
+    display: inline;
+  }
+}
+
+.blogs img {
+  width: 120px; 
+  height: 120px; 
+  border: 1px solid $inputBorder;
+}
+
+.blog-title {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.well-footer-blog { margin-bottom: 0px; }
+.tags { margin-top: 14em; }
+
+/* various different icons */
 
 [class^="icon-comment"], [class*=" icon-comment"] {
   margin-right: 5px;
   margin-left: 1px;
 }
 
-[class^="icon-heart"], [class*=" icon-heart"], [class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
+[class^="icon-heart"], [class*=" icon-heart"],
+[class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
   vertical-align: 2px;
   margin-left: 3px;
 }
@@ -924,8 +952,13 @@ aside {
   vertical-align: -3px;
 }
 
+[class^="icon-camera"], [class*=" icon-camera"] { margin-left: 12px; }
 [class^="icon-remove"], [class*=" icon-remove"] { vertical-align: 3px; }
 [class^="icon-map-marker"], [class*=" icon-map-marker"] { vertical-align: -3px; }
+
+[class^="icon-pencil"], [class*=" icon-pencil"] { margin-right: 5px; }
+
+#comment-bar { margin-left: 12px; }
 
 /* alert messages */
 

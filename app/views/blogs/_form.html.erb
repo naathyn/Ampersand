@@ -1,0 +1,19 @@
+<div id="form" class="collapse">
+  <div class="container-fluid">
+    <%= form_for(current_user.blogs.build, html: { multipart: true }) do |f| %>
+
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label :photo %>
+        <%= f.file_field :photo %>
+
+        <%= f.text_area :content, rows: 4 %>
+
+        <%= f.label :tag_names, "Tags (seperated by commas)" %>
+        <%= f.text_field :tag_names %>
+
+      <%= f.submit "Post Blog", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

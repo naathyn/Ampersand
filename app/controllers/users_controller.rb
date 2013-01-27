@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, except: [:new, :create]
+  before_filter :signed_in_user, except: [:new, :create, :blogs]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :captcha_user, only: :captchas
   before_filter :admin_user, only: :destroy
@@ -88,11 +88,23 @@ class UsersController < ApplicationController
     render 'captchas/index'
   end
 
+  def blogs
+    @title = "Blogs"
+    @blogs = Blog.paginate(page: params[:page], include: [:tags, :user], per_page: 10)
+  end
+
+  def blog
+    @user = User.find_by_name(params[:id])
+    @title = "#{@user.realname} Blog"
+    @blogs = @user.blogs.paginate(page: params[:page], include: [:tags, :user => :captchas])
+  end
+
   def chatroom
     @title = "Chatroom"
     @messages = current_user.chat.paginate(page: params[:page], 
                 per_page: 15, include: :user)
-    flash.now[:notice] = "Welcome to the Chat! Expect rooms and private messaging soon."
+    flash.now[:notice] = "Welcome to the Chat! Expect rooms and 
+                          private messaging soon."
   end
 
 private
@@ -104,7 +116,6 @@ private
 
     def captcha_user
       @user = User.find_by_name(params[:id])
-      logger.error "#{current_user.realname} attempted access to @#{params[:id]}'s captcha index."
       redirect_to(captchas_user_path(current_user),
       notice: "You can find @#{params[:id]}'s Captcha's in the feeds") unless current_user?(@user)
     end
@@ -114,10 +125,6 @@ private
     end
 
     def wipe_the_chat
-      current_user.chat.all.each do |message|
-        if message.created_at<=(1.day.ago)
-          message.delete
-        end
-      end
+      current_user.chat.all.each { |message| message.delete if message.created_at<=(6.hours.ago) }
     end
 end

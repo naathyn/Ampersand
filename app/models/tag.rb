@@ -1,6 +1,8 @@
 class Tag < ActiveRecord::Base
-  belongs_to :micropost
-  belongs_to :hashtag
+  attr_accessible :name
 
-  validates_presence_of :micropost_id, :hashtag_id
+  has_many :taggings, dependent: :destroy
+  has_many :blogs, through: :taggings
+
+  default_scope order: 'name'
 end
