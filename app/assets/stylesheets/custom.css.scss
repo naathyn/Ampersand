@@ -920,11 +920,16 @@ aside {
   }
 }
 
-.blogs img, .blog-container {
-  width: 148px; 
-  height: 148px; 
+.blogs img, .photos img, .blog-container {
+  width: 120px; 
+  height: 120px; 
   border: 1px solid $inputBorder;
   @include gravatars;
+}
+
+.photos img {
+  width: 148px;
+  height: 148px;
 }
 
 .blog-container {

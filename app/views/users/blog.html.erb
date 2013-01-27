@@ -51,7 +51,7 @@
       <div class="tab-pane active" id="photos">
         <% for blog in @blogs %>
           <% if blog.has_photo? %>
-            <div class="blogs blog-container">
+            <div class="photos blog-container">
               <%= link_to(image_tag(blog.photo_path, class: "blogs", 
                   title: blog.title), blog.photo_path, target: "_blank") %>
               <span class="bio"><%= blog.title %></span>
