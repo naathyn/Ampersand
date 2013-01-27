@@ -1,10 +1,8 @@
 <aside class="span3">
   <legend> Popular Tags </legend>
   <div id="tags">
-    <% cache('all_tags') do %>
-      <% for tag in Tag.all %>
-        <ol><i class="icon-tags"></i> <%= link_to tag.name, tag_path(tag) %> </ol>
-      <% end %>
+    <% for tag in Tag.all %>
+      <ol><i class="icon-tags"></i> <%= link_to tag.name, tag_path(tag) %> </ol>
     <% end %>
   </div>
 </aside>

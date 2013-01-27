@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
   has_many :messages, dependent: :delete_all
   has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
 
-
   VALID_REALNAME = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
   VALID_USERNAME = /\A[A-Z\d_]*\Z/i
   VALID_WEBSITE = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix
