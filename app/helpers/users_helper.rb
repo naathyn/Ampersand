@@ -6,8 +6,4 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, title: user.realname, class: "gravatar")
   end
-
-  def wiki_for(user)
-    wiki_link = "https://en.wikipedia.org/wiki/#{user.location}"
-  end
 end
