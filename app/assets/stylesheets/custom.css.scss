@@ -927,7 +927,7 @@ aside {
   @include gravatars;
 }
 
-.photos img {
+.photos img, .blog-container {
   width: 148px;
   height: 148px;
 }
