@@ -36,6 +36,7 @@
 
     <ul class="nav nav-tabs">
       <li class="active"><a href="#blog"><%= @title %></a></li>
+      <li><a href="#photos">Blog Photos</a></li>
     </ul>
    
     <div class="tab-content">
@@ -46,8 +47,20 @@
           <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
         </div>
       </div>
-    </div>
 
+      <div class="tab-pane active" id="photos">
+        <% for blog in @blogs %>
+          <% if blog.has_photo? %>
+            <div class="blogs blog-container">
+              <%= link_to(image_tag(blog.photo_path, class: "blogs", 
+                  title: blog.title), blog.photo_path, target: "_blank") %>
+              <span class="bio"><%= blog.title %></span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
   </aside>
 
   <aside class="span3" id="<%= @user.id %>" style="display:fixed;">

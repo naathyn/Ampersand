@@ -920,10 +920,18 @@ aside {
   }
 }
 
-.blogs img {
-  width: 120px; 
-  height: 120px; 
+.blogs img, .blog-container {
+  width: 148px; 
+  height: 148px; 
   border: 1px solid $inputBorder;
+  @include gravatars;
+}
+
+.blog-container {
+  display: inline-block;
+  padding: 10px 10px 25px;
+  margin: 10px;
+  background-color: $white;
 }
 
 .blog-title {
