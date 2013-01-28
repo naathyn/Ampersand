@@ -1,7 +1,7 @@
-<% if blog.has_photo? %>
+<% if item.has_photo? %>
   <div class="photos blog-container">
-    <%= link_to(image_tag(blog.photo_path, class: "blogs", 
-        title: blog.title), blog.photo_path, target: "_blank") %>
-    <span class="bio"><%= blog.title %></span>
+    <%= link_to(image_tag(item.photo_path, class: "blogs", 
+        title: item.title), item.photo_path, target: "_blank") %>
+    <span class="bio"><%= item.title %></span>
   </div>
 <% end %>

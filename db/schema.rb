@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 20130122181258) do
 
   create_table "blogs", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "content"
-    t.string   "extension"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.string    "title"
+    t.text      "content"
+    t.string    "extension"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "blogs", ["user_id", "created_at"], :name => "index_blogs_on_user_id_and_created_at"
@@ -87,10 +87,10 @@ ActiveRecord::Schema.define(:version => 20130122181258) do
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "taggings", :force => true do |t|
-    t.integer  "blog_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "blog_id"
+    t.integer   "tag_id"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "taggings", ["blog_id", "tag_id"], :name => "index_taggings_on_blog_id_and_tag_id", :unique => true
@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(:version => 20130122181258) do
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
 
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "tags", ["name"], :name => "index_tags_on_name"

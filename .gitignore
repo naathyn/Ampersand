@@ -6,6 +6,8 @@
 /tmp/*
 /doc/*
 
+/public/attachments/*
+
 /bin/*
 *.sh
 
