@@ -22,8 +22,8 @@ class Micropost < ActiveRecord::Base
     end
   end
 
-  def liked_by?(user)
-    likes.find_by_fan_id(user.id)
+  def liked_by?(fan)
+    likes.find_by_fan_id(fan.id)
   end
 
 private

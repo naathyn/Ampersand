@@ -6,7 +6,7 @@ gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'jquery-rails'
+gem 'jquery-rails', '2.1.4'
 gem 'rails_autolink'
 
 group :development, :test do
