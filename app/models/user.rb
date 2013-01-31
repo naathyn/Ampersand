@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :captchas, dependent: :destroy
 
-  has_many :microposts, dependent: :destroy
-  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
+  has_many :microposts, dependent: :destroy, include: [:likes, :fans, :user =>
+                    {:captchas => {:user => :fans}}]
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy, include: [:likes, :fans, :user =>
+                    {:captchas => {:user => :fans}}]
 
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
   has_many :likes, through: :fans

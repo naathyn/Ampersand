@@ -36,24 +36,7 @@
       <%= render("blogs/form") %>
     <% end %>
 
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#blog"><%= @title %></a></li>
-      <li><a href="#photos">Blog Photos</a></li>
-    </ul>
-   
-    <div class="tab-content">
-      <div class="tab-pane active" id="blog">
-        <%= render @blogs %>
-        <div class="well-bottom">
-          <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
-        </div>
-      </div>
-
-      <div class="tab-pane" id="photos">
-        <%= render(partial: ("blogs/photo"), collection: @blogs, as: :item) %>
-      </div>
-    </div>
-
+    <%= render(@blogs) %>
   </aside>
 
   <aside class="span3" id="<%= @user.id %>">

@@ -305,12 +305,14 @@ aside {
   font-weight: normal;
 }
 
-.timestamp {
+.timestamp, .blog-timestamp {
   font-size: 13px;
   color: $timestamp;
   float: right;
   font-weight: normal;
 }
+
+.blog-timestamp { font-size: 15px; }
 
 .users {
   margin: 0px -14px;
@@ -678,7 +680,7 @@ aside {
   }
 }
 
-.bio {
+.bio, .title {
   margin-bottom: 0px;
   font: italic 14px/18px Georgia, "Times New Roman", serif;
   color: $grayLarge;
@@ -913,6 +915,17 @@ aside {
 
 /* user blogs */
 
+.blog-wrapper {
+  cursor: default;
+  box-shadow: none;
+  background: none;
+}
+
+.title {
+  font-size: 26px;
+  margin-bottom: .8em;
+}
+
 .entry {
   font-size: 16px;
   padding: 4px;
@@ -939,18 +952,34 @@ aside {
 
 .blog-container {
   display: inline-block;
-  padding: 10px 10px 25px;
-  margin: 10px;
+  padding: 10px;
+  margin: 10px 0 10px;
   background-color: $white;
-}
-
-.blog-title {
-  font-size: 17px;
-  margin-bottom: 5px;
 }
 
 .well-footer-blog { margin-bottom: 0px; }
 .tags { margin-top: 14em; }
+
+/* Blog formatting */
+
+.format { 
+  margin-bottom: .4em;
+  letter-spacing: 1px;
+  line-height: 22px;
+}
+
+.format p { text-indent: 2em; }
+
+.format h1 {
+  margin-bottom: 5px;
+  font: bold 18px/22px Georgia, "Times New Roman", serif;
+  color: $grayLarge;
+}
+
+.format .indent {
+  display: inline-block;
+  margin-left: 2em;
+}
 
 /* various different icons */
 

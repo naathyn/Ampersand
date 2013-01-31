@@ -1,32 +1,31 @@
-<div id="<%= blog.id %>" class="well well-inner">
+<div id="<%= blog.id %>" class="well-body well-inner blog-wrapper">
 
-  <h2 class="bio center blog-title">
-    <%= blog.title %> 
+  <h2 class="title">
+      <%= blog.title %>
 
     <% if current_user?(blog.user) %>
       <%= render( partial: ('blogs/actions'), locals: { blog: blog } ) %>
     <% end %>
+
+    <span class="blog-timestamp">
+      <%= blog.timestamp %>
+    </span>
   </h2>
 
-  <%= render(partial: ("blogs/header"),
-            locals: { item: blog }) %>
+  <div class="format">
+    <%= auto_link(blog.content, html: { target: '_blank' }) do |content|
+        truncate(content, length: 30) end %>
+  </div>
 
-  <span class="content">
-    <%= render(partial: ("feeds/shared/content"),
-        locals: { item: blog }) %>
+  <span class="bio">
+    <%= render(partial:("blogs/photo"), locals: { item: blog }) %> <br />
+    <%= blog.tag_placeholder %>
 
-    <p class="bio" style="margin-top:2px;">
-      <%= blog.tag_placeholder %>
-
-      <% if blog.has_photo? %>
-        <i class="icon-file"></i> 
-        [<%= link_to "attachment", blog.photo_path, target: "_blank" %>]
-      <% end %>
-
+    <% unless blog.tags.empty? %>
       <% blog.tags.each do |tag| %>
         <i class="icon-tag"></i> <%= link_to tag.name, tag %>
       <% end %>
-    </p>
+    <% end %>
   </span>
 
 </div>

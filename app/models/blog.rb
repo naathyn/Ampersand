@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   include AttachmentsHelper
+  include TimestampHelper
 
   attr_accessible :title, :content, :tag_names, :photo
   attr_writer :tag_names
