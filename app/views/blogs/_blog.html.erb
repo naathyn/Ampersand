@@ -18,13 +18,16 @@
   </div>
 
   <span class="bio">
-    <%= render(partial:("blogs/photo"), locals: { item: blog }) %> <br />
-    <%= blog.tag_placeholder %>
+    <% if blog.has_photo? %>
+      <%= render(partial:("blogs/photo"), locals: { item: blog }) %> <br />
+    <% end %>
 
     <% unless blog.tags.empty? %>
       <% blog.tags.each do |tag| %>
         <i class="icon-tag"></i> <%= link_to tag.name, tag %>
       <% end %>
+    <% else %>
+      untagged
     <% end %>
   </span>
 

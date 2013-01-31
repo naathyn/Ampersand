@@ -20,10 +20,6 @@ class Blog < ActiveRecord::Base
   def tag_names
     @tag_names || tags.map(&:name).join(', ')
   end
-
-  def tag_placeholder
-    "untagged" if tag_names.empty?
-  end
   
 private
   
