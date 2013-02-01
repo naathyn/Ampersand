@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-  respond_to :html, :js
-
   def new
     if signed_in?
       redirect_to(user_url(current_user), notice: "You are already signed in")
