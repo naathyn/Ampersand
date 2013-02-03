@@ -1,20 +1,22 @@
 @import "bootstrap";
 @import "mixins";
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 /* global configurations */
 
-html { overflow-y: scroll; }
-html, body { height: 100%; }
+html { 
+  overflow-y: scroll; 
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
 
 body {
   background-image: url(image_path('bg.png'));
-  background-color: $outterBody;
-  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
   font-size: 14px;
-  -webkit-font-smoothing: subpixel-antialiased;
   line-height: 18px;
   padding-top: 60px;
+  height: 100%;
 }
 
 input, textarea, select, .uneditable-input {
@@ -432,11 +434,6 @@ aside {
 .share-actions li {
   display: inline-block;
   opacity: 0;
-}
-
-.like-form {
-  vertical-align: 1px;
-  margin-bottom: 1px;
 }
 
 .share-actions .btn-link {
