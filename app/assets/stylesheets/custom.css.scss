@@ -12,7 +12,7 @@ html {
 
 body {
   background-image: url(image_path('bg.png'));
-  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-family: 'Lato', "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
   padding-top: 60px;
@@ -409,6 +409,10 @@ aside {
   margin-bottom: -6px;
 }
 
+.tooltip {
+  text-shadow: 0px 1px 1px black;
+}
+
 .well:hover { background-color: $wellGray; }
 .well:hover .timestamp, .modal-body:hover .timestamp { color: $blue; }
 .well-inner:hover strong { color: $red; }
@@ -428,7 +432,7 @@ aside {
 .shown {
   cursor: pointer;
   color: $grayLight;
-  vertical-align: 6px;
+  vertical-align: 5px;
 }
 
 .share-actions li {
@@ -994,13 +998,18 @@ aside {
 
 [class^="icon-comment"], [class*=" icon-comment"] {
   margin-right: 5px;
-  margin-left: 1px;
+  margin-left: 3px;
+  vertical-align: -3px;
 }
 
-[class^="icon-heart"], [class*=" icon-heart"],
-[class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
-  vertical-align: 2px;
+[class^="icon-heart"], [class*=" icon-heart"] {
   margin-left: 3px;
+  vertical-align: 3px;
+}
+
+[class^="icon-thumbs-up"], [class*=" icon-thumbs-up"] {
+  margin-left: 3px;
+  vertical-align: 2px;
 }
 
 [class^="icon-globe"], [class*=" icon-globe"] {
