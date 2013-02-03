@@ -33,7 +33,7 @@
               <i class="icon-comment"></i>Reply</a>
             </li>
 
-          <li id="like_form<%= item.id %>">
+          <li id="like_form<%= item.id %>" class="like-form">
             <%= render(partial: ("feeds/shared/like_form"), 
                 locals: { item: item }) %>
           </li>

@@ -1,17 +1,18 @@
 @import "bootstrap";
 @import "mixins";
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 /* global configurations */
 
 html { overflow-y: scroll; }
 html, body { height: 100%; }
 
-body, input, textarea, select, .uneditable-input { font-family: 'Lato', Calibri, Arial, sans-serif; }
-
 body {
-  background-image: url(image_path('dust.png'));
+  background-image: url(image_path('bg.png'));
   background-color: $outterBody;
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
+  -webkit-font-smoothing: subpixel-antialiased;
   line-height: 18px;
   padding-top: 60px;
 }
@@ -83,6 +84,7 @@ footer {
   padding: 1em;
   border: 1px solid $userBorder;
   color: $grayLight;
+  text-shadow: 0px 1px 1px white;
   @include footer;
 }
 
@@ -110,13 +112,18 @@ aside {
 /* Page Layout */
 
 .page-wrapper {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-image: url(image_path('wrapper.png'));
   border: 1px solid $userBorder;
+  text-shadow: 0px 1px 1px white;
   border-bottom-width: 0;
   min-height: 100%;
   min-width: 767px;
   margin: -1.4em 5% auto;
-  padding: 1.4em 1em 2em;
+  padding: 1.5em 1em 2em;
+}
+
+.navbar-inner {
+  padding: 1px;
 }
 
 .navbar-inner .container-fluid {
@@ -427,6 +434,11 @@ aside {
   opacity: 0;
 }
 
+.like-form {
+  vertical-align: 1px;
+  margin-bottom: 1px;
+}
+
 .share-actions .btn-link {
   color: $blue;
   vertical-align: 5px;
@@ -562,7 +574,7 @@ aside {
   font-weight: bold;
   line-height: 18px;
   text-align: center;
-  text-shadow: 0px 1px 0px $white;
+  text-shadow: 0px 1px 1px $white;
 }
 
 #likes {
@@ -640,7 +652,7 @@ aside {
 }
 
 .profile, .microposts-profile {
-  text-shadow: 0px 1px 0px $white;
+  text-shadow: 0px 1px 1px $white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   line-height: 16px;
@@ -682,14 +694,15 @@ aside {
 
 .bio, .title {
   margin-bottom: 0px;
-  font: italic 14px/18px Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-style: italic;
   color: $grayLarge;
 }
 
 .location {
   display: block;
   padding-top: 8px;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 18px;
   color: $grayLarge;
 }
@@ -806,7 +819,7 @@ aside {
     background-color: $green;
     color: white;
     text-decoration: none;
-    text-shadow: 0px 0px 1px $grayLarge;
+    text-shadow: 0px 1px 1px $grayLarge;
     border-radius: 3px;
   }
 }
@@ -841,7 +854,7 @@ aside {
     font-size: 20px;
     margin-left: 5px;
   }
-  li { text-shadow: 0px 1px 0px $black; }
+  li { text-shadow: 0px 1px 1px $black; }
 }
 
 .profile-inner .content { 
@@ -958,14 +971,13 @@ aside {
 }
 
 .well-footer-blog { margin-bottom: 0px; }
-.tags { margin-top: 14em; }
+.tags { margin-top: 15em; }
 
 /* Blog formatting */
 
 .format { 
   margin-bottom: .4em;
-  letter-spacing: 1px;
-  line-height: 22px;
+  line-height: 24px;
 }
 
 .format p { text-indent: 2em; }
