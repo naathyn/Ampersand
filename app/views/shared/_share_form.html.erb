@@ -1,8 +1,7 @@
-<%= form_for(current_user.microposts.build) do |f| %>
+<%= form_for(@micropost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.text_area :content,
-        placeholder: "Speak up, the world needs listeners..." %>
-
-  <%= f.submit "Share", class: "btn btn-primary", 
-                        style: "padding-left:10px;" %>
+    <%= f.text_area :content, placeholder: "What's on your mind, #{current_user.name}?" %>
+    <%= f.submit "Share", class: "btn btn-primary", 
+                          style: "padding-left:10px;" %>
 <% end %>

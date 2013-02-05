@@ -2,17 +2,18 @@
 
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <%= gravatar_for(current_user, size: 22) %> 
-    <%= current_user.name %>
-      <b class="caret"></b>
+    <%= current_user.name %> <b class="caret"></b>
   </a>
 
-  <nav id="links_dropdown" class="dropdown-menu">
+  <ul class="dropdown-menu">
+    <li class="nav-header">@<%= current_user.name %></li>
     <li><%= link_to "Profile", current_user %></li>
     <li><%= link_to "Blog", blog_user_path(current_user) %></li>
     <li><%= link_to "Captchas", captchas_user_path(current_user) %></li>
       <li class="divider"></li>
+      <li class="nav-header">Settings</li>
     <li><%= link_to "Account", edit_user_path(current_user) %></li>
     <li><%= link_to "Sign out", :signout, method: "delete" %></li>
-  </nav>
+  </ul>
 
 </li>

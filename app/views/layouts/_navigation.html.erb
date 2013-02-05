@@ -1,7 +1,7 @@
 <nav>
   <% if signed_in? %>
 
-    <ul id="links" class="nav navigation pull-left">
+    <ul class="nav navigation">
       <li class=""><%= link_to "Home", :root %></li>
       <li class=""><%= link_to "Members", :users %></li>
       <li class=""><%= link_to "Blogs", :blogs_users %></li>
@@ -9,7 +9,7 @@
       <li class=""><%= link_to "You", user_path(current_user) %></li>
     </ul>
 
-    <ul id="links_right" class="nav pull-right">
+    <ul class="nav pull-right">
       <%= render 'layouts/usernav' %>
     </ul>
 

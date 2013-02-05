@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
       @shares = current_user.share.paginate(page: params[:page], 
                 include: [:likes, :fans, :user =>
                     {:captchas => {:user => :fans}}])
+      @micropost = current_user.microposts.build
     else
       @title = "Sign up now!"
     end

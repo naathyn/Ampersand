@@ -9,12 +9,19 @@
   <% end %>
 
   <span class="lead"><%= link_to blog.title, blog_user_path(blog.user) %></span>
-  <p class="bio" style="margin-bottom:.4em;">
+  <p class="bio">
     by <%= link_to blog.user.realname, blog.user %>
   </p>
 
+  <p class="format">
+    <%= auto_link(truncate(blog.content, length: 175)) %>
+    <span class="bio">
+      <%= link_to "read more", blog_user_path(blog.user) %>
+    </span>
+  </p>
+
   <% if blog.tags.any? %>
-    <p class="bio">
+    <p class="bio" style="text-align:center;">
       <% blog.tags.each do |tag| %>
         <i class="icon-tag"></i> <%= link_to tag.name, tag %>
       <% end %>

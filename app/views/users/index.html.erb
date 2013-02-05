@@ -11,8 +11,6 @@
 
   <ul class="nav nav-tabs">
     <li class="active"><a href="#members">Members (<%= @users.count %>)</a></li>
-
-    <li><a href="#online">Online Now!</a></li>
   </ul>
  
   <div class="tab-content">
@@ -21,16 +19,7 @@
       <ul class="users-follow" style="margin:0;">
         <%= render @users %>
       </ul>
-      <%= will_paginate @users %>
-    </div>
-
-
-  <div class="tab-pane" id="online">
-    <div class="alert alert-block" style="margin-top:1em;">
-      <h2>Woah There Sally!</h2>
-      Looks like this section is still under construction.  Should have the kinks
-      worked out soon!
-    </div>
+    <%= will_paginate @users %>
   </div>
 
 </div>
