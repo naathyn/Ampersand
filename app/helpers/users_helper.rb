@@ -1,4 +1,5 @@
 module UsersHelper
+
   def gravatar_for(user, options = { size: 50 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     size = options[:size]
@@ -34,5 +35,4 @@ module UsersHelper
   def unlike!(random_share)
     self.fans.find_by_like_id(random_share.id).destroy
   end
-
 end

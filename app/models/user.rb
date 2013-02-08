@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base 
+class User < ActiveRecord::Base
   include UsersHelper
   attr_accessible :realname, :email, :name, :location, :bio, 
   :password, :password_confirmation, :sign_in_count, :website

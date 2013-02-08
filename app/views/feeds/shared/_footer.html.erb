@@ -7,7 +7,13 @@
   <ul class="inline-share-stats share-stats">
 <% end %>
 
-  <%= render(partial: ("feeds/shared/footer_stats"), 
-      locals: { item: item }) %>
+  <li>
+    <a>
+      <i class="icon-heart"></i>
+      <strong id="likes<%= item.id %>">
+        <%= item.fan_likes_count %>
+      </strong>
+    </a>
+  </li>
 
 </ul>

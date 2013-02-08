@@ -1,6 +1,12 @@
 <ul class="inline-share-stats share-stats">
-  <%= render(partial: ("feeds/shared/footer_stats"),
-      locals: { item: @micropost }) %>
+  <li>
+    <a>
+      <i class="icon-heart"></i>
+      <strong id="likes<%= @micropost.id %>">
+        <%= @micropost.fan_likes_count %>
+      </strong>
+    </a>
+  </li>
 </ul>
 
 <ul class="users_modal">
