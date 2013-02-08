@@ -99,7 +99,7 @@ class UsersController < ApplicationController
   def chatroom
     @title = "Chatroom"
     @messages = current_user.chat.paginate(page: params[:page], 
-                per_page: 15, include: [:user => :captchas])
+                per_page: 15, include: :user)
     flash.now[:notice] = "Welcome to the Chat! Expect rooms and 
                           private messaging soon."
   end
