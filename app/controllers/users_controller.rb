@@ -93,7 +93,7 @@ class UsersController < ApplicationController
   def blog
     @user = User.find_by_name(params[:id])
     @title = "#{@user.realname} Blog"
-    @blogs = @user.blogs.paginate(page: params[:page], include: [:tags, :user => :captchas])
+    @blogs = @user.blogs.paginate(page: params[:page], include: [:tags, :user])
   end
 
   def chatroom

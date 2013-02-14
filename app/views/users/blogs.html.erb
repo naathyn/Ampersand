@@ -19,10 +19,9 @@
       <legend class="legend">Community Blogs</legend>
 
       <% unless @blogs.empty? %>
-        <%= will_paginate @blogs %>
-          <ol class="blogs">
-            <%= render(partial: ("users_blogs"), collection: @blogs, as: :blog) %>
-          </ol>
+        <ol class="blogs">
+          <%= render(partial: ("users_blogs"), collection: @blogs, as: :blog) %>
+        </ol>
         <%= will_paginate @blogs %>
       <% end %>
     </aside>
