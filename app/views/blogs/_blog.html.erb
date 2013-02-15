@@ -17,6 +17,8 @@
         truncate(content, length: 30) end %>
   </div>
 
+  <p class="location">By <%= link_to blog.user.realname, blog %></p>
+
   <span class="bio">
     <% if blog.has_photo? %>
       <%= render(partial:("blogs/photo"), locals: { item: blog }) %> <br />
