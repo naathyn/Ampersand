@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
   validates_format_of :name, with: VALID_USERNAME
   validates_format_of :website, with: VALID_WEBSITE, allow_blank: true, allow_nil: true
 
-  before_save { |user| user.email = email.downcase }
-  before_save { |user| user.name = name.downcase }
+  before_save { email.downcase! }
+  before_save { name.downcase! }
   before_save :create_remember_token
 
   def share
