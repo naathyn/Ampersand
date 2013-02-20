@@ -10,7 +10,7 @@ class Blog < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   validates_presence_of :title, :content
-  validates_format_of :extension, with: %r{(gif|jpg|png)$}i, allow_nil: true, allow_blank: true
+  validates_format_of :extension, with: %r{(gif|jpg|png)$}i, allow_nil: true, allow_blank: true, message: 'must be a GIF, JPG or PNG.'
 
   after_save :assign_tags, :store_photo
   
