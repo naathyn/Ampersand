@@ -13,6 +13,10 @@
     <li class="active"><%= @title %></li>
   </ul>
 
+  <% if signed_in? %>
+    <%= link_to "Your Blog", blog_user_path(current_user) %>
+  <% end %>
+
   <div class="row-fluid">
 
     <aside class="span8">
