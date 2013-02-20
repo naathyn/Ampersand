@@ -1,5 +1,4 @@
 class Micropost < ActiveRecord::Base
-  include TimestampHelper
   attr_accessible :content
 
   belongs_to :user
