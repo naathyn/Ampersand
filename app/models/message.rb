@@ -13,19 +13,10 @@ class Message < ActiveRecord::Base
 
 private
 
-    def self.from_users_followed_by(user)
-      followed_user_ids = "SELECT followed_id FROM relationships
-                           WHERE follower_id = :user_id"
-      where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
-            user_id: user.id)
-    end
-
-    def alert_user
-      if match = /\A!([^\s]*)/.match(content)
-        user = User.find_by_name(match[1])
-        self.to ||= user
-        user = "<strong>!#{user.name}</strong>" if user
-        self.content = "#{user} #{content.gsub(/\A!([^\s]*)/, '')}"
-      end
+  def self.from_users_followed_by(user)
+    followed_user_ids = "SELECT followed_id FROM relationships
+                         WHERE follower_id = :user_id"
+    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
+        user_id: user.id)
     end
 end

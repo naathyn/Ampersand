@@ -35,13 +35,13 @@ private
     followed_user_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
-          user_id: user.id)
+        user_id: user.id)
   end
 
   def reply_n_linkify
     if match = /\A@([^\s]*)/.match(content)
       user = User.find_by_name(match[1])
-      self.to ||= user
+      self.to = user
       user = "<a href='/users/#{user.name}'>@#{user.name}</a>" if user
       self.content = "#{user} #{content.gsub(/\A@([^\s]*)/,'')}"
     end

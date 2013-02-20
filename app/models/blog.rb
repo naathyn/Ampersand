@@ -1,6 +1,5 @@
 class Blog < ActiveRecord::Base
   include AttachmentsHelper
-  include TimestampHelper
 
   attr_accessible :title, :content, :tag_names, :photo
   attr_writer :tag_names
@@ -19,6 +18,10 @@ class Blog < ActiveRecord::Base
   
   def tag_names
     @tag_names || tags.map(&:name).join(', ')
+  end
+
+  def timestamp
+    self.created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
   end
   
 private

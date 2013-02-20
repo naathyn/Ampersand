@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
   has_many :taggings, through: :blogs, source: :tags, uniq: true
 
   has_many :messages, dependent: :delete_all
-  has_many :private_messages, foreign_key: "to_id", class_name: "Message", dependent: :delete_all
 
   VALID_REALNAME = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
   VALID_USERNAME = /\A[A-Z\d_]*\Z/i
