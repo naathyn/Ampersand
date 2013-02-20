@@ -7,8 +7,6 @@ class Message < ActiveRecord::Base
   validates_presence_of :user_id, :content
   validates_length_of :content, within: (2..500)
 
-  after_validation :alert_user
-
   default_scope order: 'created_at DESC'
 
 private
