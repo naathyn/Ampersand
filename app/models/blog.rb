@@ -25,6 +25,8 @@ class Blog < ActiveRecord::Base
   end
   
 private
+
+  self.per_page = 5
   
   def assign_tags
     if @tag_names

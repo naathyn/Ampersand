@@ -2,6 +2,8 @@
   <% provide(:title, @title) %>
 <% end %>
 
+  <% @user ||= current_user %>
+
   <ul class="breadcrumb">
     <li><%= link_to "Home", :root %> 
       <span class="divider">/</span>
@@ -29,14 +31,11 @@
     <aside class="span8">
 
     <% if current_user?(@user) %>
-      <legend data-toggle="collapse" data-target="#form"
-        style="cursor:pointer;">
-        <span class="label label-success entry">Post New Entry</span>
-      </legend>
       <%= render("blogs/form") %>
     <% end %>
 
-    <%= render(@blogs) %>
+      <%= render(@blogs) %>
+    <%= will_paginate(@blogs) unless @blogs.empty? %>
   </aside>
 
   <aside class="span3" id="<%= @user.id %>">
@@ -55,6 +54,6 @@
 
     <p class="user"> <%= link_to "View Full Profile →", @user %> </p>
 
-    <%= render('show_tagbar') %>
+    <%= render('show_tagbar') unless @blogs.empty? %>
   </aside>
 </div>

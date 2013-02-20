@@ -94,6 +94,7 @@ class UsersController < ApplicationController
     @user = User.find_by_name(params[:id])
     @title = "#{@user.realname} Blog"
     @blogs = @user.blogs.paginate(page: params[:page], include: [:tags, :user])
+    @blog = current_user.blogs.build
   end
 
   def chatroom

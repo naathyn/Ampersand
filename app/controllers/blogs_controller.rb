@@ -7,7 +7,8 @@ class BlogsController < ApplicationController
     if @blog.save
       redirect_to(blog_user_url(current_user), notice: 'Blog was successfully created.')
     else
-      redirect_to(blog_user_url(current_user), notice: 'Something went wrong with your request.  If you used an image, make sure it is a gif, jpg or png.')
+      @blogs = []
+      render 'users/blog'
     end
   end
 
