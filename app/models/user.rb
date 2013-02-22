@@ -56,6 +56,34 @@ class User < ActiveRecord::Base
     Message.from_users_followed_by(self)
   end
 
+  def random_captcha
+    captchas.shuffle.last
+  end
+
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end
+
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
+  end
+
+  def like!(random_share)
+    fans.create!(like_id: random_share.id)
+  end
+
+  def unlike!(random_share)
+    fans.find_by_like_id(random_share.id).destroy
+  end
+
   def to_param
     name
   end
