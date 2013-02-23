@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include UsersHelper
   attr_accessible :realname, :email, :name, :location, :bio, 
   :password, :password_confirmation, :sign_in_count, :website
 
@@ -90,7 +89,7 @@ class User < ActiveRecord::Base
 
 protected
 
-    def create_remember_token
-      self.remember_token = SecureRandom.uuid
-    end
+  def create_remember_token
+    self.remember_token = SecureRandom.uuid
+  end
 end
