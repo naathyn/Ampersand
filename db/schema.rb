@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122181258) do
+ActiveRecord::Schema.define(:version => 20130224030945) do
 
   create_table "blogs", :force => true do |t|
     t.integer   "user_id"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20130122181258) do
 
   add_index "captchas", ["user_id", "created_at"], :name => "index_captchas_on_user_id_and_created_at"
   add_index "captchas", ["user_id"], :name => "index_captchas_on_user_id"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "blog_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
+  add_index "comments", ["user_id", "blog_id"], :name => "index_comments_on_user_id_and_blog_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "messages", :force => true do |t|
     t.integer   "user_id"

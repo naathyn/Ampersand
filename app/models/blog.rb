@@ -7,6 +7,7 @@ class Blog < ActiveRecord::Base
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :comments, dependent: :destroy
 
   validates_presence_of :title, :content
   validates_format_of :extension, with: %r{(gif|jpg|png)$}i, 

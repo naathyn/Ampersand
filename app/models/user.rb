@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 
   has_many :blogs, dependent: :destroy
   has_many :taggings, through: :blogs, source: :tags, uniq: true
+  has_many :comments, dependent: :destroy
 
   has_many :messages, dependent: :delete_all
 

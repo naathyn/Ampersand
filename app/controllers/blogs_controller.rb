@@ -6,6 +6,8 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @user = @blog.user
     @title = "#{@blog.title} by #{@user.realname}"
+    @comments = @blog.comments.page(params[:page])
+    @comment = current_user.comments.build 
   end
 
   def create

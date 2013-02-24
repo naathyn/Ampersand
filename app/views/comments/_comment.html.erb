@@ -1,0 +1,15 @@
+<li id="<%= comment.id %>">
+  <%= link_to gravatar_for(comment.user), comment.user %>
+  <span class="timestamp">
+    <%= time_ago_in_words(comment.created_at) %> ago.
+  </span>
+  <span id="<%= comment.user.name %>" class="user">
+    <%= link_to comment.user.realname, comment.user %>
+  </span>
+  <span class="content"><%= comment.content %></span>
+  <% if current_user?(comment.user) %>
+    <%= link_to "Delete", [@blog, comment], method: :delete,
+        data: { confirm: "Are you sure you want to delete this?" },
+        title: comment.content %>
+  <% end %>
+</li>

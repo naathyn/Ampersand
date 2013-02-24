@@ -1203,6 +1203,17 @@ aside {
   margin-left: 2em;
 }
 
+/* Comments pages */
+
+.comments {
+  margin: 10px 0;
+  li {
+    padding: 10px 0;
+    border-top: none;
+    border-bottom: 1px solid $border;
+  }
+}
+
 /* various different icons */
 
 .well-footer [class^="icon-comment"] {
