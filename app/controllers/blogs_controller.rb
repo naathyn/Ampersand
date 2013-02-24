@@ -2,20 +2,40 @@ class BlogsController < ApplicationController
   before_filter :signed_in_user
   before_filter :remove_stale_tags, only: [:create, :destroy]
 
+  def show
+    @blog = Blog.find(params[:id])
+    @user = @blog.user
+    @title = "#{@blog.title} by #{@user.realname}"
+  end
+
   def create
     @blog = current_user.blogs.build(params[:blog])
     if @blog.save
-      redirect_to(blog_user_url(current_user), notice: 'Blog was successfully created.')
+      redirect_to blog_user_url(current_user), notice: 'Blog was successfully created.'
     else
       @blogs = []
       render 'users/blog'
     end
   end
 
+  def edit
+    @blog = current_user.blogs.find(params[:id])
+    @title = "Editing: #{@blog.title}"
+  end
+
+  def update
+    @blog = current_user.blogs.find(params[:id])
+    if @blog.update_attributes(params[:blog])
+      redirect_to blog_user_url(current_user), notice: 'Your blog was posted successfully.'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @blog = current_user.blogs.find(params[:id])
     @blog.destroy
-    redirect_to(blog_user_url(current_user), notice: 'Your blog was removed.')
+    redirect_to blog_user_url(current_user), notice: 'Your blog was removed.'
   end
 
 private

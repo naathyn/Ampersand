@@ -8,7 +8,7 @@
       <%= f.label :photo %>
       <%= f.file_field :photo %>
 
-      <%= f.text_area :content, rows: 8, value: "<p> Put each new paragraph inside these tags to be indented. </p> <p> This is a second paragraph, etc. </p>" %>
+      <%= f.text_area :content, rows: 8, placeholder: "<p> Put each new paragraph inside these tags to be indented. </p> <p> This is a second paragraph, etc. </p>" %>
 
       <%= f.label :tag_names, "Tags (seperated by commas)" %>
       <%= f.text_field :tag_names %>

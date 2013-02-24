@@ -1,7 +1,7 @@
 <div id="<%= blog.id %>" class="well-body well-inner blog-wrapper">
 
   <h2 class="title">
-      <%= blog.title %>
+      <%= link_to blog.title, blog %>
 
     <% if current_user?(blog.user) %>
       <%= render( partial: ('blogs/actions'), locals: { blog: blog } ) %>

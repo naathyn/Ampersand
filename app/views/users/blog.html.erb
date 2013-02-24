@@ -38,21 +38,7 @@
     <%= will_paginate(@blogs) unless @blogs.empty? %>
   </aside>
 
-  <aside class="span3" id="<%= @user.id %>">
-    <%= gravatar_for(@user, size: 180) %>
-
-    <p class="bio tags"> <%= @user.bio %> </p>
-
-    <% unless @user.location.blank? %>
-      <p class="location">
-        <i class="icon-map-marker"> </i>
-        <%= @user.location %>
-      </p>
-    <% else %>
-      <br />
-    <% end %>
-
-    <p class="user"> <%= link_to "View Full Profile →", @user %> </p>
+    <%= render partial: 'shared/blog_user_info' %>
 
     <%= render('show_tagbar') unless @blogs.empty? %>
   </aside>

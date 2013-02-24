@@ -2,13 +2,25 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<p><%= link_to 'Back to Blogs', :blogs_users %></p>
+  <ul class="breadcrumb">
+    <li><%= link_to "Home", :root %> 
+      <span class="divider">/</span>
+    </li>
+    <li><%= link_to "Members", :users %> 
+      <span class="divider">/</span>
+    </li>
+    <li><%= link_to "Blogs", :blogs_users %> 
+      <span class="divider">/</span>
+    </li>
 
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#tag"><%= @tag.name %></a></li>
-</ul>
-   
-<div class="tab-content">
+    <li class="active"> <%= @tag.name %> </li>
+  </ul>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tag"><%= @tag.name %></a></li>
+  </ul>
+     
+  <div class="tab-content">
 
   <div class="tab-pane active" id="tag">
     <%= render @blogs %>

@@ -8,13 +8,13 @@
         title: blog.user.realname) %>
   <% end %>
 
-  <span class="lead"><%= link_to blog.title, blog_user_path(blog.user) %></span>
+  <span class="lead"><%= link_to blog.title, blog %></span>
   <p class="bio">
     by <%= link_to blog.user.realname, blog.user %>
   </p>
 
   <p class="format">
-    <%= auto_link(truncate(blog.content, length: 175)) %>
+    <%= auto_link(truncate(blog.content, length: 165)) %>
     <span class="bio">
       <%= link_to "read more", blog_user_path(blog.user) %>
     </span>

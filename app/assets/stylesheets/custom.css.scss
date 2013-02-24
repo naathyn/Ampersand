@@ -19,6 +19,13 @@ body {
   height: 100%;
 }
 
+a {
+  @include transitions;
+  &:hover {
+  text-decoration: none;
+  }
+}
+
 input,
 textarea,
 select,
@@ -545,7 +552,7 @@ aside {
   padding: 0;
   font-size: 13px;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 

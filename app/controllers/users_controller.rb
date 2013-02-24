@@ -32,10 +32,11 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome, and thanks for joining!  
-                        Why don't you edit your profile and tell us a little about yourself?  
-                        Whenever you're ready, hit Home to check out your feed.  
-                        Post some content and follow members to fill it up!"
+      flash[:success] = 
+"Welcome, and thanks for joining!  
+Why don't you edit your profile and tell us a little about yourself?  
+Whenever you're ready, hit Home to check out your feed.  
+Post some content and follow members to fill it up!"
       redirect_to @user
     else
       render 'new'
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       sign_in @user
-      redirect_to(@user, notice: "Profile updated successfully")
+      redirect_to @user, notice: "Profile updated successfully"
     else
       render 'edit'
     end
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to(users_url, notice: "User removed")
+    redirect_to users_url, notice: "User removed"
   end
 
   def following
@@ -114,8 +115,8 @@ private
 
     def captcha_user
       @user = User.find_by_name(params[:id])
-      redirect_to(captchas_user_path(current_user),
-      notice: "You can find @#{params[:id]}'s Captcha's in the feeds") unless current_user?(@user)
+      redirect_to captchas_user_path(current_user),
+      notice: "You can find @#{params[:id]}'s Captcha's in the feeds" unless current_user?(@user)
     end
 
     def admin_user
@@ -123,6 +124,6 @@ private
     end
 
     def wipe_the_chat
-      current_user.chat.all.each { |message| message.delete if message.created_at<=(6.hours.ago) }
+      current_user.chat.all.each { |message| message.delete if message.created_at <= 6.hours.ago }
     end
 end
