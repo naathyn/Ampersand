@@ -15,7 +15,7 @@ Socialrails::Application.routes.draw do
   resources :opinions,      :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
   resources :blogs,         :except => :index do
-    resources :comments,    :except => [:index, :show]
+    resources :comments,    :only => [:new, :create, :destroy]
   end
   resources :tags,          :only => :show
   resources :messages,      :only => :create

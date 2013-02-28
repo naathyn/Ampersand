@@ -5,7 +5,7 @@ class OpinionsController < ApplicationController
 
   def create
     @micropost = Micropost.find(params[:opinion][:like_id])
-    @microposts = @micropost.fans.paginate(page: params[:page], include: [:fans])
+    @microposts = @micropost.fans.page(params[:page])
     current_user.like!(@micropost)
     respond_with @micropost
   end

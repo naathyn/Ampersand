@@ -1,5 +1,7 @@
 module SessionsHelper
 
+protected
+
   def sign_in(user)
     user.increment!(:sign_in_count)
     cookies.permanent[:remember_token] = user.remember_token

@@ -1,10 +1,10 @@
 <li id ="<%= blog.user.id %>" class="blogs">
 
   <% if blog.has_photo? %>
-    <%= link_to(image_tag(blog.photo_path, class: "gravatar blog", 
+    <%= link_to(image_tag(blog.photo_path, class: "gravatar blog",
         title: blog.user.realname), blog.photo_path, target: "_blank") %>
   <% else %>
-    <%= image_tag("ampersand.jpg", class: "gravatar blog", 
+    <%= image_tag("ampersand.jpg", class: "gravatar blog",
         title: blog.user.realname) %>
   <% end %>
 
@@ -23,7 +23,7 @@
   </p>
 
   <% if blog.tags.any? %>
-    <p class="bio" style="text-align:center;">
+    <p class="bio">
       <% blog.tags.each do |tag| %>
         <i class="icon-tag"></i> <%= link_to tag.name, tag %>
       <% end %>

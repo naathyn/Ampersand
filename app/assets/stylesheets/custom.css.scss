@@ -4,8 +4,8 @@
 
 /* global configurations */
 
-html { 
-  overflow-y: scroll; 
+html {
+  overflow-y: scroll;
   height: 100%;
   -webkit-font-smoothing: antialiased;
 }
@@ -40,11 +40,11 @@ select,
 }
 
 textarea {
-  resize: none; 
+  resize: none;
 }
 
-section { 
-  overflow: auto; 
+section {
+  overflow: auto;
 }
 
 a:focus {
@@ -91,21 +91,21 @@ h4 {
   line-height: 18px;
 }
 
-h5, 
-h6 { 
-  font-size: 11px; 
+h5,
+h6 {
+  font-size: 11px;
 }
 
-p { 
-  margin: 0px 0px 10px; 
+p {
+  margin: 0px 0px 10px;
 }
 
-small { 
-  font-size: 12px; 
+small {
+  font-size: 12px;
 }
 
-ul, 
-ol, 
+ul,
+ol,
 li {
   list-style: none;
   padding: 0;
@@ -125,11 +125,11 @@ footer {
 
 footer .container {
   width: auto;
-  a { 
-    color: $blueDark; 
-    &:hover { 
+  a {
+    color: $blueDark;
+    &:hover {
       color: $blue;
-    } 
+    }
   }
 }
 
@@ -162,8 +162,8 @@ aside {
   padding: 1.5em 1em 2em;
 }
 
-.navbar-inverse { 
-  @include navbar; 
+.navbar-inverse {
+  @include navbar;
 }
 
 .navbar-inner {
@@ -186,20 +186,20 @@ aside {
   letter-spacing: 1px;
 }
 
-.navbar .gravatar { 
-  @include hero; 
+.navbar .gravatar {
+  @include hero;
 }
 
-.center { 
-  text-align: center; 
+.center {
+  text-align: center;
 }
 
 .tooltip {
   text-shadow: 0px 1px 1px black;
 }
 
-#close_home { 
-  padding: 6px 15px; 
+#close_home {
+  padding: 6px 15px;
 }
 
 /* Home Page (Non Signed in Users) */
@@ -231,7 +231,7 @@ aside {
 
 .side-module {
   border: 1px solid $moduleBorder;
-  @include modules; 
+  @include modules;
   @include shadows;
 }
 
@@ -299,36 +299,36 @@ aside {
 }
 
 .side-menu {
-  line-height: 16px; 
+  line-height: 16px;
 }
 
-.side-content { 
-  padding: 12px 0px 0 12px; 
+.side-content {
+  padding: 12px 0px 0 12px;
 }
 
-.side-menu .stats { 
-  background: none; 
+.side-menu .stats {
+  background: none;
 }
 
-.profile-name { 
-  font-size: 14px; 
+.profile-name {
+  font-size: 14px;
 }
 
-.share-anchor:hover .profile-anchor { 
-  color: $blue; 
+.share-anchor:hover .profile-anchor {
+  color: $blue;
 }
 
-.side-module-share:hover { 
-  background-color: $moduleGray; 
+.side-module-share:hover {
+  background-color: $moduleGray;
 }
 
-.side-module-share form input { 
-  display: none; 
+.side-module-share form input {
+  display: none;
 }
 
 /* User Stats (Following, Shares etc) */
 
-.stats, 
+.stats,
 .share-stats {
   padding-left: 12px;
   background: none;
@@ -372,8 +372,8 @@ aside {
   }
 }
 
-.user { 
-  font-weight: bold; 
+.user {
+  font-weight: bold;
 }
 
 .username {
@@ -390,8 +390,8 @@ aside {
   font-weight: normal;
 }
 
-.blog-timestamp { 
-  font-size: 15px; 
+.blog-timestamp {
+  font-size: 15px;
 }
 
 .users {
@@ -418,21 +418,21 @@ aside {
   }
 }
 
-.users li:hover { 
-  background-color: $wellGray; 
+.users li:hover {
+  background-color: $wellGray;
 }
 
 .users-follow {
-  margin: 0px; 
+  margin: 0px;
 }
 
 .users-follow li:hover,
-.blogs li:hover { 
-  opacity: 100; 
+.blogs li:hover {
+  opacity: 100;
 }
 
-.stats a:hover strong { 
-  color: $blue; 
+.stats a:hover strong {
+  color: $blue;
 }
 
 /* Feeds Share Items  */
@@ -492,30 +492,31 @@ aside {
   margin-bottom: -6px;
 }
 
-.well:hover { 
-  background-color: $wellGray; 
+.well:hover {
+  background-color: $wellGray;
 }
 
 .well:hover .timestamp,
 .modal-body:hover .timestamp,
-.well:hover .well-footer a, 
+.well:hover .well-footer a,
 .modal-body:hover .well-footer a,
-.share-actions .btn-link { 
-  color: $blue; 
+.modal-body:hover .btn-link,
+.well:hover .btn-link {
+  color: $blue;
 }
 
-.well-inner:hover strong { 
-  color: $red; 
+.well-inner:hover strong {
+  color: $red;
 }
 
-#naathyn a { 
+#naathyn a {
   color: $green;
 }
 
 .well:hover .well-footer li,
 .well:hover .well-footer-blog li,
-.modal-body:hover .well-footer li, { 
-  opacity: 100; 
+.modal-body:hover .well-footer li, {
+  opacity: 100;
 }
 
 /* Share Item Hover Links */
@@ -526,20 +527,20 @@ aside {
   vertical-align: 5px;
 }
 
-.detach { 
-  margin-right: 1px; 
+.detach {
+  margin-right: 1px;
 }
 
-.well-footer .collapse { 
-  padding-left: 10px; 
+.well-footer .collapse {
+  padding-left: 10px;
 }
 
-.share-actions { 
-  display: inline-block; 
+.share-actions {
+  display: inline-block;
 }
 
-.share-actions a { 
-  display: inline; 
+.share-actions a {
+  display: inline;
 }
 
 .share-actions li {
@@ -594,26 +595,26 @@ aside {
   padding-top: 5px;
 }
 
-.inline-share-stats li { 
-  display: inline-block; 
+.inline-share-stats li {
+  display: inline-block;
 }
 
 /* Share Item Reply Container */
 
-.inline-container, 
+.inline-container,
 .modal-form {
   padding: 10px 0 3px 0;
   float: left;
   display: block;
 }
 
-.inline-container form, 
+.inline-container form,
 .modal-form form {
   margin: -15px -11px -10px;
   padding: 5px;
 }
 
-.inline-container form textarea, 
+.inline-container form textarea,
 .modal-form form textarea {
   color: $textGrayLighter;
   font-size: 13px;
@@ -636,8 +637,8 @@ aside {
   margin-bottom: 8px;
 }
 
-.inline-container form input { 
-  display: none; 
+.inline-container form input {
+  display: none;
 }
 
 /* Modal Config */
@@ -691,22 +692,22 @@ aside {
   background-color: $mainGray;
   border-top: 1px solid $borderDarker;
   min-height: 40px;
-  a { 
-    margin-top: 10px; 
+  a {
+    margin-top: 10px;
   }
-  strong { 
-    font-size: 16px; 
+  strong {
+    font-size: 16px;
   }
-  .gravatar { 
-    opacity: .8; 
-    &:hover { 
-      opacity: 1; 
-    } 
+  .gravatar {
+    opacity: .8;
+    &:hover {
+      opacity: 1;
+    }
   }
   &:hover {
-    background-color: $userBorder; 
-    strong { 
-      color: $red; 
+    background-color: $userBorder;
+    strong {
+      color: $red;
     }
   }
 }
@@ -716,20 +717,20 @@ aside {
   overflow: hidden;
 }
 
-.modal-backdrop, 
-.modal-backdrop.fade.in { 
-  opacity: .4; 
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  opacity: .4;
 }
 
-.modal-header button.close { 
-  margin-top: -2px; 
+.modal-header button.close {
+  margin-top: -2px;
 }
 
-.modal-body:hover { 
-  background-color: $wellGray; 
+.modal-body:hover {
+  background-color: $wellGray;
 }
 
-.username_modal { 
+.username_modal {
   display: block;
 }
 
@@ -737,11 +738,11 @@ aside {
   cursor: move;
 }
 
-.users_modal { 
+.users_modal {
   margin: -.5em 0 -.8em;
 }
 
-.users_modal li:hover { 
+.users_modal li:hover {
   background-color: $outterBody;
 }
 
@@ -749,12 +750,12 @@ aside {
   margin-bottom: -10px;
 }
 
-.modal_likes { 
-  font-size: 16px; 
+.modal_likes {
+  font-size: 16px;
 }
 
-#modal_list { 
-  float: right; 
+#modal_list {
+  float: right;
 }
 
 /* included in the users#show controller */
@@ -805,7 +806,7 @@ aside {
 }
 
 .profile {
-  @include profiles; 
+  @include profiles;
 }
 
 .profile,
@@ -822,8 +823,8 @@ aside {
   @include profile-header;
 }
 
-.profile-header .gravatar { 
-  margin-bottom: 3px; 
+.profile-header .gravatar {
+  margin-bottom: 3px;
 }
 
 .profile-inner {
@@ -916,32 +917,32 @@ aside {
   border-color: $border
 }
 
-.actions .stats:first-child a { 
-  border-left: none; 
+.actions .stats:first-child a {
+  border-left: none;
 }
 
 .actions .stats a:hover strong {
   color: $blue;
 }
 
-.actions .stats strong { 
-  display: inline; 
+.actions .stats strong {
+  display: inline;
 }
 
 .actions .stats li:first-child a {
   border-top: none;
 }
 
-.actions .stats li:last-child a { 
+.actions .stats li:last-child a {
   padding-bottom: 0px;
 }
 
-.nav-tabs { 
+.nav-tabs {
   margin-bottom:0;
 }
 
-.nav-tabs > .active > a { 
-  background-color: $innerBody; 
+.nav-tabs > .active > a {
+  background-color: $innerBody;
 }
 
 /* included in static_pages#about */
@@ -952,8 +953,8 @@ aside {
   padding: 1em 1em .5em 2em;
 }
 
-.quote blockquote li:last-child { 
-  margin-bottom: -18px; 
+.quote blockquote li:last-child {
+  margin-bottom: -18px;
 }
 
 /* Captcha pages */
@@ -1029,14 +1030,14 @@ aside {
 /* styles for microposts#show */
 
 .microposts-profile {
-  @include microposts; 
+  @include microposts;
 }
 
 .microposts-header {
   padding: 1.5em 3.5em .5em 2em
 }
 
-.microposts-photo { 
+.microposts-photo {
   float: none;
   margin: 2.5em 7em;
 }
@@ -1052,8 +1053,8 @@ aside {
   }
 }
 
-.profile-inner .content { 
-  margin-left: 58px; 
+.profile-inner .content {
+  margin-left: 58px;
   padding-bottom: 5px;
 }
 
@@ -1154,8 +1155,8 @@ aside {
 .blogs img,
 .photos img,
 .blog-container {
-  width: 120px; 
-  height: 120px; 
+  width: 120px;
+  height: 120px;
   border: 1px solid $inputBorder;
   @include gravatars;
 }
@@ -1183,7 +1184,7 @@ aside {
 
 /* Blog formatting */
 
-.format { 
+.format {
   margin-bottom: .4em;
   line-height: 24px;
 }
@@ -1237,23 +1238,23 @@ aside {
   vertical-align: -3px;
 }
 
-[class^="icon-camera"] { 
+[class^="icon-camera"] {
   margin-left: 12px;
 }
 
-[class^="icon-remove"] { 
+[class^="icon-remove"] {
   vertical-align: 3px;
 }
 
-[class^="icon-map-marker"] { 
+[class^="icon-map-marker"] {
   vertical-align: -3px;
 }
 
-[class^="icon-pencil"] { 
-  margin-right: 5px; 
+[class^="icon-pencil"] {
+  margin-right: 5px;
 }
 
-#comment-bar { 
+#comment-bar {
   margin-left: 12px;
   margin-top: 2px;
 }

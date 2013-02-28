@@ -15,14 +15,15 @@ class CaptchasController < ApplicationController
 
   def destroy
     @captcha.destroy
-    redirect_to(captchas_user_url(current_user), notice: "Captcha removed. 
-                                                         Personally I didn't think it was half bad.")
+    redirect_to captchas_user_url(current_user),
+      notice: "Captcha removed. 
+              Personally I didn't think it was half bad."
   end
 
 private
 
     def correct_user
       @captcha = current_user.captchas.find_by_id(params[:id])
-      redirect_to(root_url) if @captcha.nil?
+      redirect_to(root_url) if !@captcha
     end
 end

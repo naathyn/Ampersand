@@ -11,5 +11,7 @@
     <%= link_to "Delete", [@blog, comment], method: :delete,
         data: { confirm: "Are you sure you want to delete this?" },
         title: comment.content %>
+  <% else %>
+    <div style="margin-bottom: 10px;"></div>
   <% end %>
 </li>

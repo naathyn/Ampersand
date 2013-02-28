@@ -10,6 +10,5 @@ class Comment < ActiveRecord::Base
   default_scope order: 'created_at ASC'
 
 private
-
   self.per_page = 10
 end

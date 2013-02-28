@@ -9,15 +9,15 @@ class Blog < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :comments, dependent: :destroy
 
-  validates_presence_of :title, :content
-  validates_format_of :extension, with: %r{(gif|jpg|png)$}i, 
-    allow_nil: true, allow_blank: true, 
+  validates_presence_of :user_id, :title, :content
+  validates_format_of :extension, with: %r{(gif|jpg|png)$}i,
+    allow_nil: true, allow_blank: true,
     message: 'must be a GIF, JPG or PNG.'
 
   after_save :assign_tags, :store_photo
-  
+
   default_scope order: 'created_at DESC'
-  
+
   def tag_names
     @tag_names || tags.map(&:name).join(', ')
   end
@@ -25,11 +25,11 @@ class Blog < ActiveRecord::Base
   def timestamp
     self.created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
   end
-  
+
 private
 
   self.per_page = 5
-  
+
   def assign_tags
     if @tag_names
       self.tags = @tag_names.split(/\,/).map do |name|

@@ -19,21 +19,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-    @title = "Edit Comment"
-    @comment = current_user.comments.find(params[:blog_id])
-  end
-
-  def update
-    @blog = Blog.find(params[:blog_id])
-    @comment = current_user.comments.find(params[:id])
-    if @comment.update_attributes(params[:comment])
-      redirect_to blog_url(@blog), notice: "Your comment was updated successfully."
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @blog = current_user.blogs.find(params[:blog_id])
     @comment = @blog.comments.find(params[:id])
@@ -43,8 +28,8 @@ class CommentsController < ApplicationController
 
 private
 
-    def correct_user
-      @comment = current_user.comments.find_by_id(params[:id])
-      redirect_to(root_url) if !@comment
-    end
+  def correct_user
+    @comment = current_user.comments.find_by_id(params[:id])
+    redirect_to(root_url) if !@comment
+  end
 end

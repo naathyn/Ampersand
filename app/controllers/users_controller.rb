@@ -33,9 +33,9 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = 
-"Welcome, and thanks for joining!  
-Why don't you edit your profile and tell us a little about yourself?  
-Whenever you're ready, hit Home to check out your feed.  
+"Welcome, and thanks for joining!
+Why don't you edit your profile and tell us a little about yourself?
+Whenever you're ready, hit Home to check out your feed.
 Post some content and follow members to fill it up!"
       redirect_to @user
     else
@@ -100,9 +100,9 @@ Post some content and follow members to fill it up!"
 
   def chatroom
     @title = "Chatroom"
-    @messages = current_user.chat.paginate(page: params[:page], 
+    @messages = current_user.chat.paginate(page: params[:page],
                 per_page: 15, include: :user)
-    flash.now[:notice] = "Welcome to the Chat! Expect rooms and 
+    flash.now[:notice] = "Welcome to the Chat! Expect rooms and
                           private messaging soon."
   end
 
@@ -115,7 +115,7 @@ private
 
     def captcha_user
       @user = User.find_by_name(params[:id])
-      redirect_to captchas_user_path(current_user),
+      redirect_to captchas_user_url(current_user),
       notice: "You can find @#{params[:id]}'s Captcha's in the feeds" unless current_user?(@user)
     end
 

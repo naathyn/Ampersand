@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     if signed_in?
-      redirect_to(user_url(current_user), notice: "You are already signed in")
+      redirect_to user_url(current_user), notice: "You are already signed in"
     else
       @title = "Sign in"
     end
@@ -16,12 +16,12 @@ class SessionsController < ApplicationController
       redirect_back_or user
     else
       flash.now[:error] = 'Invalid username/password combination'
-      render 'new'
+      render :new
     end
   end
 
   def destroy
     sign_out
-    redirect_to(root_url, notice: "You have been signed out.  See you soon!")
+    redirect_to root_url, notice: "You have been signed out.  See you soon!"
   end
 end
