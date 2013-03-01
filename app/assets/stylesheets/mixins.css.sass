@@ -3,12 +3,14 @@
 @mixin paddings
   -webkit-box-sizing: border-box
   -moz-box-sizing: border-box
+  -o-box-sizing: border-box
   box-sizing: border-box
 
 @mixin fades
-  -webkit-transition: all ease-in-out 0.5s
-  -moz-transition: all ease-in-out 0.5s
-  transition: all ease-in-out 0.5s
+  -webkit-transition: all ease-in-out 0.6s
+  -moz-transition: all ease-in-out 0.6s
+  -o-transition: all ease-in-out 0.6s
+  transition: all ease-in-out 0.6s
   transform: scale(1)
   opacity: 0
 
@@ -16,9 +18,11 @@
   @include paddings
   -webkit-border-radius: 0 0 4px 4px
   -moz-border-radius: 0 0 4px 4px
+  -o-border-radius: 0 0 4px 4px
   border-radius: 0 0 4px 4px
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset
   -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset
+  -o-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05) inset
 
 @mixin transitions
@@ -44,16 +48,19 @@
 @mixin hero
   -webkit-border-radius: 10px
   -moz-border-radius: 10px
+  -o-border-radius: 10px
   border-radius: 10px
 
 @mixin shadows
   -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
   -moz-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+  -o-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
 
 @mixin shadows-header
   -webkit-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 6px rgba(0, 0, 0, 0.1)
   -moz-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 6px rgba(0, 0, 0, 0.1)
+  -o-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 6px rgba(0, 0, 0, 0.1)
   box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 6px rgba(0, 0, 0, 0.1)
 
 @mixin grads
@@ -66,26 +73,31 @@
 @mixin modules
   -webkit-border-radius: 6px
   -moz-border-radius: 6px
+  -o-border-radius: 6px
   border-radius: 6px
 
 @mixin modules-bot
   -webkit-border-radius: 0px 0px 6px 6px
   -moz-border-radius: 0px 0px 6px 6px
+  -o-border-radius: 0px 0px 6px 6px
   border-radius: 0px 0px 6px 6px
 
 @mixin inline-container
   -webkit-border-radius: 4px
   -moz-border-radius: 4px
+  -o-border-radius: 4px
   border-radius: 4px
 
 @mixin gravatars
   -webkit-border-radius: 5px
   -moz-border-radius: 5px
+  -o-border-radius: 5px
   border-radius: 5px
 
 @mixin well-header
   -webkit-border-radius: 5px 5px 0px 0px
   -moz-border-radius: 5px 5px 0px 0px
+  -o-border-radius: 5px 5px 0px 0px
   border-radius: 5px 5px 0px 0px
   @include grads
   @include shadows-header
@@ -93,14 +105,17 @@
 @mixin well
   -webkit-border-radius: 0
   -moz-border-radius: 0
+  -o-border-radius: 0
   border-radius: 0
   -webkit-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1)
   -moz-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1)
+  -o-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1)
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1)
 
 @mixin well-bottom
   -webkit-border-radius: 0px 0px 5px 5px
   -moz-border-radius: 0px 0px 5px 5px
+  -o-border-radius: 0px 0px 5px 5px
   border-radius: 0px 0px 5px 5px
   @include grads
   @include shadows
@@ -108,15 +123,18 @@
 @mixin modal-header
   -webkit-border-radius: 6px 6px 0px 0px
   -moz-border-radius: 6px 6px 0px 0px
+  -o-border-radius: 6px 6px 0px 0px
   border-radius: 6px 6px 0px 0px
   -webkit-box-shadow: 0px 1px 0px $white inset
   -moz-box-shadow: 0px 1px 0px $white inset
+  -o-box-shadow: 0px 1px 0px $white inset
   box-shadow: 0px 1px 0px $white inset
 
 @mixin modal
   @include modules
   -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4)
   -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4)
+  -o-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4)
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4)
 
 @mixin profiles
@@ -124,6 +142,7 @@
   @include modules
   -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
   -moz-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+  -o-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
 
 @mixin microposts
@@ -131,6 +150,7 @@
   @include modules
   -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1)
   -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1)
+  -o-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1)
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1)
 
 @mixin profile-header

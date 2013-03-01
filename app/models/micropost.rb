@@ -28,7 +28,7 @@ class Micropost < ActiveRecord::Base
 
 private
 
-  self.per_page = 25
+  self.per_page = 20
 
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
