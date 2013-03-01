@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :remove_stale_tags, only: [:create, :destroy]
+  before_filter :remove_stale_tags, only: [:create, :update, :destroy]
+  before_filter :skip_timestamps, only: :update
 
   def show
     @blog = Blog.find(params[:id])
@@ -44,5 +45,9 @@ private
 
   def remove_stale_tags
     Tag.all.each { |tag| tag.delete if tag.blogs.empty? }
+  end
+
+  def skip_timestamps
+    Blog.record_timestamps = false
   end
 end
