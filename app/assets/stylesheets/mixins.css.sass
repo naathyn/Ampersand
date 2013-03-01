@@ -5,6 +5,13 @@
   -moz-box-sizing: border-box
   box-sizing: border-box
 
+@mixin fades
+  -webkit-transition: all ease-in-out 0.5s
+  -moz-transition: all ease-in-out 0.5s
+  transition: all ease-in-out 0.5s
+  transform: scale(1)
+  opacity: 0
+
 @mixin forms
   @include paddings
   -webkit-border-radius: 0 0 4px 4px

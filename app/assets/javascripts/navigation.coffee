@@ -1,4 +1,7 @@
 jQuery ->
+  $('.page-fade').addClass 'active'
+   # Adds a fade to the home and show pages on load in conjuntion with transtions
+
   $('.navigation li').each ->
     if window.location.href.indexOf($(@).find('a:first').attr('href')) > -1
       $(@).addClass('active').siblings().removeClass 'active'

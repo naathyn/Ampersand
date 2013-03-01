@@ -151,6 +151,14 @@ aside {
 
 /* Page Layout */
 
+.page-fade {
+  @include fades;
+}
+
+.page-fade.active {
+  opacity: 1;
+}
+
 .page-wrapper {
   background-image: url(image_path('wrapper.png'));
   border: 1px solid $userBorder;
