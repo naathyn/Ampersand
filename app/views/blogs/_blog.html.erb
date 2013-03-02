@@ -14,11 +14,13 @@
     <%= auto_link(blog.content, html: { target: '_blank' }) do |content|
           truncate(content, length: 30) end %>
   </div>
+
   <p class="location">By
     <%= link_to blog.user.realname, blog_user_path(blog.user) %>
       with
     <%= link_to pluralize(blog.comments.count, 'comment'), blog %>
   </p>
+
   <span class="bio">
     <% if blog.has_photo? %>
       <%= render partial: 'blogs/photo', object: blog, as: :item %> <br />

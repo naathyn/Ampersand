@@ -6,22 +6,22 @@
         <%= gravatar_for(@user, size: 128) %>
       </div>
 
-      <div class="page-fade profile-inner">
+      <div class="profile-inner">
         <h1 class="fullname">
           <span> <%= @user.realname %> </span>
           <% if current_user?(@user) %>
             <%= link_to "Captcha' Moments", captchas_user_path(@user),
-                  class: "btn btn-success" %>
+                  class: "page-fade btn btn-success" %>
           <% else %>
             <%= link_to "View My Blog", blog_user_path(@user),
-                  class: "btn btn-success" unless @user.blogs.empty? %>
+                  class: "page-fade btn btn-success" unless @user.blogs.empty? %>
           <% end %>
         </h1>
 
-        <h2 class="name"> <small>@</small><%= @user.name %> </h2>
-        <span class="bio"> <%= @user.bio %> </span>
+        <h2 class="page-fade name"> <small>@</small><%= @user.name %> </h2>
+        <span class="page-fade bio"> <%= @user.bio %> </span>
 
-        <span class="location">
+        <span class="page-fade location">
           <% if @user.location %>
             <i class="icon-map-marker"></i>
             <%= @user.location %>
@@ -31,16 +31,16 @@
             <%= auto_link(@user.website, html: { target: "_blank" }) %>
           <% end %>
         </span>
-      </div> <!-- page-fade/profile-inner -->
+      </div> <!-- profile-inner -->
 
       <div class="actions">
         <% if current_user?(@user) %>
           <%= link_to "Edit your profile", edit_user_path(@user),
-                class: "btn btn-default", style: "margin-bottom: 15px;" %>
+                class: "page-fade btn btn-default", style: "margin-bottom: 15px;" %>
         <% else %>
           <%= render 'follow_form' %>
         <% end %>
-        <ul class="stats">
+        <ul class="page-fade stats">
           <li>
             <a href="<%= user_path(@user) %>">
               <strong><%= @microposts.count %></strong>

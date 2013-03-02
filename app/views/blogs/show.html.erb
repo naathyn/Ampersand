@@ -12,13 +12,11 @@
   <li class="active"> <%= @title %> </li>
 </ul>
 
-<div class="page-fade">
-  <div class="row-fluid">
-    <aside class="span8">
-      <%= render @blog %>
-    </aside>
-    <aside class="span3">
-      <%= render 'shared/blog_user_info' %>
-    </aside>
-  </div>
+<div class="page-fade row-fluid">
+  <aside class="span8">
+    <%= render @blog %>
+  </aside>
+  <aside class="span3">
+    <%= render 'shared/blog_user_info' %>
+  </aside>
 </div>

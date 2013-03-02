@@ -3,21 +3,19 @@
   <%= javascript_include_tag :blogs %>
 <% end %>
 
-<div class="page-fade">
-  <ul class="breadcrumb">
-    <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
-    <li> <%= link_to "Members", :users %>  <span class="divider">/</span> </li>
-    <li> <%= link_to "Blogs", :blogs_users %>  <span class="divider">/</span> </li>
-    <li class="active"> <%= @tag.name %> </li>
-  </ul>
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Members", :users %>  <span class="divider">/</span> </li>
+  <li> <%= link_to "Blogs", :blogs_users %>  <span class="divider">/</span> </li>
+  <li class="active"> <%= @tag.name %> </li>
+</ul>
 
-  <ul class="nav nav-tabs">
-    <li class="active"> <a href="#tag"> <%= @tag.name %> </a> </li>
-  </ul>
+<ul class="page-fade nav nav-tabs">
+  <li class="active"> <a href="#tag"> <%= @tag.name %> </a> </li>
+</ul>
 
-  <div class="tab-content">
-    <div class="tab-pane active" id="tag">
-      <%= render @blogs %>
-    </div>
+<div class="tab-content">
+  <div class="page-fade tab-pane active" id="tag">
+    <%= render @blogs %>
   </div>
 </div>
