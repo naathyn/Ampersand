@@ -2,37 +2,26 @@
   <% provide(:title, @title) %>
 <% end %>
 
-
-<div class="photo tapetwo tapethree microposts-photo">
-
+<div class="page-fade photo tapetwo tapethree microposts-photo">
   <div class="microposts-profile">
     <div class="profile-header microposts-header">
       <div class="row-fluid">
-
         <div class="profile-inner microposts-inner">
-          <%= render(partial: ("feeds/shared/footer"),
-              locals: { item: @micropost }) %>
 
-            <%= gravatar_for(@micropost.user, size: 48) %>
+          <%= render partial: 'feeds/shared/footer', object: @micropost, as: :item %>
+          <%= link_to gravatar_for(@micropost.user, size: 48), @micropost.user %>
 
-            <h1 class="fullname">
-              <%= @micropost.user.realname %>
-            </h1>
+          <h1 id="<%= @micropost.user.name %>" class="fullname">
+            <%= link_to @micropost.user.realname, @micropost.user %>
+          </h1>
+          <h2 class="name"> <small>@</small><%= @micropost.user.name %> </h2>
+          <p class="content">
+            <%= render partial: 'feeds/shared/content', object: @micropost, as: :item %>
+          </p>
 
-            <h2 class="name">
-              <small>@</small><%= @micropost.user.name %>
-            </h2>
-
-            <p class="content">
-              <%= render(partial: ("feeds/shared/content"),
-              locals: { item: @micropost }) %>
-            </p>
-          </div>
-
-        <%= render("like_form") %>
-
-      </div><!-- row-fluid -->
-    </div>
-  </div>
-
-</div><!-- tape-effects-->
+        </div>
+        <%= render 'like_form' %>
+      </div> <!-- row-fluid -->
+    </div> <!-- microposts-header -->
+  </div> <!-- microposts-profile -->
+</div><!-- page-fade -->

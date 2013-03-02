@@ -4,44 +4,46 @@
 
 <% @user ||= current_user %>
 
-<div class="page-fade">
-  <ul class="breadcrumb">
-    <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
-    <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
-    <li class="active"> <%= @title %> </li>
-  </ul>
-  <%= render "shared/profile_stats"  %>
-</div>
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
+
+<%= render 'shared/profile_stats' %>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#profile"><%= @title %></a></li>
-    <% if current_user?(@user) %>
-      <li><a href="#replies">Replies</a></li>
-    <% end %>
-  <li><a href="#follow">Following</a></li>
-  <li><a href="#followed">Followers</a></li>
+  <li class="active"> <a href="#profile"> <%= @title %></a> </li>
+  <% if current_user?(@user) %>
+    <li> <a href="#replies"> Replies </a> </li>
+  <% end %>
+  <li> <a href="#follow"> Following </a> </li>
+  <li> <a href="#followed"> Followers </a> </li>
 </ul>
+
 <div class="tab-content">
   <div class="tab-pane active" id="profile">
     <% unless @microposts.empty? %>
-      <%= render partial: "feeds/share_item", collection: @microposts, as: :item %>
+      <%= render partial: 'feeds/share_item', collection: @microposts, as: :item %>
       <div class="well-bottom">
-        <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
+        <a href="#" alt="Top"> <i class="icon-arrow-up"></i> </a>
       </div>
       <%= will_paginate @microposts %>
     <% end %>
   </div> <!-- profile-tab -->
+
   <% if current_user?(@user) %>
     <div class="tab-pane" id="replies">
       <% unless @replies.empty? %>
-        <%= render partial: "feeds/share_item", collection: @replies, as: :item %>
+        <%= render partial: 'feeds/share_item', collection: @replies, as: :item %>
         <div class="well-bottom">
-          <a href="#" alt="Top"><i class="icon-arrow-up"></i></a>
+          <a href="#" alt="Top"> <i class="icon-arrow-up"></i> </a>
         </div>
         <%= will_paginate @replies %>
       <% end %>
     </div>
   <% end %> <!-- replies-tab(current_user) -->
+
   <div class="tab-pane" id="follow">
     <% unless @following.empty? %>
       <ul class="users-follow">
@@ -50,6 +52,7 @@
       <%= will_paginate @following %>
     <% end %>
   </div> <!-- following-tab -->
+
   <div class="tab-pane" id="followed">
     <% unless @followers.empty? %>
       <ul class="users-follow">

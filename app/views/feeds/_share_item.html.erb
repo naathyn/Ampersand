@@ -1,57 +1,39 @@
 <div id="<%= item.id %>" class="well well-inner">
+  <%= render partial: 'feeds/shared/header', object: item, as: :item %>
 
-  <%= render(partial: ("feeds/shared/header"),
-      locals: { item: item }) %>
+  <span class="content" data-toggle="collapse"
+    data-target="#<%= item.id %> #reply">
+    <%= render partial: 'feeds/shared/content', object: item, as: :item %>
+  </span>
 
-    <span class="content" data-toggle="collapse"
-          data-target="#<%= item.id %> #reply">
+  <div class="well-footer">
+    <%= render partial: 'feeds/shared/footer', object: item, as: :item %>
 
-      <%= render(partial: ("feeds/shared/content"),
-          locals: { item: item }) %>
+    <a href="<%= likes_micropost_path(item) %>" class="shown detach"
+        data-remote="true" data-toggle="modal"
+        data-target="#modal-window"> Detach </a>
 
-    </span>
-
-    <div class="well-footer">
-
-      <%= render(partial: ("feeds/shared/footer"),
-          locals: { item: item }) %>
-
-      <a href="<%= likes_micropost_path(item) %>" class="shown detach" 
-        data-remote="true" data-toggle="modal" 
-        data-target="#modal-window">Detach</a>
-
-        <ul class="share-actions">
-
-          <% if current_user?(item.user) %>
-            <%= render(partial: ("feeds/shared/delete"),
-                locals: { item: item }) %>
-          <% else %>
-
-            <li>
-              <a class="shown" data-toggle="collapse"
-                  data-target="#<%= item.id %> #reply">
-              <i class="icon-comment"></i>Reply</a>
-            </li>
-
-          <li id="like_form<%= item.id %>">
-            <%= render(partial: ("feeds/shared/like_form"), 
-                locals: { item: item }) %>
-          </li>
-
-        </ul>
+      <ul class="share-actions">
+        <% if current_user?(item.user) %>
+          <%= render partial: 'feeds/shared/delete', object: item, as: :item %>
+        <% else %>
+        <li>
+          <a class="shown" data-toggle="collapse"
+              data-target="#<%= item.id %> #reply">
+            <i class="icon-comment"></i> Reply </a>
+        </li>
+        <li id="like_form<%= item.id %>">
+          <%= render partial: 'feeds/shared/like_form', object: item, as: :item %>
+        </li>
+      </ul>
 
       <div id="reply" class="show collapse">
         <div class="inline-share-reply">
           <div class="inline-container">
-
-            <%= render(partial: ("feeds/shared/form"), 
-                locals: { item: item }) %>
-
+            <%= render partial: 'feeds/shared/form', object: item, as: :item %>
           </div>
         </div>
       </div>
-
     <% end %>
-
-  </div>
-</div>
+  </div> <!-- well-footer -->
+</div> <!-- well-inner-->

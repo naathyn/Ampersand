@@ -2,24 +2,20 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-    <span class="divider">/</span></li>
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
 
-    <li class="active"><%= @title %></li>
-  </ul>
+<ul class="nav nav-tabs">
+  <li class="active"> <a href="#members"> Members (<%= @users.count %>) </a> </li>
+</ul>
 
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#members">Members (<%= @users.count %>)</a></li>
-  </ul>
- 
-  <div class="tab-content">
-
-    <div class="tab-pane active" id="members">
-      <ul class="users-follow" style="margin:0;">
-        <%= render @users %>
-      </ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="members">
+    <ul class="page-fade users-follow" style="margin: 0;">
+      <%= render @users %>
+    </ul>
     <%= will_paginate @users %>
   </div>
-
 </div>

@@ -1,21 +1,16 @@
 <nav>
-  <% if signed_in? %>
-
-    <ul class="nav navigation">
-      <li class=""><%= link_to "Home", :root %></li>
-      <li class=""><%= link_to "Members", :users %></li>
-      <li class=""><%= link_to "Blogs", :blogs_users %></li>
-      <li class=""><%= link_to "Chatroom", :chatroom_users %></li>
-      <li class=""><%= link_to "You", user_path(current_user) %></li>
-    </ul>
-
-    <ul class="nav pull-right">
-      <%= render 'layouts/usernav' %>
-    </ul>
-
+<% if signed_in? %>
+  <ul class="nav navigation">
+    <li class=""><%= link_to "Home", :root %></li>
+    <li class=""><%= link_to "Members", :users %></li>
+    <li class=""><%= link_to "Blogs", :blogs_users %></li>
+    <li class=""><%= link_to "Chatroom", :chatroom_users %></li>
+    <li class=""><%= link_to "You", user_path(current_user) %></li>
+  </ul>
+  <ul class="nav pull-right">
+    <%= render 'layouts/usernav' %>
+  </ul>
   <% else %>
-
     <%= render 'layouts/guest' %>
-
   <% end %>
 </nav>

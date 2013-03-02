@@ -2,11 +2,12 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on March 1st at 12:00 a.m.
-          Layout enhancements and the ability to comment on blogs." %>
+<%= yield flash.now[:info] = "Last updated on March 2nd at 7:00 a.m.
+      Prettying up the code and layout." %>
 
 <% if signed_in? %>
   <div class="row-fluid">
+
     <aside class="page-fade span4 side-module side-menu mini-profile">
       <a href="<%= user_path(current_user) %>" class="share-anchor">
         <section>
@@ -20,29 +21,38 @@
         <%= render "shared/share_form" %>
       </section>
     </aside>
+
     <div id="feed" class="span8">
+
       <div class="well-header">
-        <a href="<%= user_path(current_user) %>" 
-            title="Profile"><i class="icon-user"></i></a>
-        <a href="<%= captchas_user_path(current_user) %>"
-            title="Captchas"><i class="icon-camera"></i></a>
-        <a href="<%= chatroom_users_path %>" 
-            title="Chatroom"><i class="icon-comment" id="comment-bar"></i></a>
+        <div class="page-fade">
+          <a href="<%= user_path(current_user) %>" title="Profile">
+            <i class="icon-user"></i> </a>
+          <a href="<%= captchas_user_path(current_user) %>" title="Captchas">
+            <i class="icon-camera"></i> </a>
+          <a href="<%= blog_user_path(current_user) %>" title="Your Blog">
+            <i id="comment-bar" class="icon-book"></i> </a>
+        </div>
       </div>
-        <%= render "feeds/main/share" %>
-      <div class="well-bottom" style="margin-bottom:1em;">
-        <a href="#" title="Top"><i class="icon-arrow-up"></i></a>
+
+        <%= render 'feeds/main/share' %>
+
+      <div class="well-bottom" style="margin-bottom: 1em;">
+        <a href="#" title="Top"> <i class="icon-arrow-up"></i> </a>
       </div>
-    </div>
-    <div id="pagination" style="float:right;clear:both;">
+    </div> <!-- feed-->
+
+    <div id="pagination" style="float: right; clear: both;">
       <%= will_paginate @shares unless @shares.empty? %>
     </div>
-  </div>
+  </div> <!-- row-fluid -->
+
 <% else %>
+
   <div class="page-fade center hero-unit">
-    <h1>Ampersand</h1>
-    <h3>Simple. Modern. Interactive.</h3>
-    <h5>Alpha Release #2</h5>
+    <h1> Ampersand </h1>
+    <h3> Simple. Modern. Interactive. </h3>
+    <h5> Alpha Release #2 </h5>
     <%= link_to "Sign up now!", :signup,
         class: "btn btn-large btn-primary" %>
   </div>

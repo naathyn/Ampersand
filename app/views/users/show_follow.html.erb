@@ -3,14 +3,13 @@
 <% end %>
 
 <ul class="breadcrumb">
-  <li><%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
   <li><%= link_to "Members", :users %> <span class="divider">/</span> </li>
-  <li><%= link_to @title, user_path(@user) %> <span class="divider">/</span> </li>
-  <li class="active"><%= @active %></li>
+  <li> <%= link_to @title, user_path(@user) %> <span class="divider">/</span> </li>
+  <li class="active"> <%= @active %> </li>
 </ul>
 
 <div class="row-fluid">
-
   <aside class="page-fade span4 side-module side-menu mini-profile">
     <a href="<%= user_path(@user) %>" class="share-anchor">
       <section>
@@ -28,7 +27,6 @@
       <% end %>
     </section>
   </aside>
-
   <% unless @users.empty? %>
     <div class="span8 share-container">
       <%= will_paginate %>
@@ -38,5 +36,4 @@
       <%= will_paginate %>
     </div>
   <% end %>
-
 </div>

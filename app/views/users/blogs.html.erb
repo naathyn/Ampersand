@@ -2,33 +2,28 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "Members", :users %> 
-      <span class="divider">/</span>
-    </li>
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %>  <span class="divider">/</span> </li>
+  <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
 
-    <li class="active"><%= @title %></li>
-  </ul>
+<div class="row-fluid">
+  <aside class="span8">
+    <legend class="legend">Community Blogs
+      <span class="pull-right" style="margin-top: -3px;">
+        <%= link_to "Go To Your Blog", blog_user_path(current_user),
+              class: "btn btn-primary" if signed_in? %>
+      </span>
+    </legend>
 
-  <% if signed_in? %>
-    <%= link_to "Your Blog", blog_user_path(current_user) %>
-  <% end %>
+    <% unless @blogs.empty? %>
+      <ol class="blogs">
+        <%= render partial: 'users_blogs', collection: @blogs, as: :blog %>
+      </ol>
+      <%= will_paginate @blogs %>
+    <% end %>
+  </aside>
 
-  <div class="row-fluid">
-
-    <aside class="span8">
-      <legend class="legend">Community Blogs</legend>
-
-      <% unless @blogs.empty? %>
-        <ol class="blogs">
-          <%= render(partial: ("users_blogs"), collection: @blogs, as: :blog) %>
-        </ol>
-        <%= will_paginate @blogs %>
-      <% end %>
-    </aside>
-
-  <%= render("index_tagbar") %>
+  <%= render 'index_tagbar' %>
 </div>

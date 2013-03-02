@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   include AttachmentsHelper
+
   attr_accessible :title, :content, :tag_names, :photo
   attr_writer :tag_names
 
@@ -10,6 +11,7 @@ class Blog < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   validates_presence_of :user_id, :title, :content
+  validates_length_of :title, maximum: 50
   validates_format_of :extension, with: %r{(gif|jpg|png)$}i,
     allow_nil: true, allow_blank: true,
     message: 'must be a GIF, JPG or PNG.'
@@ -26,15 +28,32 @@ class Blog < ActiveRecord::Base
     self.created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
   end
 
-private
+  def note_for_comment
+    [ "Tell me something good",
+      "Let me know what you think",
+      "Leave a comment!",
+      "Tell me something good",
+      "What are your thoughts?",
+      "What is your take on this?",
+      "Did you like it?",
+      "Let me know what you think",
+      "Shoot me a comment!",
+      "Now it's your turn to write something",
+      "Opinions?",
+      "Can I get an amen?",
+      "I'd love to hear what you think",
+      "Comments?"
+    ].shuffle.last
+  end
 
-  self.per_page = 5
+private
 
   def assign_tags
     if @tag_names
       self.tags = @tag_names.split(/\,/).map do |name|
-        Tag.find_or_create_by_name(name.gsub(/\s+/, '').downcase)
+        Tag.find_or_create_by_name!(name.gsub(/\s+/, '').downcase)
       end
     end
   end
+  self.per_page = 5
 end

@@ -1,18 +1,14 @@
 <div class="room">
   <%= gravatar_for(message.user, size: 38) %>
-
-    <span class="timestamp">
-      <%= time_ago_in_words(message.created_at) %> ago
-    </span>
-
-    <span class="user">
-      @<%= message.user.name %>:
-    </span>
-
-    <p>
-      <%= auto_link(message.content, html: { target: '_blank' }) do |content|
-                    truncate(content, length: 30) end %>
-    </p>
-
-  </div>
+  <span class="timestamp">
+    <%= time_ago_in_words(message.created_at) %> ago
+  </span>
+  <span class="user">
+    @<%= message.user.name %>:
+  </span>
+  <p>
+    <%= auto_link(message.content, html: { target: '_blank' }) do |content|
+      truncate(content, length: 30) end %>
+  </p>
+</div>
 <hr />

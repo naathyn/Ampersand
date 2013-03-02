@@ -1,8 +1,9 @@
 <% content_for :head do %>
   <% provide(:title, @title) %>
+  <%= javascript_include_tag :blogs %>
 <% end %>
 
-  <% @user ||= current_user %>
+<% @user ||= current_user %>
 
 <ul class="breadcrumb">
   <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
@@ -12,10 +13,10 @@
 </ul>
 
 <% if current_user?(@user) %>
-  <div class="alert alert-block" style="margin-top:1em;">
+  <div class="alert alert-block" style="margin-top: 1em;">
     <h2>Heya Blogger!</h2>
         Welcome to your new blog! It is still under construction
-        so expect a fancier layout and the ability to 
+        so expect a fancier layout and the ability to
         create drafts in the near future!
   </div>
 <% end %>
@@ -23,9 +24,11 @@
 <div class="row-fluid">
   <aside class="span8">
     <% if current_user?(@user) %>
-      <%= render "blogs/form" %>
+      <%= link_to "Post New Entry", :new_blog,
+            class: "btn btn-large btn-primary" if signed_in? %>
+      <hr />
     <% end %>
-      <%= render @blogs %>
+    <%= render @blogs %>
     <%= will_paginate @blogs unless @blogs.empty? %>
   </aside>
   <div class="page-fade">

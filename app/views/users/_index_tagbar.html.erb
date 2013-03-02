@@ -1,8 +1,11 @@
 <aside class="page-fade span3">
   <legend> Popular Tags </legend>
   <div id="tags">
-    <% for tag in Tag.all %>
-      <ol><i class="icon-tags"></i> <%= link_to "#{tag.name} (#{tag.blogs.count})", tag_path(tag) %> </ol>
+    <% Tag.all.each do |tag| %>
+      <ol>
+        <i class="icon-tags"></i>
+        <%= link_to "#{tag.name} (#{tag.blogs.count})", tag_path(tag) %>
+      </ol>
     <% end %>
   </div>
 </aside>

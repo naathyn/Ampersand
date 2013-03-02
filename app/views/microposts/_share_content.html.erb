@@ -1,50 +1,35 @@
-  <div class="modal_header">
-    <%= render(partial: ("feeds/shared/simple_header"), 
-        locals: { item: @micropost }) %>
-  </div>
+<div class="modal_header">
+  <%= render partial: 'feeds/shared/simple_header', object: @micropost, as: :item %>
+</div>
 
-    <div class="modal_content">
-      <span class="content" data-toggle="collapse" 
-            data-target="#modal_reply<%= @micropost.id %>">
+<div class="modal_content">
+  <span class="content" data-toggle="collapse"
+    data-target="#modal_reply<%= @micropost.id %>">
+    <%= render partial: 'feeds/shared/content', object: @micropost, as: :item %>
+  </span>
+</div>
 
-        <%= render(partial: ("feeds/shared/content"),
-            locals: { item: @micropost }) %>
+<div class="well-footer">
+  <ul class="share-actions">
+    <% if current_user?(@micropost.user) %>
+      <%= render partial: 'feeds/shared/delete', object: @micropost, as: :item %>
+    <% else %>
+    <li>
+      <a class="shown" data-toggle="collapse"
+        data-target="#modal_reply<%= @micropost.id %>">
+      <i class="icon-comment"></i>Reply</a>
+    </li>
+    <li id="modal_like_form<%= @micropost.id %>">
+      <%= render partial: 'feeds/shared/like_form', object: @micropost, as: :item %>
+    </li>
+  </ul>
 
-      </span>
-    </div>
-
-    <div class="well-footer">
-      <ul class="share-actions">
-
-        <% if current_user?(@micropost.user) %>
-          <%= render(partial: ("feeds/shared/delete"), 
-              locals: { item: @micropost }) %>
-        <% else %>
-
-        <li>
-          <a class="shown" data-toggle="collapse" 
-              data-target="#modal_reply<%= @micropost.id %>"> 
-          <i class="icon-comment"></i>Reply</a>
-        </li>
-
-        <li id="modal_like_form<%= @micropost.id %>">
-          <%= render(partial: ('feeds/shared/like_form'), 
-              locals: { item: @micropost }) %>
-        </li>
-
-      </ul>
-
-    <div class="show collapse" id="modal_reply<%= @micropost.id %>">
-      <div class="inline-share-reply">
-        <div class="modal-form">
-
-          <%= render(partial: ("feeds/shared/form"), 
-              locals: { item: @micropost }) %>
-
-        </div>
+  <div class="show collapse" id="modal_reply<%= @micropost.id %>">
+    <div class="inline-share-reply">
+      <div class="modal-form">
+        <%= render partial: 'feeds/shared/form', object: @micropost, as: :item %>
       </div>
     </div>
-
+  </div>
   <% end %>
-
 </div>

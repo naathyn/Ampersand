@@ -2,22 +2,16 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "Members", :users %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "@#{current_user.name}", current_user %> 
-      <span class="divider">/</span>
-    </li>
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %>  <span class="divider">/</span> </li>
+  <li><%= link_to "Members", :users %> <span class="divider">/</span> </li>
+  <li> <%= link_to "@#{current_user.name}", current_user %>
+    <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
 
-    <li class="active"><%= @title %></li>
-  </ul>
-
-  <% if @captchas.any? %>
-    <%= render 'captchas/some' %>
-  <% else %>
-    <%= render 'captchas/none' %>
-  <% end %>
+<% if @captchas.any? %>
+  <%= render 'captchas/some' %>
+<% else %>
+  <%= render 'captchas/none' %>
+<% end %>

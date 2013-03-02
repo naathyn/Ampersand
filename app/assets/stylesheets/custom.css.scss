@@ -156,8 +156,12 @@ aside {
   @include fades;
 }
 
-.page-fade.active {
+.page-fade.faade {
   opacity: 1;
+}
+
+body.blogging {
+  background-image: url(image_path('blog.png'));
 }
 
 .page-wrapper {
@@ -1305,6 +1309,5 @@ aside {
   clear: both;
   width: 100%;
   margin-top: 3em;
-  @include paddings;
   @include forms;
 }

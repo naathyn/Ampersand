@@ -2,11 +2,9 @@
 
   <h2 class="title">
     <%= link_to blog.title, blog %>
-
     <% if current_user?(blog.user) %>
-      <%= render( partial: ('blogs/actions'), locals: { blog: blog } ) %>
+      <%= render partial: 'blogs/actions', object: blog, as: :blog %>
     <% end %>
-
     <span class="blog-timestamp">
       <%= blog.timestamp %>
     </span>
@@ -16,18 +14,15 @@
     <%= auto_link(blog.content, html: { target: '_blank' }) do |content|
           truncate(content, length: 30) end %>
   </div>
-
-  <p class="location">By 
-    <%= link_to blog.user.realname, blog_user_path(blog.user) %> 
-      with 
+  <p class="location">By
+    <%= link_to blog.user.realname, blog_user_path(blog.user) %>
+      with
     <%= link_to pluralize(blog.comments.count, 'comment'), blog %>
   </p>
-
   <span class="bio">
     <% if blog.has_photo? %>
-      <%= render(partial:("blogs/photo"), locals: { item: blog }) %> <br />
+      <%= render partial: 'blogs/photo', object: blog, as: :item %> <br />
     <% end %>
-
     <% blog.tags.each do |tag| %>
       <i class="icon-tag"></i> <%= link_to tag.name, tag %>
     <% end %>
@@ -35,17 +30,15 @@
 
   <% if identified?(blog) %>
     <hr >
-
     <% unless @comments.empty? %>
-    <p class="lead"> Comments </p>
-      <ul class="comments">
+      <p class="lead" style="margin-top: -15px;"> Comments </p>
+      <ul class="comments" style="margin-top: -15px;">
         <%= render @comments %>
         <%= will_paginate @comments %>
       </ul>
     <% end %>
 
-    <p class="lead">Comment</p>
+    <p class="lead"> <%= blog.note_for_comment %> </p>
     <%= render 'comments/form' %>
   <% end %>
-
 </div>

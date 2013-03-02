@@ -5,10 +5,8 @@
 <div class="page-fade">
 
   <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-    <span class="divider">/</span></li>
-
-    <li class="active"><%= @title %></li>
+    <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+    <li class="active"> <%= @title %> </li>
   </ul>
 
   <div class="container-fluid">
@@ -16,16 +14,15 @@
       <div class="span12">
 
         <h2 class="center">
-          <%= link_to "Detailed Updates", 
-              "https://github.com/naathyn/Ampersand/commits/master/", 
-              :title => "Ampersand's Updates via Github", :target => "_blank" %>
-        </h2>
-
-          <hr />
+          <%= link_to "Detailed Updates",
+              "https://github.com/naathyn/Ampersand/commits/master/",
+              title: "Ampersand's Updates via Github", target: "_blank" %>
+        </h2> <hr />
 
         <div class="row-fluid">
           <div class="span6">
-            <h2 style="padding-bottom:10px;"> Background </h2>
+
+            <h2 style="padding-bottom: 10px;"> Background </h2>
 
             <p>
               Using a Linux operating system for the first time quickly fed my interest in the web
@@ -36,9 +33,9 @@
               I found myself wanting to create more and more web applications.
               <i>Thanks
 
-                <%= link_to "Flurdy", "http://www.flurdy.com/", :title => "Flurdy",
-                    :target => "_blank" %>
-              .</i>
+                <%= link_to "Flurdy", "http://www.flurdy.com/", title: "Flurdy",
+                    target: "_blank" %>
+              </i>
             </p>
 
             <p>
@@ -47,8 +44,8 @@
               without really looking in-to the specifications of Ruby on Rails. One day while browsing new
               Linux Distrobutions, I came across a distro named
 
-              <%= link_to "Turnkey Linux", "http://www.turnkeylinux.org/", 
-              :title => "Turnkey Linux", :target => "_blank" %>.
+              <%= link_to "Turnkey Linux", "http://www.turnkeylinux.org/",
+              title: "Turnkey Linux", target: "_blank" %>.
             </p>
 
             <p>
@@ -63,74 +60,75 @@
           </div>
 
           <div class="span6">
-            <h2 style="padding-bottom:10px;"> Development </h2>
+            <h2 style="padding-bottom: 10px;"> Development </h2>
 
-          <p>
-            This application is built on Ubuntu 12.10, 3.5.0-25 kernel with Ruby 2.0.0p0 - Rails 3.2.12. It
-            started out as an experiment, and now is becoming quite a project. My goal for Ampersand is to
-            become a fashionable, secure and well-accessible social platform. What does that mean? I am
-            figuring that out as I go.
-          </p>
+            <p>
+              This application is built on Ubuntu 12.10, 3.5.0-25 kernel with Ruby 2.0.0p0 - Rails 3.2.12.
+              It started out as an experiment, and now is becoming quite a project.
+              My goal for Ampersand is to become a fashionable, secure and well-accessible
+              social platform. What does that mean? I am figuring that out as I go.
+            </p>
 
-          <p>
-            Having that said, my plans are eligible to change, but as of now, Ampersand offers login/
-            registration, user profiles, shares and likes, the ability to follow users, live chat,
-            blogging, automatic gravatar sync, @replies, <strong id="cp">Captcha's</strong>,
-            online notifications, SSL (encrypted connection to ensure protected passwords
-            and user information), and an overall interactive user-interface. Some new developments include:
-            public groups, instant messaging, reputation system, geo-location and photo/video uploads.
-          </p>
+            <p>
+              Having that said, my plans are eligible to change, but as of now, Ampersand offers login/
+              registration, user profiles, shares and likes, the ability to follow users, live chat,
+              blogging, automatic gravatar sync, @replies, <strong id="cp">Captcha's</strong>,
+              online notifications, SSL (encrypted connection to ensure protected passwords
+              and user information), and an overall interactive user-interface.
+              Some new developments include: public groups, instant messaging,
+              reputation system, geo-location and photo/video uploads.
+            </p>
 
-          <p>
-            Ampersand is currently being hosted on a
+            <p>
+              Ampersand is currently being hosted on a
 
-              <%= link_to "Heroku", "https://www.heroku.com/", :title => "Heroku", :target => "_blank" %>
+                <%= link_to "Heroku", "https://www.heroku.com/", title: "Heroku", target: "_blank" %>
 
-            server (a free online database with SSL encyption that offers developers a secure testing
-            platform for their projects) If everything goes as planned,
-            I hope to host Ampersand under my own domain soon. None-the-less, 
-            I hope you like what what's in development so far! Go ahead: give it a try,
-            everything is secure. Sign up, and take a look!
-          </p>
+              server (a free online database with SSL encyption that offers developers a secure testing
+              platform for their projects) If everything goes as planned,
+              I hope to host Ampersand under my own domain soon. None-the-less,
+              I hope you like what what's in development so far! Go ahead: give it a try,
+              everything is secure. Sign up, and take a look!
+            </p>
 
-            </div>
-          </div>
-        </div>
-      </div>
+          </div> <!-- span6-->
+        </div> <!-- span6 -->
+      </div> <!-- span12 -->
+    </div> <!-- row-fluid -->
 
-      <div class="row-fluid">
-        <div class="span12 quote">
+    <div class="row-fluid">
+      <div class="span12 quote">
 
-          <p>
-            I would like to thank
+        <p>
+          I would like to thank
 
-              <%= link_to "Michael Hartl", "http://www.michaelhartl.com/", :title => "Michael Hartl",
-                  :target => "_blank" %>,
+            <%= link_to "Michael Hartl", "http://www.michaelhartl.com/", title: "Michael Hartl",
+                  target: "_blank" %>,
 
-            a self-less, kind and brilliant man for his help in making all of this possible.
+          a self-less, kind and brilliant man for his help in making all of this possible.
 
-          </p>
+        </p>
 
-          <p>
-            His
+        <p>
+          His
 
             <%= link_to "Ruby on Rails Tutorial:
                         Learn Web Development with Rails", "http://www.railstutorial.org/",
-                :title => "Ruby on Rails Tutorial:
+                title: "Ruby on Rails Tutorial:
                            Learn Web Development with Rails",
-                :target => "_blank" %>
+                target: "_blank" %>
 
-            is where it all began for me and my journey learning Rails. Without Michael and his kind works,
-            I guarentee hundreds if not thousands of aspiring 'Rubyists' would have become uninterested
-            and given up, simply because they could not find a single Rails tutorial
-            applying practicality alongside example.
-          </p>  
+          is where it all began for me and my journey learning Rails. Without Michael and his kind works,
+          I guarentee hundreds if not thousands of aspiring 'Rubyists' would have become uninterested
+          and given up, simply because they could not find a single Rails tutorial
+          applying practicality alongside example.
+        </p>
 
-          <p>
-            Thanks to Michael, Rails can be <i>anyone's</i> playground.
-          </p>
+        <p>
+          Thanks to Michael, Rails can be <i>anyone's</i> playground.
+        </p>
 
-      </div>
-    </div>
-  </div>
-</div>
+      </div> <!-- quote -->
+    </div> <!-- span12 -->
+  </div> <!-- row-fluid -->
+</div> <!-- container-fluid -->

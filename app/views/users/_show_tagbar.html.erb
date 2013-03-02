@@ -1,6 +1,9 @@
 <div id="tags">
   <legend> Tags </legend>
-  <% for tag in @user.taggings %>
-    <ol><i class="icon-tags"></i> <%= link_to "#{tag.name} (#{tag.blogs.count})", tag_path(tag) %> </ol>
+  <% @user.taggings.each do |tag| %>
+    <ol>
+      <i class="icon-tags"> </i>
+      <%= link_to "#{tag.name} (#{tag.blogs.count})", tag_path(tag) %>
+    </ol>
   <% end %>
 </div>

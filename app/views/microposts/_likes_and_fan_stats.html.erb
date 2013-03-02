@@ -8,11 +8,10 @@
     </a>
   </li>
 </ul>
-
 <ul class="users_modal">
   <li id="fan_of_<%= @micropost.id %>">
-    <% @microposts.each do |fan| %>
-      <%= link_to(gravatar_for(fan, size: 38), fan) %>
+    <% @micropost.fans.each do |fan| %>
+      <%= link_to gravatar_for(fan, size: 38), fan %>
     <% end %>
   </li>
 </ul>

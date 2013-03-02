@@ -6,12 +6,12 @@
   <span id="<%= comment.user.name %>" class="user">
     <%= link_to comment.user.realname, comment.user %>
   </span>
-  <span class="content"><%= comment.content %></span>
-  <% if current_user?(comment.user) %>
-    <%= link_to "Delete", [@blog, comment], method: :delete,
-        data: { confirm: "Are you sure you want to delete this?" },
-        title: comment.content %>
-  <% else %>
-    <div style="margin-bottom: 10px;"></div>
-  <% end %>
+  <span class="content"> <%= comment.content %> </span>
+  <div class="well-footer" style="margin-bottom: -6px;">
+    <% if current_user?(comment.user) %>
+      <%= link_to "Delete", [@blog, comment], method: :delete,
+            data: { confirm: "Are you sure you want to delete this?" },
+            title: comment.content %>
+    <% end %>
+  </div>
 </li>

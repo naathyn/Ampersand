@@ -1,15 +1,15 @@
 <ul class="blog-actions">
   <li>
-    <a href="<%= blog_path(blog) %>" data-method="delete" 
-        data-confirm="Are you sure you want to remove <%= blog.title %>?" 
+    <a href="<%= blog_path(blog) %>" data-method="delete"
+        data-confirm="Are you sure you want to remove <%= blog.title %>?"
         title="Delete <%= blog.title %>">
-      <i class="icon-remove" 
+      <i class="icon-remove"
           style="margin-left: 3px; margin-right: 5px; vertical-align:-1px;"></i>
     </a>
   </li>
   <li>
     <a href="<%= edit_blog_path(blog) %>" title="Edit <%= blog.title %>">
-      <i class="icon-pencil" style="vertical-align:-1px;"></i>
+      <i class="icon-pencil" style="vertical-align: -1px;"></i>
     </a>
   </li>
 </ul>

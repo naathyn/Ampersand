@@ -1,19 +1,14 @@
 <% content_for :head do %>
   <% provide(:title, @title) %>
+  <%= javascript_include_tag :blogs %>
 <% end %>
 
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "Blogs", :blogs_users %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "Your Blog", blog_user_path(current_user) %> 
-      <span class="divider">/</span>
-    </li>
-
-    <li class="active"> <%= @title %> </li>
-  </ul>
+<ul class="breadcrumb">
+  <li><%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li><%= link_to "Blogs", :blogs_users %> <span class="divider">/</span> </li>
+  <li><%= link_to "Your Blog", blog_user_path(current_user) %>
+    <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
 
 <%= render 'form' %>

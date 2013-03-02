@@ -20,9 +20,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @blog = current_user.blogs.find(params[:blog_id])
-    @comment = @blog.comments.find(params[:id])
-    @comment.destroy
+    @blog = Blog.find(params[:blog_id])
+    @comment = @blog.comments.find(params[:id]).destroy
     redirect_to blog_url(@blog), notice: "Your comment was removed."
   end
 
@@ -30,6 +29,6 @@ private
 
   def correct_user
     @comment = current_user.comments.find_by_id(params[:id])
-    redirect_to(root_url) if !@comment
+    redirect_to root_url unless @comment
   end
 end

@@ -1,5 +1,5 @@
 <%= form_for([@blog, @comment]) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     <%= f.text_area :content, rows: 3 %>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>

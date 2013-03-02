@@ -4,18 +4,12 @@
 
 <div class="page-fade">
   <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "Members", :users %> 
-      <span class="divider">/</span>
-    </li>
-
-    <li class="active"><%= @title %></li>
+    <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+    <li> <%= link_to "Members", :users %>  <span class="divider">/</span> </li>
+    <li class="active"> <%= @title %> </li>
   </ul>
 
   <div class="row-fluid">
-
     <div id="chat_wrapper" class="span10 offset1">
       <div class="well-header"></div>
 
@@ -27,11 +21,11 @@
         </div>
 
         <div class="chat_container_text">
-          <%= render "messages/form" %>
+          <%= render 'messages/form' %>
         </div>
       </div> <!-- chat_container -->
 
-      <div class="well-bottom"></div>
+      <div class="well-bottom"> </div>
     </div> <!-- chat_wrapper -->
-  </div>
-</div>
+  </div> <!-- row-fluid -->
+</div> <!-- page-fade -->
