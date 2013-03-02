@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
 
   def new
     @blog = current_user.blogs.build
-    @title = "New Blog Entry ― #{Time.now.to_s(:long_ordinal)}"
+    @title = "New Blog Entry - #{Time.now.to_s(:long_ordinal)}"
   end
 
   def create
