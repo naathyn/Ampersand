@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     if signed_in?
-      redirect_to user_url(current_user), notice: "You are already signed in"
+      redirect_to user_url(current_user), notice: "You are already signed in!"
     else
       @title = "Sign in"
     end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user = User.find_by_name(params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      flash[:success] = "#{user.realname}, glad to see you're back!"
+      flash[:success] = "Glad to see you're back, @#{user.name}!"
       redirect_back_or user
     else
       flash.now[:error] = 'Invalid username/password combination'

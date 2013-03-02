@@ -8,4 +8,8 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+
+  def render_layout?
+    "blogging" if controller_name == "blogs" || controller_name == "tags" || action_name == "blog"
+  end
 end
