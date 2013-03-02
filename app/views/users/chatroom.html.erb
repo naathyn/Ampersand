@@ -2,6 +2,7 @@
   <% provide(:title, @title) %>
 <% end %>
 
+<div class="page-fade">
   <ul class="breadcrumb">
     <li><%= link_to "Home", :root %> 
       <span class="divider">/</span>
@@ -13,24 +14,24 @@
     <li class="active"><%= @title %></li>
   </ul>
 
-<div class="row-fluid">
+  <div class="row-fluid">
 
-  <div id="chat_wrapper" class="span10 offset1">
-    <div class="well-header"></div>
+    <div id="chat_wrapper" class="span10 offset1">
+      <div class="well-header"></div>
 
-    <div class="chat_container">
-      <div id="new_chat">
-        <div id="chat_room">
-          <%= render(@messages) %>
+      <div class="chat_container">
+        <div id="new_chat">
+          <div id="chat_room">
+            <%= render(@messages) %>
+          </div>
         </div>
-      </div>
 
-      <div class="chat_container_text">
-        <%= render("messages/form") %>
-      </div>
-    </div> <!-- chat_container -->
+        <div class="chat_container_text">
+          <%= render("messages/form") %>
+        </div>
+      </div> <!-- chat_container -->
 
-    <div class="well-bottom"></div>
-  </div> <!-- chat_wrapper -->
-
+      <div class="well-bottom"></div>
+    </div> <!-- chat_wrapper -->
+  </div>
 </div>

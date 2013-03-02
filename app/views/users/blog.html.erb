@@ -37,9 +37,7 @@
       <%= render(@blogs) %>
     <%= will_paginate(@blogs) unless @blogs.empty? %>
   </aside>
-
     <%= render partial: 'shared/blog_user_info' %>
-
     <%= render('show_tagbar') unless @blogs.empty? %>
   </aside>
 </div>

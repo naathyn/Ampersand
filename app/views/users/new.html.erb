@@ -2,6 +2,7 @@
   <% provide(:title, @title) %>
 <% end %>
 
+<div class="page-fade">
   <ul class="breadcrumb">
     <li><%= link_to "Home", :root %> 
     <span class="divider">/</span></li>
@@ -11,30 +12,31 @@
 
 <legend><%= @title %></legend>
 
-<div class="row-fluid">
-  <div class="span5 offset3">
+  <div class="row-fluid">
+    <div class="span5 offset3">
 
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :realname, "Full Name" %>
-      <%= f.text_field :realname %>
+        <%= f.label :realname, "Full Name" %>
+        <%= f.text_field :realname %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
 
-      <%= f.label :name, "Username" %>
-      <%= f.text_field :name %>
+        <%= f.label :name, "Username" %>
+        <%= f.text_field :name %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
-      <%= f.label :password_confirmation, "Retype Password" %>
-      <%= f.password_field :password_confirmation %>
+        <%= f.label :password_confirmation, "Retype Password" %>
+        <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
+        <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
 
-    <% end %>
+      <% end %>
 
+    </div>
   </div>
 </div>

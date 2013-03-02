@@ -2,6 +2,8 @@
   <% provide(:title, @title) %>
 <% end %>
 
+<div class="page-fade">
+
   <ul class="breadcrumb">
     <li><%= link_to "Home", :root %> 
     <span class="divider">/</span></li>
@@ -11,19 +13,20 @@
 
 <legend><%= @title %></legend>
 
-<div class="row-fluid">
-  <div class="span5 offset3">
-    <%= form_for(:session, url: :sessions) do |f| %>
+  <div class="row-fluid">
+    <div class="span5 offset3">
+      <%= form_for(:session, url: :sessions) do |f| %>
 
-      <%= f.label :name, "Username" %>
-      <%= f.text_field :name %>
+        <%= f.label :name, "Username" %>
+        <%= f.text_field :name %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-    <% end %>
+        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      <% end %>
 
-    <p>Not a member? <%= link_to "Sign up now!", :signup %></p>
+      <p>Not a member? <%= link_to "Sign up now!", :signup %></p>
+    </div>
   </div>
 </div>

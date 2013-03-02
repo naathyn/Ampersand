@@ -2,8 +2,10 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <% @user ||= current_user %>
 
+
+  <% @user ||= current_user %>
+<div class="page-fade">
   <ul class="breadcrumb">
     <li><%= link_to "Home", :root %> 
       <span class="divider">/</span>
@@ -16,6 +18,7 @@
   </ul>
 
   <%= render("shared/profile_stats") %>
+</div>
 
   <ul class="nav nav-tabs">
     <li class="active"><a href="#profile"><%= @title %></a></li>

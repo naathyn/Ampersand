@@ -1,4 +1,4 @@
-<div class="container-fluid" id="alert-notice">
+<div class="page-fade container-fluid" id="alert-notice">
   <% flash.each do |key, value| %>
     <button type="button" id="close_home" class="close" data-dismiss="alert">×</button>
     <%= content_tag :div, value, id: "flash_#{key}", class: "alert alert-#{key}" %>
