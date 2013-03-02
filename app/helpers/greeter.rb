@@ -3,15 +3,13 @@ module Greeter
     [ "Welcome back",
       "Welkom terug",
       "Maligayang pagbalik",
-      "Bienvenue à nouveau",
-      "Willkommen zurück",
-      "Üdvözöljük",
+      "Bienvenue a nouveau",
+      "Willkommen zuruck",
       "Bentornato",
       "Velkommen tilbake",
       "Bem-vindo de volta",
       "Bine ai revenit",
       "Bienvenido de nuevo",
-      "Chào mừng trở lại"
     ].shuffle.last
   end
   def say_goodbye
@@ -22,11 +20,8 @@ module Greeter
       "Adeus!",
       "Ceau!",
       "Auf Wiedersehen!",
-      "Búcsú!",
       "Addio!",
-      "Pożegnanie!",
-      "¡hasta la vista",
-      "Tạm Biệt",
+      "Hasta la vista!",
       "Farvel!"
     ].shuffle.last
   end
