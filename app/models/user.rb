@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def random_post
-    microposts.shuffle.last
+    microposts.shuffle.last unless microposts.empty?
   end
 
   def following?(other_user)

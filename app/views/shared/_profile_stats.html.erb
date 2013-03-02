@@ -39,7 +39,11 @@
         <% end %>
         <ul class="stats">
           <li>
-            <a href="<%= permalink_path(@user.random_post) %>">
+            <% unless @user.microposts.empty? %>
+              <a href="<%= permalink_path(@user.random_post) %>">
+            <% else %>
+              <a href="<%= user_path(@user) %>">
+            <% end %>
               <strong> <%= @microposts.count %> </strong>
                 <%= micropost_synonyms %>
             </a>
