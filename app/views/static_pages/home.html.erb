@@ -2,62 +2,48 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <%= yield flash.now[:info] = "Last updated on March 1st at 12:00 a.m.
-      Layout enhancements and the ability to comment on blogs." %>
+<%= yield flash.now[:info] = "Last updated on March 1st at 12:00 a.m.
+          Layout enhancements and the ability to comment on blogs." %>
 
-    <% if signed_in? %>
-
-      <div class="row-fluid">
-
-        <aside class="page-fade span4 side-module side-menu mini-profile">
-          <a href="<%= user_path(current_user) %>" class="share-anchor">
-             <section>
-              <%= render("shared/user_info") %>
-            </section>
-          </a>
-            <section>
-              <%= render("shared/stats") %>
-            </section>
-            <section class="side-module-share">
-              <%= render("shared/share_form") %>
-            </section>
-          </aside>
-
-          <div id="feed" class="span8">
-            <div class="well-header">
-              <a href="<%= user_path(current_user) %>" 
-                title="Profile"><i class="icon-user"></i></a>
-
-              <a href="<%= captchas_user_path(current_user) %>"
-                title="Captchas"><i class="icon-camera"></i></a>
-
-              <a href="<%= chatroom_users_path %>" 
-                title="Chatroom"><i class="icon-comment" id="comment-bar"></i></a>
-            </div>
-
-              <%= render("feeds/main/share") %>
-
-            <div class="well-bottom" style="margin-bottom:1em;">
-              <a href="#" title="Top"><i class="icon-arrow-up"></i></a>
-            </div>
-          </div>
-
-          <div id="pagination" style="float:right;clear:both;">
-            <%= will_paginate @shares unless @shares.empty? %>
-          </div>
-        </div>
-
-      <% else %>
-
-      <div class="page-fade center hero-unit">
-
-        <h1>Ampersand</h1>
-       <h3>Simple. Modern. Interactive.</h3>
-      <h5>Alpha Release #2</h5>
-
-    <%= link_to("Sign up now!", :signup,
-        class: "btn btn-large btn-primary") %>
-
+<% if signed_in? %>
+  <div class="row-fluid">
+    <aside class="page-fade span4 side-module side-menu mini-profile">
+      <a href="<%= user_path(current_user) %>" class="share-anchor">
+        <section>
+          <%= render "shared/user_info" %>
+        </section>
+      </a>
+      <section>
+        <%= render "shared/stats" %>
+      </section>
+      <section class="side-module-share">
+        <%= render "shared/share_form" %>
+      </section>
+    </aside>
+    <div id="feed" class="span8">
+      <div class="well-header">
+        <a href="<%= user_path(current_user) %>" 
+            title="Profile"><i class="icon-user"></i></a>
+        <a href="<%= captchas_user_path(current_user) %>"
+            title="Captchas"><i class="icon-camera"></i></a>
+        <a href="<%= chatroom_users_path %>" 
+            title="Chatroom"><i class="icon-comment" id="comment-bar"></i></a>
+      </div>
+        <%= render "feeds/main/share" %>
+      <div class="well-bottom" style="margin-bottom:1em;">
+        <a href="#" title="Top"><i class="icon-arrow-up"></i></a>
+      </div>
+    </div>
+    <div id="pagination" style="float:right;clear:both;">
+      <%= will_paginate @shares unless @shares.empty? %>
+    </div>
   </div>
-
+<% else %>
+  <div class="page-fade center hero-unit">
+    <h1>Ampersand</h1>
+    <h3>Simple. Modern. Interactive.</h3>
+    <h5>Alpha Release #2</h5>
+    <%= link_to "Sign up now!", :signup,
+        class: "btn btn-large btn-primary" %>
+  </div>
 <% end %>

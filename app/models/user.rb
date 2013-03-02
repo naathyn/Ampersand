@@ -1,28 +1,27 @@
 class User < ActiveRecord::Base
   attr_accessible :realname, :email, :name, :location, :bio, 
-  :password, :password_confirmation, :sign_in_count, :website
-
+                  :password, :password_confirmation, :sign_in_count, :website
   has_secure_password
-
   has_many :captchas, dependent: :destroy
-
-  has_many :microposts, dependent: :destroy
-  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
-
+  has_many :microposts, dependent: :destroy,
+                        include:  [ :likes, :fans, :user => {
+                                    :captchas => { :user => :fans } }
+                                  ]
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost",
+    dependent: :destroy, include: [ :likes, :fans, :user => {
+                                    :captchas => { :user => :fans } }
+                                  ]
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
   has_many :likes, through: :fans
-
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
                                     class_name: "Relationship",
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships
-
   has_many :blogs, dependent: :destroy
   has_many :taggings, through: :blogs, source: :tags, uniq: true
   has_many :comments, dependent: :destroy
-
   has_many :messages, dependent: :delete_all
 
   VALID_REALNAME = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i

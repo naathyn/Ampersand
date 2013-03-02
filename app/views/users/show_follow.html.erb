@@ -2,52 +2,41 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "Members", :users %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to @title, user_path(@user) %> 
-      <span class="divider">/</span>
-    </li>
+<ul class="breadcrumb">
+  <li><%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li><%= link_to "Members", :users %> <span class="divider">/</span> </li>
+  <li><%= link_to @title, user_path(@user) %> <span class="divider">/</span> </li>
+  <li class="active"><%= @active %></li>
+</ul>
 
-    <li class="active"><%= @active %></li>
-  </ul>
+<div class="row-fluid">
 
-  <div class="row-fluid">
-
-    <aside class="page-fade span4 side-module side-menu mini-profile">
-      <a href="<%= user_path(@user) %>" class="share-anchor">
-        <section>
-          <%= render 'shared/user_info' %>
-        </section>
-      </a>
-        <section>
-          <%= render 'shared/stats' %>
-
-            <% unless @users.empty? %>
-              <div class="side-module-share user_avatars">
-                <% @users.each do |user| %>
-                <%= link_to gravatar_for(user, size: 32), user %>
-              <% end %>
-            </div>
+  <aside class="page-fade span4 side-module side-menu mini-profile">
+    <a href="<%= user_path(@user) %>" class="share-anchor">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+    </a>
+    <section>
+      <%= render 'shared/stats' %>
+      <% unless @users.empty? %>
+        <div class="side-module-share user_avatars">
+          <% @users.each do |user| %>
+            <%= link_to gravatar_for(user, size: 32), user %>
           <% end %>
+        </div>
+      <% end %>
+    </section>
+  </aside>
 
-        </section>
-      </aside>
+  <% unless @users.empty? %>
+    <div class="span8 share-container">
+      <%= will_paginate %>
+      <ul class="users-follow">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate %>
+    </div>
+  <% end %>
 
-    <% unless @users.empty? %>
-      <div class="span8 share-container">
-
-        <%= will_paginate %>
-          <ul class="users-follow">
-            <%= render @users %>
-          </ul>
-        <%= will_paginate %>
-
-      </div>
-    <% end %>
-
-  </div>
+</div>

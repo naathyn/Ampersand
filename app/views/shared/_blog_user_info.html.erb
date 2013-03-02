@@ -1,17 +1,10 @@
-<div class="page-fade">
-  <aside class="span3" id="<%= @user.id %>">
-    <%= link_to gravatar_for(@user, size: 180), blog_user_path(@user) %>
-
-    <p class="bio tags"> <%= @user.bio %> </p>
-
-    <% unless @user.location.blank? %>
-      <p class="location">
-        <i class="icon-map-marker"> </i>
-        <%= @user.location %>
-      </p>
-    <% else %>
-      <br />
-    <% end %>
-
-  <p class="user"> <%= link_to "View Full Profile →", @user %> </p>
-</div>
+<%= link_to gravatar_for(@user, size: 180), blog_user_path(@user) %>
+<p class="bio tags"> <%= @user.bio %> </p>
+<% unless @user.location.blank? %>
+  <p class="location">
+    <i class="icon-map-marker"> </i> <%= @user.location %>
+  </p>
+<% else %>
+  <br />
+<% end %>
+<p class="user"> <%= link_to "View Full Profile →", @user %> </p>

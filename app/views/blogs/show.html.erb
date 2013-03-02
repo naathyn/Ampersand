@@ -2,26 +2,22 @@
   <% provide(:title, @title) %>
 <% end %>
 
-  <% @user ||= current_user %>
+<% @user ||= current_user %>
 
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "Blogs", :blogs_users %> 
-      <span class="divider">/</span>
-    </li>
-    <li><%= link_to "#{@user.realname}'s Blog", blog_user_path(@user) %> 
-      <span class="divider">/</span>
-    </li>
+<ul class="breadcrumb">
+  <li><%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li><%= link_to "Blogs", :blogs_users %> <span class="divider">/</span> </li>
+  <li><%= link_to "#{@user.realname}'s Blog", blog_user_path(@user) %> <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
 
-    <li class="active"> <%= @title %> </li>
-  </ul>
-
-  <div class="row-fluid">
-    <aside class="span8">
-      <%= render @blog %>
-    </aside>
-    <%= render 'shared/blog_user_info' %>
+<div class="row-fluid">
+  <aside class="span8">
+    <%= render @blog %>
   </aside>
+  <div class="page-fade">
+    <aside class="span3">
+      <%= render 'shared/blog_user_info' %>
+    </aside>
+  </div>
 </div>

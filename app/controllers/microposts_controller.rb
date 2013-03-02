@@ -4,7 +4,7 @@ class MicropostsController < ApplicationController
   before_filter :correct_post, only: :show
 
   def show
-    @micropost = Micropost.find(params[:id], include: :likes)
+    @micropost = Micropost.find(params[:id])
     @title = @micropost.user.realname
   end
 
@@ -34,7 +34,7 @@ private
 
     def correct_user
       @micropost = current_user.microposts.find_by_id(params[:id])
-      redirect_to(root_url) if !@micropost
+      redirect_to(root_url) unless @micropost
     end
 
     def correct_post

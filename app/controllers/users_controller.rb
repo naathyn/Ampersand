@@ -13,12 +13,8 @@ class UsersController < ApplicationController
  def show
     @user = User.find_by_name(params[:id])
     @title = "@#{@user.name}"
-    @microposts = @user.microposts.paginate(page: params[:page],
-                  include: [:likes, :fans, :user =>
-                    {:captchas => {:user => :fans}}])
-    @replies = current_user.replies.paginate(page: params[:page],
-                  include: [:likes, :fans, :user =>
-                    {:captchas => {:user => :fans}}])
+    @microposts = @user.microposts.page(params[:page])
+    @replies = current_user.replies.page(params[:page])
     @following = @user.followed_users.page(params[:page])
     @followers = @user.followers.page(params[:page])
   end
@@ -39,7 +35,7 @@ Whenever you're ready, hit Home to check out your feed.
 Post some content and follow members to fill it up!"
       redirect_to @user
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -53,7 +49,7 @@ Post some content and follow members to fill it up!"
       sign_in @user
       redirect_to @user, notice: "Profile updated successfully"
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -67,7 +63,7 @@ Post some content and follow members to fill it up!"
     @title = "@#{@user.name}"
     @active = "Following"
     @users = @user.followed_users.page(params[:page])
-    render 'show_follow'
+    render :show_follow
   end
 
   def followers
@@ -75,7 +71,7 @@ Post some content and follow members to fill it up!"
     @title = "@#{@user.name}"
     @active = "Followers"
     @users = @user.followers.page(params[:page])
-    render 'show_follow'
+    render :show_follow
   end
 
   def captchas
@@ -108,22 +104,24 @@ Post some content and follow members to fill it up!"
 
 private
 
-    def correct_user
-      @user = User.find_by_name(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find_by_name(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    def captcha_user
-      @user = User.find_by_name(params[:id])
-      redirect_to captchas_user_url(current_user),
-      notice: "You can find @#{params[:id]}'s Captcha's in the feeds" unless current_user?(@user)
-    end
+  def captcha_user
+    @user = User.find_by_name(params[:id])
+    redirect_to captchas_user_url(current_user),
+    notice: "You can find @#{params[:id]}'s Captcha's in the feeds" unless current_user?(@user)
+  end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 
-    def wipe_the_chat
-      current_user.chat.all.each { |message| message.delete if message.created_at <= 6.hours.ago }
-    end
+  def wipe_the_chat
+    current_user.chat.all.each { |message|
+      message.delete if message.created_at <= 6.hours.ago
+    }
+  end
 end

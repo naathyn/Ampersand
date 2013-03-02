@@ -1,81 +1,61 @@
 <div class="profile">
   <div class="profile-header">
     <div class="row-fluid">
-
-    <div class="photo tapetwo tapethree">
-      <%= gravatar_for(@user, size: 128) %>
-    </div>
-
-    <div class="profile-inner">
-
-      <h1 class="fullname">
-        <%= @user.realname %>
+      <div class="photo tapetwo tapethree">
+        <%= gravatar_for(@user, size: 128) %>
+      </div>
+      <div class="profile-inner">
+        <h1 class="fullname">
+          <%= @user.realname %>
           <% if current_user?(@user) %>
-            <%= link_to "Captcha' Moments", captchas_user_path(@user), 
-            class: "btn btn-success" %>
+            <%= link_to "Captcha' Moments", captchas_user_path(@user),
+                  class: "btn btn-success" %>
           <% else %>
-            <%= link_to "View My Blog", blog_user_path(@user), 
-            class: "btn btn-success" unless @user.blogs.empty? %>
+            <%= link_to "View My Blog", blog_user_path(@user),
+                  class: "btn btn-success" unless @user.blogs.empty? %>
           <% end %>
-      </h1>
-
-      <h2 class="name">
-        <small>@</small><%= @user.name %>
-      </h2>
-
-      <span class="bio"><%= @user.bio %></span>
-
-      <span class="location">
-
-        <% unless @user.location.blank? || @user.location.nil? %>
+        </h1>
+        <h2 class="name"> <small>@</small> <%= @user.name %> </h2>
+        <span class="bio"> <%= @user.bio %> </span>
+        <span class="location">
+        <% if @user.location %>
           <i class="icon-map-marker"></i> 
             <%= @user.location %>
-        <% end %>
-
-        <% unless @user.website.nil? || @user.website.blank? %>
-          <i class="icon-globe"> </i> 
-          <%= auto_link(@user.website, html: { target: "_blank" }) %>
-        <% end %>
-
-      </span>
-
-    </div> <!-- profile-inner -->
-
+          <% end %>
+          <% if @user.website %>
+            <i class="icon-globe"> </i> 
+            <%= auto_link(@user.website, html: { target: "_blank" }) %>
+          <% end %>
+        </span>
+      </div> <!-- profile-inner -->
       <div class="actions">
-
         <% if current_user?(@user) %>
-          <%= link_to "Edit your profile", edit_user_path(@user), 
-          class: "btn btn-default", style: "margin-bottom: 15px;" %>
+          <%= link_to "Edit your profile", edit_user_path(@user),
+              class: "btn btn-default", style: "margin-bottom: 15px;" %>
         <% else %>
           <%= render 'follow_form' %>
         <% end %>
-
         <ul class="stats">
-
           <li>
             <a href="<%= user_path(@user) %>">
               <strong><%= @microposts.count %></strong> 
               shares
             </a>
           </li>
-
           <li>
             <a href="<%= following_user_path(@user) %>">
               <strong id="following"><%= @following.count %></strong> 
               following
             </a>
           </li>
-
           <li>
             <a href="<%= followers_user_path(@user) %>">
               <strong id="followers"><%= @followers.count %></strong> 
-              followers 
+              followers
             </a>
           </li>
         </ul>
-
       </div> <!-- actions -->
-
-    </div>  <!-- row-fluid -->
-  </div>
-</div>
+    </div> <!-- row-fluid -->
+  </div> <!-- profile-header -->
+</div> <!-- profile -->

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title><%= full_title(yield(:title)) %></title>
+    <title> <%= full_title(yield(:title)) %> </title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "A Social Platform in development" %>">
     <meta name="author" content="<%= content_for?(:author) ? yield(:author) : "Nathan Couch" %>">
       <%= stylesheet_link_tag "application", media: "all" %>
@@ -12,7 +12,7 @@
       <%= yield(:head) %>
     </head>
     <body>
-      <%= render("shared/modal") %>
+      <%= render 'shared/modal' %>
       <header class="navbar navbar-inverse navbar-fixed-top">
         <nav class="navbar-inner">
           <div class="container-fluid">
