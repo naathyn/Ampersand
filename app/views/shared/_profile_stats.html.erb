@@ -2,13 +2,13 @@
   <div class="profile-header">
     <div class="row-fluid">
 
-      <div class="page-fade photo tapetwo tapethree">
+      <div class="photo tapetwo tapethree">
         <%= gravatar_for(@user, size: 128) %>
       </div>
 
       <div class="page-fade profile-inner">
         <h1 class="fullname">
-          <%= @user.realname %>
+          <span> <%= @user.realname %> </span>
           <% if current_user?(@user) %>
             <%= link_to "Captcha' Moments", captchas_user_path(@user),
                   class: "btn btn-success" %>
@@ -18,7 +18,7 @@
           <% end %>
         </h1>
 
-        <h2 class="name"> <small>@</small> <%= @user.name %> </h2>
+        <h2 class="name"> <small>@</small><%= @user.name %> </h2>
         <span class="bio"> <%= @user.bio %> </span>
 
         <span class="location">
@@ -40,7 +40,7 @@
         <% else %>
           <%= render 'follow_form' %>
         <% end %>
-        <ul class="page-fade stats">
+        <ul class="stats">
           <li>
             <a href="<%= user_path(@user) %>">
               <strong><%= @microposts.count %></strong>

@@ -2,22 +2,22 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on March 2nd at 7:00 a.m.
-      Prettying up the code and layout." %>
+<%= yield flash.now[:info] = "Last updated on March 2nd at 12:00 p.m.
+      Simple things that adds a shine. Can you spot some of them?" %>
 
 <% if signed_in? %>
   <div class="row-fluid">
 
-    <aside class="page-fade span4 side-module side-menu mini-profile">
+    <aside class="span4 side-module side-menu mini-profile">
       <a href="<%= user_path(current_user) %>" class="share-anchor">
-        <section>
+        <section class="page-fade">
           <%= render "shared/user_info" %>
         </section>
       </a>
-      <section>
+      <section class="page-fade">
         <%= render "shared/stats" %>
       </section>
-      <section class="side-module-share">
+      <section class="page-fade side-module-share">
         <%= render "shared/share_form" %>
       </section>
     </aside>
@@ -25,14 +25,15 @@
     <div id="feed" class="span8">
 
       <div class="well-header">
-        <div class="page-fade">
-          <a href="<%= user_path(current_user) %>" title="Profile">
-            <i class="icon-user"></i> </a>
-          <a href="<%= captchas_user_path(current_user) %>" title="Captchas">
-            <i class="icon-camera"></i> </a>
-          <a href="<%= blog_user_path(current_user) %>" title="Your Blog">
-            <i id="comment-bar" class="icon-book"></i> </a>
-        </div>
+        <a class="page-fade" href="<%= user_path(current_user) %>" title="Profile">
+          <i class="icon-user"></i>
+        </a>
+        <a class="page-fade" href="<%= captchas_user_path(current_user) %>" title="Captchas">
+          <i class="icon-camera"></i>
+        </a>
+        <a class="page-fade" href="<%= blog_user_path(current_user) %>" title="Your Blog">
+          <i id="comment-bar" class="icon-book"></i>
+        </a>
       </div>
 
         <%= render 'feeds/main/share' %>

@@ -4,15 +4,15 @@
 
 <% @user ||= current_user %>
 
-<div class="page-fade">
-  <ul class="breadcrumb">
-    <li><%= link_to "Home", :root %> <span class="divider">/</span> </li>
-    <li><%= link_to "Blogs", :blogs_users %> <span class="divider">/</span> </li>
-    <li><%= link_to "#{@user.realname}'s Blog", blog_user_path(@user) %>
-      <span class="divider">/</span> </li>
-    <li class="active"> <%= @title %> </li>
-  </ul>
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Blogs", :blogs_users %> <span class="divider">/</span> </li>
+  <li> <%= link_to "#{@user.realname}'s Blog", blog_user_path(@user) %>
+    <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
 
+<div class="page-fade">
   <div class="row-fluid">
     <aside class="span8">
       <%= render @blog %>

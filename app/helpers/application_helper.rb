@@ -9,7 +9,11 @@ module ApplicationHelper
     end
   end
 
-  def render_layout?
-    "blogging" if controller_name == "blogs" || controller_name == "tags" || action_name == "blog"
+  def viewing_blog?
+    "blogging" if
+      controller_name == "blogs"    ||
+      action_name     == "blog"     ||
+      controller_name == "tags"     ||
+      controller_name == "comments"
   end
 end

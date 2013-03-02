@@ -9,18 +9,20 @@
   <% end %>
 
   <span class="lead"> <%= link_to blog.title, blog %> </span>
+
   <p class="bio">
     by <%= link_to blog.user.realname, blog.user %>
       with
     <%= link_to pluralize(blog.comments.count, 'comment'), blog %>
   </p>
+
   <p class="format">
     <%= auto_link truncate(blog.content, length: 165) %>
     <span class="bio"> <%= link_to "keep reading", blog_user_path(blog.user) %> </span>
   </p>
 
   <% if blog.tags.any? %>
-    <p class="bio">
+    <p class="page-fade bio">
       <% blog.tags.each do |tag| %>
         <i class="icon-tag"></i> <%= link_to tag.name, tag %>
       <% end %>

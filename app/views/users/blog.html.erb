@@ -12,7 +12,7 @@
 </ul>
 
 <% if current_user?(@user) %>
-  <div class="alert alert-block" style="margin-top: 1em;">
+  <div class="page-fade alert alert-block" style="margin-top: 1em;">
     <h2>Heya Blogger!</h2>
         Welcome to your new blog! It is still under construction
         so expect a fancier layout and the ability to
@@ -24,16 +24,14 @@
   <aside class="span8">
     <% if current_user?(@user) %>
       <%= link_to "Post New Entry", :new_blog,
-            class: "btn btn-large btn-primary" if signed_in? %>
+            class: "page-fade btn btn-large btn-primary" %>
       <hr />
     <% end %>
     <%= render @blogs %>
     <%= will_paginate @blogs unless @blogs.empty? %>
   </aside>
-  <div class="page-fade">
-    <aside class="span3">
-      <%= render partial: 'shared/blog_user_info' %>
-      <%= render 'show_tagbar' unless @blogs.empty? %>
-    </aside>
-  </div>
+  <aside class="page-fade span3">
+    <%= render partial: 'shared/blog_user_info' %>
+    <%= render 'show_tagbar' unless @blogs.empty? %>
+  </aside>
 </div>

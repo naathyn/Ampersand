@@ -1,4 +1,4 @@
-<div class="captcha-form">
+<div class="page-fade captcha-form">
   <%= form_for(@captcha, url: :captchas) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
       <%= f.text_area :content, class: "span10",

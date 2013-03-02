@@ -2,52 +2,49 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<div class="page-fade">
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
+  <li> <%= link_to "@#{@user.name}", @user %> <span class="divider">/</span> </li>
+  <li class="active"> <%= @title %> </li>
+</ul>
 
-  <ul class="breadcrumb">
-    <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
-    <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
-    <li><%= link_to "@#{@user.name}", @user %> <span class="divider">/</span> </li>
-    <li class="active"><%= @title %></li>
-  </ul>
+<legend><%= @title %></legend>
 
-  <legend><%= @title %></legend>
+<div class="row-fluid">
+  <div class="page-fade span5 offset3">
 
-  <div class="row-fluid">
-    <div class="span5 offset3">
+    <%= gravatar_for(@user, size: 75) %>
+    <br /><br /><br /><br /><br />
+    <a class="btn btn-small" href="http://gravatar.com/emails"
+      alt="Sign in to Gravatar to change your profile picture"
+      type="submit" target="_blank" style="margin-bottom: 1em;"> Change </a>
 
-     <%= gravatar_for(@user, size: 75) %>
-     <br /><br /><br /><br /><br />
-     <a class="btn btn-small" href="http://gravatar.com/emails"
-        alt="Sign in to Gravatar to change your profile picture"
-        type="submit" target="_blank" style="margin-bottom: 1em;"> Change </a>
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-      <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :realname, "Full Name" %>
+        <%= f.text_field :realname %>
 
-          <%= f.label :realname, "Full Name" %>
-          <%= f.text_field :realname %>
+        <%= f.label :location %>
+        <%= f.text_field :location %>
 
-          <%= f.label :location %>
-          <%= f.text_field :location %>
+        <%= f.label :website %>
+        <%= f.text_field :website %>
 
-          <%= f.label :website %>
-          <%= f.text_field :website %>
+        <%= f.label :bio, "About Me" %>
+        <%= f.text_area :bio, rows: "2", placeholder: "In a short 255 words, please :)" %>
 
-          <%= f.label :bio, "About Me" %>
-          <%= f.text_area :bio, rows: "2", placeholder: "In a short 255 words, please :)" %>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
 
-          <%= f.label :email %>
-          <%= f.email_field :email %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
-          <%= f.label :password %>
-          <%= f.password_field :password %>
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation %>
 
-          <%= f.label :password_confirmation, "Confirm Password" %>
-          <%= f.password_field :password_confirmation %>
-
-        <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-      <% end %>
-    </div>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
   </div>
 </div>
