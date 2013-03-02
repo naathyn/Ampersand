@@ -1,21 +1,21 @@
 <% @user ||= current_user %>
 <div class="stats">
-  <a href="<%= user_path(@user) %>">
-    <strong class="stat">
+  <a href="<%= permalink_path(@user.random_post) %>">
+    <strong class="page-fade stat">
       <%= @user.microposts.count %>
     </strong>
-    shares
+      <%= micropost_synonyms %>
   </a>
   <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
+    <strong id="following" class="page-fade stat">
       <%= @user.followed_users.count %>
     </strong>
-    following
+      following
   </a>
   <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
+    <strong id="followers" class="page-fade stat">
       <%= @user.followers.count %>
     </strong>
-    followers
+      followers
   </a>
 </div>

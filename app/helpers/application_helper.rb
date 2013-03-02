@@ -16,4 +16,16 @@ module ApplicationHelper
       controller_name == "tags"     ||
       controller_name == "comments"
   end
+
+  def micropost_synonyms
+    [ "Thoughts",
+      "Ideas",
+      "Shoutouts",
+      "Opinions",
+      "Shares",
+      "Posts",
+      "Expressions",
+      "Concepts"
+    ].shuffle.last
+  end
 end

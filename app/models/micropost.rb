@@ -26,6 +26,10 @@ class Micropost < ActiveRecord::Base
     likes.find_by_fan_id(fan.id)
   end
 
+  def timestamp
+    self.created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
+  end
+
 private
 
   def self.from_users_followed_by(user)

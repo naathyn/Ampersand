@@ -6,22 +6,19 @@
         <%= gravatar_for(@user, size: 128) %>
       </div>
 
-      <div class="profile-inner">
-        <h1 class="fullname">
-          <span> <%= @user.realname %> </span>
+      <div class="page-fade profile-inner">
+        <h1 class="fullname"> <%= @user.realname %>
           <% if current_user?(@user) %>
             <%= link_to "Captcha' Moments", captchas_user_path(@user),
-                  class: "page-fade btn btn-success" %>
+                  class: "btn btn-success" %>
           <% else %>
             <%= link_to "View My Blog", blog_user_path(@user),
-                  class: "page-fade btn btn-success" unless @user.blogs.empty? %>
+                  class: "btn btn-success" unless @user.blogs.empty? %>
           <% end %>
         </h1>
-
-        <h2 class="page-fade name"> <small>@</small><%= @user.name %> </h2>
-        <span class="page-fade bio"> <%= @user.bio %> </span>
-
-        <span class="page-fade location">
+        <h2 class="name"> <small>@</small><%= @user.name %> </h2>
+        <span class="bio"> <%= @user.bio %> </span>
+        <span class="location">
           <% if @user.location %>
             <i class="icon-map-marker"></i>
             <%= @user.location %>
@@ -31,37 +28,36 @@
             <%= auto_link(@user.website, html: { target: "_blank" }) %>
           <% end %>
         </span>
-      </div> <!-- profile-inner -->
+      </div> <!-- page-fade/profile-inner -->
 
       <div class="actions">
         <% if current_user?(@user) %>
           <%= link_to "Edit your profile", edit_user_path(@user),
-                class: "page-fade btn btn-default", style: "margin-bottom: 15px;" %>
+                class: "btn btn-default", style: "margin-bottom: 15px;" %>
         <% else %>
           <%= render 'follow_form' %>
         <% end %>
-        <ul class="page-fade stats">
+        <ul class="stats">
           <li>
-            <a href="<%= user_path(@user) %>">
-              <strong><%= @microposts.count %></strong>
-              shares
+            <a href="<%= permalink_path(@user.random_post) %>">
+              <strong> <%= @microposts.count %> </strong>
+                <%= micropost_synonyms %>
             </a>
           </li>
           <li>
             <a href="<%= following_user_path(@user) %>">
-              <strong id="following"><%= @following.count %></strong>
-              following
+              <strong id="following"> <%= @following.count %> </strong>
+                following
             </a>
           </li>
           <li>
             <a href="<%= followers_user_path(@user) %>">
-              <strong id="followers"><%= @followers.count %></strong>
-              followers
+              <strong id="followers"> <%= @followers.count %> </strong>
+                followers
             </a>
           </li>
         </ul>
       </div> <!-- actions -->
-
     </div> <!-- row-fluid -->
   </div> <!-- profile-header -->
 </div> <!-- profile -->

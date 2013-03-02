@@ -5,12 +5,15 @@
 <div class="page-fade photo tapetwo tapethree microposts-photo">
   <div class="microposts-profile">
     <div class="profile-header microposts-header">
-      <div class="row-fluid">
-        <div class="profile-inner microposts-inner">
+      <div class="center">
+        <small> <%= @micropost.timestamp %> </small>
+      </div>
 
+      <div class="row-fluid">
+
+        <div class="profile-inner microposts-inner">
           <%= render partial: 'feeds/shared/footer', object: @micropost, as: :item %>
           <%= link_to gravatar_for(@micropost.user, size: 48), @micropost.user %>
-
           <h1 id="<%= @micropost.user.name %>" class="fullname">
             <%= link_to @micropost.user.realname, @micropost.user %>
           </h1>
@@ -18,10 +21,11 @@
           <p class="content">
             <%= render partial: 'feeds/shared/content', object: @micropost, as: :item %>
           </p>
-
         </div>
+
         <%= render 'like_form' %>
       </div> <!-- row-fluid -->
+
     </div> <!-- microposts-header -->
   </div> <!-- microposts-profile -->
 </div><!-- page-fade -->

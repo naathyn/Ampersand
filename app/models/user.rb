@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :realname, :email, :name, :location, :bio, 
+  attr_accessible :realname, :email, :name, :location, :bio,
                   :password, :password_confirmation, :sign_in_count, :website
 
-  EAGER_LOADING = [:likes, :fans, user: { captchas: {user: :fans} }]
-  VALID_REALNAME = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
-  VALID_USERNAME = /\A[A-Z\d_]*\Z/i
-  VALID_WEBSITE = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix
+  EAGER_LOADING   = [:likes, :fans, user: { captchas: {user: :fans} }]
+  VALID_REALNAME  = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
+  VALID_USERNAME  = /\A[A-Z\d_]*\Z/i
+  VALID_WEBSITE   = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix
 
   has_secure_password
   has_many :captchas, dependent: :destroy
@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
 
   def random_captcha
     captchas.shuffle.last
+  end
+
+  def random_post
+    microposts.shuffle.last
   end
 
   def following?(other_user)
