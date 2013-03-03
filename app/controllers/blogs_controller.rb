@@ -34,7 +34,7 @@ class BlogsController < ApplicationController
   def update
     @blog = current_user.blogs.find(params[:id])
     if @blog.update_attributes(params[:blog])
-      redirect_to blog_user_url(current_user), notice: 'Your blog was posted successfully.'
+      redirect_to blog_user_url(current_user), notice: 'Your blog was updated successfully.'
     else
       render :edit
     end

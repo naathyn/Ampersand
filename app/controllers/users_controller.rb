@@ -84,13 +84,15 @@ Post some content and follow members to fill it up!"
 
   def blogs
     @title = "Blogs"
-    @blogs = Blog.paginate(page: params[:page], include: [:tags, :user], per_page: 10)
+    @blogs = Blog.paginate(page: params[:page], per_page: 10,
+      include: :user)
+    @tags = Tag.page(params[:page])
   end
 
   def blog
     @user = User.find_by_name(params[:id])
     @title = "#{@user.realname} Blog"
-    @blogs = @user.blogs.paginate(page: params[:page], include: [:tags, :user])
+    @blogs = @user.blogs.page(params[:page])
     @blog = current_user.blogs.build
   end
 

@@ -19,9 +19,7 @@ module ApplicationHelper
 
   def micropost_synonyms
     [ "Thoughts",
-      "Ideas",
       "Shoutouts",
-      "Opinions",
       "Shares",
       "Posts",
       "Expressions",

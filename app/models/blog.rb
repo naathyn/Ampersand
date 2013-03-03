@@ -1,6 +1,5 @@
 class Blog < ActiveRecord::Base
   include AttachmentsHelper
-
   attr_accessible :title, :content, :tag_names, :photo
   attr_writer :tag_names
 

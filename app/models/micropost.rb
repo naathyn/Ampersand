@@ -11,16 +11,7 @@ class Micropost < ActiveRecord::Base
   validates_length_of :content, within: (5..800)
 
   before_save :link_username
-
   default_scope order: "created_at DESC"
-
-  def fan_likes_count
-    unless likes.empty?
-      likes.count
-    else
-      0
-    end
-  end
 
   def liked_by?(fan)
     likes.find_by_fan_id(fan.id)
@@ -35,7 +26,7 @@ private
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"
-    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
+      where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
         user_id: user.id)
   end
 

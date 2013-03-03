@@ -1,6 +1,7 @@
 <div class="well-inner-header">
 <% unless item.user.captchas.empty? %>
-  <span class="captchas" data-original-title="<%= item.user.random_captcha.content %>">
+  <span class="captchas" data-original-title="
+    <%= item.user.random_captcha.content %>">
     <%= gravatar_for item.user, size: 48 %>
   </span>
 <% else %>
@@ -12,6 +13,6 @@
   <span class="username"> @<%= item.user.name %> </span>
   <small class="timestamp">
     <%= link_to "#{time_ago_in_words(item.created_at)} ago",
-          permalink_path(item), class: "page-fade timestamp" %>
+          permalink_path(item), class: "timestamp" %>
   </small>
 </div>

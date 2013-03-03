@@ -11,36 +11,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224030945) do
+ActiveRecord::Schema.define(:version => 20130303080143) do
 
   create_table "blogs", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "content"
-    t.string   "extension"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.string    "title"
+    t.text      "content"
+    t.string    "extension"
+    t.timestamp "created_at",                   :null => false
+    t.timestamp "updated_at",                   :null => false
+    t.integer   "comment_count", :default => 0
   end
 
   add_index "blogs", ["user_id", "created_at"], :name => "index_blogs_on_user_id_and_created_at"
   add_index "blogs", ["user_id"], :name => "index_blogs_on_user_id"
 
   create_table "captchas", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.text      "content"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "captchas", ["user_id", "created_at"], :name => "index_captchas_on_user_id_and_created_at"
   add_index "captchas", ["user_id"], :name => "index_captchas_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "blog_id"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.integer   "blog_id"
+    t.text      "content"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
@@ -48,11 +49,11 @@ ActiveRecord::Schema.define(:version => 20130224030945) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "messages", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "to_id"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.integer   "to_id"
+    t.text      "content"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "messages", ["to_id", "created_at"], :name => "index_messages_on_to_id_and_created_at"
@@ -63,11 +64,12 @@ ActiveRecord::Schema.define(:version => 20130224030945) do
   add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "microposts", :force => true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "to_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text      "content"
+    t.integer   "user_id"
+    t.integer   "to_id"
+    t.timestamp "created_at",                :null => false
+    t.timestamp "updated_at",                :null => false
+    t.integer   "like_count", :default => 0
   end
 
   add_index "microposts", ["to_id", "created_at"], :name => "index_microposts_on_to_id_and_created_at"
@@ -77,10 +79,10 @@ ActiveRecord::Schema.define(:version => 20130224030945) do
   add_index "microposts", ["user_id", "to_id"], :name => "index_microposts_on_user_id_and_to_id"
 
   create_table "opinions", :force => true do |t|
-    t.integer  "fan_id"
-    t.integer  "like_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "fan_id"
+    t.integer   "like_id"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   add_index "opinions", ["fan_id", "like_id"], :name => "index_opinions_on_fan_id_and_like_id", :unique => true
@@ -88,10 +90,10 @@ ActiveRecord::Schema.define(:version => 20130224030945) do
   add_index "opinions", ["like_id"], :name => "index_opinions_on_like_id"
 
   create_table "relationships", :force => true do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer   "follower_id"
+    t.integer   "followed_id"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
   end
 
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
@@ -110,26 +112,27 @@ ActiveRecord::Schema.define(:version => 20130224030945) do
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
 
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at",                   :null => false
+    t.timestamp "updated_at",                   :null => false
+    t.integer   "tagging_count", :default => 0
   end
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "realname"
-    t.string   "email"
-    t.string   "name"
-    t.string   "location"
-    t.text     "bio"
-    t.string   "password_digest"
-    t.string   "remember_token"
-    t.boolean  "admin",           :default => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.integer  "sign_in_count",   :default => 0
-    t.string   "website"
+    t.string    "realname"
+    t.string    "email"
+    t.string    "name"
+    t.string    "location"
+    t.text      "bio"
+    t.string    "password_digest"
+    t.string    "remember_token"
+    t.boolean   "admin",           :default => false
+    t.timestamp "created_at",                         :null => false
+    t.timestamp "updated_at",                         :null => false
+    t.integer   "sign_in_count",   :default => 0
+    t.string    "website"
   end
 
   add_index "users", ["created_at"], :name => "index_users_on_created_at"

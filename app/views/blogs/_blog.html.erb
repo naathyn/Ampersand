@@ -17,7 +17,7 @@
 
   <p class="location">By
     <%= link_to blog.user.realname, blog_user_path(blog.user) %> with
-    <%= link_to pluralize(blog.comments.count, 'comment'), blog %>
+    <%= link_to pluralize(blog.comment_count, 'comment'), blog %>
   </p>
 
   <span class="bio">
