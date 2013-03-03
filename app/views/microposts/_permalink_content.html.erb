@@ -1,0 +1,20 @@
+<div class="center">
+  <small> <%= @micropost.timestamp %> </small>
+</div>
+
+<div class="row-fluid">
+
+  <div class="profile-inner microposts-inner">
+    <%= render partial: 'feeds/shared/footer', object: @micropost, as: :item %>
+    <%= link_to gravatar_for(@micropost.user, size: 48), @micropost.user %>
+    <h1 id="<%= @micropost.user.name %>" class="fullname">
+      <%= link_to @micropost.user.realname, @micropost.user %>
+    </h1>
+    <h2 class="name"> <small>@</small><%= @micropost.user.name %> </h2>
+    <p class="content">
+      <%= render partial: 'feeds/shared/content', object: @micropost, as: :item %>
+    </p>
+  </div>
+
+  <%= render 'like_form' %>
+</div>

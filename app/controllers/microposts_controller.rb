@@ -6,6 +6,7 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find(params[:id])
     @title = @micropost.user.realname
+    respond_to :html, :js
   end
 
   def create
@@ -32,16 +33,16 @@ class MicropostsController < ApplicationController
 
 private
 
-    def correct_user
-      @micropost = current_user.microposts.find_by_id(params[:id])
-      redirect_to(root_url) unless @micropost
-    end
+  def correct_user
+    @micropost = current_user.microposts.find_by_id(params[:id])
+    redirect_to :root unless @micropost
+  end
 
-    def correct_post
-      begin
-        @micropost = Micropost.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        redirect_to root_url
-      end
+  def correct_post
+    begin
+      @micropost = Micropost.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to :root
     end
+  end
 end

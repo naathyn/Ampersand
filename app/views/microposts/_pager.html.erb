@@ -1,0 +1,7 @@
+<li class="previous">
+  <%= link_to "← Home", :root %>
+</li>
+<li class="next">
+  <%= link_to "Read Another →", permalink_path(@micropost.user.random_post),
+        remote: true %>
+</li>

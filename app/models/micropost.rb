@@ -38,6 +38,5 @@ private
       self.content = "#{user} #{content.gsub(/\A@([^\s]*)/,'')}"
     end
   end
-
   self.per_page = 20
 end

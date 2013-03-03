@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: :destroy
-  before_filter :remove_stale_tags, only: [:create, :update, :destroy]
   before_filter :skip_timestamps, only: :update
 
   def show
@@ -41,7 +40,8 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    @blog = current_user.blogs.find(params[:id]).destroy
+    @blog = current_user.blogs.find(params[:id])
+    @blog.tags.destroy && @blog.destroy
     redirect_to blog_user_url(current_user), notice: 'Your blog was removed.'
   end
 
@@ -50,10 +50,6 @@ private
   def correct_user
     @blog = current_user.blogs.find_by_id(params[:id])
     redirect_to root_url unless @blog
-  end
-
-  def remove_stale_tags
-    Tag.all.each { |tag| tag.delete if tag.blogs.empty? }
   end
 
   def skip_timestamps

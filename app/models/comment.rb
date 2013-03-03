@@ -8,7 +8,5 @@ class Comment < ActiveRecord::Base
   validates_length_of :content, minimum: 5
 
   default_scope order: 'created_at ASC'
-
-private
-  self.per_page = 10
+  private; self.per_page = 10
 end

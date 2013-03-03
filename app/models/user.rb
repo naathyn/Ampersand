@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :blogs, dependent: :destroy, include: [:tags, :user]
   has_many :tags, through: :blogs, uniq: true
   has_many :comments, dependent: :destroy
-  has_many :messages, dependent: :delete_all
+  has_many :messages, dependent: :destroy
 
   validates_presence_of :realname, :email, :name
   validates_uniqueness_of :realname, :email, :name, case_sensitive: false

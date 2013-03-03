@@ -85,7 +85,7 @@ Post some content and follow members to fill it up!"
   def blogs
     @title = "Blogs"
     @blogs = Blog.paginate(page: params[:page], per_page: 10,
-      include: :user)
+              include: [:tags, :user])
     @tags = Tag.page(params[:page])
   end
 
@@ -123,7 +123,7 @@ private
 
   def wipe_the_chat
     current_user.chat.all.each { |message|
-      message.delete if message.created_at <= 6.hours.ago
+      message.destroy if message.created_at <= 6.hours.ago
     }
   end
 end
