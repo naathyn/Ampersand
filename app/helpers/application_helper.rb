@@ -25,6 +25,7 @@ module ApplicationHelper
       "Shares",
       "Posts",
       "Expressions",
+      "Memories",
       "Concepts"
     ].shuffle.last
   end
