@@ -1,10 +1,6 @@
 <% @user ||= current_user %>
 <div class="page-fade stats">
-  <% unless @user.microposts.empty? %>
-    <a href="<%= permalink_path(@user.random_post) %>">
-  <% else %>
-    <a href="<%= user_path(@user) %>">
-  <% end %>
+  <a href="<%= permalink_path(@user.random_post) unless @user.microposts.empty? %>">
     <strong class="stat">
       <%= @user.microposts.count %>
     </strong>
@@ -14,12 +10,12 @@
     <strong id="following" class="stat">
       <%= @user.followed_users.count %>
     </strong>
-      following
+    following
   </a>
   <a href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
       <%= @user.followers.count %>
     </strong>
-      followers
+    followers
   </a>
 </div>

@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :captchas, dependent: :destroy
   has_many :microposts, dependent: :destroy, include: EAGER_LOADING
-  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy,
-    include: EAGER_LOADING
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost",
+                        dependent: :destroy, include: EAGER_LOADING
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
   has_many :likes, through: :fans
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy

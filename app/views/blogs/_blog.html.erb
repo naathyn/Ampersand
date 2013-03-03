@@ -16,8 +16,7 @@
   </div>
 
   <p class="location">By
-    <%= link_to blog.user.realname, blog_user_path(blog.user) %>
-      with
+    <%= link_to blog.user.realname, blog_user_path(blog.user) %> with
     <%= link_to pluralize(blog.comments.count, 'comment'), blog %>
   </p>
 
@@ -40,7 +39,7 @@
       </ul>
     <% end %>
 
-    <p class="lead"> <%= blog.note_for_comment %> </p>
+    <p class="lead"> <%= note_for_comment %> </p>
     <%= render 'comments/form' %>
   <% end %>
 </div>

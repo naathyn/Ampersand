@@ -2,7 +2,7 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on March 2nd at 7:00 p.m.
+<%= yield flash.now[:info] = "Last updated on March 2nd at 8:00 p.m.
       Simple things that add a shine. Can you spot some of them?" %>
 
 <% if signed_in? %>
@@ -23,7 +23,6 @@
     </aside>
 
     <div id="feed" class="span8">
-
       <div class="well-header">
         <a class="page-fade" href="<%= user_path(current_user) %>" title="Profile">
           <i class="icon-user"></i>
@@ -35,9 +34,7 @@
           <i id="comment-bar" class="icon-book"></i>
         </a>
       </div>
-
         <%= render 'feeds/main/share' %>
-
       <div class="well-bottom" style="margin-bottom: 1em;">
         <a href="#" title="Top"> <i class="icon-arrow-up"></i> </a>
       </div>
@@ -55,6 +52,6 @@
     <h3> Simple. Modern. Interactive. </h3>
     <h5> Alpha Release #2 </h5>
     <%= link_to "Sign up now!", :signup,
-        class: "btn btn-large btn-primary" %>
+          class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

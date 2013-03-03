@@ -28,24 +28,6 @@ class Blog < ActiveRecord::Base
     self.created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
   end
 
-  def note_for_comment
-    [ "Tell me something good",
-      "Let me know what you think",
-      "Leave a comment!",
-      "Tell me something good",
-      "What are your thoughts?",
-      "What is your take on this?",
-      "Did you like it?",
-      "Let me know what you think",
-      "Shoot me a comment!",
-      "Now it's your turn to write something",
-      "Opinions?",
-      "Can I get an amen?",
-      "I'd love to hear what you think",
-      "Comments?"
-    ].shuffle.last
-  end
-
 private
 
   def assign_tags

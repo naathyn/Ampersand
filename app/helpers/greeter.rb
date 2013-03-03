@@ -9,7 +9,7 @@ module Greeter
       "Velkommen tilbake",
       "Bem-vindo de volta",
       "Bine ai revenit",
-      "Bienvenido de nuevo",
+      "Bienvenido de nuevo"
     ].shuffle.last
   end
   def say_goodbye
