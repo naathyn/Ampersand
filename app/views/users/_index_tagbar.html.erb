@@ -1,14 +1,13 @@
 <aside class="span3">
   <legend> Popular Tags </legend>
-  <div class="page-fade" id="tags">
+  <ol class="page-fade" id="tags">
     <% @tags.each do |tag| %>
-      <ol>
-        <i class="icon-tags"></i>
+      <li id="<%= tag.id %>"><i class="icon-tags"></i>
         <%= link_to "#{tag.name} (#{tag.tagging_count})", tag_path(tag) %>
-      </ol>
+      </li>
     <% end %>
-    <div class="pagination pagination-mini">
-      <%= will_paginate @tags %>
-    </div>
+  </ol>
+  <div class="pagination pagination-mini">
+    <%= will_paginate @tags %>
   </div>
 </aside>
