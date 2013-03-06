@@ -19,11 +19,11 @@
         <h2 class="name"> <small>@</small><%= @user.name %> </h2>
         <span class="bio"> <%= @user.bio %> </span>
         <span class="location">
-          <% if @user.location %>
+          <% if @user.location.present? %>
             <i class="icon-map-marker"></i>
             <%= @user.location %>
           <% end %>
-          <% if @user.website %>
+          <% if @user.website.present? %>
             <i class="icon-globe"> </i>
             <%= auto_link(@user.website, html: { target: "_blank" }) %>
           <% end %>
