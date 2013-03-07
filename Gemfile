@@ -8,16 +8,17 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 gem 'rails_autolink'
+gem 'tilt', '1.3.4'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'faker'
-  gem 'rspec-rails'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'spork'
+  gem 'rspec-rails', '2.11.0'
+  gem 'guard-rspec', '1.2.1'
+  gem 'guard-spork', '1.2.0'
+  gem 'spork', '0.9.2'
   gem 'libnotify'
-  gem 'rb-inotify', :require => false
+  gem 'rb-inotify', require: false
 end
 
 group :assets do
