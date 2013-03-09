@@ -8,7 +8,6 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 gem 'rails_autolink'
-gem 'tilt', '1.3.4'
 
 group :development, :test do
   gem 'sqlite3'
