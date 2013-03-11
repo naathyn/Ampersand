@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require navigation
 //= require bootstrap-transition
 //= require bootstrap-alert
 //= require bootstrap-modal
@@ -21,8 +20,9 @@
 //= require bootstrap-tooltip
 //= require bootstrap-button
 //= require bootstrap-collapse
+//= require navigation
+//= require forms
 //= require tooltips
 //= require tabs
-//= require forms
 //= require drag
 //= require chat
