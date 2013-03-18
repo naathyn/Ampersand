@@ -11,12 +11,12 @@ class UsersController < ApplicationController
   end
 
  def show
-    @user = User.find_by_name(params[:id])
-    @title = "@#{@user.name}"
+    @user   = User.find_by_name(params[:id])
+    @title  = "@#{@user.name}"
     @microposts = @user.microposts.page(params[:page])
-    @replies = current_user.replies.page(params[:page])
-    @following = @user.followed_users.page(params[:page])
-    @followers = @user.followers.page(params[:page])
+    @replies    = current_user.replies.page(params[:page])
+    @following  = @user.followed_users.page(params[:page])
+    @followers  = @user.followers.page(params[:page])
   end
 
   def new
@@ -47,7 +47,7 @@ Post some content and follow members to fill it up!"
   def update
     if @user.update_attributes(params[:user])
       sign_in @user
-      redirect_to @user, notice: "Profile updated successfully"
+      redirect_to @user, notice: 'Profile updated successfully'
     else
       render :edit
     end
@@ -55,7 +55,7 @@ Post some content and follow members to fill it up!"
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_url, notice: "User removed"
+    redirect_to users_url, notice: 'User removed'
   end
 
   def following
@@ -100,8 +100,8 @@ Post some content and follow members to fill it up!"
     @title = "Chatroom"
     @messages = current_user.chat.paginate(page: params[:page],
                   per_page: 15, include: :user)
-    flash.now[:notice] = "Welcome to the Chat! Expect rooms and
-                          private messaging soon."
+    flash.now[:notice] =  'Welcome to the Chat! Expect rooms and
+                          private messaging soon.'
   end
 
 private

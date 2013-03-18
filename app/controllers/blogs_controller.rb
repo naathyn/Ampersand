@@ -49,7 +49,7 @@ private
 
   def correct_user
     @blog = current_user.blogs.find_by_id(params[:id])
-    redirect_to root_url unless @blog
+    redirect_to :root unless @blog
   end
 
   def skip_timestamps

@@ -23,6 +23,6 @@ private
 
   def correct_user
     @captcha = current_user.captchas.find_by_id(params[:id])
-    redirect_to(root_url) unless @captcha
+    redirect_to :root unless @captcha
   end
 end

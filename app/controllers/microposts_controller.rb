@@ -12,7 +12,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Your share has been posted"
+      flash[:success] = 'Your share has been posted'
       redirect_to root_url
     else
       @shares = []
@@ -22,7 +22,7 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    redirect_to(root_url, notice: "Your share has been removed")
+    redirect_to root_url, notice: 'Your share has been removed'
   end
 
   def likes
