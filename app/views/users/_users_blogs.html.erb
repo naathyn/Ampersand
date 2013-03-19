@@ -18,7 +18,7 @@
 
   <p class="format">
     <%= auto_link truncate(blog.content, length: 165) %>
-    <span class="bio"> <%= link_to "keep reading", blog_user_path(blog.user) %> </span>
+    <span class="bio"> <%= link_to "keep reading", blog %> </span>
   </p>
 
   <% if blog.tags.any? %>
