@@ -20,7 +20,7 @@ body {
   height: 100%;
 }
 
-a, strong {
+a, strong, small, .btn-link {
   @include transitions;
   &:hover {
   text-decoration: none;
