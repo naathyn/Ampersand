@@ -17,7 +17,7 @@
   </p>
 
   <p class="format">
-    <%= auto_link truncate(blog.content, length: 165) %>
+    <%= auto_link truncate(blog.content.gsub(/<br \/>/, ' '), length: 185) %>
     <span class="bio"> <%= link_to "keep reading", blog %> </span>
   </p>
 
