@@ -196,7 +196,7 @@ aside {
 .navbar-inner .container-fluid {
   padding-left: 5%;
   padding-right: 5%;
-  min-width: 646px;
+  min-width: 538px;
 }
 
 .navbar
@@ -225,18 +225,18 @@ aside {
 .hero-unit {
   padding: 30px;
   margin-bottom: 15px;
-  background-color: $wellGray;
+  background: transparent;
   @include hero;
   h1 {
     letter-spacing: -2px;
-    font-size: 75px;
+    font-size: 90px;
   }
   h3 {
-    font-size: 18px;
+    font-size: 30px;
     letter-spacing: 3px;
   }
   h5 {
-    font-size: 12px;
+    font-size: 25px;
     letter-spacing: 1px;
   }
   .btn {
