@@ -20,7 +20,7 @@ body {
   height: 100%;
 }
 
-a {
+a, strong {
   @include transitions;
   &:hover {
   text-decoration: none;
@@ -534,6 +534,9 @@ aside {
 
 #naathyn a {
   color: $green;
+  &:hover {
+    color: darken($green, 15%);
+  }
 }
 
 .well:hover .well-footer li,
