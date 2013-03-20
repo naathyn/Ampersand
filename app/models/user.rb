@@ -38,7 +38,8 @@ class User < ActiveRecord::Base
 
   validates_format_of :realname, with: VALID_REALNAME
   validates_format_of :name, with: VALID_USERNAME
-  validates_format_of :website, with: VALID_WEBSITE, allow_blank: true, allow_nil: true
+  validates_format_of :website, with: VALID_WEBSITE,
+    allow_blank: true, allow_nil: true
 
   before_save { email.downcase! }
   before_save { name.downcase! }

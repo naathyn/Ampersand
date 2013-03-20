@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
 
   def new
     @blog = current_user.blogs.build
-    @title = "New Blog Entry - #{Time.now.to_s(:long_ordinal)}"
+    @title = "New Blog Entry - #{Time.now.to_s(:long_ordinal).gsub(/\d+:\d+/, '')}"
   end
 
   def create
@@ -33,7 +33,7 @@ class BlogsController < ApplicationController
   def update
     @blog = current_user.blogs.find(params[:id])
     if @blog.update_attributes(params[:blog])
-      redirect_to blog_user_url(current_user), notice: 'Your blog was updated successfully.'
+      redirect_to @blog, notice: 'Your blog was updated successfully.'
     else
       render :edit
     end

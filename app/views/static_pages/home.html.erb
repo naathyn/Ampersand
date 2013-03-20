@@ -24,15 +24,17 @@
 
     <div id="feed" class="span8">
       <div class="well-header">
-        <a class="page-fade" href="<%= user_path(current_user) %>" title="Profile">
-          <i class="icon-user"></i>
-        </a>
-        <a class="page-fade" href="<%= captchas_user_path(current_user) %>" title="Captchas">
-          <i class="icon-camera"></i>
-        </a>
-        <a class="page-fade" href="<%= blog_user_path(current_user) %>" title="Your Blog">
-          <i id="comment-bar" class="icon-book"></i>
-        </a>
+        <div class="page-fade">
+          <a href="<%= user_path(current_user) %>" title="Profile">
+            <i class="icon-user"></i>
+          </a>
+          <a href="<%= captchas_user_path(current_user) %>" title="Captchas">
+            <i class="icon-camera"></i>
+          </a>
+          <a href="<%= blog_user_path(current_user) %>" title="Your Blog">
+            <i id="comment-bar" class="icon-book"></i>
+          </a>
+        </div>
       </div>
         <%= render 'feeds/main/share' %>
       <div class="well-bottom" style="margin-bottom: 1em;">
