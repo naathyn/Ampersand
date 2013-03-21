@@ -1,6 +1,8 @@
 class Micropost < ActiveRecord::Base
   attr_accessible :content
 
+  USERNAME_RE = /\A@([^\s]*)/
+
   belongs_to :user
   belongs_to :to, class_name: "User"
 
@@ -33,11 +35,11 @@ private
   end
 
   def link_username
-    if match = /\A@([^\s]*)/.match(content)
+    if match = USERNAME_RE.match(content)
       user = User.find_by_name(match[1])
       self.to = user
       user = "<a href='/users/#{user.name}'>@#{user.name}</a>" if user
-      self.content = "#{user} #{content.gsub(/\A@([^\s]*)/,'')}"
+      self.content = "#{user} #{content.gsub(USERNAME_RE,'')}"
     end
   end
   self.per_page = 20
