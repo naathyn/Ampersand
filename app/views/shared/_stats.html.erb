@@ -1,6 +1,6 @@
 <% @user ||= current_user %>
 <div class="page-fade stats">
-  <a href="<%= permalink_path(@user.random_post) unless @user.microposts.empty? %>">
+  <a href="<%= user_path(@user) %>">
     <strong class="stat">
       <%= @user.microposts.count %>
     </strong>
