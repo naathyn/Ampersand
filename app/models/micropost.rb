@@ -11,6 +11,8 @@ class Micropost < ActiveRecord::Base
   validates_length_of :content, within: (5..800)
 
   before_save :link_username
+  before_save { |micropost| micropost.content.gsub!(/\n/, '<br />') }
+
   default_scope order: "created_at DESC"
 
   def liked_by?(fan)

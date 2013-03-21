@@ -2,6 +2,7 @@ class BlogsController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: :destroy
   before_filter :skip_timestamps, only: :update
+  before_filter :remove_breaks, only: :edit
 
   def show
     @blog = Blog.find(params[:id])
@@ -50,6 +51,11 @@ private
   def correct_user
     @blog = current_user.blogs.find_by_id(params[:id])
     redirect_to :root unless @blog
+  end
+
+  def remove_breaks
+    @blog = current_user.blogs.find(params[:id])
+    @blog.content.gsub!(/<br \/>/, '')
   end
 
   def skip_timestamps

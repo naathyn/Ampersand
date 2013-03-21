@@ -15,6 +15,7 @@ class Blog < ActiveRecord::Base
     allow_nil: true, allow_blank: true,
     message: 'must be a GIF, JPG or PNG.'
 
+  before_save { |blog| blog.content.gsub!(/\n/, '<br />') }
   after_save :assign_tags, :store_photo
 
   default_scope order: 'updated_at DESC'
