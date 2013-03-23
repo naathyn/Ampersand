@@ -7,24 +7,24 @@ Socialrails::Application.routes.draw do
       get :following, :followers, :captchas, :blog
     end
   end
-  resources :sessions,      :only => [:new, :create, :destroy]
-  resources :captchas,      :only => [:create, :destroy]
-  resources :microposts,    :only => [:show, :create, :destroy] do
-    get :likes, :on => :member
+  resources :sessions,      only: [:new, :create, :destroy]
+  resources :captchas,      only: [:create, :destroy]
+  resources :microposts,    only: [:show, :create, :destroy] do
+    get :likes, on: :member
   end
-  resources :opinions,      :only => [:create, :destroy]
-  resources :relationships, :only => [:create, :destroy]
-  resources :blogs,         :except => :index do
-    resources :comments,    :only => [:new, :create, :destroy]
+  resources :opinions,      only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :blogs,         except: :index do
+    resources :comments,    only: [:new, :create, :destroy]
   end
-  resources :tags,          :only => :show
-  resources :messages,      :only => :create
+  resources :tags,          only: :show
+  resources :messages,      only: :create
 
-  root :to => 'pages#home'
+  root to: 'pages#home'
 
-  match '/signup'   => 'users#new'
-  match '/signin'   => 'sessions#new'
-  match '/signout'  => 'sessions#destroy', :via => :delete
-  match '/about'    => 'pages#about'
-  match '/permalink/:id/' => 'microposts#show', :as => :permalink
+  get     '/signup'         => 'users#new'
+  get     '/signin'         => 'sessions#new'
+  delete  '/signout'        => 'sessions#destroy'
+  get     '/about'          => 'pages#about'
+  get     '/permalink/:id/' => 'microposts#show', as: :permalink
 end

@@ -22,7 +22,7 @@
     <%= render @blogs %>
     <%= will_paginate @blogs unless @blogs.empty? %>
   </aside>
-  <aside class="page-fade span3">
+  <aside class="page-fade span3 user_info">
     <%= render partial: 'shared/blog_user_info' %>
     <%= render 'show_tagbar' unless @blogs.empty? %>
   </aside>

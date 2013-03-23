@@ -20,6 +20,7 @@
 //= require bootstrap-tooltip
 //= require bootstrap-button
 //= require bootstrap-collapse
+//= require bootstrap-wysihtml5
 //= require navigation
 //= require forms
 //= require tooltips

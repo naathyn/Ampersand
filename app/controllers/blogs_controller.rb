@@ -27,7 +27,6 @@ class BlogsController < ApplicationController
   def edit
     @blog = current_user.blogs.find(params[:id])
     @title = "Editing: #{@blog.title}"
-    @blog.content.gsub!(/<br \/>/, '')
   end
 
   def update

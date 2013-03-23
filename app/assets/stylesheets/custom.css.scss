@@ -739,6 +739,7 @@ aside {
 }
 
 .modal-body {
+  background-color: $white;
   cursor: pointer;
   overflow: hidden;
 }
@@ -1192,11 +1193,12 @@ aside {
   height: 148px;
 }
 
-.blog-container {
+.blog-container, .format img {
   display: inline-block;
   padding: 10px;
-  margin: 10px 0 10px;
+  margin: 2em 0 10px 10px;
   background-color: $white;
+  border: 1px solid gray;
 }
 
 .well-footer-blog {
@@ -1209,24 +1211,61 @@ aside {
 
 /* Blog formatting */
 
+.wysihtml5-toolbar {
+  margin-bottom: 1em;
+  text-align: center;
+  li {
+    display: inline;
+    margin-left: 5px;
+  }
+}
+
+.user_info {
+  padding-left: 3em;
+}
+
 .format {
   margin-bottom: .4em;
   line-height: 24px;
 }
 
+.format h1 {
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-align: center;
+  text-decoration: underline;
+  color: $grayDarker;
+}
+
+.format h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray;
+}
+
+.format h3 {
+  font-size: 1.7em;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.format ol li {
+  list-style: decimal;
+}
+
+.format ul li {
+  list-style: square;
+}
+
+.format li {
+  margin-left: 2.5em;
+}
+
 .format p {
   text-indent: 2em;
-}
-
-.format h1 {
-  margin-bottom: 5px;
-  font: bold 18px/22px Georgia, "Times New Roman", serif;
-  color: $grayLarge;
-}
-
-.format .indent {
-  display: inline-block;
-  margin-left: 2em;
 }
 
 /* Comments pages */

@@ -3,6 +3,8 @@ class Blog < ActiveRecord::Base
   attr_accessible :title, :content, :tag_names, :photo
   attr_writer :tag_names
 
+  HTML_TAGS = /<(?:([a-zA-Z\?][\w:\-]*)(\s(?:\s*[a-zA-Z][\w:\-]*(?:\s*=(?:\s*"(?:\\"|[^"])*"|\s*'(?:\\'|[^'])*'|[^\s>]+))?)*)?(\s*[\/\?]?)|\/([a-zA-Z][\w:\-]*)\s*|!--((?:[^\-]|-(?!->))*)--|!\[CDATA\[((?:[^\]]|\](?!\]>))*)\]\])>/
+
   belongs_to :user
 
   has_many :taggings, dependent: :destroy
@@ -15,7 +17,6 @@ class Blog < ActiveRecord::Base
     allow_nil: true, allow_blank: true,
     message: 'must be a GIF, JPG or PNG.'
 
-  before_save { |blog| blog.content.gsub!(/\n/, '<br />') }
   after_save :assign_tags, :store_photo
 
   default_scope order: 'updated_at DESC'
