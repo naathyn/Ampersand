@@ -12,8 +12,13 @@
   <aside class="span8">
     <legend class="legend">Community Blogs
       <span class="page-fade pull-right" style="margin-top: -3px;">
-        <%= link_to "Go To Your Blog", blog_user_path(current_user),
-              class: "btn btn-primary" if signed_in? %>
+        <% if signed_in? %>
+          <%= link_to "Go To Your Blog", blog_user_path(current_user),
+                class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Get a Free Blog", :signup,
+                class: "btn btn-primary" %>
+        <% end %>
       </span>
     </legend>
 
