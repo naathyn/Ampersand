@@ -20,11 +20,11 @@ Socialrails::Application.routes.draw do
   resources :tags,          :only => :show
   resources :messages,      :only => :create
 
-  root :to => 'static_pages#home'
+  root :to => 'pages#home'
 
   match '/signup'   => 'users#new'
   match '/signin'   => 'sessions#new'
   match '/signout'  => 'sessions#destroy', :via => :delete
-  match '/about'    => 'static_pages#about'
+  match '/about'    => 'pages#about'
   match '/permalink/:id/' => 'microposts#show', :as => :permalink
 end
