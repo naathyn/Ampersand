@@ -14,7 +14,7 @@
       <%= select_tag 'search',
         options_for_select(User.all.map { |user|
           ["#{user.realname}, @#{user.name}", user.id]
-        }), onchange: 'this.form.submit()', prompt: "Find Someone!" %>
+        }.sort), onchange: 'this.form.submit()', prompt: "Find Someone!" %>
     <% end %>
   </div>
 
