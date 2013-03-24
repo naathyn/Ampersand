@@ -26,5 +26,6 @@ Socialrails::Application.routes.draw do
   get     '/signin'         => 'sessions#new'
   delete  '/signout'        => 'sessions#destroy'
   get     '/about'          => 'pages#about'
+  get     '/entry/:id'      => 'blogs#show',      as: :entry
   get     '/permalink/:id/' => 'microposts#show', as: :permalink
 end

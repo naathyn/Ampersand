@@ -99,6 +99,7 @@ Post some content and follow members to fill it up!"
     @user = User.find_by_name(params[:id])
     @title = "#{@user.realname} Blog"
     @blogs = @user.blogs.page(params[:page])
+    @tags = @user.tags.page(params[:page])
     @blog = current_user.blogs.build
   end
 

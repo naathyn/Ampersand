@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment.blog_id = @blog.id
     if @comment.save
       flash[:success] = "Your comment has been posted."
-      redirect_to blog_url(@blog)
+      redirect_to entry_url(@blog)
     else
       render :new
     end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @blog = Blog.find(params[:blog_id])
     @comment = @blog.comments.find(params[:id])
     @comment.destroy
-    redirect_to blog_url(@blog), notice: "Your comment was removed."
+    redirect_to entry_url(@blog), notice: "Your comment was removed."
   end
 
 private

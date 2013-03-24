@@ -1,7 +1,7 @@
 <div id="<%= blog.id %>" class="well-body well-inner blog-wrapper">
 
   <h2 class="title">
-    <%= link_to blog.title, blog %>
+    <%= link_to blog.title, entry_path(blog) %>
     <% if current_user?(blog.user) %>
       <%= render partial: 'blogs/actions', object: blog, as: :blog %>
     <% end %>
@@ -17,7 +17,7 @@
 
   <p class="location">By
     <%= link_to blog.user.realname, blog_user_path(blog.user) %> with
-    <%= link_to pluralize(blog.comment_count, 'comment'), blog %>
+    <%= link_to pluralize(blog.comment_count, 'comment'), entry_path(blog) %>
   </p>
 
   <span class="bio">

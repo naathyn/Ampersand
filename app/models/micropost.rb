@@ -37,11 +37,10 @@ private
   def link_username
     if match = USERNAME_RE.match(content)
       user = User.find_by_name(match[1])
+      linked_name = "<a href='/users/#{user.name}'>#{user.username}</a>" if user
+
       self.to = user
-      user = "<a href='/users/#{user.name}'>#{user.username}</a>" if user
-      self.content = "#{user} #{content.gsub(USERNAME_RE,'')}"
+      self.content = "#{linked_name} #{content.gsub(USERNAME_RE,'')}"
     end
   end
-
-  self.per_page = 20
 end

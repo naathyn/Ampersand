@@ -8,18 +8,18 @@
           title: blog.user.realname) %>
   <% end %>
 
-  <span class="lead"> <%= link_to blog.title, blog %> </span>
+  <span class="lead"> <%= link_to blog.title, entry_path(blog) %> </span>
 
   <p class="page-fade bio">
     by <%= link_to blog.user.realname, blog.user %>
       with
-    <%= link_to pluralize(blog.comment_count, 'comment'), blog %>
+    <%= link_to pluralize(blog.comment_count, 'comment'), entry_path(blog) %>
   </p>
 
   <p class="format">
-    <%= auto_link truncate(blog.content.gsub(Blog::HTML_TAGS, ' '),
+    <%= auto_link truncate(blog.content.gsub(Blog::HTML_TAGS, ''),
       length: 185) %>
-    <span class="bio"> <%= link_to "keep reading", blog %> </span>
+    <span class="bio"> <%= link_to "keep reading", entry_path(blog) %> </span>
   </p>
 
   <% if blog.tags.any? %>

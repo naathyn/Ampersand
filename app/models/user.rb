@@ -96,6 +96,6 @@ class User < ActiveRecord::Base
 protected
 
   def create_remember_token
-    self.remember_token = SecureRandom.uuid
+    self.remember_token = SecureRandom.urlsafe_base64
   end
 end
