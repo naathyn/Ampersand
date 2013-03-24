@@ -7,7 +7,12 @@ class UsersController < ApplicationController
 
   def index
     @title = "Members"
-    @users = User.paginate(page: params[:page], per_page: 15).order('updated_at DESC')
+    if params[:search]
+      @user = User.find(params[:search])
+      redirect_to @user
+    else
+      @users = User.paginate(page: params[:page], per_page: 15).order('updated_at DESC')
+    end
   end
 
  def show
@@ -108,7 +113,7 @@ private
 
   def correct_user
     @user = User.find_by_name(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    redirect_to :root unless current_user?(@user)
   end
 
   def captcha_user
@@ -118,7 +123,7 @@ private
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to :root unless current_user.admin?
   end
 
   def wipe_the_chat

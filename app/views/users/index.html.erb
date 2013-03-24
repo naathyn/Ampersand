@@ -2,20 +2,24 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<ul class="breadcrumb">
-  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
-  <li class="active"> <%= @title %> </li>
-</ul>
+<div class="row-fluid page-fade">
 
-<ul class="page-fade nav nav-tabs">
-  <li class="active"> <a href="#members"> Members (<%= @users.count %>) </a> </li>
-</ul>
+  <ul class="breadcrumb">
+    <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+    <li class="active"> <%= @title %> </li>
+  </ul>
 
-<div class="page-fade tab-content">
-  <div class="tab-pane active" id="members">
-    <ul class="users-follow" style="margin: 0;">
-      <%= render @users %>
-    </ul>
-    <%= will_paginate @users %>
+  <div class="span4 offset3 pull-right">
+    <%= form_tag :users, method: :get do %>
+      <%= select_tag 'search',
+        options_for_select(@users.map { |user|
+          ["#{user.realname}, @#{user.name}", user.id]
+        }), onchange: 'this.form.submit()', prompt: "Find Someone!" %>
+    <% end %>
   </div>
+
+  <ul class="users-follow" style="margin: 0;">
+    <%= render @users %>
+  </ul>
+  <%= will_paginate %>
 </div>
