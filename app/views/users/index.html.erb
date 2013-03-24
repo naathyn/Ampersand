@@ -2,14 +2,14 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<div class="row-fluid page-fade">
+<div class="row-fluid">
 
-  <ul class="breadcrumb">
+  <ul class="breadcrumb page-fade">
     <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
     <li class="active"> <%= @title %> </li>
   </ul>
 
-  <div class="span4 offset3 pull-right">
+  <div class="span4 offset3 page-fade pull-right">
     <%= form_tag :users, method: :get do %>
       <%= select_tag 'search',
         options_for_select(@users.map { |user|

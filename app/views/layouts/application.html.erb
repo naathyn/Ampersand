@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <% if Rails.env.production? %>
+      <meta name="google-site-verification"
+            content="I0NixjSmlfnfKTF5fINNtQxaktiCwun9d46jsU11l3g" />
+    <% end %>
     <title> <%= full_title(yield(:title)) %> </title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "A Social Platform in development" %>">
     <meta name="author" content="<%= content_for?(:author) ? yield(:author) : "Nathan Couch" %>">

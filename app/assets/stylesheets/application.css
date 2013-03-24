@@ -9,5 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require colours
+ *= require mixins
+ *= require custom
  *= require_tree .
 */
