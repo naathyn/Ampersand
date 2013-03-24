@@ -11,11 +11,11 @@
 
   <div class="span4 offset3 page-fade pull-right">
     <%= form_tag :users, method: :get do %>
-      <%= select_tag 'search',
-        options_for_select(User.all.map { |user|
-            ["#{user.realname}, @#{user.name}", user.id]
-          }.sort
-        ), onchange: 'this.form.submit()', prompt: "Find Someone!" %>
+      <%= select_tag :search,
+        options_for_select(@search_users.map { |user|
+          ["#{user.realname}, #{user.username}", user.id]
+        }),
+      onchange: 'this.form.submit()', prompt: "Find Someone!" %>
     <% end %>
   </div>
 

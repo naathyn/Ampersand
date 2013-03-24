@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
   VALID_REALNAME  = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
-  VALID_USERNAME  = /\A[A-Z\d_]*\Z/i
+  VALID_USERNAME  = /\A[a-z\d_]*\Z/i
   VALID_WEBSITE   = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix
 
   has_secure_password
@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
   before_save { email.downcase! }
   before_save { name.downcase! }
   before_save :create_remember_token
+
+  def username
+    "@#{name}"
+  end
 
   def share
     Micropost.from_users_followed_by(self)

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     user = User.find_by_name(params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      flash[:success] = "#{say_hello}, @#{user.name}!"
+      flash[:success] = "#{say_hello}, #{user.username}!"
       redirect_back_or user
     else
       flash.now[:error] = 'Invalid username/password combination'
@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to root_url, notice: "You have been signed out. #{say_goodbye}"
+    redirect_to :root, notice: "You have been signed out. #{say_goodbye}"
   end
 end

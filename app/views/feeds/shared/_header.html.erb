@@ -12,7 +12,7 @@
   </span>
 <% else %>
   <span class="captchas" data-original-title="
-    @<%= item.user.name %>">
+    <%= item.user.username %>">
     <%= gravatar_for item.user, size: 48 %>
   </span>
 <% end %>
@@ -20,8 +20,8 @@
   <span class="user" id="<%= item.user.name %>">
     <%= link_to item.user.realname, item.user %>
   </span>
-  <span class="username"> @<%= item.user.name %> </span>
-  <small class="timestamp">
+  <span class="username"> <%= item.user.username %> </span>
+  <small>
     <%= link_to "#{time_ago_in_words(item.created_at)} ago",
           permalink_path(item), class: "timestamp" %>
   </small>

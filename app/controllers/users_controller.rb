@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @title = "Members"
+    @search_users = User.find(:all, order: 'realname')
     if params[:search]
       @user = User.find(params[:search])
       redirect_to @user
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
 
  def show
     @user   = User.find_by_name(params[:id])
-    @title  = "@#{@user.name}"
+    @title  = @user.username
     @microposts = @user.microposts.page(params[:page])
     @replies    = current_user.replies.page(params[:page])
     @following  = @user.followed_users.page(params[:page])
@@ -65,7 +66,7 @@ Post some content and follow members to fill it up!"
 
   def following
     @user = User.find_by_name(params[:id])
-    @title = "@#{@user.name}"
+    @title = @user.username
     @active = "Following"
     @users = @user.followed_users.page(params[:page])
     render :show_follow
@@ -73,7 +74,7 @@ Post some content and follow members to fill it up!"
 
   def followers
     @user = User.find_by_name(params[:id])
-    @title = "@#{@user.name}"
+    @title = @user.username
     @active = "Followers"
     @users = @user.followers.page(params[:page])
     render :show_follow
@@ -119,7 +120,7 @@ private
   def captcha_user
     @user = User.find_by_name(params[:id])
     redirect_to captchas_user_url(current_user),
-      notice: "You can find @#{params[:id]}'s Captcha's in the feeds" unless current_user?(@user)
+      notice: "You can find #{@user.username}'s Captcha's in the feeds" unless current_user?(@user)
   end
 
   def admin_user

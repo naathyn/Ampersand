@@ -2,11 +2,12 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on Saturday, March 23rd at 6:00 a.m.
-      Blogs can now be fully formatted with no hassle at all. Check 'em out!" %>
+<%= yield flash.now[:info] = "Last updated on Sunday, March 24th at 6:30 a.m.
+      Blogs can now be fully formatted with ease. Updated User pages." %>
 
-<% if signed_in? %>
-  <div class="row-fluid">
+<div class="row-fluid">
+
+  <% if signed_in? %>
 
     <aside class="span4 side-module side-menu mini-profile">
       <a href="<%= user_path(current_user) %>" class="share-anchor">
@@ -45,14 +46,14 @@
     <div id="pagination" style="float: right; clear: both;">
       <%= will_paginate @shares unless @shares.empty? %>
     </div>
-  </div> <!-- row-fluid -->
 
-<% else %>
+  <% else %>
 
-  <div class="page-fade center hero-unit">
-    <h1> Ampersand </h1>
-    <h3> Network. Profiles. Blogging. </h3>
-    <%= link_to "Sign up now!", :signup,
-          class: "btn btn-large btn-primary" %>
-  </div>
+    <div class="page-fade center hero-unit">
+      <h1> Ampersand </h1>
+      <h3> Network. Profiles. Blogging. </h3>
+      <%= link_to "Sign up now!", :signup, class: "btn btn-large btn-primary",
+          style: "margin-top: 1em;"%>
+    </div>
 <% end %>
+</div> <!-- row-fluid -->

@@ -12,8 +12,8 @@ class Micropost < ActiveRecord::Base
   validates_presence_of :user_id, :content
   validates_length_of :content, within: (5..800)
 
-  before_save :link_username
-  before_save { |micropost| micropost.content.gsub!(/\n/, '<br>') }
+  before_create :link_username
+  before_create { |micropost| micropost.content.gsub!(/\n/, '<br>') }
 
   default_scope order: "created_at DESC"
 
@@ -38,7 +38,7 @@ private
     if match = USERNAME_RE.match(content)
       user = User.find_by_name(match[1])
       self.to = user
-      user = "<a href='/users/#{user.name}'>@#{user.name}</a>" if user
+      user = "<a href='/users/#{user.name}'>#{user.username}</a>" if user
       self.content = "#{user} #{content.gsub(USERNAME_RE,'')}"
     end
   end
