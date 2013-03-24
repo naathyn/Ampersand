@@ -16,7 +16,7 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @shares = []
-      render 'static_pages/home'
+      render 'pages/home'
     end
   end
 

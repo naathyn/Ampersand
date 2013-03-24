@@ -13,7 +13,7 @@ class Micropost < ActiveRecord::Base
   validates_length_of :content, within: (5..800)
 
   before_save :link_username
-  before_save { |micropost| micropost.content.gsub!(/\n/, '<br />') }
+  before_save { |micropost| micropost.content.gsub!(/\n/, '<br>') }
 
   default_scope order: "created_at DESC"
 
@@ -42,5 +42,6 @@ private
       self.content = "#{user} #{content.gsub(USERNAME_RE,'')}"
     end
   end
+
   self.per_page = 20
 end
