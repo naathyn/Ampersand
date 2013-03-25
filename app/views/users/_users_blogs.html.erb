@@ -13,7 +13,8 @@
   <p class="page-fade bio">
     by <%= link_to blog.user.realname, blog.user %>
       with
-    <%= link_to pluralize(blog.comment_count, 'comment'), entry_path(blog) %>
+    <%= link_to pluralize(blog.comment_count, 'comment'),
+      "#{entry_path(blog)}#comments" %>
   </p>
 
   <p class="format">

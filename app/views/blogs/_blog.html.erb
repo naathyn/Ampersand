@@ -17,7 +17,8 @@
 
   <p class="location">By
     <%= link_to blog.user.realname, blog_user_path(blog.user) %> with
-    <%= link_to pluralize(blog.comment_count, 'comment'), entry_path(blog) %>
+    <%= link_to pluralize(blog.comment_count, 'comment'),
+          "#{entry_path(blog)}#comments" %>
   </p>
 
   <span class="bio">
@@ -30,7 +31,7 @@
   </span>
 
   <% if identified?(blog) %>
-    <hr >
+    <hr id="comments">
     <% unless @comments.empty? %>
       <p class="lead" style="margin-top: -15px;"> Comments </p>
       <ul class="comments" style="margin-top: -15px;">

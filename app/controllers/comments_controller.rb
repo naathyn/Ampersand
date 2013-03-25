@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment.blog_id = @blog.id
     if @comment.save
       flash[:success] = "Your comment has been posted."
-      redirect_to entry_url(@blog)
+      redirect_to "#{entry_url(@blog)}#comments"
     else
       render :new
     end
