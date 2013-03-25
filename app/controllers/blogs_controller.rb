@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: :destroy
+  before_filter :remove_stale_tags, only: :update
 
   def show
     @blog = Blog.find(params[:id])
@@ -50,5 +51,10 @@ private
   def correct_user
     @blog = current_user.blogs.find_by_id(params[:id])
     redirect_to :root unless @blog
+  end
+
+  def remove_stale_tags
+    @blog = current_user.blogs.find(params[:id])
+    @blog.tags.each { |tag| tag.destroy if tag.blogs.empty? }
   end
 end

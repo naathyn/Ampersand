@@ -22,7 +22,7 @@ class Blog < ActiveRecord::Base
   default_scope order: 'updated_at DESC'
 
   def tag_names
-    @tag_names || tags.map(&:name).join(', ')
+    @tag_names || tags.map(&:name).join(', ').strip
   end
 
   def timestamp
@@ -34,9 +34,10 @@ private
   def assign_tags
     if @tag_names
       self.tags = @tag_names.split(/\,/).map do |name|
-        Tag.find_or_create_by_name!(name.downcase)
+        Tag.find_or_create_by_name!(name.downcase.strip)
       end
     end
   end
+
   self.per_page = 5
 end
