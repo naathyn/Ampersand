@@ -11,8 +11,7 @@
   </h2>
 
   <div class="format">
-    <%= auto_link(blog.content, html: { target: '_blank' }) do |content|
-          truncate(content, length: 30) end %>
+    <%= auto_link blog.content  %>
   </div>
 
   <p class="location">By

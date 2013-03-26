@@ -18,5 +18,6 @@ Guardfile
 **.swp
 *~
 *.save
+.save*
 .project
 .idea
