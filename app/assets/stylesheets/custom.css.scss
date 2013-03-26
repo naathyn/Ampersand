@@ -973,10 +973,19 @@ aside {
 
 /* included in static_pages#about */
 
+.about-page p {
+  line-height: 24px;
+  text-indent: 1.6em;
+}
+
 .quote {
   margin-top: 1em;
   border: 1px dashed $quotesBorder;
   padding: 1em 1em .5em 2em;
+  p {
+    line-height: 21px;
+    text-indent: 0;
+  }
 }
 
 .quote blockquote li:last-child {
