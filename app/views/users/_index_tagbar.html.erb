@@ -2,7 +2,7 @@
   <legend> Popular Tags </legend>
   <ol class="page-fade" id="tags">
     <% @tags.each do |tag| %>
-      <li id="<%= tag.id %>"><i class="icon-tags"></i>
+      <li id="<%= tag.id %>"><%= icon_for(tag) %>
         <%= link_to "#{tag.name} (#{tag.tagging_count})", tag_path(tag) %>
       </li>
     <% end %>
