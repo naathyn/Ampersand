@@ -18,8 +18,7 @@
   </p>
 
   <p class="format">
-    <%= auto_link truncate(blog.content.gsub(Blog::HTML_TAGS, ''),
-      length: 185) %>
+    <%= auto_link truncate(blog.preview, length: 185) %>
     <span class="bio"> <%= link_to "keep reading", entry_path(blog) %> </span>
   </p>
 
