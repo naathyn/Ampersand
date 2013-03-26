@@ -1,19 +1,25 @@
-<div class="page-fade container-fluid">
-  <%= form_for(@blog, html: { multipart: true }) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+<div class="photo tapetwo tapethree" style="float: none;">
+  <div class="profile">
+    <div class="profile-header">
+      <div class="page-fade container-fluid">
+        <%= form_for(@blog, html: { multipart: true }) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
 
-      <%= f.label :photo, "Thumbnail" %>
-      <%= f.file_field :photo %>
+            <%= f.label :photo, "Thumbnail" %>
+            <%= f.file_field :photo %>
 
-      <%= f.text_area :content, class: 'wysihtml5', size: '8x8' %>
+            <%= f.text_area :content, class: 'wysihtml5', size: '8x8' %>
 
-      <%= f.label :tag_names, "Tags (seperated by commas)" %>
-      <%= f.text_field :tag_names %>
+            <%= f.label :tag_names, "Tags (seperated by commas)" %>
+            <%= f.text_field :tag_names %>
 
-    <%= f.submit "Post Blog", class: "btn btn-success" %>
-  <% end %>
+          <%= f.submit "Post Blog", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 <hr />
