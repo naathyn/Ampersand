@@ -41,6 +41,7 @@ Whenever you're ready, hit Home to check out your feed.
 Post some content and follow members to fill it up!"
       redirect_to @user
     else
+      @title = "Please Try Again"
       render :new
     end
   end
@@ -55,6 +56,7 @@ Post some content and follow members to fill it up!"
       sign_in @user
       redirect_to @user, notice: 'Profile updated successfully'
     else
+      @title = "Please Try Again"
       render :edit
     end
   end
