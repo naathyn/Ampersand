@@ -12,7 +12,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Your post has been submitting"
+      flash[:success] = "Your post has been submitted"
       redirect_to :root
     else
       @title = "Please try again."
