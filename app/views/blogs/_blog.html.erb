@@ -21,9 +21,6 @@
   </p>
 
   <span class="bio">
-    <% if blog.has_photo? %>
-      <%= render partial: 'blogs/photo', object: blog, as: :item %> <br />
-    <% end %>
     <% blog.tags.each do |tag| %>
       <i class="icon-tag"></i> <%= link_to tag.name, tag %>
     <% end %>
