@@ -58,11 +58,11 @@ class User < ActiveRecord::Base
   end
 
   def random_captcha
-    captchas.shuffle.last
+    captchas.shuffle.first
   end
 
   def random_post
-    microposts.shuffle.last
+    microposts.shuffle.first
   end
 
   def following?(other_user)

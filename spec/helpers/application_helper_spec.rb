@@ -11,7 +11,7 @@ describe ApplicationHelper do
       full_title("amp").should =~ /&mpersand/
     end
 
-    it "should not include a bar for the home page" do
+    it "should not include a bar without page title" do
       full_title("").should_not =~ /\|/
     end
   end

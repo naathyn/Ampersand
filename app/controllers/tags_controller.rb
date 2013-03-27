@@ -3,7 +3,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @title = "Tags with #{@tag.name}"
-    @blogs = @tag.blogs.page(params[:page])
+    @title = "Blogs tagged with \"#{@tag.name}\""
+    @blogs = @tag.blogs.paginate(page: params[:page], per_page: 5)
   end
 end

@@ -81,7 +81,7 @@ Post some content and follow members to fill it up!"
   end
 
   def captchas
-    @title = "Captchas"
+    @title = "Captcha's"
     @user = User.find_by_name(params[:id])
     @captchas = @user.captchas.page(params[:page]).order('created_at DESC')
     @captcha = current_user.captchas.build
@@ -97,7 +97,7 @@ Post some content and follow members to fill it up!"
 
   def blog
     @user = User.find_by_name(params[:id])
-    @title = "#{@user.realname} Blog"
+    @title = "#{@user.realname}'s Blog"
     @blogs = @user.blogs.page(params[:page])
     @tags = @user.tags.page(params[:page])
     @blog = current_user.blogs.build
@@ -107,8 +107,6 @@ Post some content and follow members to fill it up!"
     @title = "Chatroom"
     @messages = current_user.chat.paginate(page: params[:page],
                   per_page: 15, include: :user)
-    flash.now[:notice] =  'Welcome to the Chat! Expect rooms and
-                          private messaging soon.'
   end
 
 private

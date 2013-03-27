@@ -13,7 +13,7 @@ class Micropost < ActiveRecord::Base
   validates_length_of :content, within: (5..800)
 
   before_create :link_username
-  before_create { |micropost| micropost.content.gsub!(/\n/, '<br>') }
+  before_create { |micropost| micropost.content.gsub! /\n/, '<br>' }
 
   default_scope order: "created_at DESC"
 
@@ -22,7 +22,7 @@ class Micropost < ActiveRecord::Base
   end
 
   def timestamp
-    self.created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
+    self.created_at.to_s(:long_ordinal).gsub /\d+:\d+/, ''
   end
 
 private
@@ -37,10 +37,10 @@ private
   def link_username
     if match = USERNAME_RE.match(content)
       user = User.find_by_name(match[1])
-      linked_name = "<a href='/users/#{user.name}'>#{user.username}</a>" if user
+      linked_name = "<a href=\"/users/#{user.name}\">#{user.username}</a>" if user
 
       self.to = user
-      self.content = "#{linked_name} #{content.gsub(USERNAME_RE,'')}"
+      self.content = "#{linked_name} #{content.gsub USERNAME_RE,''}"
     end
   end
 end
