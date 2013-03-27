@@ -19,8 +19,6 @@ class Blog < ActiveRecord::Base
 
   after_save :assign_tags, :store_photo
 
-  default_scope order: 'updated_at DESC'
-
   def tag_names
     @tag_names || tags.map(&:name).join(', ')
   end

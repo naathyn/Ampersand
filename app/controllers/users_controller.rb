@@ -93,14 +93,14 @@ Post some content and follow members to fill it up!"
   def blogs
     @title = "Blogs"
     @blogs = Blog.paginate(page: params[:page], per_page: 10,
-              include: [:tags, :user])
+              include: [:tags, :user]).order('updated_at DESC')
     @tags = Tag.page(params[:page])
   end
 
   def blog
     @user = User.find_by_name(params[:id])
     @title = "#{@user.realname}'s Blog"
-    @blogs = @user.blogs.page(params[:page])
+    @blogs = @user.blogs.page(params[:page]).order('created_at DESC')
     @tags = @user.tags.page(params[:page])
     @blog = current_user.blogs.build
   end

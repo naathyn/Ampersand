@@ -4,6 +4,6 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     @title = "Blogs tagged with \"#{@tag.name}\""
-    @blogs = @tag.blogs.page(params[:page])
+    @blogs = @tag.blogs.page(params[:page]).order('comment_count DESC')
   end
 end
