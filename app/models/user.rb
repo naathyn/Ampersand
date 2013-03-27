@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
                   :website, :location, :bio
 
   FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
-  VALID_REALNAME  = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
-  VALID_USERNAME  = /\A[a-z\d_]*\Z/i
+  VALID_REALNAME  = /\A([a-z]+\s*[a-z]+)\Z/i
+  VALID_USERNAME  = /\A[a-z\d_]+\Z/i
   VALID_WEBSITE   = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix
 
   has_secure_password

@@ -20,7 +20,7 @@ class Blog < ActiveRecord::Base
   after_save :assign_tags, :store_photo
 
   def tag_names
-    @tag_names || tags.map(&:name).join(', ')
+    @tag_names || tags.map(&:name).sort.join(', ')
   end
 
   def timestamp
