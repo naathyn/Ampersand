@@ -8,7 +8,8 @@ class CaptchasController < ApplicationController
       flash[:success] = "Thanks for sharing!"
       redirect_to captchas_user_url(current_user)
     else
-      @captchas = []
+      @title = "Please try again."
+      @captchas = current_user.captchas.page(params[:page])
       render :index
     end
   end

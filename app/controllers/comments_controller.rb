@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Your comment has been posted."
       redirect_to "#{entry_url(@blog)}#comments"
     else
+      @title = "Please try again."
       render :new
     end
   end

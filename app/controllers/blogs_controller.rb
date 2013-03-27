@@ -20,6 +20,7 @@ class BlogsController < ApplicationController
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else
+      @title = "Please Try Again"
       render :new
     end
   end
@@ -35,6 +36,7 @@ class BlogsController < ApplicationController
     if @blog.update_attributes(params[:blog])
       redirect_to @blog, notice: 'Your blog was updated successfully.'
     else
+      @title = "Please Try Again"
       render :edit
     end
   end

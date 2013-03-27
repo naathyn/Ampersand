@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :realname, :email, :name, :location, :bio,
-                  :password, :password_confirmation, :sign_in_count, :website
+  attr_accessible :realname, :email, :name, :password, :password_confirmation,
+                  :website, :location, :bio
 
   FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
   VALID_REALNAME  = /\A([A-Z]*\s+[a-zA-Z]*)\Z/i
@@ -65,28 +65,28 @@ class User < ActiveRecord::Base
     microposts.shuffle.first
   end
 
-  def following?(other_user)
-    relationships.find_by_followed_id(other_user.id)
+  def following?(user)
+    relationships.find_by_followed_id(user.id)
   end
 
-  def following?(other_user)
-    relationships.find_by_followed_id(other_user.id)
+  def following?(user)
+    relationships.find_by_followed_id(user.id)
   end
 
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
+  def follow!(user)
+    relationships.create!(followed_id: user.id)
   end
 
-  def unfollow!(other_user)
-    relationships.find_by_followed_id(other_user.id).destroy
+  def unfollow!(user)
+    relationships.find_by_followed_id(user.id).destroy
   end
 
-  def like!(random_share)
-    fans.create!(like_id: random_share.id)
+  def like!(micropost)
+    fans.create!(like_id: micropost.id)
   end
 
-  def unlike!(random_share)
-    fans.find_by_like_id(random_share.id).destroy
+  def unlike!(micropost)
+    fans.find_by_like_id(micropost.id).destroy
   end
 
   def to_param

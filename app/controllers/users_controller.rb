@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:search])
       redirect_to @user
     else
-      @users = User.paginate(page: params[:page], per_page: 15).order('updated_at DESC')
+      @users = User.page(params[:page]).order('updated_at DESC')
     end
   end
 
@@ -130,7 +130,7 @@ private
 
   def wipe_the_chat
     current_user.chat.all.each { |message|
-      message.destroy if message.created_at <= 6.hours.ago
+      message.destroy if message.created_at < 6.hours.ago
     }
   end
 end

@@ -13,16 +13,17 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
       flash[:success] = 'Your share has been posted'
-      redirect_to root_url
+      redirect_to :root
     else
-      @shares = []
+      @title = "Please try again."
+      @shares = current_user.share.page(params[:page])
       render 'pages/home'
     end
   end
 
   def destroy
     @micropost.destroy
-    redirect_to root_url, notice: 'Your share has been removed'
+    redirect_to :root, notice: 'Your share has been removed'
   end
 
   def likes
