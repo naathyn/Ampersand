@@ -60,8 +60,8 @@ Post some content and follow members to fill it up!"
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to users_url, notice: 'User removed'
+    User.find_by_name(params[:id]).destroy
+    redirect_to :users, notice: 'User removed'
   end
 
   def following

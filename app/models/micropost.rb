@@ -13,16 +13,15 @@ class Micropost < ActiveRecord::Base
   validates_length_of :content, within: (5..800)
 
   before_create :link_username
-  before_create { |micropost| micropost.content.gsub! /\n/, '<br>' }
 
-  default_scope order: "created_at DESC"
+  default_scope order: 'created_at DESC'
 
   def liked_by?(fan)
     likes.find_by_fan_id(fan.id)
   end
 
   def timestamp
-    self.created_at.to_s(:long_ordinal).gsub /\d+:\d+/, ''
+    created_at.to_s(:long_ordinal).gsub /\d+:\d+/, ''
   end
 
 private
@@ -40,7 +39,7 @@ private
       linked_name = "<a href=\"/users/#{user.name}\">#{user.username}</a>" if user
 
       self.to = user
-      self.content = "#{linked_name} #{content.gsub USERNAME_RE,''}"
+      self.content = linked_name + content.gsub(USERNAME_RE, '')
     end
   end
 end

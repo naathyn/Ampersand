@@ -1,0 +1,55 @@
+<div class="photo tapetwo tapethree" style="float: none;">
+  <div class="profile">
+    <div class="profile-header">
+
+      <legend><%= @title %></legend>
+      <div class="row-fluid page-fade">
+        <div class="span6 offset3">
+
+          <% if action_name == "edit" %>
+            <%= gravatar_for @user, size: 75 %>
+            <br /><br /><br /><br /><br />
+            <%= link_to "Change", "https://gravatar.com/emails", target: "_blank",
+                  class: "btn btn-small", style: "margin-bottom: 1em;" %>
+          <% end %>
+
+          <%= form_for @user do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+
+              <%= f.label :realname, "Full Name" %>
+              <%= f.text_field :realname %>
+
+              <% if action_name == "edit" %>
+
+                <%= f.label :location %>
+                <%= f.text_field :location %>
+
+                <%= f.label :website %>
+                <%= f.text_field :website %>
+
+                <%= f.label :bio, "About Me" %>
+                <%= f.text_area :bio, rows: "3",
+                    placeholder: "In a short 255 words, please :)" %>
+              <% end %>
+
+              <%= f.label :email %>
+              <%= f.email_field :email %>
+
+              <%= f.label :name, "Username" %>
+              <%= f.text_field :name %>
+
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+
+              <%= f.label :password_confirmation, "Retype Password" %>
+              <%= f.password_field :password_confirmation %>
+
+            <%= f.submit "Submit!", class: "btn btn-large btn-success" %>
+
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

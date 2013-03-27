@@ -4,6 +4,6 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     @title = "Blogs tagged with \"#{@tag.name}\""
-    @blogs = @tag.blogs.paginate(page: params[:page], per_page: 5)
+    @blogs = @tag.blogs.page(params[:page])
   end
 end

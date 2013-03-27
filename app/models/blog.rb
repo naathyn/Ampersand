@@ -26,7 +26,7 @@ class Blog < ActiveRecord::Base
   end
 
   def timestamp
-    self.created_at.to_s(:long_ordinal).gsub /\d+:\d+/, ''
+    created_at.to_s(:long_ordinal).gsub /\d+:\d+/, ''
   end
 
   def preview
