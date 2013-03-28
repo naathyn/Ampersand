@@ -44,7 +44,7 @@
     </div> <!-- feed-->
 
     <div id="pagination" style="float: right; clear: both;">
-      <%= will_paginate @shares unless @shares.empty? %>
+      <%= will_paginate @shares if @shares.any? && action_name == "home" %>
     </div>
 
   <% else %>

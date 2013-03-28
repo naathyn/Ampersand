@@ -25,9 +25,9 @@ protected
 
   def store_photo
     if @file_data
-      FileUtils.mkdir_p ATTACHMENTS unless File.directory?(ATTACHMENTS)
-      File.open(photo_filename, 'wb') do |f|
-        f.write(@file_data.read)
+      FileUtils.mkdir_p ATTACHMENTS unless File.directory? ATTACHMENTS
+      File.open photo_filename, 'wb' do |f|
+        f.write @file_data.read
       end
       @file_data = nil
     end
