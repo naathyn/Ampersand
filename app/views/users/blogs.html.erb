@@ -24,11 +24,46 @@
 
     <% unless @blogs.empty? %>
       <ol class="blogs">
-        <%= render partial: 'users_blogs', collection: @blogs, as: :blog %>
+        <% @blogs.each do |blog| %>
+          <li id ="<%= blog.id %>" class="blogs">
+
+            <% if blog.has_photo? %>
+              <%= link_to(image_tag(blog.photo_path, class: "gravatar blog",
+                    title: blog.user.realname), blog.photo_path, target: "_blank") %>
+            <% else %>
+              <%= image_tag("ampersand.jpg", class: "gravatar blog",
+                    title: blog.user.realname) %>
+            <% end %>
+
+            <span class="lead"> <%= link_to blog.title, entry_path(blog) %> </span>
+
+            <p class="page-fade bio">
+              by <%= link_to blog.user.realname, blog_user_path(blog.user) %>
+                with
+              <%= link_to pluralize(blog.comment_count, 'comment'),
+                "#{entry_path(blog)}#comments" %>
+            </p>
+
+            <p class="format">
+              <%= auto_link truncate blog.preview, length: 185 %>
+              <span class="bio"> <%= link_to "keep reading", entry_path(blog) %> </span>
+            </p>
+
+            <% if blog.tags.any? %>
+              <p class="page-fade bio">
+                <% blog.tags.each do |tag| %>
+                  <i class="icon-tag"></i> <%= link_to tag.name, tag %>
+                <% end %>
+              </p>
+            <% end %>
+          </li>
+        <% end %>
       </ol>
       <%= will_paginate @blogs %>
     <% end %>
   </aside>
 
-  <%= render 'index_tagbar' %>
+  <aside class="span3">
+    <%= render 'shared/tagbar' %>
+  </aside>
 </div>
