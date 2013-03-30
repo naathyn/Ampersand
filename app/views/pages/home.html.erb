@@ -2,12 +2,21 @@
   <% provide(:title, @title) %>
 <% end %>
 
-<%= yield flash.now[:info] = "Last updated on Sunday, March 30th at 2:00 a.m.
-      Blogs can now be fully formatted with ease. Updated all pages." %>
-
 <div class="row-fluid">
 
   <% if signed_in? %>
+
+    <% if @users.any? %>
+      <%= yield flash.now[:success] =
+        "<a href=\"/users/chatroom/\">Chatting</a>
+        this past hour:
+        <b>#{@users.join ', '}</b>.
+        Come say hello!".html_safe %>
+    <% else %>
+
+    <%= yield flash.now[:info] = "Last updated on Sunday, March 30th at 6:00 a.m.
+        Now showing active chatters in the Chatroom!" %>
+    <% end %>
 
     <aside class="span4 side-module side-menu mini-profile">
       <a href="<%= user_path(current_user) %>" class="share-anchor">
@@ -48,6 +57,10 @@
     </div>
 
   <% else %>
+
+    <%= yield flash.now[:info] = "Last updated on Sunday, March 30th at 6:00 a.m.
+        Now showing active chatters in the Chatroom!" %>
+
     <div class="page-fade center hero-unit">
       <h1> Ampersand </h1>
       <h3> Network, Profiles, Blogging </h3>

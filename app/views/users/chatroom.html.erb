@@ -10,7 +10,21 @@
   </ul>
 
   <div class="row-fluid">
-    <div id="chat_wrapper" class="span10 offset1">
+
+    <aside class="span4 side-module side-menu mini-profile">
+      <div class="well-header chat-header">
+        <i class="icon-signal likes"></i>
+      </div>
+      <div class="user_avatars chat_avatars" id="chatting">
+        <div id="chat_icons">
+          <% @users.each do |user| %>
+            <%= gravatar_for user, size: 32 %>
+          <% end %>
+        </div>
+      </div>
+    </aside>
+
+    <div id="chat_wrapper" class="span8">
       <div class="well-header"></div>
 
       <div class="chat_container">

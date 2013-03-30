@@ -25,6 +25,7 @@ $(function (dragItem) {
     };
     window.dragProc = function (event) {
         var x, y;
+
         x = event.clientX + window.scrollX;
         y = event.clientY + window.scrollY;
         dragItem.node.style.left = (dragItem.nodeStartLeft + x - dragItem.cursorStartX) + "px";

@@ -2,7 +2,7 @@ module AttachmentsHelper
 
   ATTACHMENTS = File.join Rails.root, 'public', 'attachments'
 
-  def photo=(file_data)
+  def photo= file_data
     unless file_data.blank?
       @file_data = file_data
       self.extension = file_data.original_filename.split('.').last.downcase

@@ -107,8 +107,12 @@ Post some content and follow members to fill it up!"
 
   def chatroom
     @title = "Chatroom"
+    @users ||= []
     @messages = current_user.chat.paginate(page: params[:page],
                   per_page: 15, include: :user)
+    current_user.chat.each { |message|
+      @users << message.user
+    }
   end
 
 private
@@ -130,7 +134,7 @@ private
 
   def wipe_the_chat
     current_user.chat.all.each { |message|
-      message.destroy if message.created_at < 6.hours.ago
+      message.destroy if message.created_at < 1.hour.ago
     }
   end
 end
