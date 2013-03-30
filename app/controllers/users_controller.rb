@@ -35,10 +35,10 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] =
-"Welcome, and thanks for joining!
-Why don't you edit your profile and tell us a little about yourself?
-Whenever you're ready, hit Home to check out your feed.
-Post some content and follow members to fill it up!"
+        "Welcome, and thanks for joining!
+        Why don't you edit your profile and tell us a little about yourself?
+        Whenever you're ready, hit Home to check out your feed.
+        Post some content and follow members to fill it up!"
       redirect_to @user
     else
       @title = "Please Try Again"
@@ -107,12 +107,11 @@ Post some content and follow members to fill it up!"
 
   def chatroom
     @title = "Chatroom"
-    @messages = current_user.chat.paginate(page: params[:page],
+    @messages = Message.paginate(page: params[:page],
       per_page: 15, include: :user)
     @users = @messages.map { |message| message.user }.uniq
-    flash.now[:notice] = "Welcome to the chat! You must be following a user
-      in order to see their messages, vice versa.
-      All messages are cleared after one hour."
+    flash.now[:notice] =
+      "Welcome to the chat! All messages are cleared after one hour. Happy chatting!"
   end
 
 private
@@ -133,7 +132,7 @@ private
   end
 
   def wipe_the_chat
-    current_user.chat.all.each { |message|
+    Message.all.each { |message|
       message.destroy if message.created_at < 1.hour.ago
     }
   end

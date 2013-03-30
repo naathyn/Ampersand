@@ -4,9 +4,9 @@ class PagesController < ApplicationController
     if signed_in?
       @title = current_user.username
       @shares = current_user.share.paginate(page: params[:page],
-                include: User::FEED_EAGER_LOADING)
+        include: User::FEED_EAGER_LOADING)
       @micropost = current_user.microposts.build
-      @messages = current_user.chat.paginate(page: params[:page], include: :user)
+      @messages = Message.paginate(page: params[:page], include: :user)
       @users = @messages.map { |message|
         message.user.realname
       }.uniq.join(', ')

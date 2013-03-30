@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.messages.build(params[:message])
-    @messages = current_user.chat.paginate(page: params[:page],
+    @messages = Message.paginate(page: params[:page],
       per_page: 15, include: :user)
     respond_with @message if @message.save
   end
