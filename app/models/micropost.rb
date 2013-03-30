@@ -10,7 +10,7 @@ class Micropost < ActiveRecord::Base
   has_many :fans, through: :likes
 
   validates_presence_of :user_id, :content
-  validates_length_of :content, within: (5..800)
+  validates_length_of :content, maximum: 800
 
   before_create :link_username
 
@@ -37,7 +37,6 @@ private
     if match = USERNAME_RE.match(content)
       user = User.find_by_name(match[1])
       linked_name = "<a href=\"/users/#{user.name}\">#{user.username}</a>" if user
-
       self.to = user
       self.content = linked_name + content.gsub(USERNAME_RE, '')
     end

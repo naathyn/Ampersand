@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
   VALID_REALNAME  = /\A([a-z]+\s*[a-z]+)\Z/i
   VALID_USERNAME  = /\A[a-z\d_]+\Z/i
-  VALID_WEBSITE   = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix
+  VALID_WEBSITE   = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/i
 
   has_secure_password
   has_many :captchas, dependent: :destroy
@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
 
   before_save { email.downcase! }
   before_save { name.downcase! }
+  before_save { |user| user.realname = realname.titleize }
   before_save :create_remember_token
 
   def username
