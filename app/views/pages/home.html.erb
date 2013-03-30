@@ -6,11 +6,11 @@
 
   <% if signed_in? %>
 
-    <% if @users.any? %>
+    <% unless @users.blank? %>
       <%= yield flash.now[:success] =
         "<a href=\"/users/chatroom/\">Chatting</a>
         this past hour:
-        <b>#{@users.uniq.join ', '}</b>.
+        <b>#{@users}</b>.
         Come say hello!".html_safe %>
     <% else %>
 

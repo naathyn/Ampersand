@@ -6,10 +6,9 @@ class PagesController < ApplicationController
       @shares = current_user.share.paginate(page: params[:page],
                 include: User::FEED_EAGER_LOADING)
       @micropost = current_user.microposts.build
-      @users ||= []
-      current_user.chat.each { |message|
-        @users << message.user.realname
-      }
+      @users = current_user.chat.map { |message|
+        message.user.realname
+      }.uniq.join(', ')
     else
       @title = "Sign up now!"
     end
