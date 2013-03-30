@@ -109,7 +109,7 @@ class UsersController < ApplicationController
     @title = "Chatroom"
     @messages = Message.paginate(page: params[:page],
       per_page: 15, include: :user)
-    @users = @messages.map { |message| message.user }.uniq
+    @users = Message.find(:all, include: :user).map { |message| message.user }.uniq
     flash.now[:notice] =
       "Welcome to the chat! All messages are cleared after one hour. Happy chatting!"
   end

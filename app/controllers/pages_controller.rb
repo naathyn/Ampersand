@@ -5,11 +5,10 @@ class PagesController < ApplicationController
       @title = current_user.username
       @shares = current_user.share.paginate(page: params[:page],
         include: User::FEED_EAGER_LOADING)
-      @micropost = current_user.microposts.build
-      @messages = Message.paginate(page: params[:page], include: :user)
-      @users = @messages.map { |message|
+      @users = Message.find(:all, include: :user).map { |message|
         message.user.realname
-      }.uniq.join(', ')
+      }.uniq.join ', '
+      @micropost = current_user.microposts.build
     else
       @title = "Sign up now!"
     end
