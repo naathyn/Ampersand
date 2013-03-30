@@ -17,7 +17,7 @@
       </div>
       <div class="user_avatars chat_avatars" id="chatting">
         <div id="chat_icons">
-          <% @users.each do |user| %>
+          <% @users.uniq.each do |user| %>
             <%= gravatar_for user, size: 32 %>
           <% end %>
         </div>

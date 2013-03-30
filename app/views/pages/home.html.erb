@@ -10,7 +10,7 @@
       <%= yield flash.now[:success] =
         "<a href=\"/users/chatroom/\">Chatting</a>
         this past hour:
-        <b>#{@users.join ', '}</b>.
+        <b>#{@users.uniq.join ', '}</b>.
         Come say hello!".html_safe %>
     <% else %>
 
