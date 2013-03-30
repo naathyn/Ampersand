@@ -9,10 +9,12 @@
     <li><%= link_to "Blog", blog_user_path(current_user) %></li>
     <li><%= link_to "Captchas", captchas_user_path(current_user) %></li>
       <li class="divider"></li>
+      <li class="nav-header">Ampersand</li>
+    <li><%= link_to "Chatroom", :chatroom_users %></li>
+    <li><%= link_to "About", :about %></li>
+      <li class="divider"></li>
       <li class="nav-header">Settings</li>
     <li><%= link_to "Account", edit_user_path(current_user) %></li>
     <li><%= link_to "Sign out", :signout, method: "delete" %></li>
-      <li class="divider"></li>
-    <li><%= link_to "About", :about %></li>
   </ul>
 </li>
