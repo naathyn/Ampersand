@@ -1,28 +1,24 @@
 <div class="well-inner-header">
 
-<% if item.user.captchas.any? %>
-  <span class="captchas" data-original-title="
-    <%= item.user.random_captcha.content %>">
+  <% if item.user.captchas.any? %>
+    <span class="captchas" data-original-title="
+      <%= item.user.random_captcha.content %>">
+  <% elsif item.user.bio.present? %>
+    <span class="captchas" data-original-title="
+      <%= item.user.bio %>">
+  <% else %>
+    <span class="captchas" data-original-title="
+      <%= item.user.username %>">
+  <% end %>
     <%= gravatar_for item.user, size: 48 %>
   </span>
-<% elsif item.user.bio.present? %>
-  <span class="captchas" data-original-title="
-    <%= item.user.bio %>">
-    <%= gravatar_for item.user, size: 48 %>
-  </span>
-<% else %>
-  <span class="captchas" data-original-title="
-    <%= item.user.username %>">
-    <%= gravatar_for item.user, size: 48 %>
-  </span>
-<% end %>
 
   <span class="user" id="<%= item.user.name %>">
     <%= link_to item.user.realname, item.user %>
   </span>
   <span class="username"> <%= item.user.username %> </span>
   <small>
-    <%= link_to "#{time_ago_in_words(item.created_at)} ago",
+    <%= link_to "#{time_ago_in_words item.created_at} ago",
           permalink_path(item), class: "timestamp" %>
   </small>
 </div>

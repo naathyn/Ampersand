@@ -107,12 +107,15 @@ Post some content and follow members to fill it up!"
 
   def chatroom
     @title = "Chatroom"
-    @users ||= []
     @messages = current_user.chat.paginate(page: params[:page],
                   per_page: 15, include: :user)
+    @users ||= []
     current_user.chat.each { |message|
       @users << message.user
     }
+    flash.now[:notice] = "Welcome to the chat! You must be following a user
+      in order to see their messages, vice versa.
+      All messages are cleared after one hour."
   end
 
 private
