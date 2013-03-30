@@ -8,7 +8,7 @@
 
     <% unless @users.blank? %>
       <%= yield flash.now[:success] =
-        "<a href=\"/users/chatroom/\">Chatting</a>
+        "Your followers <a href=\"/users/chatroom/\"> chatting</a>
         this past hour:
         <b>#{@users}</b>.
         Come say hello!".html_safe %>
