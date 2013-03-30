@@ -5,7 +5,6 @@ class Comment < ActiveRecord::Base
   belongs_to :blog, touch: true, counter_cache: :comment_count
 
   validates_presence_of :user_id, :blog_id, :content
-  validates_length_of :content
 
   default_scope order: 'created_at ASC'
   private; self.per_page = 10
