@@ -8,10 +8,10 @@
 
     <% unless @users.blank? %>
       <%= yield flash.now[:success] =
-        "Your followers <a href=\"/users/chatroom/\"> chatting</a>
+        "Friends <a href=\"/users/chatroom/\"> chatting</a>
         this past hour:
         <b>#{@users}</b>.
-        Come say hello!".html_safe %>
+        Come say hello!" %>
     <% else %>
 
     <%= yield flash.now[:info] = "Last updated on Sunday, March 30th at 6:00 a.m.
