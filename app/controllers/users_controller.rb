@@ -110,8 +110,9 @@ class UsersController < ApplicationController
     @messages = Message.paginate(page: params[:page],
       per_page: 15, include: :user)
     @users = Message.find(:all, include: :user).map { |message| message.user }.uniq
+    @message = current_user.messages.build
     flash.now[:notice] =
-      "Welcome to the chat! All messages are cleared after one hour. Happy chatting!"
+      "Welcome to the chat! All messages are cleared after 24 hours. Happy chatting!"
   end
 
 private
@@ -133,7 +134,7 @@ private
 
   def wipe_the_chat
     Message.all.each { |message|
-      message.destroy if message.created_at < 1.hour.ago
+      message.destroy if message.created_at < 1.day.ago
     }
   end
 end
