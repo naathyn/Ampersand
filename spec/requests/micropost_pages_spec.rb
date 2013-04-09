@@ -41,7 +41,7 @@ describe "Micropost pages" do
       its(:html) { should match('...</a>') }
     end
   end
-  
+
   describe "micropost destruction" do
     before { FactoryGirl.create(:micropost, user: user) }
 

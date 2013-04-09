@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:realname) { |n| "Nathan Couch #{n}" }
+    sequence(:realname) { |n| "Nathan Couch" }
     sequence(:email) { |n| "nathan3k_#{n}@gmail.com"}
-    sequence(:name) { |n| "naathyn #{n}" }
+    sequence(:name) { |n| "naathyn_#{n}" }
     password "secret"
     password_confirmation "secret"
 
