@@ -1,5 +1,5 @@
 <%= form_for(current_user.fans.find_by_like_id(@micropost),
             html: { method: :delete },
             remote: true) do |f| %>
-  <%= f.submit "Unlike", class: "btn btn-large btn-default" %>
+  <%= f.submit "Liked", class: "btn btn-large btn-default" %>
 <% end %>
