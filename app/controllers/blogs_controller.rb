@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user, only: :destroy
-  before_filter :skip_timestamps, only: :update
 
   def show
     @blog = Blog.find(params[:id])
@@ -32,6 +31,7 @@ class BlogsController < ApplicationController
   end
 
   def update
+    Blog.record_timestamps = false
     @blog = current_user.blogs.find(params[:id])
     if @blog.update_attributes(params[:blog])
       redirect_to @blog, notice: 'Your blog was updated successfully.'
@@ -52,9 +52,5 @@ private
   def correct_user
     @blog = current_user.blogs.find_by_id(params[:id])
     redirect_to :root unless @blog
-  end
-
-  def skip_timestamps
-    Blog.record_timestamps = false
   end
 end
