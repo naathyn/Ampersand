@@ -7,13 +7,14 @@
   <% if signed_in? %>
 
     <% unless @users.blank? %>
-      <%= yield flash.now[:success] =
+      <%= yield flash.now[:info] =
         "Who was in the #{link_to "Chatroom", :chatroom_users} today:
           <b>#{@users}</b>. They may still be chatting, come say hello!" %>
     <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on Sunday, March 30th at 6:00 a.m.
-        Now showing active chatters in the Chatroom!" %>
+    <%= yield flash.now[:success] = "Last updated Monday April 22nd at 4:30 a.m.
+        Blogs, Chats and Profiles looking better with new style modifications.
+        <b>Happy Earth Day!</b>" %>
     <% end %>
 
     <aside class="span4 side-module side-menu mini-profile">
@@ -56,8 +57,9 @@
 
   <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on Sunday, March 30th at 6:00 a.m.
-        Now showing active chatters in the Chatroom!" %>
+    <%= yield flash.now[:success] = "Last updated Monday April 22nd at 4:30 a.m.
+        Blogs, Chats and Profiles looking better with new style modifications.
+        <b>Happy Earth Day!</b>" %>
 
     <div class="page-fade center hero-unit">
       <h1> Ampersand </h1>
