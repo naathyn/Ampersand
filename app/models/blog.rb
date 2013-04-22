@@ -40,6 +40,5 @@ private
       }
     end
   end
-
   self.per_page = 5
 end

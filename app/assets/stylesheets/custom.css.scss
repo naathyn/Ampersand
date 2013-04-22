@@ -6,18 +6,21 @@
 
 html {
   overflow-y: scroll;
+}
+
+html, body {
   height: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
   background-color: $outterBody;
+  color: lighten($textColor, 5%);
   background-image: url(image_path('bg.png'));
   font-family: 'Lato', "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
   padding-top: 60px;
-  height: 100%;
 }
 
 a, strong, small, .btn-link {
@@ -31,6 +34,7 @@ input,
 textarea,
 select,
 .uneditable-input {
+  font-family: 'Lato', "Helvetica Neue", Arial, sans-serif;
   border: 1px solid $inputBorder;
   width: 100%;
   padding: 10px;
@@ -120,7 +124,7 @@ footer {
   padding: 1em;
   border: 1px solid $userBorder;
   color: $grayLight;
-  text-shadow: 0px 1px 1px white;
+  text-shadow: 0px 1px 1px $white;
   @include footer;
 }
 
@@ -172,7 +176,7 @@ aside {
   background-color: $innerBody;
   background-image: url(image_path('wrapper.png'));
   border: 1px solid $userBorder;
-  text-shadow: 0px 1px 1px white;
+  text-shadow: 0px 1px 0px white;
   border-bottom-width: 0;
   min-height: 100%;
   min-width: 727px;
@@ -710,7 +714,7 @@ aside {
   font-weight: bold;
   line-height: 18px;
   text-align: center;
-  text-shadow: 0px 1px 1px $white;
+  text-shadow: 0px -1px 0px $white;
 }
 
 #likes {
@@ -859,43 +863,29 @@ aside {
   width: 54%;
   margin: 0 0 0 12px;
   h2 {
-    text-align: left;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 24px;
+    font-weight: 400;
+    line-height: 18px;
     color: $grayLarge;
-    margin-bottom: 5px;
-  }
-}
-
-.name {
-  direction: ltr;
-  .fullname {
-    letter-spacing: 0;
-    font-size: 30px;
-    line-height: 1;
-    margin-bottom: 2px;
-    font-weight: bold;
-    color: $textGray;
+    margin-bottom: 8px;
   }
 }
 
 .bio,
 .title {
   margin-bottom: 0px;
+  line-height: 18px;
   font-size: 13px;
   font-style: italic;
   color: $grayLarge;
 }
 
-.location {
+.profile-inner .location {
   display: block;
-  padding-top: 8px;
-  font-size: 13px;
   line-height: 18px;
+  margin-top: 5px;
+  font-size: 13px;
   color: $grayLarge;
 }
-
 
 /* User Profile Stats */
 
@@ -1035,7 +1025,7 @@ aside {
     background-color: $green;
     color: white;
     text-decoration: none;
-    text-shadow: 0px 1px 1px $grayLarge;
+    text-shadow: 0px 1px 0px $grayLarge;
     border-radius: 3px;
   }
 }
@@ -1084,7 +1074,7 @@ aside {
     margin-left: 5px;
   }
   li {
-    text-shadow: 0px 1px 1px $black;
+    text-shadow: 0px -1px 0px $black;
   }
 }
 

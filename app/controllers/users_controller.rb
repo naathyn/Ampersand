@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, except: [:new, :create, :blogs]
-  before_filter :correct_user, only: [:edit, :update]
-  before_filter :captcha_user, only: :captchas
-  before_filter :admin_user, only: :destroy
-  before_filter :wipe_the_chat, only: :chatroom
+  before_filter :signed_in_user,  except: [:new, :create, :blogs]
+  before_filter :correct_user,    only:   [:edit, :update]
+  before_filter :captcha_user,    only:   :captchas
+  before_filter :admin_user,      only:   :destroy
+  before_filter :wipe_the_chat,   only:   :chatroom
 
   def index
     @title = "Members"
-    @search_users = User.find(:all, order: 'realname')
+    @search_users = User.find(:all, order: :realname)
     if params[:search]
       @user = User.find(params[:search])
       redirect_to @user
     else
-      @users = User.page(params[:page]).order('updated_at DESC')
+      @users = User.page(params[:page]).order 'updated_at DESC'
     end
   end
 
@@ -93,14 +93,14 @@ class UsersController < ApplicationController
   def blogs
     @title = "Blogs"
     @blogs = Blog.paginate(page: params[:page], per_page: 10,
-              include: [:tags, :user]).order('updated_at DESC')
+              include: [:tags, :user]).order 'updated_at DESC'
     @tags = Tag.page(params[:page])
   end
 
   def blog
     @user = User.find_by_name(params[:id])
     @title = "#{@user.realname}'s Blog"
-    @blogs = @user.blogs.page(params[:page]).order('created_at DESC')
+    @blogs = @user.blogs.page(params[:page]).order 'created_at DESC'
     @tags = @user.tags.page(params[:page])
     @blog = current_user.blogs.build
   end
@@ -133,8 +133,6 @@ private
   end
 
   def wipe_the_chat
-    Message.all.each { |message|
-      message.destroy if message.created_at < 1.day.ago
-    }
+    Message.all.each { |message| message.destroy if message.created_at < 1.day.ago }
   end
 end

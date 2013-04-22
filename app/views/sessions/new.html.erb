@@ -15,15 +15,15 @@
       <%= form_for(:session, url: :sessions) do |f| %>
 
         <%= f.label :name, "Username" %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: "Username" %>
 
         <%= f.label :password %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, placeholder: "Password" %>
 
         <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
       <% end %>
 
-      <p class="lead">Not a member? <%= link_to "Sign up now!", :signup %></p>
+      <p>Not a member? <b><%= link_to "Sign up now!", :signup %></b></p>
     </div>
   </div>
 </div>

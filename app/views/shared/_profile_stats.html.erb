@@ -7,7 +7,7 @@
       </div>
 
       <div class="page-fade profile-inner">
-        <h1 class="fullname"> <%= @user.realname %>
+        <h1> <%= @user.realname %>
           <% if current_user?(@user) %>
             <%= link_to "Captcha' Moments", captchas_user_path(@user),
                   class: "btn btn-success" %>
@@ -16,7 +16,7 @@
                   class: "btn btn-success" unless @user.blogs.empty? %>
           <% end %>
         </h1>
-        <h2 class="name"> <small>@</small><%= @user.name %> </h2>
+        <h2> <small>@</small><%= @user.name %> </h2>
         <span class="bio"> <%= @user.bio %> </span>
         <span class="location">
           <% if @user.location.present? %>

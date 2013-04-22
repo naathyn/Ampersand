@@ -43,7 +43,7 @@ private
     begin
       @micropost = Micropost.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      redirect_to :root
+      redirect_to :root, notice: "Record not found"
     end
   end
 end

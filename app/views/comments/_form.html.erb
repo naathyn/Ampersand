@@ -1,5 +1,6 @@
 <%= form_for([@blog, @comment]) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-    <%= f.text_area :content, rows: 3 %>
+    <%= f.text_area :content, rows: 3,
+          placeholder: "What would you like to say to @#{@blog.user.name}?" %>
   <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>

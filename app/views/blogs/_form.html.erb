@@ -6,15 +6,16 @@
           <%= render 'shared/error_messages', object: f.object %>
 
             <%= f.label :title %>
-            <%= f.text_field :title %>
+            <%= f.text_field :title, placeholder: "Your entry's title" %>
 
             <%= f.label :photo, "Thumbnail" %>
             <%= f.file_field :photo %>
 
-            <%= f.text_area :content, class: "wysihtml5", rows: 8 %>
+            <%= f.text_area :content, class: "wysihtml5", rows: 8,
+                  placeholder: "Your wonderful will go here ;)" %>
 
-            <%= f.label :tag_names, "Tags (seperated by commas)" %>
-            <%= f.text_field :tag_names %>
+            <%= f.label :tag_names %>
+            <%= f.text_field :tag_names, placeholder: "Tags are seperated by commas" %>
 
           <%= f.submit "Post Blog", class: "btn btn-success" %>
         <% end %>

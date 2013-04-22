@@ -91,7 +91,7 @@ GEM
     json (1.7.7)
     libnotify (0.8.0)
       ffi (>= 1.0.11)
-    listen (1.0.0)
+    listen (1.0.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)

@@ -17,14 +17,14 @@
             <%= render 'shared/error_messages', object: f.object %>
 
               <%= f.label :realname, "Full Name" %>
-              <%= f.text_field :realname %>
+              <%= f.text_field :realname, placeholder: "Your Name" %>
 
               <% if %W(edit update).include? action_name %>
                 <%= f.label :location %>
-                <%= f.text_field :location %>
+                <%= f.text_field :location, placeholder: "Where are you from?" %>
 
                 <%= f.label :website %>
-                <%= f.text_field :website %>
+                <%= f.text_field :website, placeholder: "http://" %>
 
                 <%= f.label :bio, "About Me" %>
                 <%= f.text_area :bio, rows: "3",
@@ -32,16 +32,16 @@
               <% end %>
 
               <%= f.label :email %>
-              <%= f.email_field :email %>
+              <%= f.email_field :email, placeholder: "Email" %>
 
               <%= f.label :name, "Username" %>
-              <%= f.text_field :name %>
+              <%= f.text_field :name, placeholder: "Username" %>
 
               <%= f.label :password %>
-              <%= f.password_field :password %>
+              <%= f.password_field :password, placeholder: "Password" %>
 
               <%= f.label :password_confirmation, "Retype Password" %>
-              <%= f.password_field :password_confirmation %>
+              <%= f.password_field :password_confirmation, placeholder: "Password" %>
 
             <%= f.submit "Submit!", class: "btn btn-large btn-success" %>
 
