@@ -236,17 +236,13 @@ aside {
   h1 {
     letter-spacing: -2px;
     font-size: 90px;
-    color: #3B6D8C;
-    text-shadow: 0px 1px 1px rgba(19, 29, 71, .75);
   }
   h3 {
     font-size: 30px;
     letter-spacing: 3px;
-    color: #131D47;
-    text-shadow: 0px 1px 1px rgba(191, 187, 164, .6);
   }
   .btn {
-  margin-top: 5px;
+  margin-top: 1em;
   }
 }
 
@@ -262,8 +258,6 @@ aside {
   @include modules;
   @include shadows;
 }
-
-
 
 .share-anchor {
   display: block;
