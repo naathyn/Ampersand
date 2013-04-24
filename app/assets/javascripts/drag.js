@@ -18,8 +18,8 @@ $(function (dragItem) {
         }
 
         dragItem.node.style.zIndex = ++dragItem.zIndex;
-        document.addEventListener("mousemove", dragProc);
-        document.addEventListener("mouseup", dragHalt);
+        document.addEventListener('mousemove', dragProc);
+        document.addEventListener('mouseup', dragHalt);
 
         event.preventDefault();
     };
@@ -28,13 +28,13 @@ $(function (dragItem) {
 
         x = event.clientX + window.scrollX;
         y = event.clientY + window.scrollY;
-        dragItem.node.style.left = (dragItem.nodeStartLeft + x - dragItem.cursorStartX) + "px";
-        dragItem.node.style.top = (dragItem.nodeStartTop + y - dragItem.cursorStartY) + "px";
+        dragItem.node.style.left = (dragItem.nodeStartLeft + x - dragItem.cursorStartX) + 'px';
+        dragItem.node.style.top = (dragItem.nodeStartTop + y - dragItem.cursorStartY) + 'px';
 
         event.preventDefault();
     };
     window.dragHalt = function (event) {
-        document.removeEventListener("mousemove", dragProc);
-        document.removeEventListener("mouseup", dragHalt);
+        document.removeEventListener('mousemove', dragProc);
+        document.removeEventListener('mouseup', dragHalt);
     };
 });

@@ -1,9 +1,9 @@
 $(function () {
-    $(".likes, captchas").tooltip({
+    $('.likes, captchas').tooltip({
         html: true
     });
 
-    $(".captchas").tooltip({
+    $('.captchas').tooltip({
         delay: {
             show: 250,
             hide: 250
