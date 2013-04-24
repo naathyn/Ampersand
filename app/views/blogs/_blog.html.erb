@@ -29,8 +29,8 @@
   <% if identified?(blog) %>
     <hr id="comments">
     <% unless @comments.empty? %>
-      <p class="lead" style="margin-top: -15px;"> Comments </p>
-      <ul class="comments" style="margin-top: -15px;">
+      <p class="lead"> Comments </p>
+      <ul class="comments">
         <%= render @comments %>
         <%= will_paginate @comments %>
       </ul>

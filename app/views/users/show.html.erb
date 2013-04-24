@@ -24,7 +24,7 @@
 <div class="tab-content">
   <div class="tab-pane active" id="profile">
     <% unless @microposts.empty? %>
-      <%= render partial: 'feeds/share_item', collection: @microposts, as: :item %>
+      <%= render partial: 'feeds/item', collection: @microposts %>
       <div class="well-bottom">
         <a href="#" alt="Top"> <i class="icon-arrow-up"></i> </a>
       </div>
@@ -35,7 +35,7 @@
   <% if current_user?(@user) %>
     <div class="tab-pane" id="replies">
       <% unless @replies.empty? %>
-        <%= render partial: 'feeds/share_item', collection: @replies, as: :item %>
+        <%= render partial: 'feeds/item', collection: @replies %>
         <div class="well-bottom">
           <a href="#" alt="Top"> <i class="icon-arrow-up"></i> </a>
         </div>

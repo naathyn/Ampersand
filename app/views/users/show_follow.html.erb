@@ -19,8 +19,7 @@
     <section>
       <%= render 'shared/stats' %>
       <% unless @users.empty? %>
-        <div class="side-module-share user_avatars"
-            style="background: transparent;">
+        <div class="side-module-share user_avatars">
           <% @users.each do |user| %>
             <%= link_to gravatar_for(user, size: 32), user %>
           <% end %>
