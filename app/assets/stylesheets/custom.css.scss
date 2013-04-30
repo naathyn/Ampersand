@@ -5,7 +5,7 @@ $linkColorHover: darken($linkColor, 10%);
 @import "mixins";
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
-/* global configurations */
+// global configurations
 
 html {
   overflow-y: scroll;
@@ -157,7 +157,7 @@ aside {
   }
 }
 
-/* Dynamic features */
+// dynamic features
 
 .page-fade {
   opacity: 0;
@@ -173,13 +173,13 @@ aside {
   background-image: url(image_path('blog.png'));
 }
 
-/* Page Layout */
+// page layout
 
 .page-wrapper {
   background-color: $innerBody;
   background-image: url(image_path('wrapper.png'));
   border: 1px solid $userBorder;
-  text-shadow: 0px 1px 0px white;
+  text-shadow: 0px 1px 0px $white;
   border-bottom-width: 0;
   min-height: 100%;
   min-width: 727px;
@@ -227,7 +227,7 @@ aside {
   padding: 6px 15px;
 }
 
-/* Home Page (Non Signed in Users) */
+// pages#home page for non-signed in users
 
 .hero-unit {
   padding: 30px;
@@ -251,7 +251,7 @@ aside {
   padding-top: 1px;
 }
 
-/* Mini-Profile Module */
+// mini-profile module
 
 .side-module {
   border: 1px solid $moduleBorder;
@@ -322,10 +322,6 @@ aside {
   line-height: 16px;
 }
 
-.side-menu {
-  line-height: 16px;
-}
-
 .side-content {
   padding: 12px 0px 0 12px;
 }
@@ -350,7 +346,7 @@ aside {
   display: none;
 }
 
-/* User Stats (Following, Shares etc) */
+// user stats with following, shares, etc
 
 .stats,
 .share-stats {
@@ -460,7 +456,7 @@ aside {
   color: $linkColor;
 }
 
-/* Feeds Share Items  */
+// feeds items
 
 .well-header,
 .well-bottom {
@@ -547,7 +543,7 @@ aside {
   opacity: 100;
 }
 
-/* Share Item Hover Links */
+// feed item hover links
 
 .shown {
   cursor: pointer;
@@ -585,7 +581,7 @@ aside {
   }
 }
 
-/* Share Item Likes Stats */
+// feed items likes
 
 .share-stats {
   float: right;
@@ -627,7 +623,7 @@ aside {
   display: inline-block;
 }
 
-/* Share Item Reply Container */
+// feed item reply container
 
 .inline-container,
 .modal-form {
@@ -669,7 +665,7 @@ aside {
   display: none;
 }
 
-/* Modal Config */
+// modal overrides
 
 .modal-form form textarea {
   color: $textGrayLight;
@@ -787,7 +783,7 @@ aside {
   float: right;
 }
 
-/* included in the users#show controller */
+// users#show
 
 .photo {
   margin-right: 15px;
@@ -885,7 +881,7 @@ aside {
   color: $grayLarge;
 }
 
-/* User Profile Stats */
+// user profile stats
 
 .actions {
   position: relative;
@@ -959,7 +955,7 @@ aside {
   background-color: $innerBody;
 }
 
-/* included in static_pages#about */
+// pages#about
 
 .about-page {
   cursor: default;
@@ -988,7 +984,7 @@ aside {
   margin-bottom: -18px;
 }
 
-/* Captcha pages */
+// users#captchas
 
 .captcha-page .lead {
   margin-bottom: .5em;
@@ -1066,7 +1062,7 @@ aside {
   margin: 0;
 }
 
-/* styles for microposts#show */
+// microposts#show
 
 .microposts-profile {
   @include microposts;
@@ -1102,7 +1098,7 @@ aside {
   line-height: 28px;
 }
 
-/* users chatroom in development */
+// users#chatroom
 
 .chat_container_text {
   padding: 10px 0 1px 10px;
@@ -1170,7 +1166,7 @@ aside {
   border: none;
 }
 
-/* user blogs */
+// users#blog(s)
 
 .blogs .lead {
   font-weight: bold;
@@ -1234,7 +1230,7 @@ hr#comments + .lead, .blog-wrapper ul.comments {
   margin-top: 15em;
 }
 
-/* Blog formatting */
+// blog formatting
 
 .wysihtml5-toolbar {
   margin-bottom: 10px;
@@ -1289,7 +1285,7 @@ hr#comments + .lead, .blog-wrapper ul.comments {
   text-indent: 2em;
 }
 
-/* Comments pages */
+// comment styles
 
 .comments {
   margin: 10px 0;
@@ -1300,7 +1296,7 @@ hr#comments + .lead, .blog-wrapper ul.comments {
   }
 }
 
-/* various different icons */
+// various different icons
 
 .well-footer [class^="icon-comment"] {
   margin-right: 2px;
@@ -1344,7 +1340,7 @@ hr#comments + .lead, .blog-wrapper ul.comments {
   margin-top: 1px;
 }
 
-/* alert messages */
+// alert messages
 
 #alert-notice {
   padding-right: 0;
@@ -1374,7 +1370,7 @@ hr#comments + .lead, .blog-wrapper ul.comments {
   @extend .error;
 }
 
-/* debugging for development */
+// debugging for development
 
 .debug_dump {
   clear: both;
