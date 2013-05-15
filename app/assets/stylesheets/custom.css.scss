@@ -9,6 +9,8 @@ $linkColorHover: darken($linkColor, 10%);
 
 html {
   overflow-y: scroll;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 html, body {
@@ -1377,4 +1379,99 @@ hr#comments + .lead, .blog-wrapper ul.comments {
   width: 100%;
   margin-top: 3em;
   @include forms;
+}
+
+// Certain Styles Taken from HTML5BOILERPLATE Project
+
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+::-moz-selection {
+  background: rgb(217, 237, 247);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgb(217, 237, 247);
+  text-shadow: none;
+}
+
+/* ==========================================================================
+Print styles.
+Inlined to avoid required HTTP connection: h5bp.com/r
+========================================================================== */
+
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .navbar {
+    display: none !important;
+  }
+
+  .blog-wrapper #blog_tags,
+  .blog-wrapper #blog_comments {
+    display: none !important;
+  }
+
+  a[href]:after {
+    content: "";
+  }
+
+  abbr[title]:after {
+    content: "";
+  }
+
+ /*
+  * Don't show links for images, or javascript/internal links
+  */
+
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group; /* h5bp.com/t */
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }

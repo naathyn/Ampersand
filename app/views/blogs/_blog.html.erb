@@ -14,29 +14,36 @@
     <%= auto_link blog.content  %>
   </div>
 
-  <p class="location">By
+  <p class="location" id="blog_comments">By
     <%= link_to blog.user.realname, blog_user_path(blog.user) %> with
     <%= link_to pluralize(blog.comment_count, 'comment'),
           "#{entry_path(blog)}#comments" %>
   </p>
 
-  <span class="bio">
+  <p class="pull-right" id="blog_comments">
+    <a href="javascript:if(window.print)window.print()">
+      <i class="icon-print"></i> Print This</a>
+  </p>
+
+  <span class="bio" id="blog_tags">
     <% blog.tags.each do |tag| %>
       <i class="icon-tag"></i> <%= link_to tag.name, tag %>
     <% end %>
   </span>
 
-  <% if identified?(blog) %>
-    <hr id="comments">
-    <% unless @comments.empty? %>
-      <p class="lead"> Comments </p>
-      <ul class="comments">
-        <%= render @comments %>
-        <%= will_paginate @comments %>
-      </ul>
-    <% end %>
+  <div id="blog_comments">
+    <% if identified?(blog) %>
+      <hr id="comments">
+      <% unless @comments.empty? %>
+        <p class="lead"> Comments </p>
+        <ul class="comments">
+          <%= render @comments %>
+          <%= will_paginate @comments %>
+        </ul>
+      <% end %>
 
-    <p class="lead"> <%= note_for_comment %> </p>
-    <%= render 'comments/form' %>
-  <% end %>
+      <p class="lead"> <%= note_for_comment %> </p>
+      <%= render 'comments/form' %>
+    <% end %>
+  </div>
 </div>
