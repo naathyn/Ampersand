@@ -30,16 +30,7 @@ $(function () {
 
       if (match) {
         return $.getJSON(url, {query: match}, function(data) {
-          var items = [];
-
-          $.each(data, function() {
-            items.push({
-              name: this.realname
-            , username: this.name
-            });
-          });
-
-          return process(items);
+          return process(data);
         });
       }
     }

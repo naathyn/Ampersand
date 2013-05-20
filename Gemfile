@@ -9,6 +9,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 gem 'rails_autolink'
+gem 'jbuilder'
 
 group :development, :test do
   gem 'sqlite3'
