@@ -1229,7 +1229,7 @@ hr#comments + .lead, .blog-wrapper ul.comments {
 }
 
 .tags {
-  margin-top: 15em;
+  margin-top: 14em;
 }
 
 // blog formatting
@@ -1420,6 +1420,10 @@ Inlined to avoid required HTTP connection: h5bp.com/r
   .blog-wrapper #blog_tags,
   .blog-wrapper #blog_comments {
     display: none !important;
+  }
+
+  .tags {
+    margin-top: 1em;
   }
 
   a[href]:after {
