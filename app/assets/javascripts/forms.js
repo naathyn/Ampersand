@@ -16,12 +16,7 @@ $(function () {
     function matchUser(string) {
       var Query = string.match(/\@\w+$/);
 
-      if (Query) {
-        Query = Query[0].substring(1);
-        return Query;
-      }
-
-      return false;
+      return Query ? Query[0].substring(1) : false;
     }
 
     function getUsers(string, process) {

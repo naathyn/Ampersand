@@ -116,7 +116,7 @@ class UsersController < ApplicationController
   end
 
   def autocomplete
-    @users = User.select("realname, name").where("name LIKE ?", "%#{params[:query]}%")
+    @users = User.select("realname, name").where("name LIKE ?", "#{params[:query]}%")
     render json: @users
   end
 
