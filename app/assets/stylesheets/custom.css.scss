@@ -679,6 +679,26 @@ aside {
   display: none;
 }
 
+// typeahead overrides
+
+.typeahead {
+  width: auto !important;
+  text-shadow: none !important;
+}
+
+.typeahead img {
+  margin-right: 8px !important;
+}
+
+.typeahead .mention_name,
+.typeahead .mention_username {
+  display: inline !important;
+}
+
+.typeahead .mention_username {
+  color: $grayLight !important;
+}
+
 // modal overrides
 
 .modal-form form textarea {

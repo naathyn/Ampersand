@@ -84,6 +84,9 @@ GEM
       spork (>= 0.8.4)
     hike (1.2.2)
     i18n (0.6.1)
+    jbuilder (1.4.1)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -207,6 +210,7 @@ DEPENDENCIES
   faker
   guard-rspec
   guard-spork
+  jbuilder
   jquery-rails
   libnotify
   pg

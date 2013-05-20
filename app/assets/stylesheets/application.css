@@ -12,4 +12,5 @@
  *= require colours
  *= require mixins
  *= require custom
+ *= require_tree .
 */
