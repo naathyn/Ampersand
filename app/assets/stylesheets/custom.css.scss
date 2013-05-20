@@ -5,6 +5,14 @@ $linkColorHover: darken($linkColor, 10%);
 @import "bootstrap";
 @import "mixins";
 
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  @include box-sizing(border-box);
+}
+
 // global configurations
 
 html {
@@ -688,6 +696,7 @@ aside {
 
 .typeahead img {
   margin-right: 8px !important;
+  @include gravatars;
 }
 
 .typeahead .mention_name,
