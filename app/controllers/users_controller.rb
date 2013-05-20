@@ -116,7 +116,8 @@ class UsersController < ApplicationController
   end
 
   def autocomplete
-    @users = User.select("realname, name, email").where("name LIKE (?)", "#{params[:query]}%")
+    @users = User.select("realname, name, email").
+                  where("name LIKE (?)", "#{params[:query]}%")
   end
 
 private

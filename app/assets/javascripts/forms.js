@@ -1,38 +1,39 @@
 $(function () {
 
-    $('.side-module-share form, .inline-container form').on('click', function () {
-      $(this).addClass('active');
-    });
-    $('.wysihtml5').each(function (elem) {
-      $(elem).wysihtml5();
-    });
+  $('.side-module-share form, .inline-container form').on('click', function () {
+    $(this).addClass('active');
+  });
 
-    /* Thanks JBekker
-      https://tinyurl.com/l8s2yv5
-    */
+  $('.wysihtml5').each(function (elem) {
+    $(elem).wysihtml5();
+  });
 
-    var micropost = $('#micropost_content');
+  /* Thanks JBekker
+    https://tinyurl.com/l8s2yv5
+  */
 
-    function matchUser(string) {
-      var Query = string.match(/\@\w+$/);
+  var micropost = $('#micropost_content');
 
-      return Query ? Query[0].substring(1) : false;
+  function matchUser(string) {
+    var Query = string.match(/\@\w+$/);
+
+    return Query ? Query[0].substring(1) : false;
+  }
+
+  function getUsers(string, process) {
+    var url = micropost.data('autocomplete-url')
+    , match = matchUser(string);
+
+    if(match) {
+      return $.getJSON(url, {query: match}, function(data) {
+        return process(data);
+      });
     }
+  }
 
-    function getUsers(string, process) {
-      var url = micropost.data('autocomplete-url')
-        , match = matchUser(string);
-
-      if (match) {
-        return $.getJSON(url, {query: match}, function(data) {
-          return process(data);
-        });
-      }
-    }
-
-    micropost.mention({
-      queryBy: ['name', 'username']
-    , users: getUsers
-    });
+  micropost.mention({
+    queryBy: ['name', 'username']
+  , users: getUsers
+  });
 
 });

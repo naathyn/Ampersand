@@ -708,6 +708,11 @@ aside {
   color: $grayLight !important;
 }
 
+.typeahead .mention_username > strong {
+  color: darken($grayLight, 5%) !important;
+  font-weight: 700 !important;
+}
+
 // modal overrides
 
 .modal-form form textarea {
