@@ -22,10 +22,11 @@ Socialrails::Application.routes.draw do
 
   root to: 'pages#home'
 
-  get     '/signup'         => 'users#new'
-  get     '/signin'         => 'sessions#new'
-  delete  '/signout'        => 'sessions#destroy'
-  get     '/about'          => 'pages#about'
-  get     '/entry/:id'      => 'blogs#show',      as: :entry
-  get     '/permalink/:id/' => 'microposts#show', as: :permalink
+  get     '/signup'             => 'users#new'
+  get     '/signin'             => 'sessions#new'
+  delete  '/signout'            => 'sessions#destroy'
+  get     '/about'              => 'pages#about'
+  get     '/entry/:id'          => 'blogs#show',      as: :entry
+  get     '/permalink/:id/'     => 'microposts#show', as: :permalink
+  get     '/autocomplete/users'	=> 'users#autocomplete'
 end

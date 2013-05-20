@@ -115,6 +115,11 @@ class UsersController < ApplicationController
       "Welcome to the chat! All messages are cleared after 24 hours. Happy chatting!"
   end
 
+  def autocomplete
+    @users = User.select("realname, name").where("name LIKE ?", "%#{params[:query]}%")
+    render json: @users
+  end
+
 private
 
   def correct_user

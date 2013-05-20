@@ -1,0 +1,8 @@
+<div class="container-fluid" id="alert-notice">
+  <%= content_tag :div,
+    "You have javascript disabled or it is not supported on your device.
+    Please be aware this site uses javascript heavily
+    and certain areas might not respond properly.
+    <b>Enabling Javascript is strongly encouraged.</b>".html_safe,
+   id: "js-warning", class: "alert alert-danger" %>
+</div>

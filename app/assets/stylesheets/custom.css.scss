@@ -166,7 +166,8 @@ aside {
   @include fades;
 }
 
-.page-fade.faade {
+.page-fade.faade,
+.no-js .page-fade {
   opacity: 1;
 }
 
@@ -227,6 +228,10 @@ aside {
 
 #close_home {
   padding: 6px 15px;
+}
+
+.no-js #fat-menu {
+  display: none;
 }
 
 // pages#home page for non-signed in users
@@ -298,13 +303,15 @@ aside {
   margin-bottom: 0;
 }
 
-.side-module-share form.active textarea {
+.side-module-share form.active textarea,
+.no-js .side-module-share form textarea {
   height: 78px !important;
   color: $textGrayLight;
   font-size: 14px;
 }
 
-.side-module-share form.active input {
+.side-module-share form.active input,
+.no-js .side-module-share form input {
   display: block;
   margin-bottom: 7px;
   margin-top: -1px;
@@ -509,6 +516,10 @@ aside {
   margin-bottom: -12px;
 }
 
+.no-js .well-footer {
+  display: none;
+}
+
 .well-footer form {
   display: inline-block;
   margin-bottom: -6px;
@@ -552,16 +563,16 @@ aside {
   vertical-align: 5px;
 }
 
-.detach {
-  margin-right: 1px;
-}
-
 .well-footer .collapse {
   padding-left: 10px;
 }
 
 .share-actions {
   display: inline-block;
+}
+
+.no-js .share-actions {
+  display: none;
 }
 
 .share-actions a {
@@ -650,14 +661,16 @@ aside {
   @include inline-container;
 }
 
-.inline-container form.active textarea {
+.inline-container form.active textarea,
+.no-js .inline-container form textarea {
   height: 78px !important;
   color: $textGrayLight;
   font-size: 14px;
   line-height: 18px;
 }
 
-.inline-container form.active input {
+.inline-container form.active input,
+.no-js .inline-container form input {
   display: block;
   margin-bottom: 8px;
 }
@@ -1347,6 +1360,10 @@ hr#comments + .lead, .blog-wrapper ul.comments {
 #alert-notice {
   padding-right: 0;
   padding-left: 0;
+}
+
+.js #js-warning {
+  display: none !important;
 }
 
 #error_explanation {

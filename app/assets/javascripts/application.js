@@ -10,6 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require modernizr
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-transition
@@ -20,8 +21,10 @@
 //= require bootstrap-tooltip
 //= require bootstrap-button
 //= require bootstrap-collapse
+//= require bootstrap-typeahead
 //= require bootstrap-wysihtml5
 //= require navigation
+//= require mention
 //= require forms
 //= require tooltips
 //= require tabs
