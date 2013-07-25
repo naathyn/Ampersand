@@ -1,8 +1,9 @@
 source 'https://rubygems.org/'
+ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 gem 'thin'
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bootstrap-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'will_paginate'
@@ -12,7 +13,7 @@ gem 'rails_autolink'
 gem 'jbuilder'
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'mysql2'
   gem 'faker'
   gem 'rspec-rails'
   gem 'guard-rspec'

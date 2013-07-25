@@ -1,7 +1,8 @@
 class Micropost < ActiveRecord::Base
   attr_accessible :content
 
-  USERNAME_RE = /\A@([^\s]*)/
+  USERNAME_RE = /\A@([^\s]*)/i
+  #EMOTE_RE = /[*{1}]+(\w+)\*/i
 
   belongs_to :user
   belongs_to :to, class_name: "User"
