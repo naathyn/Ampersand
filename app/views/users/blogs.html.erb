@@ -2,6 +2,9 @@
   <% provide(:title, @title) %>
 <% end %>
 
+<%= yield flash.now[:notice] = "The blogging editor is down temporarily.
+                                It is being worked on and should be back online shortly." %>
+
 <ul class="breadcrumb">
   <li> <%= link_to "Home", :root %>  <span class="divider">/</span> </li>
   <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>

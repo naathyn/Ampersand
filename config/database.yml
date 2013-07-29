@@ -13,6 +13,6 @@ development:
   encoding: utf8
   database: Ampersand
   pool: 5
-  username:
-  password: ''
+  username: root
+  password: '12081'
   socket: /var/run/mysqld/mysqld.sock

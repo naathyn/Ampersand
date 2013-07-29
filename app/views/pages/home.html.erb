@@ -12,8 +12,8 @@
         <b>#{@users}</b>. They may still be chatting, come say hello!" %>
     <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on Monday May 20th at 4:00 a.m.
-                                  @usernames in message forms will autocomplete users." %>
+    <%= yield flash.now[:info] = "Last updated on Sunday July 28th at 10:00 p.m.
+                                  Touched up basic layout and updated routine dependencies." %>
     <% end %>
 
     <aside class="span4 side-module side-menu mini-profile">
@@ -56,14 +56,15 @@
 
   <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on Monday May 20th at 4:00 a.m.
-                                  @usernames in message forms will autocomplete users." %>
+    <%= yield flash.now[:info] = "Last updated on Sunday July 28th at 10:00 p.m.
+                                  Touched up basic layout and updated routine dependencies." %>
 
     <div class="page-fade center hero-unit">
       <h1> Ampersand </h1>
       <h3> Network, Profiles, Blogging </h3>
       <%= link_to "Sign up now!", :signup, class: "btn btn-large btn-primary" %>
     </div>
+
   <% end %>
 
 </div> <!-- row-fluid -->
