@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require mixins
+ *= require bootstrap-wysihtml5
  *= require custom
  *= require_tree .
 */
