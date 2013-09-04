@@ -1,4 +1,4 @@
-<div id="<%= blog.id %>" class="well-body well-inner blog-wrapper">
+<div id="blog_<%= blog.id %>" class="well-body well-inner blog-wrapper">
 
   <h2 class="title">
     <%= link_to blog.title, entry_path(blog) %>
@@ -20,10 +20,12 @@
           "#{entry_path(blog)}#comments" %>
   </p>
 
-  <p class="pull-right" id="blog_comments">
-    <a href="javascript:if(window.print)window.print()">
-      <i class="icon-print"></i> Print This</a>
-  </p>
+  <% if action_name == "show" %>
+    <p class="pull-right" id="blog_comments">
+      <a href="javascript:if(window.print)window.print()">
+        <i class="icon-print"></i> Print This</a>
+    </p>
+  <% end %>
 
   <span class="bio" id="blog_tags">
     <% blog.tags.each do |tag| %>

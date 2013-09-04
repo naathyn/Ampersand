@@ -31,11 +31,13 @@
                     placeholder: "In a short 255 words, please :)" %>
               <% end %>
 
+              <% unless action_name == "edit" %>
+                <%= f.label :name, "Username" %>
+                <%= f.text_field :name, placeholder: "Your Username" %>
+              <% end %>
+
               <%= f.label :email %>
               <%= f.email_field :email, placeholder: "Email" %>
-
-              <%= f.label :name, "Username" %>
-              <%= f.text_field :name, placeholder: "Username" %>
 
               <%= f.label :password %>
               <%= f.password_field :password, placeholder: "Password" %>
