@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
     @user = @blog.user
     @title = "#{@blog.title} by #{@user.realname}"
     @comments = @blog.comments.page(params[:page])
-    @comment = current_user.comments.build
+    @comment = current_user.comments.build if signed_in?
   end
 
   def new
