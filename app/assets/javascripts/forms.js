@@ -8,10 +8,6 @@ $(function () {
     $(elem).wysihtml5();
   });
 
-  /* Thanks JBekker
-    https://tinyurl.com/l8s2yv5
-  */
-
   var micropost = $('#micropost_content');
 
   function matchUser(string) {
