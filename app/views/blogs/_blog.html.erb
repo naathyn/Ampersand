@@ -45,7 +45,7 @@
       <% end %>
 
       <p class="lead"> <%= note_for_comment %> </p>
-      <%= render 'comments/form' %>
+      <%= render 'comments/form' if signed_in? %>
     <% end %>
   </div>
 </div>
