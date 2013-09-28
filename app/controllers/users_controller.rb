@@ -102,7 +102,7 @@ class UsersController < ApplicationController
     @title = "#{@user.realname}'s Blog"
     @blogs = @user.blogs.page(params[:page]).order 'created_at DESC'
     @tags = @user.tags.page(params[:page])
-    @blog = current_user.blogs.build
+    @blog = current_user.blogs.build if signed_in?
   end
 
   def chatroom
