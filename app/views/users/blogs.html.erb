@@ -17,7 +17,9 @@
         <% if signed_in? %>
           <%= link_to "Go To Your Blog", blog_user_path(current_user),
                 class: "btn btn-primary" %>
+
         <% else %>
+
           <%= link_to "Get a Free Blog", :signup,
                 class: "btn btn-primary" %>
         <% end %>
@@ -33,7 +35,9 @@
             <% if blog.has_photo? %>
               <%= link_to(image_tag(blog.photo, class: "gravatar blog",
                     title: blog.user.realname), blog.photo, target: "_blank") %>
+
             <% else %>
+
               <%= image_tag("ampersand.jpg", class: "gravatar blog",
                     title: blog.user.realname) %>
             <% end %>
@@ -48,7 +52,7 @@
             </p>
 
             <p class="format">
-              <%= auto_link truncate blog.preview, length: 185 %>
+              <%= auto_link truncate blog.preview, length: 185, escape: false %>
               <span class="bio"> <%= link_to "keep reading", entry_path(blog) %> </span>
             </p>
 

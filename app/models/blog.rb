@@ -32,7 +32,7 @@ class Blog < ActiveRecord::Base
   end
 
   def has_photo?
-    photo.present?
+    !!photo
   end
 
   def title_and_author

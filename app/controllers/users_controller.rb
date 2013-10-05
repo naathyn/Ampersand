@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @title = "Members"
     @search_users = User.page(params[:page]).order(:realname)
     if params[:search]
-      @user = User.find(params[:search])
+      @user = User.friendly.find(params[:search])
       redirect_to @user
     else
       @users = User.page(params[:page]).order('updated_at DESC')

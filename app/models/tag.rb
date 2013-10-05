@@ -3,7 +3,7 @@ class Tag < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   has_many :taggings, dependent: :destroy
-  has_many :blogs, through: :taggings #, include: [:tags, :user]
+  has_many :blogs, through: :taggings
 
   default_scope -> { order('tagging_count DESC') }
 end

@@ -57,7 +57,7 @@ FriendlyId.defaults do |config|
   # separator. If you're upgrading from FriendlyId 4, you may wish to replace this
   # with two dashes.
   #
-  #  config.sequence_separator = '-'
+  #  config.sequence_separator = '.'
   #
   #  ## Tips and Tricks
   #
