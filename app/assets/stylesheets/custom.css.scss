@@ -445,6 +445,10 @@ aside {
   }
 }
 
+// opaque lists
+
+.touch ul.users-follow > li,
+.touch .blogs li { opacity: 1; }
 
 ol .blogs {
   opacity: 0.9;
@@ -453,7 +457,6 @@ ol .blogs {
     opacity: 1.0;
   }
 }
-
 
 ul .users-follow li:hover {
   opacity: 1;
