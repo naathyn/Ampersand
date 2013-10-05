@@ -8,7 +8,6 @@
 
 /public/attachments/*
 
-/bin/*
 *.sh
 .secret
 
