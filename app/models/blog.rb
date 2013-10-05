@@ -4,8 +4,6 @@ class Blog < ActiveRecord::Base
 
   attr_writer :tag_names
 
-  DEFAULT_THUMB = '/assets/ampersand.jpg'
-
   HTML_TAGS = /<(?:([a-zA-Z\?][\w:\-]*)(\s(?:\s*[a-zA-Z][\w:\-]*(?:\s*=(?:\s*"(?:\\"|[^"])*"|\s*'(?:\\'|[^'])*'|[^\s>]+))?)*)?(\s*[\/\?]?)|\/([a-zA-Z][\w:\-]*)\s*|!--((?:[^\-]|-(?!->))*)--|!\[CDATA\[((?:[^\]]|\](?!\]>))*)\]\])>/
 
   belongs_to :user

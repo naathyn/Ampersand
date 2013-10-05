@@ -34,7 +34,7 @@
               <%= link_to(image_tag(blog.photo, class: "gravatar blog",
                     title: blog.user.realname), blog.photo, target: "_blank") %>
             <% else %>
-              <%= image_tag(Blog::DEFAULT_THUMB, class: "gravatar blog",
+              <%= image_tag("ampersand.jpg", class: "gravatar blog",
                     title: blog.user.realname) %>
             <% end %>
 
