@@ -34,12 +34,13 @@
 
             <% if blog.has_photo? %>
               <%= link_to(image_tag(blog.photo, class: "gravatar blog",
-                    title: blog.user.realname), blog.photo, target: "_blank") %>
+                    title: blog.user.realname), blog) %>
 
             <% else %>
 
-              <%= image_tag("ampersand.jpg", class: "gravatar blog",
-                    title: blog.user.realname) %>
+              <%= link_to(image_tag(
+                    (blog.has_photo? ? blog.photo : "ampersand.jpg"), class: "gravatar blog",
+                      title: blog.user.realname), blog) %>
             <% end %>
 
             <span class="lead"> <%= link_to blog.title, entry_path(blog) %> </span>

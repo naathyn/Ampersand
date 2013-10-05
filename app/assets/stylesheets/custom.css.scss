@@ -445,8 +445,23 @@ aside {
   }
 }
 
+
+ol .blogs {
+  opacity: 0.9;
+  @include transitions;
+  &:hover li {
+    opacity: 1.0;
+  }
+}
+
+
+ul .users-follow li:hover {
+  opacity: 1;
+}
+
 .users-follow li,
 .blogs li {
+  @include transitions;
   overflow: auto;
   padding: 10px 14px;
   padding-left: 0px;
