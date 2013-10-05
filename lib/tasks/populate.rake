@@ -59,9 +59,12 @@ def make_microposts
     user = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
 
-    user.microposts.create!(
-      content: content
-    )
+    begin
+      user.microposts.create!(
+        content: content
+      )
+    rescue ActiveRecord::RecordNotUnique
+    end
   end
 end
 
@@ -71,12 +74,15 @@ def make_replies
     follower = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
 
-    user.microposts.create!(
-      content: "@#{follower.name} #{content}"
-    ) unless user == follower
-    follower.microposts.create!(
-      content: "@#{user.name} #{content}"
-    ) unless follower == user
+    begin
+      user.microposts.create!(
+        content: "@#{follower.name} #{content}"
+      ) unless user == follower
+      follower.microposts.create!(
+        content: "@#{user.name} #{content}"
+      ) unless follower == user
+    rescue ActiveRecord::RecordNotUnique
+    end
   end
 end
 
@@ -85,9 +91,12 @@ def make_mailtos
     user = User.offset(rand(User.count)).first
     content = "#{Faker::Internet.email} #{Faker::Lorem.sentence}"
 
-    user.microposts.create!(
-      content: content
-    )
+    begin
+      user.microposts.create!(
+        content: content
+      )
+    rescue ActiveRecord::RecordNotUnique
+    end
   end
 end
 
@@ -96,9 +105,12 @@ def make_links
     user = User.offset(rand(User.count)).first
     content = "https://rubyrails.herokuapp.com #{Faker::Lorem.sentence}"
 
-    user.microposts.create!(
-      content: content
-    )
+    begin
+      user.microposts.create!(
+        content: content
+      )
+    rescue ActiveRecord::RecordNotUnique
+    end
   end
 end
 
@@ -129,11 +141,14 @@ def make_blogs
     tag_names = Faker::Lorem.sentence.split.uniq.join(', ')
     content = Faker::Lorem.sentence(500)
 
-    user.blogs.create!(
-      title: title,
-      content: content,
-      tag_names: tag_names
-    )
+    begin
+      user.blogs.create!(
+        title: title,
+        content: content,
+        tag_names: tag_names
+      )
+    rescue ActiveRecord::RecordNotUnique
+    end
   end
 end
 

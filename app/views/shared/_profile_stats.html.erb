@@ -8,6 +8,7 @@
 
       <div class="page-fade profile-inner">
         <h1> <%= @user.realname %>
+
           <% if current_user?(@user) %>
             <%= link_to "Captcha' Moments", captchas_user_path(@user),
                   class: "btn btn-success" %>
@@ -16,17 +17,21 @@
                   class: "btn btn-success" unless @user.blogs.empty? %>
           <% end %>
         </h1>
+
         <h2> <small>@</small><%= @user.name %> </h2>
         <span class="bio"> <%= @user.bio %> </span>
+
         <span class="location">
           <% if @user.location.present? %>
             <i class="icon-map-marker"></i>
             <%= @user.location %>
           <% end %>
+
           <% if @user.website.present? %>
             <i class="icon-globe"> </i>
             <%= auto_link(@user.website, html: { target: "_blank" }) %>
           <% end %>
+
         </span>
       </div> <!-- page-fade/profile-inner -->
 
@@ -37,23 +42,27 @@
         <% else %>
           <%= render 'follow_form' %>
         <% end %>
+
         <ul class="stats">
           <li>
-            <% unless @user.microposts.empty? %>
+            <% if @user.microposts.any? %>
               <a href="<%= permalink_path(@user.random_post) %>">
             <% else %>
               <a href="<%= user_path(@user) %>">
             <% end %>
-            <strong> <%= @microposts.count %> </strong>
+
+              <strong> <%= @microposts.count %> </strong>
               <%= micropost_synonyms %>
             </a>
           </li>
+
           <li>
             <a href="<%= following_user_path(@user) %>">
               <strong id="following"> <%= @following.count %> </strong>
                 following
             </a>
           </li>
+
           <li>
             <a href="<%= followers_user_path(@user) %>">
               <strong id="followers"> <%= @followers.count %> </strong>
@@ -61,6 +70,7 @@
             </a>
           </li>
         </ul>
+
       </div> <!-- actions -->
     </div> <!-- row-fluid -->
   </div> <!-- profile-header -->

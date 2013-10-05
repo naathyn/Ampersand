@@ -7,14 +7,17 @@
   <% if signed_in? %>
 
     <% unless @users.blank? %>
+
       <%= yield flash.now[:success] =
         "Who was in the #{link_to "Chatroom", :chatroom_users} today:
         <b>#{@users}</b>. They may still be chatting, come say hello!" %>
+
     <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on Friday, September 27th at 11:00 p.m.
-                                  Blogs have now been made public.
-                                  Scheduled updates were a success." %>
+      <%= yield flash.now[:info] = "Last updated on Saturday, October 5th at 12:00 a.m.
+        Currently updating the site's components for Ruby on Rails 4.0.0.
+        Send any bug reports to <b>#{link_to User.first.username, User.first}</b>" %>
+
     <% end %>
 
     <aside class="span4 side-module side-menu mini-profile">
@@ -23,32 +26,43 @@
           <%= render "shared/user_info" %>
         </section>
       </a>
+
       <section>
         <%= render "shared/stats" %>
       </section>
+
       <section class="side-module-share">
         <%= render "shared/share_form" %>
       </section>
+
     </aside>
 
     <div id="feed" class="span8">
+
       <div class="well-header">
         <div class="page-fade">
+
           <a href="<%= user_path(current_user) %>" title="Profile">
             <i class="icon-user"></i>
           </a>
+
           <a href="<%= captchas_user_path(current_user) %>" title="Captchas">
             <i class="icon-camera"></i>
           </a>
+
           <a href="<%= blog_user_path(current_user) %>" title="Your Blog">
             <i id="comment-bar" class="icon-book"></i>
           </a>
+
         </div>
       </div>
-        <%= render 'feeds/main/share' %>
+
+      <%= render 'feeds/main/share' %>
+
       <div class="well-bottom" style="margin-bottom: 1em;">
         <a href="#" title="Top"> <i class="icon-arrow-up"></i> </a>
       </div>
+
     </div> <!-- feed-->
 
     <div id="pagination" style="float: right; clear: both;">
@@ -57,9 +71,9 @@
 
   <% else %>
 
-    <%= yield flash.now[:info] = "Last updated on Friday, September 27th at 11:00 p.m.
-                                  Blogs have now been made public.
-                                  Scheduled updates were a success." %>
+    <%= yield flash.now[:info] = "Last updated on Saturday, October 5th at 12:00 a.m.
+      Currently updating the site's components for Ruby on Rails 4.0.0.
+      Send any your bug reports to <b>#{link_to User.first.username, User.first}</b>" %>
 
     <div class="page-fade center hero-unit">
       <h1> Ampersand </h1>

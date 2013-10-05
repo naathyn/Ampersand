@@ -1,5 +1,5 @@
 class Captcha < ActiveRecord::Base
-  attr_accessible :content
+  # attr_accessible :content
 
   belongs_to :user
 

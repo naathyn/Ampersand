@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :correct_user, only: :destroy
-  before_filter :correct_post, only: :show
+  before_filter :micropost_user, only: :destroy
+  before_filter :correct_micropost, only: :show
 
   def show
     @micropost = Micropost.find(params[:id])
@@ -10,7 +10,7 @@ class MicropostsController < ApplicationController
   end
 
   def create
-    @micropost = current_user.microposts.build(params[:micropost])
+    @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Your post has been submitted"
       redirect_to :root
@@ -34,12 +34,18 @@ class MicropostsController < ApplicationController
 
 private
 
-  def correct_user
-    @micropost = current_user.microposts.find_by_id(params[:id])
-    redirect_to :root unless @micropost
+  def micropost_params
+    params.require(:micropost).permit(:content)
   end
 
-  def correct_post
+protected
+
+  def micropost_user
+    @micropost = current_user.microposts.find_by_id(params[:id])
+    redirect_to :root if @micropost.nil?
+  end
+
+  def correct_micropost
     begin
       @micropost = Micropost.find(params[:id])
     rescue ActiveRecord::RecordNotFound

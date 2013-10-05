@@ -1,27 +1,33 @@
 class User < ActiveRecord::Base
-  attr_accessible :realname, :email, :name, :password, :password_confirmation,
-                  :website, :location, :bio
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
-  VALID_REALNAME  = /\A([a-z]+\s*[a-z]+)\Z/i
-  VALID_USERNAME  = /\A[a-z\d_]+\Z/i
-  VALID_WEBSITE   = /^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/i
+  BLOG_EAGER_LOADING = [:tags, :user]
+  VALID_REALNAME  = /\A([a-z]+\s*[a-z]+)\z/i
+  VALID_USERNAME  = /\A[a-z\d_]+\z/i
+  VALID_WEBSITE   = /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/i
 
   has_secure_password
+
   has_many :captchas, dependent: :destroy
-  has_many :microposts, dependent: :destroy, include: FEED_EAGER_LOADING
-  has_many :replies, foreign_key: "to_id", class_name: "Micropost",
-                        dependent: :destroy, include: FEED_EAGER_LOADING
+
+  has_many :microposts, dependent: :destroy
+  has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
+
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
   has_many :likes, through: :fans
+
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
                                     class_name: "Relationship",
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships
-  has_many :blogs, dependent: :destroy, include: [:tags, :user]
-  has_many :tags, through: :blogs, uniq: true
+
+  has_many :blogs, dependent: :destroy
+  has_many :tags, -> { order('name').uniq }, through: :blogs
+
   has_many :comments, dependent: :destroy
   has_many :messages, dependent: :destroy
 
@@ -86,13 +92,17 @@ class User < ActiveRecord::Base
     fans.find_by_like_id(micropost.id).destroy
   end
 
-  def to_param
-    name
+  def User.new_remember_token
+    SecureRandom.uuid
+  end
+
+  def User.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
   end
 
 protected
 
   def create_remember_token
-    self.remember_token = SecureRandom.uuid
+    self.remember_token = User.encrypt(User.new_remember_token)
   end
 end

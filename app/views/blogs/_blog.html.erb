@@ -2,9 +2,11 @@
 
   <h2 class="title">
     <%= link_to blog.title, entry_path(blog) %>
+
     <% if current_user?(blog.user) %>
       <%= render partial: 'blogs/actions', object: blog, as: :blog %>
     <% end %>
+
     <span class="blog-timestamp">
       <%= blog.timestamp %>
     </span>
@@ -35,9 +37,12 @@
 
   <div id="blog_comments">
     <% if identified?(blog) %>
+
       <hr id="comments">
+
       <% unless @comments.empty? %>
         <p class="lead"> Comments </p>
+
         <ul class="comments">
           <%= render @comments %>
           <%= will_paginate @comments %>
@@ -45,6 +50,7 @@
       <% end %>
 
       <p class="lead"> <%= note_for_comment %> </p>
+
       <%= render 'comments/form' if signed_in? %>
     <% end %>
   </div>

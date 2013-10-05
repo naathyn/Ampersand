@@ -10,11 +10,14 @@
 
 /bin/*
 *.sh
+.secret
 
 Guardfile
 .rspec
 .rvmrc
 
+database.yml
+doc/
 **.swp
 *~
 *.save

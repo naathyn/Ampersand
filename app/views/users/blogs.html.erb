@@ -10,7 +10,9 @@
 
 <div class="row-fluid">
   <aside class="span8">
+
     <legend class="legend">Community Blogs
+
       <span class="page-fade pull-right" style="margin-top: -3px;">
         <% if signed_in? %>
           <%= link_to "Go To Your Blog", blog_user_path(current_user),
@@ -20,6 +22,7 @@
                 class: "btn btn-primary" %>
         <% end %>
       </span>
+
     </legend>
 
     <% unless @blogs.empty? %>
@@ -28,20 +31,20 @@
           <li id ="<%= blog.id %>" class="blogs">
 
             <% if blog.has_photo? %>
-              <%= link_to(image_tag(blog.photo_path, class: "gravatar blog",
-                    title: blog.user.realname), blog.photo_path, target: "_blank") %>
+              <%= link_to(image_tag(blog.photo, class: "gravatar blog",
+                    title: blog.user.realname), blog.photo, target: "_blank") %>
             <% else %>
-              <%= image_tag("ampersand.jpg", class: "gravatar blog",
+              <%= image_tag(Blog::DEFAULT_THUMB, class: "gravatar blog",
                     title: blog.user.realname) %>
             <% end %>
 
             <span class="lead"> <%= link_to blog.title, entry_path(blog) %> </span>
 
-            <p class="page-fade bio">
-              by <%= link_to blog.user.realname, blog_user_path(blog.user) %>
+            <p class="page-fade bio pull-right">
+              by <b><%= link_to blog.user.realname, blog_user_path(blog.user) %></b>
                 with
-              <%= link_to pluralize(blog.comment_count, 'comment'),
-                "#{entry_path(blog)}#comments" %>
+              <u><%= link_to pluralize(blog.comment_count, 'comment'),
+                "#{entry_path(blog)}#comments" %></u>
             </p>
 
             <p class="format">
@@ -50,15 +53,18 @@
             </p>
 
             <% if blog.tags.any? %>
+
               <p class="page-fade bio">
                 <% blog.tags.each do |tag| %>
                   <i class="icon-tag"></i> <%= link_to tag.name, tag %>
                 <% end %>
               </p>
+
             <% end %>
           </li>
         <% end %>
       </ol>
+
       <%= will_paginate @blogs %>
     <% end %>
   </aside>

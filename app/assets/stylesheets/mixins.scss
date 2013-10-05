@@ -5,7 +5,7 @@
 }
 
 @mixin transitions {
-  @include transition(all 0.3s ease-in-out);
+  @include transition(all 0.4s ease-in-out);
 }
 
 @mixin forms {
@@ -35,6 +35,14 @@
 
 @mixin inline-container {
   @include border-radius(4px);
+}
+
+@mixin imageRendering {
+  image-rendering: -moz-crisp-edges;
+  image-rendering:   -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 @mixin gravatars {

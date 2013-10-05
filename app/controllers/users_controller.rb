@@ -5,22 +5,23 @@ class UsersController < ApplicationController
   before_filter :admin_user,      only:   :destroy
   before_filter :wipe_the_chat,   only:   :chatroom
 
+  before_action :set_user, only: [:show, :edit, :destroy, :following, :followers, :blog]
+
   def index
     @title = "Members"
-    @search_users = User.find(:all, order: :realname)
+    @search_users = User.page(params[:page]).order(:realname)
     if params[:search]
       @user = User.find(params[:search])
       redirect_to @user
     else
-      @users = User.page(params[:page]).order 'updated_at DESC'
+      @users = User.page(params[:page]).order('updated_at DESC')
     end
   end
 
  def show
-    @user   = User.find_by_name(params[:id])
     @title  = @user.username
-    @microposts = @user.microposts.page(params[:page])
-    @replies    = current_user.replies.page(params[:page])
+    @microposts = @user.microposts.paginate(page: params[:page], include: User::FEED_EAGER_LOADING)
+    @replies    = current_user.replies.paginate(page: params[:page], include: User::FEED_EAGER_LOADING)
     @following  = @user.followed_users.page(params[:page])
     @followers  = @user.followers.page(params[:page])
   end
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
       sign_in @user
       flash[:success] =
@@ -48,11 +49,10 @@ class UsersController < ApplicationController
 
   def edit
     @title = "Account"
-    @user = User.find_by_name(params[:id])
   end
 
   def update
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       sign_in @user
       redirect_to @user, notice: 'Profile updated successfully'
     else
@@ -62,12 +62,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find_by_name(params[:id]).destroy
+    @user.destroy
     redirect_to :users, notice: 'User removed'
   end
 
   def following
-    @user = User.find_by_name(params[:id])
     @title = @user.username
     @active = "Following"
     @users = @user.followed_users.page(params[:page])
@@ -75,7 +74,6 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find_by_name(params[:id])
     @title = @user.username
     @active = "Followers"
     @users = @user.followers.page(params[:page])
@@ -84,7 +82,6 @@ class UsersController < ApplicationController
 
   def captchas
     @title = "Captcha's"
-    @user = User.find_by_name(params[:id])
     @captchas = @user.captchas.page(params[:page]).order('created_at DESC')
     @captcha = current_user.captchas.build
     render 'captchas/index'
@@ -92,24 +89,22 @@ class UsersController < ApplicationController
 
   def blogs
     @title = "Blogs"
-    @blogs = Blog.paginate(page: params[:page], per_page: 10,
-              include: [:tags, :user]).order 'updated_at DESC'
-    @tags = Tag.page(params[:page])
+    @blogs = Blog.paginate(page: params[:page], include: User::BLOG_EAGER_LOADING).order('updated_at DESC')
+    @tags = Tag.paginate(page: params[:page])
   end
 
   def blog
-    @user = User.find_by_name(params[:id])
     @title = "#{@user.realname}'s Blog"
-    @blogs = @user.blogs.page(params[:page]).order 'created_at DESC'
+    @blogs = @user.blogs.paginate(page: params[:page], include: User::BLOG_EAGER_LOADING).order('created_at DESC')
     @tags = @user.tags.page(params[:page])
     @blog = current_user.blogs.build if signed_in?
   end
 
   def chatroom
     @title = "Chatroom"
-    @messages = Message.paginate(page: params[:page],
-      per_page: 15, include: :user)
-    @users = Message.find(:all, include: :user).map { |message| message.user }.uniq
+    @messages = Message.paginate(page: params[:page], include: :user)
+    @users = Message.paginate(page: params[:page], include: :user).
+              map { |message| message.user }.uniq
     @message = current_user.messages.build
     flash.now[:notice] =
       "Welcome to the chat! All messages are cleared after 24 hours. Happy chatting!"
@@ -122,13 +117,26 @@ class UsersController < ApplicationController
 
 private
 
+  def set_user
+    @user = User.friendly.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :realname, :email, :name, :password,
+      :password_confirmation, :website, :location, :bio
+    )
+  end
+
+protected
+
   def correct_user
-    @user = User.find_by_name(params[:id])
+    set_user
     redirect_to :root unless current_user?(@user)
   end
 
   def captcha_user
-    @user = User.find_by_name(params[:id])
+    set_user
     redirect_to captchas_user_url(current_user),
       notice: "You can find #{@user.username}'s Captcha's in the feeds" unless current_user?(@user)
   end

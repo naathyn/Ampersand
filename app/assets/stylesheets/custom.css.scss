@@ -36,6 +36,10 @@ body {
   padding-top: 60px;
 }
 
+img {
+  @include imageRendering;
+}
+
 a, strong, small, .btn-link, .caret {
   @include transitions;
   &:hover {
@@ -170,13 +174,10 @@ aside {
 // dynamic features
 
 .page-fade {
-  opacity: 0;
-  @include fades;
 }
 
 .page-fade.faade,
 .no-js .page-fade {
-  opacity: 1;
 }
 
 .blogging {
@@ -448,7 +449,7 @@ aside {
 .blogs li {
   overflow: auto;
   padding: 10px 14px;
-  padding-left: none;
+  padding-left: 0px;
   border-top: 1px solid $userBorder;
   opacity: .9;
   &:first-child {

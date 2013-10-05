@@ -1,8 +1,7 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content
+  # attr_accessible :content
 
   USERNAME_RE = /\A@([^\s]*)/i
-  #EMOTE_RE = /[*{1}]+(\w+)\*/i
 
   belongs_to :user
   belongs_to :to, class_name: "User"
@@ -15,7 +14,7 @@ class Micropost < ActiveRecord::Base
 
   before_create :link_username
 
-  default_scope order: 'created_at DESC'
+  default_scope -> { order('created_at DESC') }
 
   def liked_by?(fan)
     likes.find_by_fan_id(fan.id)
