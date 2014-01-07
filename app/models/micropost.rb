@@ -1,5 +1,4 @@
 class Micropost < ActiveRecord::Base
-  # attr_accessible :content
 
   USERNAME_RE = /\A@([^\s]*)/i
 

@@ -1,10 +1,10 @@
 source 'https://rubygems.org/'
-ruby '2.0.0'
+ruby '2.1.0'
 
-gem 'rails', '4.0.0'
+gem 'rails'
 gem 'thin'
-gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'bootstrap-sass'
+gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bootstrap-wysihtml5-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
@@ -13,10 +13,11 @@ gem 'rails_autolink'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'friendly_id', '5.0.0.rc3'
+gem 'friendly_id', '5.0.0'
 
 group :development do
   gem 'mysql2'
+  gem 'spring'
   gem 'faker'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
@@ -25,7 +26,7 @@ group :development do
   gem 'childprocess', '0.3.6'
 end
 
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '>= 3.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -36,9 +37,7 @@ gem 'uglifier', '>= 1.3.0'
 #  gem 'libnotify', '0.8.0'
 #end
 
-group :doc do
-  gem 'sdoc', require: false
-end
+gem 'sdoc', group: :doc, require: false
 
 group :production do
   gem 'pg'

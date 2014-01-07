@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
 
   validates_presence_of :user_id, :blog_id, :content
 
-  default_scope -> { order('created_at DESC') }
+  default_scope -> { order('created_at ASC') }
 
   per_page = 10
 end
