@@ -49,9 +49,10 @@
         </ul>
       <% end %>
 
-      <p class="lead"> <%= note_for_comment %> </p>
-
-      <%= render 'comments/form' if signed_in? %>
+      <% if signed_in? %>
+        <p class="lead"> <%= note_for_comment %> </p>
+        <%= render 'comments/form' %>
+      <% end %>
     <% end %>
   </div>
 </div>
