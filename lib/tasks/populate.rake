@@ -15,6 +15,8 @@ namespace :db do
 end
 
 def make_users
+  puts "\n\nCREATING 30 USERS..."
+
   bill = User.create!(
     realname: "Bill Clinton",
     email: "starmailserver@gmail.com",
@@ -42,9 +44,13 @@ def make_users
       bio: bio
     )
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_relationships
+  puts "CREATING 300 FOLLOWS..."
+
   300.times do
     followed = User.offset(rand(User.count)).first
     follower = User.offset(rand(User.count)).first
@@ -52,9 +58,13 @@ def make_relationships
     followed.follow!(follower) unless followed.following?(follower)
     follower.follow!(followed) unless followed.following?(follower)
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_microposts
+  puts "CREATING 200 POSTS..."
+
   200.times do
     user = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
@@ -66,9 +76,13 @@ def make_microposts
     rescue ActiveRecord::RecordNotUnique
     end
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_replies
+  puts "CREATING 200 REPLIES..."
+
   200.times do
     user = User.offset(rand(User.count)).first
     follower = User.offset(rand(User.count)).first
@@ -84,9 +98,13 @@ def make_replies
     rescue ActiveRecord::RecordNotUnique
     end
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_mailtos
+  puts "CREATING 5 MAILTOS..."
+
   5.times do
     user = User.offset(rand(User.count)).first
     content = "#{Faker::Internet.email} #{Faker::Lorem.sentence}"
@@ -98,9 +116,13 @@ def make_mailtos
     rescue ActiveRecord::RecordNotUnique
     end
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_links
+  puts "CREATING 10 HYPERLINKS..."
+
   10.times do
     user = User.offset(rand(User.count)).first
     content = "https://rubyrails.herokuapp.com #{Faker::Lorem.sentence}"
@@ -112,18 +134,26 @@ def make_links
     rescue ActiveRecord::RecordNotUnique
     end
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_likes
+  puts "CREATING 300 LIKES..."
+
   300.times do
     user = User.offset(rand(User.count)).first
     share = Micropost.offset(rand(Micropost.count)).first
 
     user.like!(share) unless user == share.user || share.liked_by?(user)
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_captchas
+  puts "CREATING 150 CAPTCHAS.."
+
   150.times do
     user = User.offset(rand(User.count)).first
     content = Faker::Lorem.sentence
@@ -132,10 +162,14 @@ def make_captchas
       content: content
     )
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_blogs
-  user = User.find(1)
+  puts "CREATING 30 BLOG ENTRIES..."
+
+  user = User.first!
   30.times do
     title = Faker::Lorem.word
     tag_names = Faker::Lorem.sentence.split.uniq.join(', ')
@@ -150,9 +184,13 @@ def make_blogs
     rescue ActiveRecord::RecordNotUnique
     end
   end
+
+  puts "COMPLETE!\n\n"
 end
 
 def make_blog_comments
+  puts "CREATING 90 BLOG COMMENTS..."
+
   90.times do
     user = User.offset(rand(User.count)).first
     blog = Blog.offset(rand(Blog.count)).first
@@ -163,4 +201,6 @@ def make_blog_comments
       content: content
     ) unless user == blog.user
   end
+
+  puts "ALL DONE!\n\n"
 end

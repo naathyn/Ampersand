@@ -1,28 +1,28 @@
 source 'https://rubygems.org/'
 ruby '2.1.0'
 
-gem 'rails', '4.0.2'
-gem 'bcrypt-ruby', '3.1.2'
-
+gem 'rails', '4.0.4'
+gem 'bcrypt', '~> 3.1.7'
 gem 'thin'
+
 gem 'jquery-rails'
 gem 'rails_autolink'
+gem 'friendly_id'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'friendly_id'
-gem 'jbuilder', '1.2'
 
-gem 'uglifier', '2.1.1'
-gem 'sass-rails', '4.0.1'
-gem 'coffee-rails', '4.0.1'
+gem 'jbuilder', '~> 2.0.4'
+gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '~> 4.0.2'
+gem 'coffee-rails', '~> 4.0.0'
+
 gem 'bootstrap-sass', '2.3.2.0'
-
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bootstrap-wysihtml5-rails', '0.3.1.23'
 
 group :development do
- gem 'mysql2', '0.3.14'
+ gem 'mysql2', '0.3.15'
  gem 'spring'
  gem 'faker'
  # gem 'rspec-rails', '2.13.1'
