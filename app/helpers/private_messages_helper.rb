@@ -1,9 +1,13 @@
 module PrivateMessagesHelper
-  module ActiveRecord
-    class Relation
-      def clean?
-        size == 0
-      end
+  class ActiveRecord::Relation
+    def clean?
+      size == 0
+    end
+  end
+
+  class ActiveRecord::AssociationRelation
+    def clean?
+      size == 0
     end
   end
 end
