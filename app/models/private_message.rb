@@ -1,8 +1,8 @@
 class PrivateMessage < ActiveRecord::Base
   include PrivateMessagesHelper
 
-  belongs_to :sender, foreign_key: "sender_id", class_name: "User"
-  belongs_to :recipient, foreign_key: "recipient_id", class_name: "User"
+  belongs_to :sender, class_name: "User"
+  belongs_to :recipient, class_name: "User"
 
   attr_accessor :to
 
@@ -12,11 +12,11 @@ class PrivateMessage < ActiveRecord::Base
   scope :unread, -> { where("read_at IS NULL") }
 
   def timestamp
-    DateTime.parse(created_at.to_s).strftime("%l:%M %p, %B %e")
+    DateTime.parse(created_at.to_s).strftime("%B %e at %l:%M %p")
   end
 
   def read_on
-    DateTime.parse(read_at.to_s).strftime("%l:%M %p, %B %e")
+    DateTime.parse(read_at.to_s).strftime("%B %e at %l:%M %p")
   end
 
   def message_read?
@@ -32,7 +32,7 @@ class PrivateMessage < ActiveRecord::Base
 private
 
   def self.read_message!(id, reader)
-    message = where(["private_messages.id = ? AND (sender_id = (?) OR recipient_id = (?))",
+    message = where(["private_messages.id = (?) AND (sender_id = (?) OR recipient_id = (?))",
       id, reader, reader]).first
     if message.read_at.nil? && reader == message.recipient
       message.read_at = Time.now

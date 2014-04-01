@@ -1,4 +1,9 @@
-<p class="lead center"> <%= link_to "Back To Inbox", user_private_messages_path(current_user) %> </p>
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Private Messages", user_private_messages_path(current_user) %> <span class="divider">/</span> </li>
+  <li class="active"> Message from <%= @message.sender.realname %> </li>
+</ul>
 
 <div class="page-fade photo tapetwo tapethree microposts-photo">
   <div class="microposts-profile">

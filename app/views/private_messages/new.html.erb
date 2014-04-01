@@ -1,11 +1,24 @@
-<%= form_for @message, url: user_private_messages_path(@user) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
+<div class="row-fluid">
+  <ul class="breadcrumb">
+    <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+    <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
+    <li> <%= link_to "Private Messages", user_private_messages_path(current_user) %>
+      <span class="divider">/</span>
+    </li>
+    <li class="active"> <%= @reply_to.nil? ? "New Message" :
+      "Message to #{@reply_to.sender.realname}" %>
+    </li>
+  </ul>
 
-		<%= f.label :to %>
-		<%= f.text_field :to, "data-autocomplete-url" => url_for(controller: :users, action: :autocomplete) %>
+  <%= form_for @message, url: user_private_messages_path(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :content, "Message" %>
-    <%= f.text_area :content, class: "wysihtml5", rows: 15 %>
+		  <%= f.label :to %>
+		  <%= f.text_field :to, "data-autocomplete-url" => url_for(controller: :users, action: :autocomplete) %>
 
-  <%= f.submit "Send", class: "btn btn-large btn-primary" %>
-<% end %>
+      <%= f.label :content, "Message" %>
+      <%= f.text_area :content, class: "wysihtml5", rows: 15 %>
+
+    <%= f.submit "Send", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>

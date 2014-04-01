@@ -69,7 +69,7 @@ class PrivateMessagesController < ApplicationController
           "You're selected messages have been archived"
       end
       flash[:danger] = "There must be something marked before you can take this action!" if params[:delete].nil?
-      redirect_to user_private_messages_path(current_user)
+      redirect_to :back
     end
   end
   

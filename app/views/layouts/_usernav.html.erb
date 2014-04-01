@@ -1,10 +1,27 @@
 <li id="fat-menu" class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <%= gravatar_for current_user, size: 22 %>
-    <%= current_user.realname %> <b class="caret"></b>
+    <%= current_user.realname %>
+    <% if current_user.unread_messages.any? %>
+      <span class="badge badge-important" style="margin-left:5px;">
+        <%= current_user.unread_message_count %>
+      </span>
+    <% else %>
+      <b class="caret"></b>
+    <% end %>
   </a>
   <ul class="dropdown-menu">
     <li class="nav-header"> <%= current_user.username %> </li>
+    <li>
+      <%= link_to user_private_messages_path(current_user) do %>
+        Inbox
+        <% if current_user.unread_messages.any? %>
+          <span class="badge badge-inverse" style="margin-left:10px;">
+            <%= current_user.unread_message_count %>
+          </span>
+       <% end %>
+      <% end %>
+    </li>
     <li><%= link_to "Profile", current_user %></li>
     <li><%= link_to "Blog", blog_user_path(current_user) %></li>
     <li><%= link_to "Captchas", captchas_user_path(current_user) %></li>

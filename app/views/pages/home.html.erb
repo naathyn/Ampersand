@@ -4,20 +4,13 @@
 
 <div class="row-fluid">
 
+  <%= yield flash.now[:info] = @notice %>
+
   <% if signed_in? %>
 
-    <% unless @users.blank? %>
-
-      <%= yield flash.now[:success] =
-        "Who was in the #{link_to "Chatroom", :chatroom_users} today:
-        <b>#{@users}</b>. They may still be chatting, come say hello!" %>
-
-    <% else %>
-
-      <%= yield flash.now[:info] = "Last updated on Tuesday, April 1st at 12:00 a.m.
-        First wave of private messaging. Plans to clean up and simplify soon." %>
-
-    <% end %>
+    <%= yield flash.now[:success] =
+      "Who was in the #{link_to "Chatroom", :chatroom_users} today:
+      <b>#{@users}</b>. They may still be chatting, come say hello!" unless @users.blank? %>
 
     <aside class="span4 side-module side-menu mini-profile">
       <a href="<%= user_path(current_user) %>" class="share-anchor">
@@ -37,23 +30,22 @@
     </aside>
 
     <div id="feed" class="span8">
-
       <div class="well-header">
-        <div class="page-fade">
+        <a href="<%= user_private_messages_path(current_user) %>" title="Your Inbox">
+          <i id="comment-bar" class="icon-envelope"></i>
+        </a>
 
-          <a href="<%= user_path(current_user) %>" title="Profile">
-            <i class="icon-user"></i>
-          </a>
+        <a href="<%= user_path(current_user) %>" title="Profile">
+          <i class="icon-user"></i>
+        </a>
 
-          <a href="<%= captchas_user_path(current_user) %>" title="Captchas">
-            <i class="icon-camera"></i>
-          </a>
+        <a href="<%= captchas_user_path(current_user) %>" title="Captchas">
+          <i class="icon-camera"></i>
+        </a>
 
-          <a href="<%= blog_user_path(current_user) %>" title="Your Blog">
-            <i id="comment-bar" class="icon-book"></i>
-          </a>
-
-        </div>
+        <a href="<%= blog_user_path(current_user) %>" title="Your Blog">
+          <i id="comment-bar" class="icon-book"></i>
+        </a>
       </div>
 
       <%= render 'feeds/main/share' %>
@@ -70,10 +62,7 @@
 
   <% else %>
 
-      <%= yield flash.now[:info] = "Last updated on Tuesday, April 1st at 12:00 a.m.
-        First wave of private messaging. Plans to clean up and simplify soon." %>
-
-    <div class="page-fade center hero-unit">
+    <div class="center hero-unit">
       <h1> Ampersand </h1>
       <h3> Network, Profiles, Blogging </h3>
       <%= link_to "Sign up now!", :signup, class: "btn btn-large btn-primary" %>

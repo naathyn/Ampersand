@@ -5,15 +5,6 @@
     <li class=""><%= link_to "Members", :users %></li>
     <li class=""><%= link_to "Blogs", :blogs_users %></li>
     <li class=""><%= link_to "You", current_user %></li>
-    <li class="">
-      <a href="<%= user_private_messages_path(current_user) %>"> Inbox
-        <% if current_user.received_messages.unread.any? %>
-          <span class="badge badge-important" style="margin-left:5px;">
-            <%= current_user.unread_message_count %>
-          </span>
-        <% end %>
-      </a>
-    </li>
   </ul>
   <ul class="nav pull-right">
     <%= render 'layouts/usernav' %>

@@ -1,14 +1,26 @@
+<% content_for :head do %>
+  <% provide(:title, @mailbox) %>
+<% end %>
+
+<ul class="breadcrumb">
+  <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
+  <li> <%= link_to "Private Messages", user_private_messages_path(current_user) %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active"> <%= @mailbox %> </li>
+</ul>
+
 <%= form_tag delete_selected_user_private_messages_path(current_user, method: :post) do %>
 
   <legend class="center"> <%= @mailbox %> </legend>
 
-  <div class="row-fluid" style="margin-bottom:5px;">
+  <div class="row-fluid" style="margin-bottom:10px;">
     <%= link_to "Compose", new_user_private_message_path(current_user), class: "btn btn-success" %>
     <%= link_to "Inbox", user_private_messages_path(current_user), class: "btn btn-primary" %>
     <%= link_to "Sent", user_private_messages_path(current_user, mailbox: :sent), class: "btn btn-warning" %>
     <%= link_to "Trash", user_private_messages_path(current_user, mailbox: :trash), class: "btn btn-danger" %>
   </div>
-
   <table class="table table-bordered table-striped table-hover">
 	  <tr>
 		  <th>Mark</th>
@@ -40,5 +52,5 @@
 	    </td>
 	  </tr>
   </table>
-
+  <center><%= will_paginate @messages %></center>
 <% end %>

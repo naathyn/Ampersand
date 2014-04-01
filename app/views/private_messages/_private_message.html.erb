@@ -15,6 +15,7 @@
                 user_private_message_path(@user, private_message)
         %>
       </b>
+      <span class="label label-success" style="margin-left:2px;"> New! </span>
 		<% end %>
 	</td>
 	<td>
@@ -37,7 +38,7 @@
       <%= current_user?(private_message.recipient) ? "You have not " :
             private_message.recipient.realname + " has not "
       %>
-      <%= link_to("<b>read this</b> yet".html_safe, user_private_message_path(current_user, private_message)) %>
+      <%= link_to("<b>read this</b>".html_safe, user_private_message_path(current_user, private_message)) %>
     yet.
     <% end %>
   </td>
