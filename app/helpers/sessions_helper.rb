@@ -1,7 +1,5 @@
 module SessionsHelper
 
-protected
-
   def sign_in(user)
     user.increment!(:sign_in_count)
     cookies.permanent[:remember_token] = user.remember_token
@@ -9,7 +7,7 @@ protected
   end
 
   def current_user
-    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= User.find_by(remember_token: cookies[:remember_token])
   end
 
   def current_user=(user)
@@ -25,7 +23,7 @@ protected
   end
 
   def store_location
-    session[:return_to] = request.url
+    session[:return_to] = request.url if request.get?
   end
 
   def signed_in_user
@@ -41,7 +39,8 @@ protected
   end
 
   def sign_out
-    self.current_user = nil
+    current_user.update_attribute(:remember_token, User.secure_new_token)
     cookies.delete(:remember_token)
+    self.current_user = nil
   end
 end

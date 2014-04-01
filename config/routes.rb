@@ -6,6 +6,11 @@ Socialrails::Application.routes.draw do
     member do
       get :following, :followers, :captchas, :blog
     end
+    resources :private_messages, except: :edit do
+      collection do
+        post :delete_selected
+      end
+    end   
   end
   resources :sessions,      only: [:new, :create, :destroy]
   resources :captchas,      only: [:create, :destroy]

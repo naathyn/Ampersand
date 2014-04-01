@@ -1,0 +1,11 @@
+<p class="lead center"> <%= link_to "Back To Inbox", user_private_messages_path(current_user) %> </p>
+
+<div class="page-fade photo tapetwo tapethree microposts-photo">
+  <div class="microposts-profile">
+    <div id="m_profile" class="profile-header microposts-header">
+      <div class="row-fluid">
+        <%= render "private_messages/conversations" %>
+      </div>
+    </div>
+  </div>
+</div>

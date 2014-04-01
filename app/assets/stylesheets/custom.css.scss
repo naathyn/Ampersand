@@ -1365,6 +1365,15 @@ hr#comments + .lead, .blog-wrapper ul.comments {
   }
 }
 
+// private_messages
+
+p.small.msg_read { 
+  font-size:12px
+  ;margin-left:58px;
+  margin-bottom:-20px;
+  color:#999;
+}
+
 // various different icons
 
 .well-footer [class^="icon-comment"] {
@@ -1550,3 +1559,4 @@ Inlined to avoid required HTTP connection: h5bp.com/r
     page-break-after: avoid;
   }
 }
+

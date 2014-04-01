@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :captchas, dependent: :destroy
-
   has_many :microposts, dependent: :destroy
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
@@ -24,6 +23,21 @@ class User < ActiveRecord::Base
                                     class_name: "Relationship",
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships
+
+
+  has_many :sent_messages, -> { includes(:recipient).
+                                order("private_messages.created_at DESC").
+                                where(["private_messages.sender_deleted = (?)", false])
+                              },
+                              foreign_key: 'sender_id',
+                              class_name: "PrivateMessage"
+
+  has_many :received_messages, -> { includes(:sender).
+                                    order("private_messages.created_at DESC").
+                                    where(["private_messages.recipient_deleted = (?)", false])
+                                  },
+                                  foreign_key: 'recipient_id',
+                                  class_name: "PrivateMessage"
 
   has_many :blogs, dependent: :destroy
   has_many :tags, -> { order('name').uniq }, through: :blogs
@@ -60,6 +74,19 @@ class User < ActiveRecord::Base
     Micropost.from_users_followed_by(self)
   end
 
+  def trash
+    PrivateMessage.sent_and_received_messages_archived_by(self)
+  end
+
+  def unread_messages
+    received_messages.where("recipient_deleted = (?) AND read_at IS NULL", false)
+  end
+
+  def unread_message_count
+    unread_messages.size
+  end
+
+
   def random_captcha
     captchas.shuffle.first
   end
@@ -92,17 +119,23 @@ class User < ActiveRecord::Base
     fans.find_by_like_id(micropost.id).destroy
   end
 
-  def User.new_remember_token
-    SecureRandom.uuid
+private
+
+  def self.new_token
+    SecureRandom.urlsafe_base64
   end
 
-  def User.encrypt(token)
+  def self.secure(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def self.secure_new_token
+    secure(new_token)
   end
 
 protected
 
   def create_remember_token
-    self.remember_token = User.encrypt(User.new_remember_token)
+    self.remember_token = User.secure_new_token
   end
 end

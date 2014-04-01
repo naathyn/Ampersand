@@ -1,0 +1,44 @@
+<tr>
+  <td><%= check_box_tag "delete[]", private_message.id %></td>
+  <td>
+    <% if private_message.message_read? %>
+      <i>
+        <%= link_to truncate(private_message.content.gsub(Blog::HTML_TAGS, ' '), 
+              length: 50, escape: false),
+                user_private_message_path(@user, private_message)
+        %>
+      </i>
+	  <% else %>
+      <b>
+        <%= link_to truncate(private_message.content.gsub(Blog::HTML_TAGS, ' '),
+              length: 50, escape: false),
+                user_private_message_path(@user, private_message)
+        %>
+      </b>
+		<% end %>
+	</td>
+	<td>
+    <%= current_user?(private_message.sender) ? link_to("You", current_user) :
+        link_to((private_message.sender.realname), private_message.sender) 
+    %>
+  </td>
+	<td>
+    <%= current_user?(private_message.recipient) ? link_to("You", current_user) :
+          link_to((private_message.recipient.realname), private_message.recipient)
+    %>
+  </td>
+	<td>
+    <%= private_message.timestamp %>
+  </td>
+  <td>
+    <% if private_message.message_read? %>
+      <%= private_message.read_on %>
+    <% else %>
+      <%= current_user?(private_message.recipient) ? "You have not " :
+            private_message.recipient.realname + " has not "
+      %>
+      <%= link_to("<b>read this</b> yet".html_safe, user_private_message_path(current_user, private_message)) %>
+    yet.
+    <% end %>
+  </td>
+</tr>

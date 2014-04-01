@@ -86,14 +86,14 @@
 }
 
 @mixin grads {
-  @include gradient-vertical($startColor: $white, $endColor: $wellGray);
+  @include gradient-vertical($startColor: white, $endColor: $wellGray);
 }
 
 @mixin profile-header {
   @include gravatars;
-  @include gradient-vertical($startColor: $white, $endColor: $outterBody);
+  @include gradient-vertical($startColor: white, $endColor: $outterBody);
 }
 
 @mixin footer {
-  @include gradient-vertical($startColor: $white, $endColor: $mainGray);
+  @include gradient-vertical($startColor: white, $endColor: $mainGray);
 }

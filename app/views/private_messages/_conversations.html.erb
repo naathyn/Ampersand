@@ -1,0 +1,35 @@
+        <span class="pull-right">
+          <% if current_user?(@message.recipient) %>
+            <%= link_to "Reply", new_user_private_message_path(current_user, reply_to: @message),
+              class: "btn" 
+            %>
+          <% end %> 
+        </span>
+        <p class="center small">
+          <%= @message.timestamp %>
+        </p>
+        <div class="profile-inner microposts-inner">
+          <%= link_to gravatar_for(@message.sender, size: 48), @message.sender %>
+          <h1 id="<%= @message.sender.realname %>" class="fullname">
+            <%= current_user?(@message.sender) ? link_to("You", current_user) :
+                link_to((@message.sender.realname), @message.sender) 
+            %>
+          </h1>
+          <h2 class="name">
+            <small>@</small><%= @message.sender.name %>
+          </h2>
+          <p class="content">
+            <%= auto_link @message.content %>
+          </p>
+          <p class="small msg_read">
+            <%= @message.message_read? ? "Read " + @message.read_on :
+              @message.recipient.realname + " has not read this yet."
+            %>
+          </p>
+        </div>
+
+        <p class="small pull-right">
+          Sent to
+          <strong><%= current_user?(@message.recipient) ? link_to("You", current_user) :
+            link_to((@message.recipient.realname), @message.recipient) %></strong>
+        </p>

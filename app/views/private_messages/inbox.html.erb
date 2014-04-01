@@ -1,0 +1,44 @@
+<%= form_tag delete_selected_user_private_messages_path(current_user, method: :post) do %>
+
+  <legend class="center"> <%= @mailbox %> </legend>
+
+  <div class="row-fluid" style="margin-bottom:5px;">
+    <%= link_to "Compose", new_user_private_message_path(current_user), class: "btn btn-success" %>
+    <%= link_to "Inbox", user_private_messages_path(current_user), class: "btn btn-primary" %>
+    <%= link_to "Sent", user_private_messages_path(current_user, mailbox: :sent), class: "btn btn-warning" %>
+    <%= link_to "Trash", user_private_messages_path(current_user, mailbox: :trash), class: "btn btn-danger" %>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+	  <tr>
+		  <th>Mark</th>
+		  <th>Message</th>
+		  <th>Sent By</th>
+		  <th>Sent To</th>
+		  <th>Delivered On</th>
+		  <th>Received On</th>
+	  </tr>
+	  <% if @messages.clean? || (@messages.clean? && @inbox.match("trash") && @messages.clean?)  %>
+      <tr class="info">
+        <td colspan="8">
+          <p class="lead center" style="margin-bottom:0;">
+            Your <%= @inbox %> is clean!
+          </p>
+        </td>
+      </tr>
+    <% end %>
+    <%= render @messages %>
+    <tr>
+	    <td colspan="8">
+        <% if !@messages.clean? %>
+          <% if @inbox.match("trash") %>
+				    <%= submit_tag "Restore", class: "btn btn-success" %>
+              <% else %>
+		        <%= submit_tag "Delete", class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+	    </td>
+	  </tr>
+  </table>
+
+<% end %>

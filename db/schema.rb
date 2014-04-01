@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004223723) do
+ActiveRecord::Schema.define(version: 20140327023041) do
 
   create_table "blogs", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "comment_count", default: 0
     t.string   "photo"
     t.string   "slug"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20131004223723) do
   create_table "captchas", force: true do |t|
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "captchas", ["user_id", "created_at"], name: "index_captchas_on_user_id_and_created_at", using: :btree
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20131004223723) do
     t.integer  "user_id"
     t.integer  "blog_id"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "comments", ["blog_id"], name: "index_comments_on_blog_id", using: :btree
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20131004223723) do
     t.integer  "user_id"
     t.integer  "to_id"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "messages", ["to_id", "created_at"], name: "index_messages_on_to_id_and_created_at", using: :btree
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20131004223723) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "to_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "like_count", default: 0
   end
 
@@ -96,19 +96,36 @@ ActiveRecord::Schema.define(version: 20131004223723) do
   create_table "opinions", force: true do |t|
     t.integer  "fan_id"
     t.integer  "like_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "opinions", ["fan_id", "like_id"], name: "index_opinions_on_fan_id_and_like_id", unique: true, using: :btree
   add_index "opinions", ["fan_id"], name: "index_opinions_on_fan_id", using: :btree
   add_index "opinions", ["like_id"], name: "index_opinions_on_like_id", using: :btree
 
+  create_table "private_messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.text     "content"
+    t.datetime "read_at"
+    t.boolean  "sender_deleted",    default: false
+    t.boolean  "recipient_deleted", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "private_messages", ["created_at"], name: "index_private_messages_on_created_at", using: :btree
+  add_index "private_messages", ["read_at"], name: "index_private_messages_on_read_at", using: :btree
+  add_index "private_messages", ["recipient_id"], name: "index_private_messages_on_recipient_id", using: :btree
+  add_index "private_messages", ["sender_id", "recipient_id"], name: "index_private_messages_on_sender_id_and_recipient_id", using: :btree
+  add_index "private_messages", ["sender_id"], name: "index_private_messages_on_sender_id", using: :btree
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
@@ -118,8 +135,8 @@ ActiveRecord::Schema.define(version: 20131004223723) do
   create_table "taggings", force: true do |t|
     t.integer  "blog_id"
     t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "taggings", ["blog_id", "tag_id"], name: "index_taggings_on_blog_id_and_tag_id", unique: true, using: :btree
@@ -128,8 +145,8 @@ ActiveRecord::Schema.define(version: 20131004223723) do
 
   create_table "tags", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "tagging_count", default: 0
     t.string   "slug"
   end
@@ -147,8 +164,8 @@ ActiveRecord::Schema.define(version: 20131004223723) do
     t.integer  "sign_in_count",   default: 0
     t.string   "password_digest"
     t.string   "remember_token"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "website"
     t.string   "slug"
   end

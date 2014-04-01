@@ -8,7 +8,7 @@ $(function () {
     $(elem).wysihtml5();
   });
 
-  var micropost = $('#micropost_content');
+  var micropost = $('#micropost_content, #private_message_to');
 
   function matchUser(string) {
     var Query = string.match(/\@\w+$/);
