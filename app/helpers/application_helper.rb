@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include PrivateMessagesHelper
 
   def full_title(page_title)
     base_title = "&mpersand"

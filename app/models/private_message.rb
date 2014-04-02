@@ -1,5 +1,4 @@
 class PrivateMessage < ActiveRecord::Base
-  include PrivateMessagesHelper
 
   belongs_to :sender, class_name: "User"
   belongs_to :recipient, class_name: "User"
@@ -23,23 +22,9 @@ class PrivateMessage < ActiveRecord::Base
     read_at.nil? ? false : true
   end
 
-  def mark_deleted!(user)
-    toggle!(:sender_deleted) if sender == user
-    toggle!(:recipient_deleted) if recipient == user
-    destroy! if sender_deleted && recipient_deleted
-  end
-
 private
 
-  def self.read_message!(id, reader)
-    message = where(["private_messages.id = (?) AND (sender_id = (?) OR recipient_id = (?))",
-      id, reader, reader]).first
-    if message.read_at.nil? && reader == message.recipient
-      message.read_at = Time.now
-      message.save!
-    end
-    message
-  end
+  self.per_page = 10
 
   def self.sent_and_received_messages_archived_by(user)
     sender_deleted = "sender_id = :sender_id AND sender_deleted = :t"

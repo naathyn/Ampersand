@@ -16,7 +16,6 @@
 		  <%= f.label :to %>
 		  <%= f.text_field :to, "data-autocomplete-url" => url_for(controller: :users, action: :autocomplete) %>
 
-      <%= f.label :content, "Message" %>
       <%= f.text_area :content, class: "wysihtml5", rows: 15 %>
 
     <%= f.submit "Send", class: "btn btn-large btn-primary" %>

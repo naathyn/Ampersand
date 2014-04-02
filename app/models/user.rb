@@ -25,16 +25,16 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships
 
 
-  has_many :sent_messages, -> { includes(:recipient).
+  has_many :sent_messages, -> { includes([:recipient, :sender]).
                                 order("private_messages.created_at DESC").
-                                where(["private_messages.sender_deleted = (?)", false])
+                                where("private_messages.sender_deleted = :f", f: false)
                               },
                               foreign_key: 'sender_id',
                               class_name: "PrivateMessage"
 
-  has_many :received_messages, -> { includes(:sender).
+  has_many :received_messages, -> { includes([:sender, :recipient]).
                                     order("private_messages.created_at DESC").
-                                    where(["private_messages.recipient_deleted = (?)", false])
+                                    where("private_messages.recipient_deleted = :f", f: false)
                                   },
                                   foreign_key: 'recipient_id',
                                   class_name: "PrivateMessage"
@@ -79,13 +79,40 @@ class User < ActiveRecord::Base
   end
 
   def unread_messages
-    received_messages.where("recipient_deleted = (?) AND read_at IS NULL", false)
+    received_messages.where("recipient_deleted = :f AND read_at IS NULL", f: false)
   end
 
   def unread_message_count
     unread_messages.size
   end
 
+  def has_no?(messages)
+    messages.size == 0
+  end
+
+  def receiving?(message)
+    message.recipient == self
+  end
+      
+  def message_includes
+    PrivateMessage.includes([:sender, :recipient])
+  end
+
+  def read!(message)
+    message = message_includes.find(message)
+    if receiving?(message) && message.read_at.nil?
+      message.read_at = Time.now
+      message.save!
+    end
+    message
+  end
+  
+  def delete!(message)
+    message = message_includes.find(message)
+    message.toggle!(:sender_deleted) if message.sender == self
+    message.toggle!(:recipient_deleted) if message.recipient == self
+    message.destroy! if message.sender_deleted && message.recipient_deleted
+  end
 
   def random_captcha
     captchas.shuffle.first
@@ -96,11 +123,11 @@ class User < ActiveRecord::Base
   end
 
   def following?(user)
-    relationships.find_by_followed_id(user.id)
+    relationships.find_by(followed_id: user.id)
   end
 
   def following?(user)
-    relationships.find_by_followed_id(user.id)
+    relationships.find_by(followed_id: user.id)
   end
 
   def follow!(user)
@@ -108,7 +135,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow!(user)
-    relationships.find_by_followed_id(user.id).destroy
+    relationships.find_by(followed_id: user.id).destroy
   end
 
   def like!(micropost)
@@ -116,7 +143,7 @@ class User < ActiveRecord::Base
   end
 
   def unlike!(micropost)
-    fans.find_by_like_id(micropost.id).destroy
+    fans.find_by(like_id: micropost.id).destroy
   end
 
 private

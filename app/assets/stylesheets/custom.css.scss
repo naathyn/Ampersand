@@ -1024,6 +1024,12 @@ ul .users-follow li:hover {
   background-color: $innerBody;
 }
 
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+  text-shadow: none;
+}
+
 // pages#about
 
 .about-page {
@@ -1308,6 +1314,11 @@ hr#comments + .lead, .blog-wrapper ul.comments {
     display: inline;
     margin-left: 10px;
   }
+}
+
+#new_private_message > .wysihtml5-toolbar {
+  text-align: left;
+  
 }
 
 .user_info {

@@ -21,7 +21,7 @@ class PrivateMessagesController < ApplicationController
   end
   
   def show
-    @message = PrivateMessage.read_message!(params[:id], current_user)
+    @message = current_user.read!(params[:id])
   end
   
   def new
@@ -43,7 +43,6 @@ class PrivateMessagesController < ApplicationController
     @message = PrivateMessage.new(private_message_params)
     @message.sender = current_user
     @message.recipient = User.find_by_name(params[:private_message][:to].gsub(/@/, ''))
-
     if @message.save
       flash[:success] = "Message was delivered to #{@message.recipient.realname}"
       redirect_to user_private_messages_path(current_user)
@@ -56,19 +55,14 @@ class PrivateMessagesController < ApplicationController
     if request.post?
       if params[:delete]
         params[:delete].each { |id|
-
-          @message = PrivateMessage.where(
-            ["private_messages.id = ? AND (sender_id = ? OR recipient_id = ?)",
-          id, current_user, current_user]).first
-
-          @message.mark_deleted!(current_user) unless @message.nil?
+          current_user.delete!(id) unless id.nil?
         }
-
         flash[:notice] = params[:mailbox] == "trash" ? 
           "Your selected messages have been restored" :
           "You're selected messages have been archived"
       end
-      flash[:danger] = "There must be something marked before you can take this action!" if params[:delete].nil?
+      flash[:danger] = "There must be something marked
+                        before you can take this action!" if params[:delete].nil?
       redirect_to :back
     end
   end

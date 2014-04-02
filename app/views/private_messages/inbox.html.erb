@@ -5,22 +5,27 @@
 <ul class="breadcrumb">
   <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
   <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
-  <li> <%= link_to "Private Messages", user_private_messages_path(current_user) %>
+  <% unless @inbox.match("inbox") %>
+  <li> <%= link_to "Inbox", user_private_messages_path(current_user) %>
     <span class="divider">/</span>
+  <% end %>
   </li>
   <li class="active"> <%= @mailbox %> </li>
 </ul>
 
+<%= link_to "Compose", new_user_private_message_path(current_user),
+      class: "btn btn-success pull-right" %>
+
+<div class="row-fluid">
+  <ul class="nav nav-pills navigation">
+    <li><%= link_to "Inbox", user_private_messages_path(current_user) %></li>
+    <li><%= link_to "Sent", user_private_messages_path(current_user, mailbox: :sent) %></li>
+    <li><%= link_to "Trash", user_private_messages_path(current_user, mailbox: :trash) %></li>
+  </ul>
+</div>
+
 <%= form_tag delete_selected_user_private_messages_path(current_user, method: :post) do %>
 
-  <legend class="center"> <%= @mailbox %> </legend>
-
-  <div class="row-fluid" style="margin-bottom:10px;">
-    <%= link_to "Compose", new_user_private_message_path(current_user), class: "btn btn-success" %>
-    <%= link_to "Inbox", user_private_messages_path(current_user), class: "btn btn-primary" %>
-    <%= link_to "Sent", user_private_messages_path(current_user, mailbox: :sent), class: "btn btn-warning" %>
-    <%= link_to "Trash", user_private_messages_path(current_user, mailbox: :trash), class: "btn btn-danger" %>
-  </div>
   <table class="table table-bordered table-striped table-hover">
 	  <tr>
 		  <th>Mark</th>
@@ -30,7 +35,8 @@
 		  <th>Delivered On</th>
 		  <th>Received On</th>
 	  </tr>
-	  <% if @messages.clean? || (@messages.clean? && @inbox.match("trash") && @messages.clean?)  %>
+	  <% if current_user.has_no?(@messages) ||
+      (current_user.has_no?(@messages) && @inbox.match("trash") && current_user.has_no?(@messages))  %>
       <tr class="info">
         <td colspan="8">
           <p class="lead center" style="margin-bottom:0;">
@@ -42,7 +48,7 @@
     <%= render @messages %>
     <tr>
 	    <td colspan="8">
-        <% if !@messages.clean? %>
+        <% unless current_user.has_no?(@messages) %>
           <% if @inbox.match("trash") %>
 				    <%= submit_tag "Restore", class: "btn btn-success" %>
               <% else %>

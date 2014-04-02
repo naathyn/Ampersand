@@ -15,19 +15,14 @@
                 user_private_message_path(@user, private_message)
         %>
       </b>
-      <span class="label label-success" style="margin-left:2px;"> New! </span>
+      <% if current_user.receiving?(private_message) %>
+        <span class="label label-success" style="margin-left:2px;"> New! </span>
+      <% end %>
+
 		<% end %>
 	</td>
-	<td>
-    <%= current_user?(private_message.sender) ? link_to("You", current_user) :
-        link_to((private_message.sender.realname), private_message.sender) 
-    %>
-  </td>
-	<td>
-    <%= current_user?(private_message.recipient) ? link_to("You", current_user) :
-          link_to((private_message.recipient.realname), private_message.recipient)
-    %>
-  </td>
+	<td> <%= link_to_message_sender(private_message, current_user) %> </td>
+	<td> <%= link_to_message_recipient(private_message, current_user) %> </td>
 	<td>
     <%= private_message.timestamp %>
   </td>
