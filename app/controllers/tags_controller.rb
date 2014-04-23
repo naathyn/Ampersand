@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.friendly.find(params[:id])
     @title = "Blogs tagged with \"#{@tag.name}\""
-    @blogs = @tag.blogs.paginate(page: params[:page],
-      include: User::BLOG_EAGER_LOADING).order('comment_count DESC')
+    @blogs = @tag.blogs.includes(User::BLOG_EAGER_LOADING).
+      page(params[:page]).order('comment_count DESC')
   end
 end

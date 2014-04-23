@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
   def show
     @user = @blog.user
     @title = "#{@blog.title} by #{@user.realname}"
-    @comments = @blog.comments.paginate(page: params[:page], include: :user)
+    @comments = @blog.comments.includes(:user).page(params[:page])
     @comment = current_user.comments.build if signed_in?
   end
 
