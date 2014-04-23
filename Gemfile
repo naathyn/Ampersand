@@ -1,7 +1,7 @@
 source 'https://rubygems.org/'
 ruby '2.1.0'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.0'
 gem 'bcrypt', '3.1.7'
 gem 'thin'
 
@@ -13,7 +13,7 @@ gem 'jquery-turbolinks'
 
 gem 'jbuilder', ' 2.0.4'
 gem 'uglifier', '2.5.0'
-gem 'sass-rails', ' 4.0.2'
+gem 'sass-rails', ' 4.0.3'
 gem 'coffee-rails', '4.0.1'
 
 gem 'bootstrap-sass', '2.3.2.0'

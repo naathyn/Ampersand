@@ -20,8 +20,8 @@ class UsersController < ApplicationController
 
  def show
     @title  = @user.username
-    @microposts = @user.microposts.paginate(page: params[:page], include: User::FEED_EAGER_LOADING)
-    @replies    = current_user.replies.paginate(page: params[:page], include: User::FEED_EAGER_LOADING)
+    @microposts = @user.microposts.includes(User::FEED_EAGER_LOADING).page(params[:page])
+    @replies    = current_user.replies.includes(User::FEED_EAGER_LOADING).page(params[:page])
     @following  = @user.followed_users.page(params[:page])
     @followers  = @user.followers.page(params[:page])
   end
@@ -89,22 +89,22 @@ class UsersController < ApplicationController
 
   def blogs
     @title = "Blogs"
-    @blogs = Blog.paginate(page: params[:page], include: User::BLOG_EAGER_LOADING).order('updated_at DESC')
-    @tags = Tag.paginate(page: params[:page])
+    @blogs = Blog.includes(User::BLOG_EAGER_LOADING).page(params[:page]).order('updated_at DESC')
+    @tags = Tag.page(params[:page])
   end
 
   def blog
     @title = "#{@user.realname}'s Blog"
-    @blogs = @user.blogs.paginate(page: params[:page], include: User::BLOG_EAGER_LOADING).order('created_at DESC')
+    @blogs = @user.blogs.includes(User::BLOG_EAGER_LOADING).page(params[:page]).order('created_at DESC')
     @tags = @user.tags.page(params[:page])
     @blog = current_user.blogs.build if signed_in?
   end
 
   def chatroom
     @title = "Chatroom"
-    @messages = Message.paginate(page: params[:page], include: :user)
-    @users = Message.paginate(page: params[:page], include: :user).
-              map { |message| message.user }.uniq
+    @messages = Message.includes(:user).page(params[:page])
+    @users = Message.page(params[:page]).map { |message|
+      message.user }.uniq
     @message = current_user.messages.build
     flash.now[:notice] =
       "Welcome to the chat! All messages are cleared after 24 hours. Happy chatting!"

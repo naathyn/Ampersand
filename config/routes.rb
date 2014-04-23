@@ -7,9 +7,7 @@ Socialrails::Application.routes.draw do
       get :following, :followers, :captchas, :blog
     end
     resources :private_messages, except: :edit do
-      collection do
-        post :delete_selected
-      end
+      post :delete_selected, on: :collection
     end   
   end
   resources :sessions,      only: [:new, :create, :destroy]

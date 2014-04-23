@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
   BLOG_EAGER_LOADING = [:tags, :user]
+  MAILBOX_EAGER_LOADING = [:sender, :recipient]
+
   VALID_REALNAME  = /\A([a-z]+\s*[a-z]+)\z/i
   VALID_USERNAME  = /\A[a-z\d_]+\z/i
   VALID_WEBSITE   = /\A(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?\z/i
@@ -12,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :captchas, dependent: :destroy
   has_many :microposts, dependent: :destroy
+
   has_many :replies, foreign_key: "to_id", class_name: "Micropost", dependent: :destroy
 
   has_many :fans, foreign_key: "fan_id", class_name: "Opinion", dependent: :destroy
@@ -19,25 +22,22 @@ class User < ActiveRecord::Base
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
+
   has_many :reverse_relationships, foreign_key: "followed_id",
                                     class_name: "Relationship",
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships
 
 
-  has_many :sent_messages, -> { includes([:recipient, :sender]).
-                                order("private_messages.created_at DESC").
-                                where("private_messages.sender_deleted = :f", f: false)
-                              },
+  has_many :sent_messages, -> { includes(:recipient) },
                               foreign_key: 'sender_id',
-                              class_name: "PrivateMessage"
+                              class_name: "PrivateMessage",
+                              dependent: :destroy
 
-  has_many :received_messages, -> { includes([:sender, :recipient]).
-                                    order("private_messages.created_at DESC").
-                                    where("private_messages.recipient_deleted = :f", f: false)
-                                  },
+  has_many :received_messages, -> { includes(:sender) },
                                   foreign_key: 'recipient_id',
-                                  class_name: "PrivateMessage"
+                                  class_name: "PrivateMessage",
+                                  dependent: :destroy
 
   has_many :blogs, dependent: :destroy
   has_many :tags, -> { order('name').uniq }, through: :blogs
@@ -71,44 +71,40 @@ class User < ActiveRecord::Base
   end
 
   def share
-    Micropost.from_users_followed_by(self)
+    Micropost.includes(FEED_EAGER_LOADING).from_users_followed_by(self)
   end
 
   def trash
-    PrivateMessage.sent_and_received_messages_archived_by(self)
+    PrivateMessage.includes(MAILBOX_EAGER_LOADING).archived_by(self)
+  end
+
+  def outbox
+    sent_messages.includes(:sender).where("sender_deleted = :f", f: false)
+  end
+
+  def inbox
+    received_messages.includes(:recipient).where("recipient_deleted = :f", f: false)
   end
 
   def unread_messages
-    received_messages.where("recipient_deleted = :f AND read_at IS NULL", f: false)
+    inbox.unread
   end
 
   def unread_message_count
-    unread_messages.size
-  end
-
-  def has_no?(messages)
-    messages.size == 0
-  end
-
-  def receiving?(message)
-    message.recipient == self
-  end
-      
-  def message_includes
-    PrivateMessage.includes([:sender, :recipient])
+    @unread_message_count ||= unread_messages.size
   end
 
   def read!(message)
-    message = message_includes.find(message)
-    if receiving?(message) && message.read_at.nil?
+    message = PrivateMessage.includes(MAILBOX_EAGER_LOADING).find(message)
+    if message.recipient == self && message.read_at.nil?
       message.read_at = Time.now
       message.save!
     end
     message
   end
-  
+
   def delete!(message)
-    message = message_includes.find(message)
+    message = PrivateMessage.find(message)
     message.toggle!(:sender_deleted) if message.sender == self
     message.toggle!(:recipient_deleted) if message.recipient == self
     message.destroy! if message.sender_deleted && message.recipient_deleted
@@ -159,8 +155,6 @@ private
   def self.secure_new_token
     secure(new_token)
   end
-
-protected
 
   def create_remember_token
     self.remember_token = User.secure_new_token

@@ -1,6 +1,6 @@
 <div class="well-inner-header">
 
-  <% if item.user.captchas.any? %>
+  <% if item.user.captchas.size > 0 %>
     <span class="captchas" data-original-title="
       <%= item.user.random_captcha.content %>">
   <% elsif item.user.bio.present? %>

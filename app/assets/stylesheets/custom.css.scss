@@ -36,10 +36,6 @@ body {
   padding-top: 60px;
 }
 
-img {
-  @include imageRendering;
-}
-
 a, strong, small, .btn-link, .caret {
   @include transitions;
   &:hover {
@@ -59,6 +55,10 @@ select,
   margin-bottom: 10px;
   display: inline-block;
   @include forms;
+}
+
+label {
+  font-size: 15px;
 }
 
 textarea {
@@ -507,6 +507,24 @@ ul .users-follow li:hover {
 
 .well-header {
   @include well-header;
+}
+
+table {
+  @include tables-shadow;
+}
+
+tbody:hover {
+  cursor: pointer;
+}
+
+thead, tfoot {
+  @include footer;
+  font-size: 15px;
+}
+
+tbody {
+  font-size: 14px;
+  @include tables;
 }
 
 .well-bottom {
@@ -1029,6 +1047,10 @@ ul .users-follow li:hover {
 .nav-pills > .active > a:focus {
   text-shadow: none;
 }
+
+.nav-pills {
+  font-size: 15px;
+}  
 
 // pages#about
 

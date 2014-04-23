@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  include Greeter
 
   def new
     if signed_in?

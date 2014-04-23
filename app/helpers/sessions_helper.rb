@@ -43,4 +43,12 @@ module SessionsHelper
     cookies.delete(:remember_token)
     self.current_user = nil
   end
+
+  def say_hello
+    Greeter.say_hello
+  end
+
+  def say_goodbye
+    Greeter.say_goodbye
+  end
 end

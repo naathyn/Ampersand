@@ -2,7 +2,7 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <%= gravatar_for current_user, size: 22 %>
     <%= current_user.realname %>
-    <% if current_user.unread_messages.any? %>
+    <% unless current_user.unread_message_count == 0 %>
       <span class="badge badge-important" style="margin-left:5px;">
         <%= current_user.unread_message_count %>
       </span>
@@ -15,7 +15,7 @@
     <li>
       <%= link_to user_private_messages_path(current_user) do %>
         Inbox
-        <% if current_user.unread_messages.any? %>
+        <% unless current_user.unread_message_count == 0 %>
           <span class="badge badge-inverse" style="margin-left:10px;">
             <%= current_user.unread_message_count %>
           </span>

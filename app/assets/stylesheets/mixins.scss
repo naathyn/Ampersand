@@ -97,3 +97,11 @@
 @mixin footer {
   @include gradient-vertical($startColor: white, $endColor: $mainGray);
 }
+
+@mixin tables {
+  @include gradient-vertical($startColor: $outterBody, $endColor: $white);
+}
+
+@mixin tables-shadow {
+  @include box-shadow(0px 1px 6px rgba(0, 0, 0, 0.1));
+}

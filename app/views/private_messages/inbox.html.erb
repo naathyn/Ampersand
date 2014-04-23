@@ -24,39 +24,47 @@
   </ul>
 </div>
 
-<%= form_tag delete_selected_user_private_messages_path(current_user, method: :post) do %>
+<div class="row-fluid">
+  <%= form_tag delete_selected_user_private_messages_path(current_user, method: :post) do %>
 
-  <table class="table table-bordered table-striped table-hover">
-	  <tr>
-		  <th>Mark</th>
-		  <th>Message</th>
-		  <th>Sent By</th>
-		  <th>Sent To</th>
-		  <th>Delivered On</th>
-		  <th>Received On</th>
-	  </tr>
-	  <% if current_user.has_no?(@messages) ||
-      (current_user.has_no?(@messages) && @inbox.match("trash") && current_user.has_no?(@messages))  %>
-      <tr class="info">
-        <td colspan="8">
-          <p class="lead center" style="margin-bottom:0;">
-            Your <%= @inbox %> is clean!
-          </p>
-        </td>
-      </tr>
-    <% end %>
-    <%= render @messages %>
-    <tr>
-	    <td colspan="8">
-        <% unless current_user.has_no?(@messages) %>
-          <% if @inbox.match("trash") %>
-				    <%= submit_tag "Restore", class: "btn btn-success" %>
-              <% else %>
-		        <%= submit_tag "Delete", class: "btn btn-danger" %>
-          <% end %>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+	      <tr>
+		      <th style="width:6%;">Mark</th>
+		      <th style="width:30%;">Message</th>
+		      <th>Sent By</th>
+		      <th>Sent To</th>
+		      <th>Delivered On</th>
+		      <th>Received On</th>
+	      </tr>
+      </thead>
+      <tbody>
+	      <% if @messages.size == 0 ||
+            (@inbox.match("trash") && @messages.size == 0) %>
+          <tr class="info">
+            <td colspan="8">
+              <p class="lead center" style="margin-bottom:0;">
+                Your <%= @inbox %> is clean!
+              </p>
+            </td>
+          </tr>
         <% end %>
-	    </td>
-	  </tr>
-  </table>
-  <center><%= will_paginate @messages %></center>
-<% end %>
+        <%= render @messages %>
+      </tbody>
+      <% unless @messages.size == 0 %>
+        <tfoot>
+          <tr>
+	          <td colspan="8">
+              <% if @inbox.match("trash") %>
+				        <%= submit_tag "Restore", class: "btn btn-success" %>
+              <% else %>
+		            <%= submit_tag "Delete", class: "btn btn-danger" %>
+              <% end %>
+	          </td>
+	        </tr>
+        </tfoot>
+      <% end %>
+    </table>
+    <center><%= will_paginate @messages %></center>
+  <% end %>
+</div>

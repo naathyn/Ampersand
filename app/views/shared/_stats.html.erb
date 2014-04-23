@@ -1,6 +1,6 @@
 <% @user ||= current_user %>
 
-<div class="page-fade stats">
+<div class="stats">
   <a href="<%= user_path(@user) %>">
     <strong class="stat">
       <%= @user.microposts.count %>

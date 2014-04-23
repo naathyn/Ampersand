@@ -2,7 +2,7 @@
   <ul class="breadcrumb">
     <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
     <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
-    <li> <%= link_to "Private Messages", user_private_messages_path(current_user) %>
+    <li> <%= link_to "Inbox", user_private_messages_path(current_user) %>
       <span class="divider">/</span>
     </li>
     <li class="active"> <%= @reply_to.nil? ? "New Message" :
@@ -10,10 +10,10 @@
     </li>
   </ul>
 
-  <%= form_for @message, url: user_private_messages_path(@user) do |f| %>
+  <%= form_for @message, url: user_private_messages_path(current_user) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-		  <%= f.label :to %>
+		  <%= f.label :to, "To:" %>
 		  <%= f.text_field :to, "data-autocomplete-url" => url_for(controller: :users, action: :autocomplete) %>
 
       <%= f.text_area :content, class: "wysihtml5", rows: 15 %>

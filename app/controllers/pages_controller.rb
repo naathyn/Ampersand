@@ -5,9 +5,8 @@ class PagesController < ApplicationController
         First wave of private messaging. Plans to clean up and simplify soon."
     if signed_in?
       @title = current_user.username
-      @shares = current_user.share.paginate(page: params[:page],
-        include: User::FEED_EAGER_LOADING)
-      @users = Message.paginate(page: params[:page], include: :user).map { |message|
+      @shares = current_user.share.page(params[:page])
+      @users = Message.includes(:user).page(params[:page]).map { |message|
         message.user.realname }.uniq.join(', ')
       @micropost = current_user.microposts.build
     else

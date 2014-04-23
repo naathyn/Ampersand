@@ -16,11 +16,11 @@ class Micropost < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
 
   def liked_by?(fan)
-    likes.find_by_fan_id(fan.id)
+    likes.find_by(fan_id: fan.id)
   end
 
   def timestamp
-    created_at.to_s(:long_ordinal).gsub /\d+:\d+/, ''
+    created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
   end
 
 private

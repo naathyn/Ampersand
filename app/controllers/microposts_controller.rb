@@ -4,7 +4,7 @@ class MicropostsController < ApplicationController
   before_filter :correct_micropost, only: :show
 
   def show
-    @micropost = Micropost.find(params[:id])
+    @micropost = Micropost.includes(:user).find(params[:id])
     @title = @micropost.user.realname
     respond_to :html, :js
   end
@@ -27,8 +27,8 @@ class MicropostsController < ApplicationController
   end
 
   def likes
-    @micropost = Micropost.find(params[:id], include: :likes)
-    @microposts = @micropost.fans.paginate(page: params[:page], include: :fans)
+    @micropost = Micropost.includes(:user, :likes).find(params[:id])
+    @microposts = @micropost.fans.includes(:fans).page(params[:page])
     respond_to :js
   end
 
@@ -41,7 +41,7 @@ private
 protected
 
   def micropost_user
-    @micropost = current_user.microposts.find_by_id(params[:id])
+    @micropost = current_user.microposts.find_by(id: params[:id])
     redirect_to :root if @micropost.nil?
   end
 

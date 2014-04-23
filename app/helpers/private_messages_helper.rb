@@ -1,21 +1,17 @@
 module PrivateMessagesHelper
-  def link_to_message_sender(message, sender)
-    if sender == message.sender
-      link = "You"
-    else
-      sender = message.sender
-      link = sender.realname
-    end
-    link_to(link, sender)
+  def message_time(time)
+    DateTime.parse(time.to_s).strftime("%B %e at %l:%M %p")
   end
 
-  def link_to_message_recipient(message, recipient)
-    if recipient == message.recipient
-      link = "You"
-    else
-      recipient = message.recipient
-      link = recipient.realname
-    end
-    link_to(link, recipient)
+  def timestamp
+    message_time(created_at)
+  end
+
+  def read_on
+    message_time(read_at)
+  end
+
+  def message_read?
+    self.read_at.nil? ? false : true
   end
 end

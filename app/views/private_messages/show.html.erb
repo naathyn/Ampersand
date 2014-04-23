@@ -2,14 +2,50 @@
   <li> <%= link_to "Home", :root %> <span class="divider">/</span> </li>
   <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
   <li> <%= link_to "Inbox", user_private_messages_path(current_user) %> <span class="divider">/</span> </li>
-  <li class="active"> Message from <%= @message.sender.realname %> </li>
+  <li class="active"> Message from <%= @sender.realname %> </li>
 </ul>
 
 <div class="page-fade photo tapetwo tapethree microposts-photo">
   <div class="microposts-profile">
     <div id="m_profile" class="profile-header microposts-header">
-      <div class="row-fluid">
-        <%= render "private_messages/conversations" %>
+      <div class="row-fluid" id="<%=@private_message.id %>">
+
+        <span class="pull-right">
+          <% if current_user?(@recipient) && !@private_message.recipient_deleted? %>
+            <%= link_to "Reply", new_user_private_message_path(current_user, reply_to: @private_message),
+                  class: "btn"  %>
+          <% end %>
+        </span>
+        <p class="center small">
+          <%= @private_message.timestamp %>
+        </p>
+        <div class="profile-inner microposts-inner">
+          <%= link_to gravatar_for(@sender, size: 48), @sender %>
+
+          <h1 id="<%= @sender.realname %>" class="fullname">
+            <%= link_to_message_sender(@private_message, current_user) %>
+          </h1>
+
+          <h2 class="name">
+            <small>@</small><%= @sender.name %>
+          </h2>
+
+          <p class="content">
+            <%= auto_link @private_message.content %>
+          </p>
+
+          <p class="small msg_read">
+            <%= @private_message.message_read? ? "Read " + @private_message.read_on :
+                @recipient.realname + " has not read this yet."
+            %>
+          </p>
+        </div>
+
+        <p class="small pull-right">
+          Sent to
+          <strong><%= link_to_message_recipient(@private_message, current_user) %></strong>
+        </p>
+
       </div>
     </div>
   </div>

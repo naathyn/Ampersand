@@ -2,20 +2,20 @@
   <td><%= check_box_tag "delete[]", private_message.id %></td>
   <td>
     <% if private_message.message_read? %>
-      <i>
-        <%= link_to truncate(private_message.content.gsub(Blog::HTML_TAGS, ' '), 
-              length: 50, escape: false),
-                user_private_message_path(@user, private_message)
-        %>
-      </i>
-	  <% else %>
-      <b>
+      <em>
         <%= link_to truncate(private_message.content.gsub(Blog::HTML_TAGS, ' '),
-              length: 50, escape: false),
+              length: 75, escape: false),
                 user_private_message_path(@user, private_message)
         %>
-      </b>
-      <% if current_user.receiving?(private_message) %>
+      </em>
+	  <% else %>
+      <strong>
+        <%= link_to truncate(private_message.content.gsub(Blog::HTML_TAGS, ' '),
+              length: 75, escape: false),
+                user_private_message_path(@user, private_message)
+        %>
+      </strong>
+      <% if current_user?(private_message.recipient) %>
         <span class="label label-success" style="margin-left:2px;"> New! </span>
       <% end %>
 
@@ -23,18 +23,15 @@
 	</td>
 	<td> <%= link_to_message_sender(private_message, current_user) %> </td>
 	<td> <%= link_to_message_recipient(private_message, current_user) %> </td>
-	<td>
-    <%= private_message.timestamp %>
-  </td>
+	<td> <%= private_message.timestamp %> </td>
   <td>
     <% if private_message.message_read? %>
       <%= private_message.read_on %>
     <% else %>
       <%= current_user?(private_message.recipient) ? "You have not " :
-            private_message.recipient.realname + " has not "
-      %>
-      <%= link_to("<b>read this</b>".html_safe, user_private_message_path(current_user, private_message)) %>
-    yet.
+            private_message.recipient.realname + " has not " %>
+      <%= link_to("<b>read this</b>".html_safe, user_private_message_path(current_user, private_message))
+      %> yet.
     <% end %>
   </td>
 </tr>
