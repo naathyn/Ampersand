@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
-//= require navigation
 //= require bootstrap-transition
 //= require bootstrap-alert
 //= require bootstrap-modal
@@ -26,6 +25,7 @@
 //= require bootstrap-collapse
 //= require bootstrap-typeahead
 //= require bootstrap-wysihtml5
+//= require navigation
 //= require mention
 //= require forms
 //= require tooltips
