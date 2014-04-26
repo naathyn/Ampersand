@@ -2,6 +2,9 @@
   <% provide(:title, @title) %>
 <% end %>
 
+ <%= yield flash.now[:notice] = "Your captcha's are looking pretty empty.
+      How about comin' up with a lil' somethin' to fill it up?" if @captchas.empty? %>
+
 <ul class="breadcrumb">
   <li> <%= link_to "Home", :root %>  <span class="divider">/</span> </li>
   <li><%= link_to "Members", :users %> <span class="divider">/</span> </li>

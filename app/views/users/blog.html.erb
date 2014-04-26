@@ -2,6 +2,9 @@
   <% provide(:title, @title) %>
 <% end %>
 
+<%= yield flash.now[:notice] = "Your blog is looking a little empty?
+      How about posting a lil' somethin' to fill it up?" if @blogs.empty? %>
+
 <% @user ||= current_user %>
 
 <ul class="breadcrumb">
@@ -13,17 +16,11 @@
 
 <div class="row-fluid">
   <aside class="span8">
-    <% if current_user?(@user) %>
-      <div class="page-fade center">
-        <%= link_to "Post New Entry", :new_blog,
-              class: "btn btn-large btn-primary" %>
-      </div> <hr />
-    <% end %>
     <%= render @blogs %>
     <%= will_paginate @blogs unless @blogs.empty? %>
   </aside>
 
-  <aside class="page-fade span3 user_info">
+  <aside class="span3 user_info">
     <%= render partial: 'shared/blog_user_info' %>
     <%= render 'shared/tagbar' unless @blogs.empty? %>
   </aside>

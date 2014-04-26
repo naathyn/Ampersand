@@ -1,11 +1,17 @@
-<legend> Popular Tags </legend>
-<ol class="page-fade" id="tags">
-  <% @tags.each do |tag| %>
-    <li id="<%= tag.id %>"><%= icon_for(tag) %>
-      <%= link_to "#{tag.name} (#{tag.tagging_count})", tag_path(tag) %>
-    </li>
-  <% end %>
-</ol>
-<div class="pagination pagination-mini">
-  <%= will_paginate @tags unless @tags.empty? %>
+<% @user ||= current_user %>
+<div class="offset1">
+  <p class="center lead">
+    <%= action_name == "blog" ? "Top Tags" : "Trending Tags" %></p>
+  <ul class="tags-blogs-index">
+    <% @tags.each do |tag| %>
+    <%= link_to tag_path(tag) do %>
+      <li id="<%= tag.id %>">
+        <%= icon_for(tag) %><%= tag.name %>
+          <div class="pull-right"><%= badge_for(tag) %></div>
+      </li>
+      <% end %>
+    <% end %>
+  <div class="center pagination pagination-mini">
+    <%= will_paginate @tags unless @tags.empty? %>
+  </div>
 </div>

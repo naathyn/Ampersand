@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
   BLOG_EAGER_LOADING = [:tags, :user]
+  TAGS_EAGER_LOADING = [:blogs, :user]
   MAILBOX_EAGER_LOADING = [:sender, :recipient]
 
   VALID_REALNAME  = /\A([a-z]+\s*[a-z]+)\z/i
@@ -40,7 +41,7 @@ class User < ActiveRecord::Base
                                   dependent: :destroy
 
   has_many :blogs, dependent: :destroy
-  has_many :tags, -> { order('name').uniq }, through: :blogs
+  has_many :tags, through: :blogs
 
   has_many :comments, dependent: :destroy
   has_many :messages, dependent: :destroy
@@ -53,8 +54,8 @@ class User < ActiveRecord::Base
   validates_length_of :location, maximum: 50
   validates_length_of :bio, maximum: 255
 
-  validates_length_of :password, minimum: 6
-  validates_confirmation_of :password_confirmation
+  validates_length_of :password, minimum: 6, if: :password_digest_changed?
+  validates_presence_of :password_confirmation, if: :password_digest_changed?
 
   validates_format_of :realname, with: VALID_REALNAME
   validates_format_of :name, with: VALID_USERNAME
@@ -140,6 +141,10 @@ class User < ActiveRecord::Base
 
   def unlike!(micropost)
     fans.find_by(like_id: micropost.id).destroy
+  end
+
+  def known_location
+    location.present? ? location : "Unknown"
   end
 
 private

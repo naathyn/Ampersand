@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-    <% if Rails.env.production? %>
-      <meta name="google-site-verification"
-            content="I0NixjSmlfnfKTF5fINNtQxaktiCwun9d46jsU11l3g" />
-    <% end %>
     <title> <%= full_title(yield(:title)) %> </title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "A Social Platform in development" %>">
     <meta name="author" content="<%= content_for?(:author) ? yield(:author) : "Nathan Couch" %>">
@@ -14,7 +10,7 @@
     <%= render 'layouts/shim' %>
     <%= yield(:head) %>
   </head>
-  <body class="<%= viewing_blog? %>">
+  <body class="body-<%= controller_name %>" id="<%= action_name %>">
     <%= render 'shared/modal' %>
 
     <header class="navbar navbar-inverse navbar-fixed-top">

@@ -3,6 +3,7 @@
 
     <%= f.text_area :content, placeholder: "What's on your mind, #{current_user.username}?",
       "data-autocomplete-url" => url_for(controller: :users, action: :autocomplete) %>
-
-  <%= f.submit "Share", class: "btn btn-primary", style: "padding-left: 10px;" %>
+  <center>
+    <%= f.submit "Share", class: "btn btn-large btn-block btn-primary " %>
+  </center>
 <% end %>

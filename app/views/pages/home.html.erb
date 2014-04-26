@@ -31,12 +31,12 @@
 
     <div id="feed" class="span8">
       <div class="well-header">
-        <a href="<%= user_private_messages_path(current_user) %>" title="Your Inbox">
-          <i id="comment-bar" class="icon-envelope"></i>
+        <a class="pull-left" href="<%= user_path(current_user) %>" title="Profile">
+          <i class="icon-user"></i>
         </a>
 
-        <a href="<%= user_path(current_user) %>" title="Profile">
-          <i class="icon-user"></i>
+        <a href="<%= user_private_messages_path(current_user) %>" title="Your Inbox">
+          <i id="comment-bar" class="icon-envelope"></i>
         </a>
 
         <a href="<%= captchas_user_path(current_user) %>" title="Captchas">

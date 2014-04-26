@@ -1,8 +1,8 @@
 <div class="page-fade captcha-form">
   <%= form_for(@captcha, url: :captchas) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-      <%= f.text_area :content, class: "span10",
+      <%= f.text_area :content,
            placeholder: "Captcha' whatcha' like..." %>
-    <%= f.submit "Captcha' it", class: "btn btn-large btn-success" %>
+    <%= f.submit "Captcha' it", class: "btn btn-large btn-block btn-success" %>
   <% end %>
 </div>

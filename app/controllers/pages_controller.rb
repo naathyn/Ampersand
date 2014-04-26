@@ -1,9 +1,10 @@
 class PagesController < ApplicationController
 
   def home
-    @notice = "Last updated on Tuesday, April 22nd at 11:00 p.m.
-      Your inbox has been fixed up a bit, updated to Rails 4.1.0,
-      and getting ready to start on notifications ;)"
+    updates_page_link = "<a href=" + "https://github.com/naathyn/Ampersand/commits/master/" + " target=_blank>"
+    update_title = "<b>Various Touchups</b>"
+    update_header = "#{updates_page_link} #{update_title} </a>".html_safe
+    @notice = "Last updated on Saturday, April 26th at 9:00 a.m. #{update_header}: Blog and tag pages, mailbox layout and other site enhancements as well as layout improvements."
     if signed_in?
       @title = current_user.username
       @shares = current_user.share.page(params[:page])

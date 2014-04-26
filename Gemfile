@@ -11,9 +11,9 @@ gem 'friendly_id'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
-gem 'jbuilder', ' 2.0.4'
+gem 'jbuilder', '2.0.6'
 gem 'uglifier', '2.5.0'
-gem 'sass-rails', ' 4.0.3'
+gem 'sass-rails', '4.0.3'
 gem 'coffee-rails', '4.0.1'
 
 gem 'bootstrap-sass', '2.3.2.0'

@@ -96,7 +96,7 @@ class UsersController < ApplicationController
   def blog
     @title = "#{@user.realname}'s Blog"
     @blogs = @user.blogs.includes(User::BLOG_EAGER_LOADING).page(params[:page]).order('created_at DESC')
-    @tags = @user.tags.page(params[:page])
+    @tags = @user.tags.page(params[:page]).order('name').uniq
     @blog = current_user.blogs.build if signed_in?
   end
 

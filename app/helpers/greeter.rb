@@ -1,13 +1,5 @@
 module Greeter
 
-  def viewing_blog?
-    "blogging" if
-      controller_name == "blogs"  ||
-      action_name     == "blog"   ||
-      controller_name == "tags"   ||
-      controller_name == "comments"
-  end
-
   def micropost_synonyms
     [ "Thoughts",
       "Shoutouts",

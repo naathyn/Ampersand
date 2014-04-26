@@ -40,9 +40,9 @@
               <%= f.email_field :email, placeholder: "Email" %>
 
               <%= f.label :password %>
-              <%= f.password_field :password, placeholder: "Password" %>
+              <%= f.password_field :password, autocomplete: :off, placeholder: "Password" %>
 
-              <%= f.label :password_confirmation, "Retype Password" %>
+              <%= f.label :password_confirmation, "Retype Password If Changing" %>
               <%= f.password_field :password_confirmation, placeholder: "Password" %>
 
             <%= f.submit "Submit!", class: "btn btn-large btn-success" %>

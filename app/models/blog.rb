@@ -14,17 +14,20 @@ class Blog < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   validates_presence_of :user_id, :title, :content
-
   validates_length_of :title, maximum: 50
 
-  after_save :assign_tags
+  before_save :assign_tags
 
   def tag_names
-    @tag_names || tags.map(&:name).sort.join(', ')
+    @tag_names || tags.map(&:name).uniq.sort.join(', ')
   end
 
   def timestamp
     created_at.to_s(:long_ordinal).gsub(/\d+:\d+/, '')
+  end
+
+  def title_and_author
+    "#{title} by #{user.realname}"
   end
 
   def preview
@@ -35,19 +38,15 @@ class Blog < ActiveRecord::Base
     photo.present?
   end
 
-  def title_and_author
-    "#{title} by #{user.realname}"
-  end
+private
 
   per_page = 10
-
-private
 
   def assign_tags
     if @tag_names
       self.tags = @tag_names.split(/\,/).map { |name|
-        Tag.find_or_create_by_name!(name.downcase.strip)
-      }
+        Tag.find_or_create_by!(name: name.downcase.strip)
+      }.uniq
     end
   end
 end

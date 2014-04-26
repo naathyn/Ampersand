@@ -6,14 +6,7 @@
   <li> <%= link_to "Home", :root %>  <span class="divider">/</span> </li>
   <li> <%= link_to "Members", :users %> <span class="divider">/</span> </li>
   <li class="active"> <%= @title %> </li>
-</ul>
-
-<div class="row-fluid">
-  <aside class="span8">
-
-    <legend class="legend">Community Blogs
-
-      <span class="page-fade pull-right" style="margin-top: -3px;">
+  <li class="pull-right" style="margin-top: -3px;">
         <% if signed_in? %>
           <%= link_to "Go To Your Blog", blog_user_path(current_user),
                 class: "btn btn-primary" %>
@@ -23,7 +16,13 @@
           <%= link_to "Get a Free Blog", :signup,
                 class: "btn btn-primary" %>
         <% end %>
-      </span>
+      </li>
+</ul>
+
+<div class="row-fluid">
+  <aside class="span8">
+
+    <legend class="legend">Community Blogs
 
     </legend>
 
@@ -45,7 +44,7 @@
 
             <span class="lead"> <%= link_to blog.title, entry_path(blog) %> </span>
 
-            <p class="page-fade bio pull-right">
+            <p class="bio pull-right">
               by <b><%= link_to blog.user.realname, blog_user_path(blog.user) %></b>
                 with
               <u><%= link_to pluralize(blog.comment_count, 'comment'),
@@ -58,8 +57,7 @@
             </p>
 
             <% if blog.tags.any? %>
-
-              <p class="page-fade bio">
+              <p class="bio">
                 <% blog.tags.each do |tag| %>
                   <i class="icon-tag"></i> <%= link_to tag.name, tag %>
                 <% end %>
@@ -74,7 +72,7 @@
     <% end %>
   </aside>
 
-  <aside class="span3">
+  <aside class="span4">
     <%= render 'shared/tagbar' %>
   </aside>
 </div>
