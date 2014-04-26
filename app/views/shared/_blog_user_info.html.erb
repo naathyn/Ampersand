@@ -6,7 +6,7 @@
 
 <p class="center bio tags" style="padding:25px 0 10px;"> <%= @user.bio %> </p>
 
-<% if current_user?(@blog.user) %>
+<% if current_user?(@user) %>
         <%= link_to "Post New Entry", :new_blog,
               class: "btn btn-large btn-block btn-primary" %>
 <% else %>
