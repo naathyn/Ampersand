@@ -1,7 +1,7 @@
 source 'https://rubygems.org/'
 ruby '2.1.1'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.4'
 gem 'bcrypt', '3.1.7'
 gem 'thin'
 
@@ -11,18 +11,18 @@ gem 'friendly_id'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
-gem 'jbuilder', '2.0.6'
-gem 'uglifier', '2.5.0'
+gem 'jbuilder', '2.1.3'
+gem 'uglifier', '2.5.3'
 gem 'sass-rails', '4.0.3'
 gem 'coffee-rails', '4.0.1'
 
 gem 'bootstrap-sass', '2.3.2.0'
-gem 'will_paginate', '3.0.5'
+gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
-gem 'bootstrap-wysihtml5-rails', '0.3.1.23'
+gem 'bootstrap-wysihtml5-rails', '0.3.2.100'
 
 group :development do
- gem 'mysql2', '0.3.15'
+ gem 'mysql2', '0.3.16'
  gem 'spring'
  gem 'faker'
  # gem 'rspec-rails', '2.13.1'

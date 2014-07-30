@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     updates_page_link = "<a href=" + "https://github.com/naathyn/Ampersand/commits/master/" + " target=_blank>"
     update_title = "<b>Various Touchups</b>"
     update_header = "#{updates_page_link} #{update_title} </a>".html_safe
-    @notice = "Last updated on Saturday, April 26th at 9:00 a.m. #{update_header}: Blog and tag pages, mailbox layout and other site enhancements as well as layout improvements."
+    @notice = "Last updated on Wednesday, July 30th at 2:45 a.m. #{update_header}: Keeping the gems updated to keep Ampersand shiny, ;)."
     if signed_in?
       @title = current_user.username
       @shares = current_user.share.page(params[:page])
