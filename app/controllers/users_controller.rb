@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :correct_user,    only:   [:edit, :update]
   before_filter :captcha_user,    only:   :captchas
   before_filter :admin_user,      only:   :destroy
-  before_filter :wipe_the_chat,   only:   :chatroom
+  # before_filter :wipe_the_chat,   only:   :chatroom
 
   before_action :set_user, only: [:show, :edit, :destroy, :following, :followers, :blog]
 
@@ -95,7 +95,7 @@ class UsersController < ApplicationController
 
   def blog
     @title = "#{@user.realname}'s Blog"
-    @blogs = @user.blogs.includes(User::BLOG_EAGER_LOADING).page(params[:page]).order('created_at DESC')
+    @blogs = @user.blogs.page(params[:page]).order('created_at DESC')
     @tags = @user.tags.page(params[:page]).order('name').uniq
     @blog = current_user.blogs.build if signed_in?
   end
@@ -145,7 +145,7 @@ protected
     redirect_to :root unless current_user.admin?
   end
 
-  def wipe_the_chat
-    Message.all.each { |message| message.destroy if message.created_at < 1.day.ago }
-  end
+  # def wipe_the_chat
+    # Message.all.each { |message| message.destroy if message.created_at < 1.day.ago }
+  # end
 end

@@ -2,9 +2,8 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  FEED_EAGER_LOADING  = [:likes, :fans, user: { captchas: {user: :fans} }]
+  FEED_EAGER_LOADING = [:likes, :fans, user: { captchas: {user: :fans} }]
   BLOG_EAGER_LOADING = [:tags, :user]
-  TAGS_EAGER_LOADING = [:blogs, :user]
   MAILBOX_EAGER_LOADING = [:sender, :recipient]
 
   VALID_REALNAME  = /\A([a-z]+\s*[a-z]+)\z/i
