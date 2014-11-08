@@ -1,8 +1,8 @@
 source 'https://rubygems.org/'
 ruby '2.1.2'
 
-gem 'rails', '4.1.5'
-gem 'bcrypt', '3.1.7'
+gem 'rails', '4.1.7'
+gem 'bcrypt'
 gem 'thin'
 
 gem 'jquery-rails'
@@ -22,7 +22,7 @@ gem 'bootstrap-will_paginate'
 gem 'bootstrap-wysihtml5-rails'
 
 group :development do
- gem 'mysql2', '0.3.16'
+ gem 'mysql2'
  gem 'spring'
  gem 'faker'
  # gem 'rspec-rails', '2.13.1'
@@ -41,6 +41,6 @@ end
 gem 'sdoc', group: :doc, require: false
 
 group :production do
-  gem 'pg', '0.17.1'
+  gem 'pg'
   gem 'rails_12factor'
 end
